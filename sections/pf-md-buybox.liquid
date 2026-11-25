@@ -36,6 +36,44 @@
   assign keep = 100 | minus: sel_off
   assign now = cv.price | times: sel_qty | times: keep | divided_by: 100
   assign was = base_unit | times: sel_qty
+
+  # Bundle mode: a tier with "Variant number" set adds that product variant
+  # (e.g. "Buy 2 Get 1 Free" = a 3-bottle variant). Prices and the
+  # subscription plan come from Shopify / Loop for that variant.
+  assign bundle_mode = false
+  assign unit_price = product.variants.first.price
+  for b in tier_blocks
+    if b.settings.variant_position > 0
+      assign bundle_mode = true
+    endif
+    if b.settings.variant_position > 0 and b.settings.bottles == 1
+      assign vi = b.settings.variant_position | minus: 1
+      if product.variants[vi]
+        assign unit_price = product.variants[vi].price
+      endif
+    endif
+  endfor
+  assign sub_pct = sub_off
+  if bundle_mode and first_tier.settings.variant_position > 0
+    assign vi = first_tier.settings.variant_position | minus: 1
+    assign tv = product.variants[vi]
+    if tv
+      assign cv = tv
+      assign now = tv.price
+      assign was = unit_price | times: first_tier.settings.bottles
+      if tv.compare_at_price > was
+        assign was = tv.compare_at_price
+      endif
+      assign sub_pct = 0
+      assign alloc = tv.selling_plan_allocations.first
+      if alloc and tv.price > 0
+        assign sub_pct = tv.price | minus: alloc.price | times: 100 | divided_by: tv.price
+      endif
+      if s.subscription_default and alloc
+        assign now = alloc.price
+      endif
+    endif
+  endif
 -%}
 <style>
   #shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.gold }}; --pf-select: {{ s.selected_bg }}; }
@@ -49,11 +87,13 @@
       "selected": {{ cv.id | json }},
       "plan": {{ plan.id | json }},
       "subOff": {{ sub_off | json }},
+      "bundle": {{ bundle_mode | json }},
+      "unit": {{ unit_price | json }},
       "variants": [
         {%- for v in product.variants -%}
           {%- assign ii = nil -%}
           {%- if v.featured_media -%}{%- assign ii = v.featured_media.position | minus: 1 -%}{%- endif -%}
-          {"id": {{ v.id }}, "price": {{ v.price }}, "compare_at_price": {{ v.compare_at_price | default: 0 }}, "available": {{ v.available }}, "image_index": {{ ii | json }}}{% unless forloop.last %},{% endunless %}
+          {"id": {{ v.id }}, "price": {{ v.price }}, "compare_at_price": {{ v.compare_at_price | default: 0 }}, "available": {{ v.available }}, "image_index": {{ ii | json }}{% assign al = v.selling_plan_allocations.first %}{% if al %}, "plan": {{ al.selling_plan.id | json }}, "plan_price": {{ al.price | json }}, "plan_name": {{ al.selling_plan.name | json }}{% endif %}}{% unless forloop.last %},{% endunless %}
         {%- endfor -%}
       ]
     }
@@ -222,7 +262,7 @@
           <p class="pfm-low">{{ s.low_stock_text | replace: '[n]', cv.inventory_quantity }}</p>
         {%- endif -%}
 
-        {%- unless product.has_only_default_variant -%}
+        {%- unless product.has_only_default_variant or bundle_mode -%}
           <div class="pfm-var">
             <label for="pfm-var-{{ section.id }}">{{ product.options | join: ' / ' }}</label>
             <select id="pfm-var-{{ section.id }}">
@@ -232,30 +272,60 @@
         {%- endunless -%}
 
         {%- if tier_blocks.size > 0 -%}
+          {%- if s.tiers_heading != blank -%}<div class="pfm-tiers__head"><span>{{ s.tiers_heading }}</span></div>{%- endif -%}
           <div class="pfm-tiers" role="radiogroup">
             {%- for b in tier_blocks -%}
               {%- liquid
                 assign q = b.settings.qty
-                assign k = 100 | minus: b.settings.discount
-                assign tnow = cv.price | times: q | times: k | divided_by: 100
-                assign twas = base_unit | times: q
+                assign tvid = ''
+                assign tv = nil
+                assign missing = false
+                if b.settings.variant_position > 0
+                  assign vi = b.settings.variant_position | minus: 1
+                  assign tv = product.variants[vi]
+                  if tv
+                    assign tvid = tv.id
+                  else
+                    assign missing = true
+                  endif
+                endif
+                if tv
+                  assign tnow = tv.price | times: q
+                  assign twas = unit_price | times: b.settings.bottles | times: q
+                  assign tcmp = tv.compare_at_price | times: q
+                  if tcmp > twas
+                    assign twas = tcmp
+                  endif
+                else
+                  assign k = 100 | minus: b.settings.discount
+                  assign tnow = cv.price | times: q | times: k | divided_by: 100
+                  assign twas = base_unit | times: q
+                endif
                 assign on = false
                 if b.id == first_tier.id
                   assign on = true
                 endif
+                assign tpct = 0
+                if twas > tnow
+                  assign tpct = twas | minus: tnow | times: 100 | divided_by: twas
+                endif
               -%}
-              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" {{ b.shopify_attributes }}>
+              {%- if missing -%}
+                {%- if request.design_mode -%}<div class="pfm-ph" {{ b.shopify_attributes }}>"{{ b.settings.name }}" is hidden: this product has no variant number {{ b.settings.variant_position }} yet. Create the bundle variants in Shopify (see the block's info text).</div>{%- endif -%}
+                {%- continue -%}
+              {%- endif -%}
+              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" data-variant="{{ tvid }}" data-bottles="{{ b.settings.bottles }}" {{ b.shopify_attributes }}>
                 <input type="radio" name="pfm-tier-{{ section.id }}" value="{{ q }}"{% if on %} checked{% endif %}>
-                <span class="pfm-tier__radio"></span>
                 {%- if b.settings.image != blank -%}
                   {{ b.settings.image | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
                 {%- else -%}
-                  <img class="pfm-tier__img" src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" loading="lazy" width="65" height="65">
+                  <img class="pfm-tier__img" src="{{ b.settings.asset | default: 'pf-md-bottle.webp' | asset_url }}" alt="" loading="lazy" width="65" height="65">
                 {%- endif -%}
                 <span class="pfm-tier__txt">
                   <span class="pfm-tier__name">{{ b.settings.name }}</span>
-                  {%- if b.settings.sub != blank -%}<span class="pfm-tier__save" style="display:block">{{ b.settings.sub }}</span>{%- endif -%}
-                  <span class="pfm-tier__save"{% unless twas > tnow %} style="display:none"{% endunless %}>{{ s.save_word }} <span data-pfm-save>{% if twas > tnow %}{{ twas | minus: tnow | money }}{% endif %}</span></span>
+                  {%- if b.settings.sub != blank -%}<span class="pfm-tier__sub">{{ b.settings.sub }}</span>{%- endif -%}
+                  <span class="pfm-tier__save"{% if tpct == 0 %} style="display:none"{% endif %}>{{ s.save_word }} <span data-pfm-save>{{ tpct }}%</span></span>
+                  {%- if b.settings.ship_text != blank -%}<span class="pfm-tier__ship{% if b.settings.ship_text contains 'FREE' or b.settings.ship_text contains 'Free' %} is-free{% endif %}">{{ b.settings.ship_text }}</span>{%- endif -%}
                 </span>
                 <span class="pfm-tier__px">
                   <span class="pfm-tier__now">{{ tnow | money }}</span>
@@ -277,10 +347,10 @@
         {%- endfor -%}
 
         {%- if plan and s.show_subscription -%}
-          <label class="pfm-sub{% if s.subscription_default %} is-on{% endif %}">
+          <label class="pfm-sub{% if s.subscription_default %} is-on{% endif %}"{% if sub_pct == 0 and bundle_mode %} style="display:none"{% endif %}>
             <input type="checkbox"{% if s.subscription_default %} checked{% endif %}>
             <span class="pfm-sub__box">{% render 'pf-md-icon', name: 'check' %}</span>
-            <span><strong>{{ s.sub_heading | replace: '[x]', sub_off }}</strong><small>{{ s.sub_text }}</small></span>
+            <span><strong data-pfm-subh="{{ s.sub_heading | escape }}">{{ s.sub_heading | replace: '[x]', sub_pct }}</strong><small>{{ s.sub_text }}</small></span>
           </label>
         {%- endif -%}
 
@@ -289,11 +359,10 @@
           {%- if s.atc_subline != blank -%}<span class="pfm-atc__subl">{{ s.atc_subline }}</span>{%- endif -%}
         </button>
 
-        {%- if s.refill_1 != blank or s.refill_2 != blank or s.refill_3 != blank -%}
-          <div class="pfm-refill">
+        {%- if s.refill_1 != blank or s.refill_2 != blank -%}
+          <div class="pfm-refill"{% if s.refill_sub_only %} data-pfm-subonly{% unless s.subscription_default and plan %} style="display:none"{% endunless %}{% endif %}>
             {%- if s.refill_1 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_1_icon %}{{ s.refill_1 }}</span>{%- endif -%}
             {%- if s.refill_2 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_2_icon %}{{ s.refill_2 }}</span>{%- endif -%}
-            {%- if s.refill_3 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_3_icon %}{{ s.refill_3 }}</span>{%- endif -%}
           </div>
         {%- endif -%}
 
@@ -377,12 +446,13 @@
     { "type": "number", "id": "low_stock_threshold", "label": "Low stock line shows at or below", "default": 50 },
     { "type": "text", "id": "low_stock_text", "label": "Low stock line", "default": "Low Stock - Only [n] Left", "info": "[n] = real units left" },
     { "type": "header", "content": "Price" },
+    { "type": "text", "id": "tiers_heading", "label": "Heading above bundles", "default": "Choose Your Bundle" },
     { "type": "text", "id": "badge_text", "label": "Savings badge", "default": "SAVE [x]%", "info": "[x] = real % off vs compare-at price. Hidden when there is no saving." },
     { "type": "text", "id": "save_word", "label": "Bundle 'you save' text", "default": "You save" },
     { "type": "header", "content": "Subscription" },
     { "type": "checkbox", "id": "show_subscription", "label": "Show subscribe box (needs a selling plan on the product)", "default": true },
     { "type": "checkbox", "id": "subscription_default", "label": "Checked by default", "default": false },
-    { "type": "text", "id": "sub_heading", "label": "Heading", "default": "Subscribe & Save [x]%" },
+    { "type": "text", "id": "sub_heading", "label": "Heading", "default": "Subscribe & Save [x]%", "info": "[x] = the real % the subscription saves on the selected bundle (from your Loop plan)" },
     { "type": "text", "id": "sub_text", "label": "Text", "default": "Delivered every 30 days. Skip, pause or cancel anytime." },
     { "type": "header", "content": "Add to cart" },
     { "type": "text", "id": "atc_label", "label": "Button text", "default": "Add to cart" },
@@ -392,8 +462,7 @@
     { "type": "select", "id": "refill_1_icon", "label": "Line 1 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "truck" },
     { "type": "text", "id": "refill_2", "label": "Line 2", "default": "Pause or cancel anytime" },
     { "type": "select", "id": "refill_2_icon", "label": "Line 2 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "refresh" },
-    { "type": "text", "id": "refill_3", "label": "Line 3" },
-    { "type": "select", "id": "refill_3_icon", "label": "Line 3 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "lock" },
+    { "type": "checkbox", "id": "refill_sub_only", "label": "Show lines 1 and 2 only when subscribe is ticked", "default": false },
     { "type": "header", "content": "Guarantee card" },
     { "type": "image_picker", "id": "guarantee_badge", "label": "Badge image (optional)" },
     { "type": "number", "id": "guarantee_days", "label": "Days on built-in badge", "default": 60 },
@@ -422,7 +491,11 @@
         { "type": "text", "id": "name", "label": "Name", "default": "Buy 1 Bottle" },
         { "type": "text", "id": "sub", "label": "Small text" },
         { "type": "range", "id": "qty", "label": "Quantity added to cart", "min": 1, "max": 6, "step": 1, "default": 1 },
-        { "type": "range", "id": "discount", "label": "Discount %", "min": 0, "max": 50, "step": 1, "default": 0, "info": "Only enter a discount you have also set up as a Shopify automatic discount (or in Kaching). The cart must charge what this shows." },
+        { "type": "range", "id": "discount", "label": "Discount %", "min": 0, "max": 50, "step": 1, "default": 0, "info": "Only used when Variant number is 0. Only enter a discount you have also set up as a Shopify automatic discount. The cart must charge what this shows." },
+        { "type": "number", "id": "variant_position", "label": "Variant number (bundle mode)", "default": 0, "info": "1 = the product's first variant, 2 = second, and so on. The tier then adds that variant (e.g. a 3-bottle \"Buy 2 Get 1 Free\" variant) with its real price and Loop plan. 0 = old mode: adds Quantity of the selected variant." },
+        { "type": "number", "id": "bottles", "label": "Bottles in this bundle", "default": 1, "info": "Used for the crossed-out price: one-bottle price x bottles." },
+        { "type": "text", "id": "ship_text", "label": "Shipping text", "info": "e.g. FREE Shipping. Set the matching shipping rates in Shopify." },
+        { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked, e.g. pf-md-bundle-3.webp" },
         { "type": "text", "id": "badge_1", "label": "Badge 1" },
         { "type": "text", "id": "badge_2", "label": "Badge 2 (gold)" },
         { "type": "image_picker", "id": "image", "label": "Image" },
