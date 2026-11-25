@@ -1,0 +1,64 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.stars }}; } #shopify-section-{{ section.id }} .pfm-rc { background: {{ s.bg }}; }</style>
+{%- assign has = false -%}
+{%- for b in section.blocks -%}{%- if b.settings.text != blank -%}{%- assign has = true -%}{%- endif -%}{%- endfor -%}
+{%- if has or request.design_mode -%}
+<div class="pfm pfm-rc" data-pfm-slider data-pfm-auto="{{ s.autoplay | times: 1000 }}">
+  {%- if s.heading != blank -%}<div class="pfm-rc__head pfm-wrap"><h2>{{ s.heading }}</h2></div>{%- endif -%}
+  <div class="pfm-rc__view" data-pfm-view>
+    <div class="pfm-track pfm-rc__track">
+      {%- for b in section.blocks -%}
+        {%- if b.settings.text != blank -%}
+          <div {{ b.shopify_attributes }}>
+            <article class="pfm-rcard">
+              <div class="pfm-rcard__top"><b>{{ b.settings.rating }}.0</b>{% render 'pf-md-stars', count: b.settings.rating %}</div>
+              {%- if b.settings.headline != blank -%}<h3>{{ b.settings.headline }}</h3>{%- endif -%}
+              <div class="pfm-rcard__txt">{{ b.settings.text }}</div>
+              {%- if b.settings.tags != blank -%}
+                <div class="pfm-rcard__tags">{%- assign tags = b.settings.tags | split: ',' -%}{%- for t in tags -%}<span class="pfm-tag">{{ t | strip }}</span>{%- endfor -%}</div>
+              {%- endif -%}
+              <div class="pfm-rcard__foot">
+                <span class="pfm-rcard__av">{%- if b.settings.avatar != blank -%}{{ b.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{{ b.settings.name | slice: 0 }}{%- endif -%}</span>
+                <div><div class="pfm-rcard__who">{{ b.settings.name }}</div>{%- if b.settings.verified -%}<div class="pfm-rcard__ver">{% render 'pf-md-icon', name: 'verified' %}{{ s.verified_text }}</div>{%- endif -%}</div>
+              </div>
+            </article>
+          </div>
+        {%- elsif request.design_mode -%}
+          <div {{ b.shopify_attributes }}><div class="pfm-rcard pfm-ph">Review card: paste a real customer review here, word for word. Empty cards are hidden on the live store.</div></div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="pfm-nav">
+    <button type="button" data-pfm-prev aria-label="Previous">{% render 'pf-md-icon', name: 'left' %}</button>
+    <button type="button" data-pfm-next aria-label="Next">{% render 'pf-md-icon', name: 'right' %}</button>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "PF review cards",
+  "settings": [
+    { "type": "paragraph", "content": "Real reviews only, copied word for word with the customer's permission. Cards with no text are hidden on the live store." },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "stars", "label": "Stars", "default": "#B8913A" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F3F5FA" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "verified_text", "label": "Verified label", "default": "Verified customer" },
+    { "type": "range", "id": "autoplay", "label": "Autoplay seconds (0 = off)", "min": 0, "max": 10, "step": 1, "default": 0 }
+  ],
+  "blocks": [
+    { "type": "review", "name": "Review", "settings": [
+      { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "text", "id": "headline", "label": "Headline (customer's words)" },
+      { "type": "richtext", "id": "text", "label": "Review text" },
+      { "type": "text", "id": "tags", "label": "Tags (comma separated)" },
+      { "type": "text", "id": "name", "label": "Name", "default": "First name L." },
+      { "type": "image_picker", "id": "avatar", "label": "Photo" },
+      { "type": "checkbox", "id": "verified", "label": "Verified purchase (only if they bought)", "default": false }
+    ] }
+  ],
+  "presets": [ { "name": "PF review cards" } ]
+}
+{% endschema %}

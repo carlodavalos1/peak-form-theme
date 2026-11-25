@@ -1,0 +1,58 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; } #shopify-section-{{ section.id }} .pfm-five { background: {{ s.bg }}; }</style>
+<div class="pfm pfm-five" data-pfm-slider>
+  {%- if s.pill != blank -%}<span class="pfm-five__pill">{{ s.pill }}</span>{%- endif -%}
+  <h2>{{ s.heading }}</h2>
+  <div class="pfm-five__view" data-pfm-view>
+    <div class="pfm-track pfm-five__track">
+      {%- for b in section.blocks -%}
+        <div {{ b.shopify_attributes }}>
+          <article class="pfm-fcard">
+            <div class="pfm-fcard__img">{%- if b.settings.image != blank or b.settings.asset != blank -%}{% render 'pf-md-img', image: b.settings.image, asset: b.settings.asset, width: 760, alt: '' %}{%- else -%}<div class="pfm-ph">Image {{ forloop.index }}</div>{%- endif -%}</div>
+            <div class="pfm-fcard__body">
+              <span class="pfm-fcard__tag">{{ s.tag_word }} {{ forloop.index }}</span>
+              <h3>{{ b.settings.heading }}</h3>
+              <div>{{ b.settings.text }}</div>
+            </div>
+          </article>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="pfm-nav">
+    <button type="button" data-pfm-prev aria-label="Previous">{% render 'pf-md-icon', name: 'left' %}</button>
+    <div class="pfm-dots" data-pfm-dots></div>
+    <button type="button" data-pfm-next aria-label="Next">{% render 'pf-md-icon', name: 'right' %}</button>
+  </div>
+  {%- if s.button_label != blank -%}
+    <div class="pfm-five__cta">
+      <a class="pfm-pill" href="{{ s.button_link | default: '#pfm-top' }}">{{ s.button_label }}</a>
+      {%- if s.note != blank -%}<div class="pfm-guar">{% render 'pf-md-icon', name: 'shield' %}{{ s.note }}</div>{%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "PF 5 reasons carousel",
+  "settings": [
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#EEF2F9" },
+    { "type": "text", "id": "pill", "label": "Pill", "default": "5 Reasons Why" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "5 Reasons People Are Switching to MacuDrops" },
+    { "type": "text", "id": "tag_word", "label": "Card tag word", "default": "Reason" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Try MacuDrops" },
+    { "type": "url", "id": "button_link", "label": "Button link (empty = scroll to top)" },
+    { "type": "text", "id": "note", "label": "Line under button", "default": "60-Day Money-Back Guarantee" }
+  ],
+  "blocks": [
+    { "type": "reason", "name": "Reason", "limit": 8, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked above." },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Heading" },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Text</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "PF 5 reasons carousel" } ]
+}
+{% endschema %}

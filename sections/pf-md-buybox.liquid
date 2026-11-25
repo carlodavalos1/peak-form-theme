@@ -1,0 +1,456 @@
+{%- comment -%} Peak Form: MacuDrops buy box (Metabolae layout). {%- endcomment -%}
+{% render 'pf-md-assets' %}
+{%- liquid
+  assign s = section.settings
+  assign cv = product.selected_or_first_available_variant
+  assign sp_group = product.selling_plan_groups.first
+  assign plan = sp_group.selling_plans.first
+  assign sub_off = 0
+  if plan
+    assign adj = plan.price_adjustments.first
+    if adj.value_type == 'percentage'
+      assign sub_off = adj.value
+    endif
+  endif
+  assign tracked = false
+  if cv.inventory_management == 'shopify'
+    assign tracked = true
+  endif
+  assign base_unit = cv.price
+  if cv.compare_at_price > cv.price
+    assign base_unit = cv.compare_at_price
+  endif
+  assign tier_blocks = section.blocks | where: 'type', 'tier'
+  assign first_tier = tier_blocks.first
+  assign sel_qty = 1
+  assign sel_off = 0
+  for b in tier_blocks
+    if b.settings.selected
+      assign first_tier = b
+    endif
+  endfor
+  if first_tier
+    assign sel_qty = first_tier.settings.qty
+    assign sel_off = first_tier.settings.discount
+  endif
+  assign keep = 100 | minus: sel_off
+  assign now = cv.price | times: sel_qty | times: keep | divided_by: 100
+  assign was = base_unit | times: sel_qty
+-%}
+<style>
+  #shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.gold }}; --pf-select: {{ s.selected_bg }}; }
+  #shopify-section-{{ section.id }} .pfm-trust { --pf-trust-a: {{ s.trust_overlay_a }}; --pf-trust-b: {{ s.trust_overlay_b | color_modify: 'alpha', 0.6 }}; }
+</style>
+<span id="pfm-top"></span>
+<div class="pfm pfm-bb" id="pfm-bb-{{ section.id }}">
+  <script type="application/json" data-pfm-product>
+    {
+      "fmt": {{ shop.money_format | json }},
+      "selected": {{ cv.id | json }},
+      "plan": {{ plan.id | json }},
+      "subOff": {{ sub_off | json }},
+      "variants": [
+        {%- for v in product.variants -%}
+          {%- assign ii = nil -%}
+          {%- if v.featured_media -%}{%- assign ii = v.featured_media.position | minus: 1 -%}{%- endif -%}
+          {"id": {{ v.id }}, "price": {{ v.price }}, "compare_at_price": {{ v.compare_at_price | default: 0 }}, "available": {{ v.available }}, "image_index": {{ ii | json }}}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+
+  <div class="pfm-bb__grid">
+    <div class="pfm-bb__left">
+      {%- comment -%} Gallery {%- endcomment -%}
+      {%- liquid
+        assign gal_assets = s.gallery_assets | strip | split: ','
+        assign use_assets = false
+        if s.gallery_assets != blank
+          assign use_assets = true
+          assign img_count = gal_assets.size
+        else
+          assign img_count = 0
+          for m in product.media
+            if m.media_type == 'image'
+              assign img_count = img_count | plus: 1
+            endif
+          endfor
+        endif
+      -%}
+      <div class="pfm-gal">
+        <div class="pfm-gal__main" data-pfm-slider>
+          <div class="pfm-track">
+            {%- if use_assets -%}
+              {%- for a in gal_assets -%}
+                {%- assign an = a | strip -%}
+                <div><img src="{{ an | asset_url }}" alt="{{ product.title | escape }} image {{ forloop.index }}" width="1200" height="1200" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></div>
+              {%- endfor -%}
+            {%- elsif img_count > 0 -%}
+              {%- assign n = 0 -%}
+              {%- for m in product.media -%}
+                {%- if m.media_type == 'image' -%}
+                  {%- assign n = n | plus: 1 -%}
+                  {%- assign ld = 'lazy' -%}{%- if n == 1 -%}{%- assign ld = 'eager' -%}{%- endif -%}
+                  <div>{{ m | image_url: width: 1430 | image_tag: loading: ld, widths: '480, 720, 960, 1430', sizes: '(min-width: 990px) 715px, 100vw', alt: m.alt }}</div>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- else -%}
+              <div style="background:#eef2f9;display:flex;align-items:center;justify-content:center"><img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" width="600" height="900" style="width:auto;height:80%;object-fit:contain"></div>
+            {%- endif -%}
+          </div>
+          {%- if img_count > 1 -%}
+            <button type="button" class="pfm-gal__arrow pfm-gal__arrow--prev" data-pfm-prev aria-label="Previous image">{% render 'pf-md-icon', name: 'left' %}</button>
+            <button type="button" class="pfm-gal__arrow pfm-gal__arrow--next" data-pfm-next aria-label="Next image">{% render 'pf-md-icon', name: 'right' %}</button>
+          {%- endif -%}
+        </div>
+        {%- if img_count > 1 -%}
+          <div class="pfm-gal__thumbs">
+            {%- if use_assets -%}
+              {%- for a in gal_assets -%}
+                {%- assign an = a | strip -%}
+                <button type="button" class="pfm-gal__thumb{% if forloop.first %} is-on{% endif %}" aria-label="Show image {{ forloop.index }}"><img src="{{ an | asset_url }}" alt="" loading="lazy" width="126" height="126"></button>
+              {%- endfor -%}
+            {%- else -%}
+              {%- assign ti = 0 -%}
+              {%- for m in product.media -%}
+                {%- if m.media_type == 'image' -%}
+                  <button type="button" class="pfm-gal__thumb{% if ti == 0 %} is-on{% endif %}" aria-label="Show image {{ ti | plus: 1 }}">{{ m | image_url: width: 260 | image_tag: loading: 'lazy', alt: '' }}</button>
+                  {%- assign ti = ti | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Accordions {%- endcomment -%}
+      {%- assign accs = section.blocks | where: 'type', 'accordion' -%}
+      {%- if accs.size > 0 -%}
+        <div class="pfm-accs">
+          {%- for b in accs -%}
+            <details {{ b.shopify_attributes }}{% if b.settings.open %} open{% endif %}>
+              <summary>
+                {%- if b.settings.asset != blank -%}<img class="pfm-acc__img" src="{{ b.settings.asset | asset_url }}" alt="" loading="lazy" width="40" height="40">{%- else -%}<span class="pfm-ico">{% render 'pf-md-icon', name: b.settings.icon %}</span>{%- endif -%}
+                <h2>{{ b.settings.heading }}</h2>
+                <span class="pfm-chev">{% render 'pf-md-icon', name: 'chevron' %}</span>
+              </summary>
+              <div class="pfm-acc__body">{{ b.settings.body }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Customer videos {%- endcomment -%}
+      {%- assign vids = section.blocks | where: 'type', 'video' -%}
+      {%- if vids.size > 0 -%}
+        <div class="pfm-vids pfm-slider" data-pfm-slider>
+          {%- if s.videos_heading != blank -%}<h3>{{ s.videos_heading }}</h3>{%- endif -%}
+          <div data-pfm-view style="overflow:hidden">
+            <div class="pfm-track pfm-vids__track">
+              {%- for b in vids -%}
+                <div {{ b.shopify_attributes }}>
+                  <div class="pfm-vcard">
+                    {%- if b.settings.video != blank -%}
+                      {{ b.settings.video | video_tag: preload: 'metadata', playsinline: true, image_size: '460x' }}
+                      <button type="button" class="pfm-play" aria-label="Play video">{% render 'pf-md-icon', name: 'play' %}</button>
+                    {%- else -%}
+                      <div class="pfm-ph">Add a real customer video<br>(Shopify-hosted)</div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- if vids.size > 3 -%}
+            <div class="pfm-nav">
+              <button type="button" data-pfm-prev aria-label="Previous">{% render 'pf-md-icon', name: 'left' %}</button>
+              <button type="button" data-pfm-next aria-label="Next">{% render 'pf-md-icon', name: 'right' %}</button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="pfm-bb__right">
+      <div class="pfm-bb__info">
+        {%- if s.rating_text != blank -%}
+          <div class="pfm-rate">{% render 'pf-md-stars' %}<span>{{ s.rating_text }}</span></div>
+        {%- elsif request.design_mode -%}
+          <div class="pfm-rate pfm-ph" style="justify-content:flex-start">Rating line: add your real rating and review count in "Rating text" (hidden on the live page until you do)</div>
+        {%- endif -%}
+
+        <h1>{{ s.title_override | default: product.title }}</h1>
+        {%- if s.subtitle != blank -%}<div class="pfm-bb__sub">{{ s.subtitle }}</div>{%- endif -%}
+
+        {%- assign buls = section.blocks | where: 'type', 'bullet' -%}
+        {%- if buls.size > 0 -%}
+          <ul class="pfm-bul">
+            {%- for b in buls -%}<li {{ b.shopify_attributes }}>{% render 'pf-md-icon', name: 'check-circle' %}<span>{{ b.settings.text }}</span></li>{%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if s.show_stock and tracked and s.batch_size > 0 -%}
+          {%- liquid
+            assign left = cv.inventory_quantity
+            if left < 0
+              assign left = 0
+            endif
+            assign sold = s.batch_size | minus: left
+            if sold < 0
+              assign sold = 0
+            endif
+            assign pct = sold | times: 100 | divided_by: s.batch_size | floor
+            if pct > 99
+              assign pct = 99
+            endif
+          -%}
+          <div class="pfm-stock">
+            <div class="pfm-stock__top"><span>{{ s.stock_label }}</span><strong>{{ pct }}% Sold</strong></div>
+            <div class="pfm-stock__bar"><span data-pfm-width="{{ pct }}%"></span></div>
+          </div>
+        {%- elsif request.design_mode and s.show_stock -%}
+          <div class="pfm-stock pfm-ph">Stock bar: turns on when this product tracks inventory in Shopify. It shows real units sold out of the batch size you set.</div>
+        {%- endif -%}
+
+        <div class="pfm-price">
+          <span class="pfm-price__now" data-pfm-now>{{ now | money }}</span>
+          <s class="pfm-price__was" data-pfm-was>{% if was > now %}{{ was | money }}{% endif %}</s>
+          <span class="pfm-badge" data-pfm-badge="{{ s.badge_text | escape }}"{% unless was > now %} style="display:none"{% endunless %}>{% if was > now %}{% assign pctoff = was | minus: now | times: 100 | divided_by: was %}{{ s.badge_text | replace: '[x]', pctoff }}{% endif %}</span>
+        </div>
+
+        {%- if tracked and s.low_stock_text != blank and cv.inventory_quantity > 0 and cv.inventory_quantity <= s.low_stock_threshold -%}
+          <p class="pfm-low">{{ s.low_stock_text | replace: '[n]', cv.inventory_quantity }}</p>
+        {%- endif -%}
+
+        {%- unless product.has_only_default_variant -%}
+          <div class="pfm-var">
+            <label for="pfm-var-{{ section.id }}">{{ product.options | join: ' / ' }}</label>
+            <select id="pfm-var-{{ section.id }}">
+              {%- for v in product.variants -%}<option value="{{ v.id }}"{% if v.id == cv.id %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>{{ v.title }}</option>{%- endfor -%}
+            </select>
+          </div>
+        {%- endunless -%}
+
+        {%- if tier_blocks.size > 0 -%}
+          <div class="pfm-tiers" role="radiogroup">
+            {%- for b in tier_blocks -%}
+              {%- liquid
+                assign q = b.settings.qty
+                assign k = 100 | minus: b.settings.discount
+                assign tnow = cv.price | times: q | times: k | divided_by: 100
+                assign twas = base_unit | times: q
+                assign on = false
+                if b.id == first_tier.id
+                  assign on = true
+                endif
+              -%}
+              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" {{ b.shopify_attributes }}>
+                <input type="radio" name="pfm-tier-{{ section.id }}" value="{{ q }}"{% if on %} checked{% endif %}>
+                <span class="pfm-tier__radio"></span>
+                {%- if b.settings.image != blank -%}
+                  {{ b.settings.image | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
+                {%- else -%}
+                  <img class="pfm-tier__img" src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" loading="lazy" width="65" height="65">
+                {%- endif -%}
+                <span class="pfm-tier__txt">
+                  <span class="pfm-tier__name">{{ b.settings.name }}</span>
+                  {%- if b.settings.sub != blank -%}<span class="pfm-tier__save" style="display:block">{{ b.settings.sub }}</span>{%- endif -%}
+                  <span class="pfm-tier__save"{% unless twas > tnow %} style="display:none"{% endunless %}>{{ s.save_word }} <span data-pfm-save>{% if twas > tnow %}{{ twas | minus: tnow | money }}{% endif %}</span></span>
+                </span>
+                <span class="pfm-tier__px">
+                  <span class="pfm-tier__now">{{ tnow | money }}</span>
+                  <span class="pfm-tier__was">{% if twas > tnow %}{{ twas | money }}{% endif %}</span>
+                </span>
+                {%- if b.settings.badge_1 != blank or b.settings.badge_2 != blank -%}
+                  <span class="pfm-tier__tags">
+                    {%- if b.settings.badge_1 != blank -%}<span>{{ b.settings.badge_1 }}</span>{%- endif -%}
+                    {%- if b.settings.badge_2 != blank -%}<span class="is-gold">{{ b.settings.badge_2 }}</span>{%- endif -%}
+                  </span>
+                {%- endif -%}
+              </label>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- for b in section.blocks -%}
+          {%- if b.type == '@app' -%}<div {{ b.shopify_attributes }} style="margin-bottom:16px">{% render b %}</div>{%- endif -%}
+        {%- endfor -%}
+
+        {%- if plan and s.show_subscription -%}
+          <label class="pfm-sub{% if s.subscription_default %} is-on{% endif %}">
+            <input type="checkbox"{% if s.subscription_default %} checked{% endif %}>
+            <span class="pfm-sub__box">{% render 'pf-md-icon', name: 'check' %}</span>
+            <span><strong>{{ s.sub_heading | replace: '[x]', sub_off }}</strong><small>{{ s.sub_text }}</small></span>
+          </label>
+        {%- endif -%}
+
+        <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
+          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span> <s data-pfm-was>{% if was > now %}{{ was | money }}{% endif %}</s></span>
+          {%- if s.atc_subline != blank -%}<span class="pfm-atc__subl">{{ s.atc_subline }}</span>{%- endif -%}
+        </button>
+
+        {%- if s.refill_1 != blank or s.refill_2 != blank or s.refill_3 != blank -%}
+          <div class="pfm-refill">
+            {%- if s.refill_1 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_1_icon %}{{ s.refill_1 }}</span>{%- endif -%}
+            {%- if s.refill_2 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_2_icon %}{{ s.refill_2 }}</span>{%- endif -%}
+            {%- if s.refill_3 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_3_icon %}{{ s.refill_3 }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if s.guarantee_title != blank -%}
+          <div class="pfm-gcard">
+            {%- if s.guarantee_badge != blank -%}{{ s.guarantee_badge | image_url: width: 140 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}<span class="pfm-gbadge">{% render 'pf-md-icon', name: 'guarantee', days: s.guarantee_days %}</span>{%- endif -%}
+            <div><strong>{{ s.guarantee_title }}</strong><p>{{ s.guarantee_text }}</p></div>
+          </div>
+        {%- endif -%}
+
+        {%- if s.notice_title != blank -%}
+          <div class="pfm-warn">
+            <h3>{% render 'pf-md-icon', name: 'warning' %}{{ s.notice_title }}</h3>
+            {{ s.notice_text }}
+          </div>
+        {%- endif -%}
+
+        {%- if s.disclaimer != blank -%}<p class="pfm-disc">{{ s.disclaimer }}</p>{%- endif -%}
+      </div>
+
+      {%- assign tiles = section.blocks | where: 'type', 'trust_tile' -%}
+      {%- assign checks = section.blocks | where: 'type', 'trust_check' -%}
+      {%- if s.trust_heading != blank and tiles.size > 0 or s.trust_heading != blank and checks.size > 0 -%}
+        <div class="pfm-trust">
+          <div class="pfm-trust__bg">
+            {%- if s.trust_image != blank -%}{{ s.trust_image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
+          </div>
+          <h2>{{ s.trust_heading }}</h2>
+          {%- if tiles.size > 0 -%}
+            <div class="pfm-trust__tiles">
+              {%- for b in tiles -%}
+                <div class="pfm-trust__tile" {{ b.shopify_attributes }}>
+                  {%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 100 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'pf-md-icon', name: b.settings.icon %}{%- endif -%}
+                  <span>{{ b.settings.label }}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if checks.size > 0 -%}
+            <ul class="pfm-trust__list">
+              {%- for b in checks -%}<li {{ b.shopify_attributes }}>{% render 'pf-md-icon', name: 'check' %}<span>{{ b.settings.text }}</span></li>{%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if s.show_sticky -%}
+    <div class="pfm-sticky" aria-hidden="false">
+      <div class="pfm-sticky__in">
+        <img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" width="54" height="54" loading="lazy" style="object-fit:contain;background:#eef2f9">
+        <div class="pfm-sticky__name"><strong>{{ s.title_override | default: product.title }}</strong><span data-pfm-now>{{ now | money }}</span></div>
+        <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
+          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span></span>
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "PF MacuDrops buy box",
+  "tag": "section",
+  "class": "pf-md-section",
+  "settings": [
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "gold", "label": "Stars / highlight", "default": "#B8913A" },
+    { "type": "color", "id": "selected_bg", "label": "Selected bundle background", "default": "#EEF2FB" },
+    { "type": "header", "content": "Top" },
+    { "type": "textarea", "id": "gallery_assets", "label": "Gallery from theme files", "info": "Comma-separated theme asset file names. Clear this to use the product's own images instead." },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "info": "Use your real rating and review count, e.g. 4.8 | 312 reviews. Hidden while empty." },
+    { "type": "text", "id": "title_override", "label": "Title (leave empty to use the product title)" },
+    { "type": "richtext", "id": "subtitle", "label": "Text under title" },
+    { "type": "header", "content": "Stock bar" },
+    { "type": "checkbox", "id": "show_stock", "label": "Show stock bar", "default": true },
+    { "type": "number", "id": "batch_size", "label": "Batch size (units)", "default": 500, "info": "Bar shows real units sold from this batch: (batch size minus Shopify inventory) / batch size. Needs inventory tracking." },
+    { "type": "text", "id": "stock_label", "label": "Left label", "default": "Current batch" },
+    { "type": "number", "id": "low_stock_threshold", "label": "Low stock line shows at or below", "default": 50 },
+    { "type": "text", "id": "low_stock_text", "label": "Low stock line", "default": "Low Stock - Only [n] Left", "info": "[n] = real units left" },
+    { "type": "header", "content": "Price" },
+    { "type": "text", "id": "badge_text", "label": "Savings badge", "default": "SAVE [x]%", "info": "[x] = real % off vs compare-at price. Hidden when there is no saving." },
+    { "type": "text", "id": "save_word", "label": "Bundle 'you save' text", "default": "You save" },
+    { "type": "header", "content": "Subscription" },
+    { "type": "checkbox", "id": "show_subscription", "label": "Show subscribe box (needs a selling plan on the product)", "default": true },
+    { "type": "checkbox", "id": "subscription_default", "label": "Checked by default", "default": false },
+    { "type": "text", "id": "sub_heading", "label": "Heading", "default": "Subscribe & Save [x]%" },
+    { "type": "text", "id": "sub_text", "label": "Text", "default": "Delivered every 30 days. Skip, pause or cancel anytime." },
+    { "type": "header", "content": "Add to cart" },
+    { "type": "text", "id": "atc_label", "label": "Button text", "default": "Add to cart" },
+    { "type": "text", "id": "soldout_label", "label": "Sold out text", "default": "Sold out" },
+    { "type": "text", "id": "atc_subline", "label": "Text under button text", "default": "60-Day Money-Back Guarantee" },
+    { "type": "text", "id": "refill_1", "label": "Line 1", "default": "Free shipping over $50" },
+    { "type": "select", "id": "refill_1_icon", "label": "Line 1 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "truck" },
+    { "type": "text", "id": "refill_2", "label": "Line 2", "default": "Pause or cancel anytime" },
+    { "type": "select", "id": "refill_2_icon", "label": "Line 2 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "refresh" },
+    { "type": "text", "id": "refill_3", "label": "Line 3" },
+    { "type": "select", "id": "refill_3_icon", "label": "Line 3 icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "lock" },
+    { "type": "header", "content": "Guarantee card" },
+    { "type": "image_picker", "id": "guarantee_badge", "label": "Badge image (optional)" },
+    { "type": "number", "id": "guarantee_days", "label": "Days on built-in badge", "default": 60 },
+    { "type": "text", "id": "guarantee_title", "label": "Title", "default": "60-Day Money-Back Guarantee" },
+    { "type": "textarea", "id": "guarantee_text", "label": "Text", "default": "Take MacuDrops daily for up to 60 days. If you're not happy, contact us for a full refund." },
+    { "type": "header", "content": "Notice card" },
+    { "type": "text", "id": "notice_title", "label": "Title", "default": "SMALL-BATCH NOTICE:" },
+    { "type": "richtext", "id": "notice_text", "label": "Text", "default": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships.</p>" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
+    { "type": "header", "content": "Why trust card" },
+    { "type": "text", "id": "trust_heading", "label": "Heading", "default": "Why Trust MacuDrops?" },
+    { "type": "image_picker", "id": "trust_image", "label": "Background image" },
+    { "type": "color", "id": "trust_overlay_a", "label": "Overlay top", "default": "#14254A" },
+    { "type": "color", "id": "trust_overlay_b", "label": "Overlay bottom", "default": "#34508C" },
+    { "type": "header", "content": "Customer videos" },
+    { "type": "text", "id": "videos_heading", "label": "Heading", "default": "What our customers are saying:" },
+    { "type": "header", "content": "Sticky bar" },
+    { "type": "checkbox", "id": "show_sticky", "label": "Show sticky add to cart", "default": true }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "bullet", "name": "Bullet", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "Supports macular pigment density*" } ] },
+    {
+      "type": "tier", "name": "Bundle tier", "limit": 4,
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Buy 1 Bottle" },
+        { "type": "text", "id": "sub", "label": "Small text" },
+        { "type": "range", "id": "qty", "label": "Quantity added to cart", "min": 1, "max": 6, "step": 1, "default": 1 },
+        { "type": "range", "id": "discount", "label": "Discount %", "min": 0, "max": 50, "step": 1, "default": 0, "info": "Only enter a discount you have also set up as a Shopify automatic discount (or in Kaching). The cart must charge what this shows." },
+        { "type": "text", "id": "badge_1", "label": "Badge 1" },
+        { "type": "text", "id": "badge_2", "label": "Badge 2 (gold)" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "checkbox", "id": "selected", "label": "Selected by default", "default": false }
+      ]
+    },
+    {
+      "type": "accordion", "name": "Accordion",
+      "settings": [
+        { "type": "text", "id": "asset", "label": "Image (theme file name)" },
+        { "type": "select", "id": "icon", "label": "Icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "leaf" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Ingredients" },
+        { "type": "richtext", "id": "body", "label": "Text", "default": "<p>Text</p>" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    },
+    { "type": "video", "name": "Customer video", "settings": [ { "type": "video", "id": "video", "label": "Video (real customer, with permission)" } ] },
+    {
+      "type": "trust_tile", "name": "Trust tile", "limit": 4,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "japan" },
+        { "type": "image_picker", "id": "image", "label": "Custom icon image" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Made in Japan" }
+      ]
+    },
+    { "type": "trust_check", "name": "Trust check", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "Third-party tested" } ] }
+  ],
+  "presets": [ { "name": "PF MacuDrops buy box" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

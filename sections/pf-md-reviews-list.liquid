@@ -1,0 +1,74 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.stars }}; } #shopify-section-{{ section.id }} .pfm-rl { background: {{ s.bg }}; }</style>
+{%- assign has = false -%}
+{%- for b in section.blocks -%}{%- if b.type == 'review' and b.settings.text != blank -%}{%- assign has = true -%}{%- endif -%}{%- if b.type == '@app' -%}{%- assign has = true -%}{%- endif -%}{%- endfor -%}
+{%- if has or request.design_mode -%}
+<div class="pfm pfm-rl">
+  <div class="pfm-rl__in">
+    {%- if s.summary_left != blank or s.summary_right != blank -%}
+      <div class="pfm-rl__meta">
+        {%- if s.summary_left != blank -%}<div class="pfm-rl__rate">{% render 'pf-md-stars' %}<span>{{ s.summary_left }}</span></div>{%- endif -%}
+        {%- if s.summary_right != blank -%}<div class="pfm-rl__trust"><span class="pfm-rl__bar">|</span> {{ s.summary_right }}</div>{%- endif -%}
+      </div>
+    {%- elsif request.design_mode -%}
+      <div class="pfm-rl__meta pfm-ph">Rating summary: enter your real average and review count (hidden while empty)</div>
+    {%- endif -%}
+    <h2>{{ s.heading }}</h2>
+    <div class="pfm-rl__list">
+      {%- assign shown = 0 -%}
+      {%- for b in section.blocks -%}
+        {%- if b.type == '@app' -%}
+          <div {{ b.shopify_attributes }}>{% render b %}</div>
+        {%- elsif b.settings.text != blank -%}
+          {%- assign shown = shown | plus: 1 -%}
+          <article class="pfm-ritem" {{ b.shopify_attributes }}{% if shown > s.per_page %} hidden{% endif %}>
+            <div class="pfm-ritem__top"><b>{{ b.settings.rating }}.0</b>{% render 'pf-md-stars', count: b.settings.rating %}</div>
+            {%- if b.settings.headline != blank -%}<h3>{{ b.settings.headline }}</h3>{%- endif -%}
+            <div class="pfm-ritem__txt">{{ b.settings.text }}</div>
+            {%- if b.settings.name != blank or b.settings.verified -%}
+              <div class="pfm-ritem__by">
+                {%- if b.settings.name != blank -%}<span>{{ b.settings.name }}</span>{%- endif -%}
+                {%- if b.settings.verified -%}<span class="pfm-rcard__ver">{% render 'pf-md-icon', name: 'verified' %}{{ s.verified_text }}</span>{%- endif -%}
+              </div>
+            {%- endif -%}
+            {%- if b.settings.tags != blank -%}<div class="pfm-ritem__tags">{%- assign tags = b.settings.tags | split: ',' -%}{%- for t in tags -%}<span class="pfm-tag">{{ t | strip }}</span>{%- endfor -%}</div>{%- endif -%}
+          </article>
+        {%- elsif request.design_mode -%}
+          <div class="pfm-ritem pfm-ph" {{ b.shopify_attributes }}>Review: paste a real customer review here, word for word. Empty reviews are hidden on the live store.</div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if shown > s.per_page -%}<div class="pfm-rl__more"><button type="button" data-pfm-more>{{ s.more_label }}</button></div>{%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "PF reviews list",
+  "settings": [
+    { "type": "paragraph", "content": "Real reviews only, word for word, with permission. You can also add a reviews app block (e.g. Judge.me). Hidden on the live store until a review is added." },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "stars", "label": "Stars", "default": "#B8913A" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "text", "id": "summary_left", "label": "Rating summary", "info": "Your real numbers, e.g. Rated 4.8 / 5" },
+    { "type": "text", "id": "summary_right", "label": "Customer count", "info": "Your real numbers, e.g. Trusted by <b>1,200+</b>" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Customers Are Saying" },
+    { "type": "text", "id": "verified_text", "label": "Verified label", "default": "Verified customer" },
+    { "type": "range", "id": "per_page", "label": "Reviews shown before 'more'", "min": 2, "max": 20, "step": 1, "default": 5 },
+    { "type": "text", "id": "more_label", "label": "More button", "default": "Show more reviews" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "review", "name": "Review", "settings": [
+      { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "text", "id": "headline", "label": "Headline (customer's words)" },
+      { "type": "richtext", "id": "text", "label": "Review text" },
+      { "type": "text", "id": "name", "label": "Name (optional)" },
+      { "type": "checkbox", "id": "verified", "label": "Verified purchase (only if they bought)", "default": false },
+      { "type": "text", "id": "tags", "label": "Tags (comma separated)" }
+    ] }
+  ],
+  "presets": [ { "name": "PF reviews list" } ]
+}
+{% endschema %}

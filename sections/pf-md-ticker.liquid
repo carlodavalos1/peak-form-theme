@@ -1,0 +1,30 @@
+{% render 'pf-md-assets' %}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ section.settings.bg }}; --pf-speed: {{ section.settings.speed }}s; } #shopify-section-{{ section.id }} .pfm-ticker { color: {{ section.settings.color }}; }</style>
+<div class="pfm pfm-ticker">
+  <div class="pfm-ticker__row">
+    {%- for r in (1..2) -%}
+      {%- for i in (1..3) -%}
+        {%- for b in section.blocks -%}
+          <span class="pfm-ticker__item"{% if r == 1 and i == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}><span class="pfm-ticker__dot"></span>{{ b.settings.text }}</span>
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PF scrolling ticker",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Background", "default": "#1E2F63" },
+    { "type": "color", "id": "color", "label": "Text", "default": "#FFFFFF" },
+    { "type": "range", "id": "speed", "label": "Seconds per loop", "min": 10, "max": 90, "step": 5, "default": 40 }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}, {"value": "dropper", "label": "Dropper"}, {"value": "mouth", "label": "Mouth / tongue"}, {"value": "stethoscope", "label": "Stethoscope"}], "default": "check-circle" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Made in Japan" }
+    ] }
+  ],
+  "presets": [ { "name": "PF scrolling ticker" } ]
+}
+{% endschema %}
