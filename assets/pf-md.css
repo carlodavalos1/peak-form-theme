@@ -681,3 +681,18 @@
   .pfm-ritem .pfm-tag { font-size: 13px; padding: 4px 12px; }
 }
 .pfm-ritem__txt, .pfm-ritem__txt p { font-weight: 400; font-size: 19px; line-height: 1.75; } @media (max-width: 749px) { .pfm-ritem__txt, .pfm-ritem__txt p { font-size: 15.5px; } }
+/* round 4: the theme forces its own heading font/colour (some with !important), so lock ours */
+html body .pfm h1, html body .pfm h2, html body .pfm h3, html body .pfm h4, html body .pfm h5 { font-family: var(--pf-head) !important; letter-spacing: normal !important; }
+/* blue sections: serif heading with a gold italic accent (wrap the accent words in <em>) */
+:root { --pf-dark-head: 'Playfair Display', Georgia, serif; }
+html body .pfm-stats h2, html body .pfm-feel h2, html body .pfm-cmp h2 { font-family: var(--pf-dark-head) !important; color: #fff !important; font-weight: 500 !important; line-height: 1.2 !important; }
+html body .pfm-stats h2 em, html body .pfm-feel h2 em, html body .pfm-cmp h2 em { font-style: italic; color: #E6C77F !important; font-family: inherit; }
+html body .pfm-feel h4, html body .pfm-stats h3, html body .pfm-stats h4, html body .pfm-cmp h3, html body .pfm-cmp h4 { color: #fff !important; }
+html body .pfm-feel h2 { font-size: 46px !important; }
+@media (max-width: 749px) {
+  html body .pfm-feel h2, html body .pfm-stats h2, html body .pfm-cmp h2 { font-size: 30px !important; }
+  .pfm-feel--cutout .pfm-feel__img { max-width: 230px; margin: 0 auto; }
+  .pfm-feel--cutout .pfm-feel__img img { max-height: 280px; }
+  .pfm-feel__grid { gap: 26px; margin-top: 26px; }
+}
+html body .pfm-feel h2 em, html body .pfm-stats h2 em { white-space: nowrap; } @media (max-width: 749px) { html body .pfm-feel h2 { font-size: 28px !important; } }
