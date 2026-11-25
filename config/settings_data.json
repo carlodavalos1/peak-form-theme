@@ -340,8 +340,8 @@
               "cart_drawer_sp_icon": "shopify://shop_images/Untitled_design_-_2025-07-29T143119.676_1_a8e4e514-2cd2-4386-8f8b-57fa073d4fa2.png",
               "cart_drawer_sp_heading": "Shipping Protection",
               "cart_drawer_sp_text": "Protect your order from damage, loss, or theft during shipping",
-              "cart_drawer_shipping_protection_text": "#121212",
-              "cart_drawer_shipping_protection_bg": "#f1f1f1",
+              "cart_drawer_shipping_protection_text": "#1e2f63",
+              "cart_drawer_shipping_protection_bg": "#eef2fb",
               "cart_drawer_shipping_protection_border": "#a3a3a3",
               "cart_drawer_shipping_protection_border_size": 0
             }
@@ -354,7 +354,7 @@
               "discount_banner_middle": "You're saving",
               "discount_banner_suffix": "on your order",
               "discount_banner_default_text": "today",
-              "discount_banner_bg_color": "#4c716b",
+              "discount_banner_bg_color": "#34508c",
               "discount_banner_text_color": "#ffffff",
               "cart_drawer_discount_bg_color": "#000000",
               "cart_drawer_discount_text_color": "#ffffff",
@@ -362,8 +362,8 @@
               "cart_drawer_discount_border_radius": 4,
               "cart_drawer_border_radius": 8,
               "discount_banner_use_gradient": true,
-              "discount_banner_gradient_start_color": "#17433c",
-              "discount_banner_gradient_end_color": "#4c716b",
+              "discount_banner_gradient_start_color": "#1e2f63",
+              "discount_banner_gradient_end_color": "#34508c",
               "discount_banner_gradient_angle": 90,
               "discount_banner_icon": "celebration"
             }
@@ -373,7 +373,7 @@
             "settings": {
               "social_proof_text": "Join 10,000+ Happy Customers!",
               "social_proof_icon": "stars",
-              "social_proof_bg_color": "#17433c",
+              "social_proof_bg_color": "#1e2f63",
               "social_proof_text_color": "#ffffff",
               "social_proof_icon_color": "#ffffff"
             }
@@ -408,14 +408,14 @@
           "cart_drawer_header_bg": "#f8f8f8",
           "cart_drawer_product_bg": "#ffffff",
           "cart_drawer_footer_bg": "#f8f8f8",
-          "cart_drawer_secondary_text": "#17433c",
-          "cart_drawer_accent_color": "#17433c",
+          "cart_drawer_secondary_text": "#1e2f63",
+          "cart_drawer_accent_color": "#1e2f63",
           "cart_drawer_divider_color": "#e5e5e5",
-          "cart_drawer_checkout_button_bg": "#17433c",
+          "cart_drawer_checkout_button_bg": "#1e2f63",
           "cart_drawer_checkout_button_text": "#ffffff",
-          "cart_drawer_item_saving_text": "#17433c",
+          "cart_drawer_item_saving_text": "#1e2f63",
           "cart_drawer_item_saving_bg": "#ffffff",
-          "cart_drawer_free_product_label_bg": "#17433c",
+          "cart_drawer_free_product_label_bg": "#1e2f63",
           "cart_drawer_free_product_label_text": "#ffffff",
           "cart_drawer_free_product_label_border_radius": 50,
           "cart_drawer_free_product_label_font_size": 13,
