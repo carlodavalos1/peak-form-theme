@@ -82,7 +82,8 @@
         "refill_2_icon": "clock",
         "refill_sub_only": true,
         "badge_text": "Black Friday - Save [x]%",
-        "subscription_default": true
+        "subscription_default": true,
+        "show_stock": false
       },
       "blocks": {
         "bul1": {

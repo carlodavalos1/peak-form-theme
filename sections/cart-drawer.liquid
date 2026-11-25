@@ -492,7 +492,7 @@
               </product-form>
               <div class="gb-shipping-protection">
                 <div class="gb-shipping-protection-icon">
-                  {% if settings.cart_drawer_sp_icon != blank -%}
+                  {% if false -%}{%- comment -%} Peak Form: always use the brand shield icon below {%- endcomment -%}
                     <img
                       src="{{ block.settings.cart_drawer_sp_icon | image_url: width: 46 }}"
                       alt="{{ block.settings.cart_drawer_sp_heading | default: 'Shipping Protection' | escape }}"

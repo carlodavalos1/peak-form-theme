@@ -285,7 +285,8 @@
         var body = { items: [item] };
         // Shipping protection is ticked by default: add it with the first order item unless
         // it's already in the cart or the shopper switched it off this visit.
-        var spId = (typeof shippingProductId !== 'undefined' && shippingProductId) ? parseInt(shippingProductId, 10) : 0;
+        var spInput = document.querySelector('form.shipping-protection-form input[name="id"]');
+        var spId = parseInt((spInput && spInput.value) || (typeof shippingProductId !== 'undefined' ? shippingProductId : 0), 10) || 0;
         var spOff = false; try { spOff = sessionStorage.getItem('pfm_sp_off') === '1'; } catch (e) {}
         if (drawer && drawer.getSectionsToRender) {
           body.sections = drawer.getSectionsToRender().map(function (s) { return s.id; });
