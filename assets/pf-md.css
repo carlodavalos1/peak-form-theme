@@ -696,3 +696,16 @@ html body .pfm-feel h2 { font-size: 46px !important; }
   .pfm-feel__grid { gap: 26px; margin-top: 26px; }
 }
 html body .pfm-feel h2 em, html body .pfm-stats h2 em { white-space: nowrap; } @media (max-width: 749px) { html body .pfm-feel h2 { font-size: 28px !important; } }
+/* round 4: person cutout that sits on the bottom edge of Feed Your Eyes */
+.pfm-feel--person { padding-bottom: 0; }
+.pfm-feel--person .pfm-feel__grid { align-items: end; grid-template-columns: minmax(0, 1fr) 420px; }
+.pfm-feel--person .pfm-feel__items { padding-bottom: 80px; align-self: center; }
+.pfm-feel--person .pfm-feel__img { align-self: end; }
+.pfm-feel--person .pfm-feel__img img { display: block; width: auto; max-width: 100%; max-height: 500px; margin: 0 auto; border-radius: 0; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .3)); }
+@media (max-width: 900px) {
+  .pfm-feel--person .pfm-feel__grid { grid-template-columns: 1fr; }
+  .pfm-feel--person .pfm-feel__img { order: 2; max-width: 300px; margin: 0 auto; }
+  .pfm-feel--person .pfm-feel__img img { max-height: 300px; }
+  .pfm-feel--person .pfm-feel__items { padding-bottom: 0; }
+}
+.pfm-feel--person .pfm-feel__img img { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 88%, transparent 100%); }
