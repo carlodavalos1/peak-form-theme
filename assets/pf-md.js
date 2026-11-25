@@ -283,13 +283,22 @@
         if (subOn() && p.plan) item.selling_plan = p.plan;
         var drawer = document.querySelector('cart-drawer');
         var body = { items: [item] };
+        // Shipping protection is ticked by default: add it with the first order item unless
+        // it's already in the cart or the shopper switched it off this visit.
+        var spId = (typeof shippingProductId !== 'undefined' && shippingProductId) ? parseInt(shippingProductId, 10) : 0;
+        var spOff = false; try { spOff = sessionStorage.getItem('pfm_sp_off') === '1'; } catch (e) {}
         if (drawer && drawer.getSectionsToRender) {
           body.sections = drawer.getSectionsToRender().map(function (s) { return s.id; });
           body.sections_url = window.location.pathname;
         }
         a.classList.add('is-loading'); a.disabled = true;
         var url = (window.routes && window.routes.cart_add_url ? window.routes.cart_add_url : '/cart/add') + '.js';
-        fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body: JSON.stringify(body) })
+        var cartUrl = ((window.routes && window.routes.cart_url) || '/cart') + '.js';
+        var pre = (spId && !spOff) ? fetch(cartUrl, { headers: { 'Accept': 'application/json' } }).then(function (r) { return r.json(); }).then(function (c) {
+          var has = (c.items || []).some(function (it) { return it.variant_id === spId || it.id === spId; });
+          if (!has) body.items.push({ id: spId, quantity: 1 });
+        }).catch(function () {}) : Promise.resolve();
+        pre.then(function () { return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body: JSON.stringify(body) }); })
           .then(function (r) { return r.json(); })
           .then(function (json) {
             if (json.status && json.status !== 200) { alertMsg(a, json.description || json.message); return; }
@@ -321,6 +330,13 @@
     }
     render();
   }
+
+  document.addEventListener('click', function (e) {
+    var sw = e.target.closest && e.target.closest('.gb-shipping-protection-button');
+    if (!sw) return;
+    var inp = sw.querySelector('input');
+    try { sessionStorage.setItem('pfm_sp_off', inp && inp.checked ? '1' : '0'); } catch (err) {}
+  }, true);
 
   function init(root) {
     root = root || document;

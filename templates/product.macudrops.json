@@ -81,7 +81,8 @@
         "refill_2": "Stop or Cancel Anytime",
         "refill_2_icon": "clock",
         "refill_sub_only": true,
-        "badge_text": "Black Friday - Save [x]%"
+        "badge_text": "Black Friday - Save [x]%",
+        "subscription_default": true
       },
       "blocks": {
         "bul1": {

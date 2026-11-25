@@ -685,4 +685,25 @@ button.cart-remove-button {
 }
 
 
+
+/* Peak Form: solid navy checkout button (no faded white gradient) */
+#CartDrawer .cart__checkout-button,
+#CartDrawer .cart__checkout-button.button-gradient-effect,
+#CartDrawer .cart__checkout-button:hover,
+#CartDrawer .cart__checkout-button.button-gradient-effect:hover,
+#CartDrawer .cart__checkout-button:focus {
+  background-image: none !important;
+  background-color: var(--cart-drawer-checkout-button-bg, #1e2f63) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+#CartDrawer .cart__checkout-button:hover { filter: brightness(1.15); }
+#CartDrawer .cart__checkout-button .button-text,
+#CartDrawer .cart__checkout-button svg { color: #fff !important; opacity: 1 !important; }
+
+/* Peak Form: shipping protection card + toggle in brand colors */
+#CartDrawer .gb-shipping-protection { border: 1px solid rgba(30, 47, 99, .18) !important; border-radius: 10px; }
+#CartDrawer .gb-shipping-protection-button .slider { background-color: #c9d1e3 !important; }
+#CartDrawer .gb-shipping-protection-button input:checked + .slider { background-color: #1e2f63 !important; }
+#CartDrawer .gb-shipping-protection-icontext h2 span { color: #b8913a !important; }
 </style>
