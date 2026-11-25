@@ -196,29 +196,54 @@
     var atcs = qa('[data-pfm-atc]', bb);
     var sticky = bb.querySelector('.pfm-sticky');
 
+    function vById(id) { return data.variants.filter(function (v) { return String(v.id) === String(id); })[0]; }
     function tier() {
       var on = tiers.filter(function (t) { return t.classList.contains('is-on'); })[0];
-      if (!on) return { qty: 1, off: 0 };
-      return { qty: parseInt(on.getAttribute('data-qty'), 10) || 1, off: parseFloat(on.getAttribute('data-off')) || 0 };
+      if (!on) return { qty: 1, off: 0, el: null, v: null };
+      var vid = on.getAttribute('data-variant');
+      return { qty: parseInt(on.getAttribute('data-qty'), 10) || 1, off: parseFloat(on.getAttribute('data-off')) || 0, el: on, v: vid ? vById(vid) : null };
     }
-    function subOn() { return sub && sub.classList.contains('is-on'); }
+    function subOn() { return sub && sub.classList.contains('is-on') && sub.style.display !== 'none'; }
+
+    // Prices for one tier: one-time, subscription (Loop plan on that variant) and the honest compare price.
+    function priceOf(el, useSub) {
+      var q = parseInt(el.getAttribute('data-qty'), 10) || 1;
+      var vid = el.getAttribute('data-variant');
+      if (vid) {
+        var v = vById(vid) || variant;
+        var bottles = parseInt(el.getAttribute('data-bottles'), 10) || 1;
+        var one = v.price * q;
+        var subp = v.plan_price != null ? v.plan_price * q : null;
+        var was = Math.max((data.unit || v.price) * bottles * q, (v.compare_at_price || 0) * q);
+        return { now: useSub && subp != null ? subp : one, one: one, sub: subp, was: was, v: v, plan: v.plan || null };
+      }
+      var off = parseFloat(el.getAttribute('data-off')) || 0;
+      var n = variant.price * q * (1 - off / 100);
+      var s2 = data.plan && data.subOff ? n * (1 - data.subOff / 100) : null;
+      return { now: useSub && s2 != null ? s2 : n, one: n, sub: s2, was: Math.max(variant.compare_at_price || 0, variant.price) * q, v: variant, plan: data.plan };
+    }
 
     function render() {
       var t = tier();
+      var useSub = subOn();
       tiers.forEach(function (el) {
-        var q = parseInt(el.getAttribute('data-qty'), 10) || 1;
-        var off = parseFloat(el.getAttribute('data-off')) || 0;
-        var now = variant.price * q * (1 - off / 100);
-        var base = Math.max(variant.compare_at_price || 0, variant.price) * q;
-        var nowEl = el.querySelector('.pfm-tier__now'); if (nowEl) nowEl.textContent = money(now, data.fmt);
+        var p = priceOf(el, useSub);
+        var nowEl = el.querySelector('.pfm-tier__now'); if (nowEl) nowEl.textContent = money(p.now, data.fmt);
         var wasEl = el.querySelector('.pfm-tier__was');
-        if (wasEl) { wasEl.textContent = base > now ? money(base, data.fmt) : ''; }
+        if (wasEl) { wasEl.textContent = p.was > p.now ? money(p.was, data.fmt) : ''; }
         var sv = el.querySelector('[data-pfm-save]');
-        if (sv) { sv.textContent = base > now ? money(base - now, data.fmt) : ''; sv.parentNode.style.display = base > now ? '' : 'none'; }
+        if (sv) { var pc = p.was > p.now ? Math.round((1 - p.now / p.was) * 100) : 0; sv.textContent = pc + '%'; sv.parentNode.style.display = pc > 0 ? '' : 'none'; }
       });
-      var now = variant.price * t.qty * (1 - t.off / 100);
-      if (subOn() && data.subOff) now = now * (1 - data.subOff / 100);
-      var was = Math.max(variant.compare_at_price || 0, variant.price) * t.qty;
+      var cur = t.el ? priceOf(t.el, useSub) : { now: variant.price, was: Math.max(variant.compare_at_price || 0, variant.price), v: variant, sub: null, one: variant.price };
+      var now = cur.now, was = cur.was, av = cur.v || variant;
+      if (sub) {
+        // Subscribe box: real % the Loop plan saves on the selected bundle; hidden if that variant has no plan.
+        var hasPlan = cur.sub != null && cur.sub < cur.one;
+        if (data.bundle) sub.style.display = hasPlan ? '' : 'none';
+        var h = sub.querySelector('[data-pfm-subh]');
+        if (h && hasPlan) h.textContent = h.getAttribute('data-pfm-subh').replace('[x]', Math.round((1 - cur.sub / cur.one) * 100));
+      }
+      qa('[data-pfm-subonly]', bb).forEach(function (e) { e.style.display = subOn() ? '' : 'none'; });
       bb.querySelectorAll('[data-pfm-now]').forEach(function (e) { e.textContent = money(now, data.fmt); });
       bb.querySelectorAll('[data-pfm-was]').forEach(function (e) { e.textContent = was > now ? money(was, data.fmt) : ''; });
       var b = bb.querySelector('[data-pfm-badge]');
@@ -227,12 +252,14 @@
         b.style.display = pct > 0 ? '' : 'none';
         b.textContent = (b.getAttribute('data-pfm-badge') || 'SAVE [x]%').replace('[x]', pct);
       }
-      atcs.forEach(function (a) { a.disabled = !variant.available; var s = a.querySelector('.pfm-atc__label'); if (s) s.textContent = variant.available ? a.getAttribute('data-label') : a.getAttribute('data-soldout'); });
+      atcs.forEach(function (a) { a.disabled = !av.available; var s = a.querySelector('.pfm-atc__label'); if (s) s.textContent = av.available ? a.getAttribute('data-label') : a.getAttribute('data-soldout'); });
     }
 
     tiers.forEach(function (el) {
       el.addEventListener('click', function () {
         tiers.forEach(function (o) { o.classList.toggle('is-on', o === el); o.querySelector('input').checked = o === el; });
+        var tv = el.getAttribute('data-variant') && vById(el.getAttribute('data-variant'));
+        if (tv && tv.image_index != null) { var g = bb.querySelector('.pfm-gal [data-pfm-slider]'); if (g && g.__pfmGo) g.__pfmGo(tv.image_index); }
         render();
       });
     });
@@ -247,8 +274,11 @@
       a.addEventListener('click', function () {
         if (a.disabled) return;
         var t = tier();
-        var item = { id: variant.id, quantity: t.qty };
-        if (subOn() && data.plan) item.selling_plan = data.plan;
+        var p = t.el ? priceOf(t.el, true) : { v: variant, plan: data.plan };
+        var addV = t.v || variant;
+        var item = { id: addV.id, quantity: t.qty };
+        // Loop Subscriptions = Shopify selling plan on the line item.
+        if (subOn() && p.plan) item.selling_plan = p.plan;
         var drawer = document.querySelector('cart-drawer');
         var body = { items: [item] };
         if (drawer && drawer.getSectionsToRender) {
@@ -262,14 +292,14 @@
           .then(function (json) {
             if (json.status && json.status !== 200) { alertMsg(a, json.description || json.message); return; }
             if (drawer && json.sections && drawer.renderContents) {
-              json.id = variant.id;
+              json.id = addV.id;
               drawer.renderContents(json);
             } else {
               window.location.href = (window.routes && window.routes.cart_url) || '/cart';
             }
           })
           .catch(function () { window.location.href = (window.routes && window.routes.cart_url) || '/cart'; })
-          .finally(function () { a.classList.remove('is-loading'); a.disabled = !variant.available; });
+          .finally(function () { a.classList.remove('is-loading'); a.disabled = !addV.available; });
       });
     });
 

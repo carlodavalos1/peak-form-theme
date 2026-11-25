@@ -63,7 +63,15 @@
       "settings": {
         "subtitle": "<p>All 3 macular pigments plus 4 supporting nutrients, <strong>absorbed under the tongue in 60 seconds a day</strong>.</p>",
         "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships. Subscribing reserves your bottle from each new batch.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>",
-        "gallery_assets": "pf-md-gallery-1.webp, pf-md-gallery-2.webp, pf-md-gallery-3.webp, pf-md-gallery-4.webp, pf-md-gallery-5.webp, pf-md-gallery-6.webp, pf-md-gallery-7.webp, pf-md-gallery-8.webp, pf-md-gallery-9.webp"
+        "gallery_assets": "pf-md-gallery-1.webp, pf-md-gallery-2.webp, pf-md-gallery-3.webp, pf-md-gallery-4.webp, pf-md-gallery-5.webp, pf-md-gallery-6.webp, pf-md-gallery-7.webp, pf-md-gallery-8.webp, pf-md-gallery-9.webp",
+        "tiers_heading": "Choose Your Bundle",
+        "sub_heading": "Save [x]% Extra with Automatic Refills",
+        "sub_text": "Zero Commitment | Cancel Anytime",
+        "refill_1": "Refills Ship Every 30 Days",
+        "refill_1_icon": "truck",
+        "refill_2": "Stop or Cancel Anytime",
+        "refill_2_icon": "clock",
+        "refill_sub_only": true
       },
       "blocks": {
         "bul1": {
@@ -94,30 +102,39 @@
           "type": "tier",
           "settings": {
             "name": "Buy 1 Bottle",
-            "sub": "30-day supply",
             "qty": 1,
-            "discount": 0
+            "discount": 0,
+            "variant_position": 1,
+            "bottles": 1,
+            "ship_text": "+ $4.95 Shipping",
+            "asset": "pf-md-bundle-1.webp"
           }
         },
         "tier2": {
           "type": "tier",
           "settings": {
-            "name": "Buy 2 Bottles",
-            "sub": "60-day supply",
-            "qty": 2,
+            "name": "Buy 2 Get 1 FREE",
+            "qty": 1,
             "discount": 0,
-            "badge_1": "Popular Choice"
+            "variant_position": 2,
+            "bottles": 3,
+            "ship_text": "FREE Shipping",
+            "asset": "pf-md-bundle-3.webp",
+            "badge_1": "Most Popular",
+            "selected": true
           }
         },
         "tier3": {
           "type": "tier",
           "settings": {
-            "name": "Buy 3 Bottles",
-            "sub": "90-day supply, the full 3 months we recommend",
-            "qty": 3,
+            "name": "Buy 3 Get 2 FREE",
+            "qty": 1,
             "discount": 0,
-            "badge_1": "Recommended",
-            "selected": true
+            "variant_position": 3,
+            "bottles": 5,
+            "ship_text": "FREE Shipping",
+            "asset": "pf-md-bundle-5.webp",
+            "badge_1": "Best Value"
           }
         },
         "acc1": {
