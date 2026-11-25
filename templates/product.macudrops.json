@@ -80,7 +80,8 @@
         "refill_1_icon": "truck",
         "refill_2": "Stop or Cancel Anytime",
         "refill_2_icon": "clock",
-        "refill_sub_only": true
+        "refill_sub_only": true,
+        "badge_text": "Black Friday - Save [x]%"
       },
       "blocks": {
         "bul1": {
