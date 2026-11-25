@@ -651,3 +651,33 @@
 .pfm-rcard h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
 .pfm-rcard__txt { font-size: 16.5px; font-weight: 400; line-height: 1.75; }
 @media (max-width: 749px) { .pfm-rc__track > * { flex-basis: 86vw; } .pfm-rcard { padding: 22px; } .pfm-rcard__txt { font-size: 15px; } }
+/* round 3: reviews list styled like Metabolae's "They Felt the Shift" block */
+.pfm-rl { padding: 90px 0; }
+.pfm-rl__in { max-width: 1040px; }
+.pfm-rl__meta { flex-direction: column; gap: 14px; font-weight: 400; margin-bottom: 26px; }
+.pfm-rl__rate { display: flex; align-items: center; gap: 14px; font-size: 21px; color: #333; }
+.pfm-rl__rate .pfm-stars svg { width: 30px; height: 30px; }
+.pfm-rl__trust { font-size: 21px; color: #333; }
+.pfm-rl__trust b { font-weight: 700; }
+.pfm-rl__bar { margin-right: 6px; }
+.pfm-rl h2 { font-size: 52px; font-weight: 500; line-height: 1.15; margin-bottom: 50px; letter-spacing: -.5px; }
+.pfm-rl__list { gap: 22px; }
+.pfm-ritem { border: 1.5px solid #e2e2e2; border-radius: 12px; padding: 34px 40px; }
+.pfm-ritem__top { gap: 12px; margin-bottom: 14px; }
+.pfm-ritem__top b { font-size: 21px; font-weight: 700; }
+.pfm-ritem__top .pfm-stars svg { width: 26px; height: 26px; }
+.pfm-ritem h3 { font-size: 19px; margin-bottom: 8px; }
+.pfm-ritem__txt { font-size: 19px; line-height: 1.75; color: #222; letter-spacing: .1px; }
+.pfm-ritem__by { font-size: 13px; color: #555; margin-top: 12px; }
+.pfm-ritem__tags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.pfm-ritem .pfm-tag { font-size: 15px; padding: 6px 18px; border-radius: 30px; background: #FBF7EE; border: 1.5px solid var(--pf-gold); color: #8A6A24; }
+@media (max-width: 749px) {
+  .pfm-rl { padding: 60px 0; }
+  .pfm-rl h2 { font-size: 30px; margin-bottom: 30px; }
+  .pfm-rl__rate, .pfm-rl__trust { font-size: 16px; }
+  .pfm-rl__rate .pfm-stars svg { width: 22px; height: 22px; }
+  .pfm-ritem { padding: 22px; }
+  .pfm-ritem__txt { font-size: 15.5px; }
+  .pfm-ritem .pfm-tag { font-size: 13px; padding: 4px 12px; }
+}
+.pfm-ritem__txt, .pfm-ritem__txt p { font-weight: 400; font-size: 19px; line-height: 1.75; } @media (max-width: 749px) { .pfm-ritem__txt, .pfm-ritem__txt p { font-size: 15.5px; } }
