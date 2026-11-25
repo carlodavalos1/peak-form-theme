@@ -171,7 +171,7 @@
     "pf_stats": {
       "type": "pf-md-stats",
       "settings": {
-        "heading": "Give Your Eyes What They’re Built From",
+        "heading": "Give Your Eyes <em>What They’re Built From</em>",
         "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "image_asset": "pf-md-botanicals.webp",
         "overlay_opacity": 80
@@ -423,10 +423,11 @@
       "type": "pf-md-feel",
       "settings": {
         "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*",
-        "image_asset": "pf-md-bottle-dropper.webp",
+        "image_asset": "pf-md-feel-woman.webp",
         "bg_asset": "pf-md-feel-bg-1.webp",
-        "image_style": "cutout",
-        "overlay_opacity": 80
+        "image_style": "person",
+        "overlay_opacity": 80,
+        "heading": "Feed Your Eyes. <em>Every Day.</em>"
       },
       "blocks": {
         "f1": {
@@ -757,21 +758,21 @@
     "pf_compare": {
       "type": "pf-md-comparison",
       "settings": {
-        "heading": "How MacuDrops Compares to Popular Eye Supplements",
+        "heading": "How MacuDrops <em>Compares</em> to Popular Eye Supplements",
         "points": "All 3 macular pigments | lutein, zeaxanthin and meso-zeaxanthin. Many formulas skip the third.\nMicellized drops | pre-dispersed in MCT oil and sunflower lecithin, no capsule to break down.\nMore than pigments | astaxanthin, saffron, zinc and ginkgo for the rest of the retina.*\nTested every batch | made in small batches in Japan in a GMP-certified facility.",
-        "footnote": "Competitor details are from each brand's published label and product pages as of November 2026. PreserVision and AREDS 2 are trademarks of Bausch + Lomb. VisioVance is a trademark of its owner. Neither is affiliated with Peak Form."
+        "footnote": "PreserVision details are from Bausch + Lomb's published label as of November 2026. PreserVision and AREDS 2 are trademarks of Bausch + Lomb, not affiliated with Peak Form. \"Typical lutein softgel\" describes a common single-softgel lutein + zeaxanthin supplement, not a specific brand."
       },
       "blocks": {
         "col1": {
           "type": "column",
           "settings": {
-            "name": "VisioVance"
+            "name": "PreserVision AREDS 2"
           }
         },
         "col2": {
           "type": "column",
           "settings": {
-            "name": "PreserVision AREDS 2"
+            "name": "Typical lutein softgel"
           }
         },
         "r1": {
@@ -779,7 +780,7 @@
           "settings": {
             "label": "Format",
             "us": "Drops",
-            "c1": "Capsules",
+            "c1": "Softgels",
             "c2": "Softgels"
           }
         },
@@ -788,8 +789,8 @@
           "settings": {
             "label": "Doses per day",
             "us": "1 dropper",
-            "c1": "2 capsules",
-            "c2": "2 softgels"
+            "c1": "2 softgels",
+            "c2": "1 softgel"
           }
         },
         "r3": {
@@ -815,7 +816,7 @@
           "settings": {
             "label": "Meso-zeaxanthin (3rd macular pigment)",
             "us": "yes",
-            "c1": "yes",
+            "c1": "no",
             "c2": "no"
           }
         },
