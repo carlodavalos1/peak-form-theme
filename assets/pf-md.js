@@ -285,9 +285,11 @@
         var body = { items: [item] };
         // Shipping protection is ticked by default: add it with the first order item unless
         // it's already in the cart or the shopper switched it off this visit.
-        var spInput = document.querySelector('form.shipping-protection-form input[name="id"]');
-        var spId = parseInt((spInput && spInput.value) || (typeof shippingProductId !== 'undefined' ? shippingProductId : 0), 10) || 0;
-        var spOff = false; try { spOff = sessionStorage.getItem('pfm_sp_off') === '1'; } catch (e) {}
+        // The cart drawer prints the protection variant id as a global. (Don't read the drawer's
+        // hidden form: the theme overwrites every input[name=id] with the selected product variant.)
+        var spId = parseInt(typeof shippingProductId !== 'undefined' ? shippingProductId : 0, 10) || 0;
+        if (data.variants.some(function (v) { return v.id === spId; })) spId = 0;
+        var spOff = false; try { spOff = sessionStorage.getItem('pfm_sp_off2') === '1'; } catch (e) {}
         if (drawer && drawer.getSectionsToRender) {
           body.sections = drawer.getSectionsToRender().map(function (s) { return s.id; });
           body.sections_url = window.location.pathname;
@@ -336,7 +338,7 @@
     var sw = e.target.closest && e.target.closest('.gb-shipping-protection-button');
     if (!sw) return;
     var inp = sw.querySelector('input');
-    try { sessionStorage.setItem('pfm_sp_off', inp && inp.checked ? '1' : '0'); } catch (err) {}
+    try { sessionStorage.setItem('pfm_sp_off2', inp && inp.checked ? '1' : '0'); } catch (err) {}
   }, true);
 
   function init(root) {
