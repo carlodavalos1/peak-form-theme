@@ -341,7 +341,9 @@
     },
     "pf_reviewcards": {
       "type": "pf-md-review-cards",
-      "settings": {},
+      "settings": {
+        "autoplay": 6
+      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -358,13 +360,23 @@
         "r4": {
           "type": "review",
           "settings": {}
+        },
+        "r5": {
+          "type": "review",
+          "settings": {}
+        },
+        "r6": {
+          "type": "review",
+          "settings": {}
         }
       },
       "block_order": [
         "r1",
         "r2",
         "r3",
-        "r4"
+        "r4",
+        "r5",
+        "r6"
       ]
     },
     "pf_feel": {
