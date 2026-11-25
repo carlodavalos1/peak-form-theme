@@ -215,6 +215,8 @@
         var one = v.price * q;
         var subp = v.plan_price != null ? v.plan_price * q : null;
         var was = Math.max((data.unit || v.price) * bottles * q, (v.compare_at_price || 0) * q);
+        var cmp = parseInt(el.getAttribute('data-compare'), 10);
+        if (cmp > 0) was = cmp * q;
         return { now: useSub && subp != null ? subp : one, one: one, sub: subp, was: was, v: v, plan: v.plan || null };
       }
       var off = parseFloat(el.getAttribute('data-off')) || 0;
