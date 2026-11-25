@@ -1,0 +1,142 @@
+{%- comment -%} Peak Form footer (Metabolae layout): brand + contact, two link columns, email sign-up, disclaimer. {%- endcomment -%}
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>
+  #shopify-section-{{ section.id }} .pff { --f-bg: {{ s.bg }}; --f-fg: {{ s.fg }}; --f-acc: {{ s.accent }}; }
+  .pff { background: var(--f-bg); color: var(--f-fg); font-family: 'Poppins', sans-serif; }
+  .pff a { color: inherit; text-decoration: none; }
+  .pff__in { max-width: 1240px; margin: 0 auto; padding: 56px 24px 26px; }
+  .pff__grid { display: grid; grid-template-columns: 1.25fr .7fr .7fr 1.3fr; gap: 40px; }
+  .pff__logo img { display: block; height: auto; }
+  .pff__logo span { font: 800 34px 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px; }
+  .pff__tag { font-style: italic; font-size: 14px; line-height: 1.6; opacity: .85; margin: 16px 0 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.15); }
+  .pff__contact { display: grid; gap: 12px; font-size: 14px; line-height: 1.5; }
+  .pff__contact div { display: flex; gap: 10px; }
+  .pff__contact svg { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--f-acc); }
+  .pff__contact a { text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); }
+  html body .pff h3.pff__h { font: 700 13px 'Plus Jakarta Sans', sans-serif !important; letter-spacing: 1.5px; text-transform: uppercase; color: var(--f-fg) !important; margin: 4px 0 16px; }
+  .pff__links { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; font-size: 14px; }
+  .pff__links a { opacity: .88; transition: opacity .2s, color .2s; }
+  .pff__links a:hover { opacity: 1; color: var(--f-acc); }
+  .pff__news { border-left: 1px solid rgba(255,255,255,.15); padding-left: 36px; }
+  .pff__news p { font-size: 14px; line-height: 1.6; opacity: .88; margin: 0 0 18px; }
+  .pff__form { display: flex; background: #fff; border-radius: 999px; padding: 5px; }
+  .pff__form input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 0 16px; font: 14px 'Poppins', sans-serif; color: #222; outline: none; }
+  .pff__form button { border: 0; border-radius: 999px; background: var(--f-acc); color: #fff; font: 700 14px 'Plus Jakarta Sans', sans-serif; padding: 13px 22px; cursor: pointer; }
+  .pff__small { font-size: 12px !important; opacity: .7 !important; margin-top: 10px !important; }
+  .pff__ok { font-size: 14px; color: var(--f-acc); }
+  .pff__bot { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.15); font-size: 12px; line-height: 1.6; opacity: .75; display: grid; gap: 8px; }
+  @media (max-width: 900px) {
+    .pff__grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+    .pff__brand, .pff__news { grid-column: 1 / -1; }
+    .pff__news { border-left: 0; padding-left: 0; }
+    .pff__in { padding: 44px 20px 24px; }
+  }
+</style>
+<footer class="pfm pff">
+  <div class="pff__in">
+    <div class="pff__grid">
+      <div class="pff__brand">
+        <a class="pff__logo" href="{{ routes.root_url }}">
+          {%- if s.logo != blank -%}
+            {{ s.logo | image_url: width: 400 | image_tag: width: s.logo_width, alt: shop.name, loading: 'lazy' }}
+          {%- else -%}<span>{{ shop.name | downcase | remove: ' ' }}</span>{%- endif -%}
+        </a>
+        {%- if s.tagline != blank -%}<p class="pff__tag">{{ s.tagline }}</p>{%- endif -%}
+        <div class="pff__contact">
+          {%- if s.email != blank -%}<div>{% render 'pf-md-icon', name: 'mail' %}<a href="mailto:{{ s.email }}">{{ s.email }}</a></div>{%- endif -%}
+          {%- if s.hours != blank -%}<div>{% render 'pf-md-icon', name: 'clock' %}<span>{{ s.hours }}</span></div>{%- endif -%}
+          {%- if s.contact_line != blank -%}<div>{% render 'pf-md-icon', name: 'chat' %}<span>{{ s.contact_line }}{% if s.contact_link_label != blank %} <a href="{{ s.contact_link | default: '/pages/contact' }}">{{ s.contact_link_label }}</a>{% endif %}</span></div>{%- endif -%}
+        </div>
+      </div>
+      {%- for col in (1..2) -%}
+        {%- liquid
+          if col == 1
+            assign heading = s.col1_heading
+            assign menu = s.col1_menu
+            assign extra = s.col1_links
+          else
+            assign heading = s.col2_heading
+            assign menu = s.col2_menu
+            assign extra = s.col2_links
+          endif
+        -%}
+        <div>
+          {%- if heading != blank -%}<h3 class="pff__h">{{ heading }}</h3>{%- endif -%}
+          <ul class="pff__links">
+            {%- if menu != blank -%}
+              {%- for l in linklists[menu].links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}
+            {%- else -%}
+              {%- assign lines = extra | newline_to_br | split: '<br />' -%}
+              {%- for line in lines -%}
+                {%- assign parts = line | strip | split: '|' -%}
+                {%- if parts.size == 2 -%}<li><a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a></li>{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+      {%- if s.show_newsletter -%}
+        <div class="pff__news">
+          <h3 class="pff__h">{{ s.news_heading }}</h3>
+          {%- if s.news_text != blank -%}<p>{{ s.news_text }}</p>{%- endif -%}
+          {%- form 'customer', id: 'pff-news' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p class="pff__ok">Thanks for signing up!</p>
+            {%- else -%}
+              <div class="pff__form">
+                <input type="email" name="contact[email]" required autocomplete="email" placeholder="Email address" aria-label="Email address">
+                <button type="submit">{{ s.news_button }}</button>
+              </div>
+              {%- if form.errors -%}<p class="pff__small">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+            {%- endif -%}
+          {%- endform -%}
+          {%- if s.news_small != blank -%}<p class="pff__small">{{ s.news_small }}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="pff__bot">
+      {%- if s.disclaimer != blank -%}<div>{{ s.disclaimer }}</div>{%- endif -%}
+      <div>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "PF footer",
+  "tag": "section",
+  "class": "pf-md-section",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Background", "default": "#0F1B3D" },
+    { "type": "color", "id": "fg", "label": "Text", "default": "#F4F6FB" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#B8913A" },
+    { "type": "header", "content": "Brand" },
+    { "type": "image_picker", "id": "logo", "label": "Logo (white)" },
+    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 300, "step": 10, "default": 170, "unit": "px" },
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "60 seconds a day. All 3 macular pigments, absorbed under the tongue." },
+    { "type": "text", "id": "email", "label": "Support email", "info": "Hidden while empty." },
+    { "type": "text", "id": "hours", "label": "Support hours", "info": "e.g. Replies within 24 hours, 7 days a week. Hidden while empty." },
+    { "type": "text", "id": "contact_line", "label": "Contact line", "default": "Questions? Our team is happy to help." },
+    { "type": "text", "id": "contact_link_label", "label": "Contact link text", "default": "Contact us" },
+    { "type": "url", "id": "contact_link", "label": "Contact link" },
+    { "type": "header", "content": "Link columns" },
+    { "type": "text", "id": "col1_heading", "label": "Column 1 heading", "default": "Quick Links" },
+    { "type": "link_list", "id": "col1_menu", "label": "Column 1 menu (optional)" },
+    { "type": "textarea", "id": "col1_links", "label": "Column 1 links", "info": "One per line: Text | /url. Used when no menu is picked.", "default": "Home | /\nShop MacuDrops | /products/peak-form-macudrops\nManage My Subscription | /account\nContact | /pages/contact\nTrack My Order | /apps/parcelpanel" },
+    { "type": "text", "id": "col2_heading", "label": "Column 2 heading", "default": "Policies" },
+    { "type": "link_list", "id": "col2_menu", "label": "Column 2 menu (optional)" },
+    { "type": "textarea", "id": "col2_links", "label": "Column 2 links", "info": "One per line: Text | /url", "default": "Privacy Policy | /policies/privacy-policy\nTerms of Service | /policies/terms-of-service\nRefund Policy | /policies/refund-policy\nShipping Policy | /policies/shipping-policy" },
+    { "type": "header", "content": "Email sign-up" },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show email sign-up", "default": true },
+    { "type": "text", "id": "news_heading", "label": "Heading", "default": "Join Our Email List" },
+    { "type": "textarea", "id": "news_text", "label": "Text", "default": "Get our sale alerts, special offers and simple tips for healthy eyes. Nothing else." },
+    { "type": "text", "id": "news_button", "label": "Button", "default": "Sign Up" },
+    { "type": "text", "id": "news_small", "label": "Small text", "default": "Unsubscribe anytime." },
+    { "type": "header", "content": "Bottom" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." }
+  ],
+  "presets": [ { "name": "PF footer" } ],
+  "enabled_on": { "groups": ["footer"] }
+}
+{% endschema %}
