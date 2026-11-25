@@ -503,7 +503,6 @@
       "name": "Product Details",
       "settings": {
         "use_theme_colors": false,
-        "current_product": "",
         "section_bg_color": "#ffffff",
         "blocks_spacing": 4,
         "text_color": "#000000",
@@ -548,8 +547,7 @@
           "settings": {
             "text": "All 3 macular pigments",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         },
         "feature_item_md02": {
@@ -557,8 +555,7 @@
           "settings": {
             "text": "Sublingual drops",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         },
         "feature_item_md03": {
@@ -566,8 +563,7 @@
           "settings": {
             "text": "Made in Japan",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         },
         "feature_item_md04": {
@@ -575,8 +571,7 @@
           "settings": {
             "text": "Third-party tested",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         },
         "feature_item_md05": {
@@ -584,8 +579,7 @@
           "settings": {
             "text": "GMP certified",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         },
         "feature_item_md06": {
@@ -593,8 +587,7 @@
           "settings": {
             "text": "60-day guarantee",
             "icon_type": "svg",
-            "icon": "",
-            "icon_image": ""
+            "icon": ""
           }
         }
       },
@@ -636,14 +629,12 @@
         "review_md01": {
           "type": "review",
           "settings": {
-            "review_image": "",
             "rating": 5,
             "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
             "reviewer_name": "[First name + last initial]",
             "reviewer_age": "",
             "show_verified_badge": false,
             "show_purchased_product": true,
-            "product_reference": "",
             "show_purchase_date": false,
             "purchase_date": ""
           }
@@ -651,14 +642,12 @@
         "review_md02": {
           "type": "review",
           "settings": {
-            "review_image": "",
             "rating": 5,
             "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
             "reviewer_name": "[First name + last initial]",
             "reviewer_age": "",
             "show_verified_badge": false,
             "show_purchased_product": true,
-            "product_reference": "",
             "show_purchase_date": false,
             "purchase_date": ""
           }
@@ -666,14 +655,12 @@
         "review_md03": {
           "type": "review",
           "settings": {
-            "review_image": "",
             "rating": 5,
             "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
             "reviewer_name": "[First name + last initial]",
             "reviewer_age": "",
             "show_verified_badge": false,
             "show_purchased_product": true,
-            "product_reference": "",
             "show_purchase_date": false,
             "purchase_date": ""
           }
@@ -862,7 +849,6 @@
         "section_padding_bottom_mobile": 0,
         "section_padding_left_mobile": 15,
         "section_padding_right_mobile": 15,
-        "image": "",
         "image_border_radius": 8,
         "image_position_desktop": "right",
         "image_position_mobile": "above",
@@ -986,7 +972,6 @@
         "subtitle": "Most eye supplements stop at lutein in a capsule. MacuDrops pairs all three macular pigments with four supporting nutrients and delivers them under the tongue.",
         "show_image": true,
         "media_type": "image",
-        "feature_image": "",
         "image_alt": "Feature product image",
         "video_autoplay": true,
         "video_muted": true,
@@ -1050,7 +1035,7 @@
         "contained_section": true,
         "max_container_width": 1200,
         "heading": "What to Expect, Week by Week",
-        "subheading": "Macular pigment builds slowly. Here’s an honest timeline.",
+        "subheading": "<p>Macular pigment builds slowly. Here’s an honest timeline.</p>",
         "heading_size": 26,
         "heading_size_mobile": 28,
         "subheading_size": 16,
@@ -1108,7 +1093,6 @@
           "settings": {
             "product_name": "MacuDrops",
             "product_subtitle": "Sublingual",
-            "product_image": "",
             "product_image_size": 120,
             "product_image_size_tablet": 60,
             "product_image_size_mobile": 70,
@@ -1131,7 +1115,6 @@
           "settings": {
             "product_name": "Typical Capsule",
             "product_subtitle": "Oral",
-            "product_image": "",
             "product_image_size": 80,
             "product_image_size_tablet": 70,
             "product_image_size_mobile": 80,
@@ -1462,9 +1445,6 @@
             "button_label": "Learn More",
             "button_redirect_type": "url",
             "button_link": "",
-            "redirect_product": "",
-            "redirect_collection": "",
-            "redirect_page": "",
             "custom_url": "",
             "scroll_to_products": false,
             "button_bg_color": "#b8913a",
@@ -1524,7 +1504,6 @@
         "enable_shadow": false,
         "heading": "7 Ingredients.",
         "heading_accent": "Each at a Studied Dose.",
-        "image": "",
         "enable_image_fade_mask": false,
         "video_autoplay": true,
         "video_loop": true,
@@ -1771,7 +1750,6 @@
         "accent_font_weight": "300",
         "button_text": "TRY RISK-FREE TODAY",
         "button_action_type": "scroll",
-        "redirect_product": "",
         "custom_url": "",
         "use_global_button_style": false,
         "button_color": "#14254a",
