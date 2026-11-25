@@ -1,0 +1,831 @@
+{% doc %}
+  @prompt
+    Create a custom review section with a heading ("Customer Reviews"), an overall star rating, and total review count at the top. Below that, display review cards in a two-column grid. Each card shows the customer's first name and last initial, five-star rating, a "Verified Customer" badge with a green checkmark, a timestamp (e.g. "2 days ago"), their written review text, an optional customer-uploaded image, and the product name with a small icon at the bottom. Cards should have rounded corners, a light border, and a clean white background. All content editable through the theme editor. Responsive — stacks to single column on mobile., ALl the producgt purchase named should be Peakform Thyroid Support and could we put images in side?
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-reviews-section-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-reviews-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-reviews-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 20px;
+    font-weight: 700;
+  }
+
+  .ai-reviews-summary-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ai-reviews-stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 4px;
+  }
+
+  .ai-reviews-star-{{ ai_gen_id }} {
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-reviews-rating-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.rating_text_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: 600;
+  }
+
+  .ai-reviews-count-{{ ai_gen_id }} {
+    font-size: {{ block.settings.rating_text_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+  }
+
+  .ai-reviews-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-review-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ai-review-card-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ai-review-customer-info-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-review-customer-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.customer_name_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .ai-review-verified-badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: {{ block.settings.badge_text_size }}px;
+    color: {{ block.settings.verified_badge_color }};
+    font-weight: 500;
+  }
+
+  .ai-review-checkmark-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    fill: {{ block.settings.verified_badge_color }};
+  }
+
+  .ai-review-timestamp-{{ ai_gen_id }} {
+    font-size: {{ block.settings.timestamp_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .ai-review-card-stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 3px;
+  }
+
+  .ai-review-card-star-{{ ai_gen_id }} {
+    width: {{ block.settings.card_star_size }}px;
+    height: {{ block.settings.card_star_size }}px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-review-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.review_text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ai-review-image-{{ ai_gen_id }} {
+    width: 100%;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-review-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-review-product-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid {{ block.settings.card_border_color }};
+    font-size: {{ block.settings.product_name_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.8;
+  }
+
+  .ai-review-product-icon-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-reviews-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-reviews-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-review-card-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.75 }}px;
+    }
+  }
+{% endstyle %}
+
+<customer-reviews-{{ ai_gen_id }} class="ai-reviews-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-reviews-header-{{ ai_gen_id }}">
+    <h2 class="ai-reviews-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    
+    <div class="ai-reviews-summary-{{ ai_gen_id }}">
+      <div class="ai-reviews-stars-{{ ai_gen_id }}">
+        {% for i in (1..5) %}
+          <svg class="ai-reviews-star-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        {% endfor %}
+      </div>
+      <span class="ai-reviews-rating-text-{{ ai_gen_id }}">{{ block.settings.overall_rating }}</span>
+      <span class="ai-reviews-count-{{ ai_gen_id }}">({{ block.settings.total_reviews }} reviews)</span>
+    </div>
+  </div>
+
+  <div class="ai-reviews-grid-{{ ai_gen_id }}">
+    {% for i in (1..6) %}
+      {% liquid
+        assign review_enabled_key = 'review_' | append: i | append: '_enabled'
+        assign customer_name_key = 'review_' | append: i | append: '_customer_name'
+        assign rating_key = 'review_' | append: i | append: '_rating'
+        assign timestamp_key = 'review_' | append: i | append: '_timestamp'
+        assign review_text_key = 'review_' | append: i | append: '_text'
+        assign review_image_key = 'review_' | append: i | append: '_image'
+        assign product_name_key = 'review_' | append: i | append: '_product_name'
+
+        assign review_enabled = block.settings[review_enabled_key]
+        assign customer_name = block.settings[customer_name_key]
+        assign rating = block.settings[rating_key]
+        assign timestamp = block.settings[timestamp_key]
+        assign review_text = block.settings[review_text_key]
+        assign review_image = block.settings[review_image_key]
+        assign product_name = block.settings[product_name_key]
+      %}
+
+      {% if review_enabled %}
+        <div class="ai-review-card-{{ ai_gen_id }}">
+          <div class="ai-review-card-header-{{ ai_gen_id }}">
+            <div class="ai-review-customer-info-{{ ai_gen_id }}">
+              <h3 class="ai-review-customer-name-{{ ai_gen_id }}">{{ customer_name }}</h3>
+              <div class="ai-review-verified-badge-{{ ai_gen_id }}">
+                <svg class="ai-review-checkmark-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                </svg>
+                Verified Customer
+              </div>
+            </div>
+            <span class="ai-review-timestamp-{{ ai_gen_id }}">{{ timestamp }}</span>
+          </div>
+
+          <div class="ai-review-card-stars-{{ ai_gen_id }}">
+            {% for star in (1..5) %}
+              <svg class="ai-review-card-star-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                {% if star <= rating %}
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                {% else %}
+                  <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                {% endif %}
+              </svg>
+            {% endfor %}
+          </div>
+
+          <p class="ai-review-text-{{ ai_gen_id }}">{{ review_text }}</p>
+
+          {% if review_image %}
+            <div class="ai-review-image-{{ ai_gen_id }}">
+              <img 
+                src="{{ review_image | image_url: width: 600 }}" 
+                alt="Customer review image"
+                loading="lazy"
+                width="600"
+                height="auto"
+              >
+            </div>
+          {% endif %}
+
+          {% if product_name != blank %}
+            <div class="ai-review-product-{{ ai_gen_id }}">
+              <svg class="ai-review-product-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
+              </svg>
+              {{ product_name }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</customer-reviews-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerReviews{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.initializeReviews();
+      }
+
+      initializeReviews() {
+        const cards = this.querySelectorAll('.ai-review-card-{{ ai_gen_id }}');
+        
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.1}s`;
+        });
+      }
+    }
+
+    customElements.define('customer-reviews-{{ ai_gen_id }}', CustomerReviews{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Overall rating"
+    },
+    {
+      "type": "text",
+      "id": "overall_rating",
+      "label": "Overall rating",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "total_reviews",
+      "label": "Total reviews",
+      "default": "1,247"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#FFB800"
+    },
+    {
+      "type": "range",
+      "id": "rating_text_size",
+      "label": "Rating text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Review cards"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Card border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "card_star_size",
+      "label": "Card star size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "customer_name_size",
+      "label": "Customer name size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_text_size",
+      "label": "Badge text size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "verified_badge_color",
+      "label": "Verified badge color",
+      "default": "#00A651"
+    },
+    {
+      "type": "range",
+      "id": "timestamp_size",
+      "label": "Timestamp size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "review_text_size",
+      "label": "Review text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "product_name_size",
+      "label": "Product name size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Review 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_1_enabled",
+      "label": "Enable review 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_1_customer_name",
+      "label": "Customer name",
+      "default": "Sarah M."
+    },
+    {
+      "type": "range",
+      "id": "review_1_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_1_timestamp",
+      "label": "Timestamp",
+      "default": "2 days ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_1_text",
+      "label": "Review text",
+      "default": "Absolutely love this product! The quality exceeded my expectations and it arrived quickly. Will definitely be ordering again."
+    },
+    {
+      "type": "image_picker",
+      "id": "review_1_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_1_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    },
+    {
+      "type": "header",
+      "content": "Review 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_2_enabled",
+      "label": "Enable review 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_2_customer_name",
+      "label": "Customer name",
+      "default": "Michael T."
+    },
+    {
+      "type": "range",
+      "id": "review_2_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_2_timestamp",
+      "label": "Timestamp",
+      "default": "1 week ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_2_text",
+      "label": "Review text",
+      "default": "Great customer service and the product works exactly as described. Highly recommend to anyone looking for quality supplements."
+    },
+    {
+      "type": "image_picker",
+      "id": "review_2_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_2_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    },
+    {
+      "type": "header",
+      "content": "Review 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_3_enabled",
+      "label": "Enable review 3",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_3_customer_name",
+      "label": "Customer name",
+      "default": "Jennifer L."
+    },
+    {
+      "type": "range",
+      "id": "review_3_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "review_3_timestamp",
+      "label": "Timestamp",
+      "default": "3 weeks ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_3_text",
+      "label": "Review text",
+      "default": "Very satisfied with my purchase. The packaging was secure and the product quality is top-notch. Would buy again!"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_3_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_3_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    },
+    {
+      "type": "header",
+      "content": "Review 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_4_enabled",
+      "label": "Enable review 4",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_4_customer_name",
+      "label": "Customer name",
+      "default": "David R."
+    },
+    {
+      "type": "range",
+      "id": "review_4_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_4_timestamp",
+      "label": "Timestamp",
+      "default": "1 month ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_4_text",
+      "label": "Review text",
+      "default": "Excellent product! I've noticed a real difference since I started using it. The shipping was fast and everything arrived in perfect condition."
+    },
+    {
+      "type": "image_picker",
+      "id": "review_4_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_4_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    },
+    {
+      "type": "header",
+      "content": "Review 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_5_enabled",
+      "label": "Enable review 5",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_5_customer_name",
+      "label": "Customer name",
+      "default": "Amanda K."
+    },
+    {
+      "type": "range",
+      "id": "review_5_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_5_timestamp",
+      "label": "Timestamp",
+      "default": "2 months ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_5_text",
+      "label": "Review text",
+      "default": "Best purchase I've made in a long time! The quality is outstanding and I love how effective it is. Customer for life!"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_5_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_5_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    },
+    {
+      "type": "header",
+      "content": "Review 6"
+    },
+    {
+      "type": "checkbox",
+      "id": "review_6_enabled",
+      "label": "Enable review 6",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_6_customer_name",
+      "label": "Customer name",
+      "default": "Robert P."
+    },
+    {
+      "type": "range",
+      "id": "review_6_rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_6_timestamp",
+      "label": "Timestamp",
+      "default": "3 months ago"
+    },
+    {
+      "type": "textarea",
+      "id": "review_6_text",
+      "label": "Review text",
+      "default": "Fantastic product and great value for money. I've recommended it to all my friends and family. Five stars all the way!"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_6_image",
+      "label": "Customer image"
+    },
+    {
+      "type": "text",
+      "id": "review_6_product_name",
+      "label": "Product name",
+      "default": "Peakform Thyroid Support"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer reviews"
+    }
+  ]
+}
+{% endschema %}

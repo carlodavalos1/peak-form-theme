@@ -1,0 +1,217 @@
+{% doc %}
+  @prompt
+    I can tell. Shopify I'm trying to make like this section where I can add like, you know, an image of like my graph. Which is showing like you know that I help you form works and everything. and the aspect ratio would be about let me check real quick. one second If the details okay the aspect ratio, it's 1,694 by 2528 pixels. All right. I want like an image of that size will take up like another full kind of screen of it. right and yeah where I can add like you don't like my glory text which the theme has. I want that you know where so I can just add like a heading so I go how does it work? You know. And yeah., Okay, this is good. But I want the glowy text like Like you see like under like a thousand 10,000 plus transformed women like that glowy text her. That's a text that I want, right. And also I want no space between the heading text and like the image. I barely look negligible space. Right and between the bottom of the image like the next section, I want  negligible space as well., Look great. Could we have? like that glowy text right as I shoot can we have two headlines, right? one headline which is going to be below right which can have that glowy text and the one above is going to have just like the regular black text. right, THe glowy text is not showing and now theres too much space between the headlines and the images, I want the 2 headlines to be very close to eachother, Like do you not see the section right below where it says like Real Results the real customers your results and like how close the text the text are to each other. That's what I want. All right. And I want these texts also as close as they are to each other to be as close as possible. Also towards the image itself, you know. The spacing that the normal spacing, you know for the real customer service. How like the two headlines are too close to each other and as well as the image, that's what the spacing which I want., Now the top heading text is far too small. I want it the same size as the bottom glowy text. And also the 2 texts closer to eachotjer. As like in the " real customers, real results section". Can you to see how close together the texts are a and how similar in size? , The 2 texts are still to far apart vertically. I want them closer together!!!, The glowy text doesnt show now. Just use like the text format or like preset which the stastic column has for the headline and bottom headline. that shoudl be easier, I want glowly the text , THe texts are still way too far please adjust it, The texts are still wayy to far claude. i want it still close its still far, Make the texts closer together, Its still too close use the preset that the  statistics column has , Now the glowly text is gone. And the text is still too far together, The text is too far from eachother shopify. , Can you bring the texts closer together as the preset is? For the statistic column?, THe 2 headlines are still too far apart, Shopfify. Can we make the headlines literally like RIGHT on top of each other?, CAN YOU MAKE THE 2 HEADLINES ON TOP OF EACHOTHER? CLOSER TOGETHER PLEASE??????
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-how-it-works-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-how-it-works-content-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-how-it-works-headings-{{ ai_gen_id }} {
+    margin-bottom: 12px;
+    line-height: 0.7;
+  }
+
+  .ai-how-it-works-top-heading-{{ ai_gen_id }} {
+    margin: 0 0 -50px 0;
+    color: {{ block.settings.top_heading_color }};
+    line-height: 0.7;
+  }
+
+  .ai-how-it-works-bottom-heading-{{ ai_gen_id }} {
+    margin: 0;
+    line-height: 0.7;
+  }
+
+  .ai-how-it-works-bottom-heading-{{ ai_gen_id }} .accent-text {
+    background: {{ block.settings.gradient_color }};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .ai-how-it-works-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    margin: 0;
+  }
+
+  .ai-how-it-works-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-how-it-works-placeholder-{{ ai_gen_id }} {
+    background-color: #f4f4f4;
+    width: 100%;
+    aspect-ratio: 1694 / 2528;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-how-it-works-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 450px;
+  }
+
+  .ai-how-it-works-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-how-it-works-top-heading-{{ ai_gen_id }} {
+      margin: 0 0 -35px 0;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-how-it-works-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-how-it-works-content-{{ ai_gen_id }}">
+    <div class="ai-how-it-works-headings-{{ ai_gen_id }}">
+      {% if block.settings.top_heading != blank %}
+        <h2 class="ai-how-it-works-top-heading-{{ ai_gen_id }} h1">
+          {{ block.settings.top_heading }}
+        </h2>
+      {% endif %}
+
+      {% if block.settings.bottom_heading != blank %}
+        <h2 class="ai-how-it-works-bottom-heading-{{ ai_gen_id }} h1">
+          <span class="accent-text">{{ block.settings.bottom_heading }}</span>
+        </h2>
+      {% endif %}
+    </div>
+
+    <div class="ai-how-it-works-image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.image %}
+        <img
+          src="{{ block.settings.image | image_url: width: 2000 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          class="ai-how-it-works-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-how-it-works-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+          <div class="ai-how-it-works-empty-state-{{ ai_gen_id }}">
+            Add your "How it works" image
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top heading"
+    },
+    {
+      "type": "richtext",
+      "id": "top_heading",
+      "label": "Top heading",
+      "default": "<p>How does</p>"
+    },
+    {
+      "type": "color",
+      "id": "top_heading_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Bottom heading (glowy)"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_heading",
+      "label": "Bottom heading",
+      "default": "<p>it work?</p>"
+    },
+    {
+      "type": "color_background",
+      "id": "gradient_color",
+      "label": "Gradient",
+      "default": "linear-gradient(91deg, rgba(23, 67, 60, 1), rgba(42, 107, 95, 1) 50%, rgba(61, 148, 136, 1) 100%)"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works"
+    }
+  ]
+}
+{% endschema %}

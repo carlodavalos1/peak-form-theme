@@ -1,0 +1,168 @@
+{% doc %}
+  @prompt
+    Can I get a animated wavy sliding divider?
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-wavy-divider-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: {{ block.settings.divider_height }}px;
+  }
+
+  .ai-wavy-divider-svg-{{ ai_gen_id }} {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: ai-wavy-slide-{{ ai_gen_id }} {{ block.settings.animation_speed }}s linear infinite;
+  }
+
+  {% if block.settings.animation_direction == 'right' %}
+    .ai-wavy-divider-svg-{{ ai_gen_id }} {
+      animation-direction: reverse;
+    }
+  {% endif %}
+
+  .ai-wavy-divider-svg-{{ ai_gen_id }} path {
+    fill: {{ block.settings.wave_color }};
+  }
+
+  @keyframes ai-wavy-slide-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-wavy-divider-{{ ai_gen_id }} {
+      height: {{ block.settings.divider_height | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-wavy-divider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <svg
+    class="ai-wavy-divider-svg-{{ ai_gen_id }}"
+    viewBox="0 0 2400 {{ block.settings.divider_height }}"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {% if block.settings.wave_style == 'smooth' %}
+      <path d="M0,{{ block.settings.divider_height | divided_by: 2 }} Q300,0 600,{{ block.settings.divider_height | divided_by: 2 }} T1200,{{ block.settings.divider_height | divided_by: 2 }} T1800,{{ block.settings.divider_height | divided_by: 2 }} T2400,{{ block.settings.divider_height | divided_by: 2 }} V{{ block.settings.divider_height }} H0 Z"></path>
+    {% elsif block.settings.wave_style == 'sharp' %}
+      <path d="M0,{{ block.settings.divider_height | divided_by: 2 }} L300,0 L600,{{ block.settings.divider_height | divided_by: 2 }} L900,{{ block.settings.divider_height }} L1200,{{ block.settings.divider_height | divided_by: 2 }} L1500,0 L1800,{{ block.settings.divider_height | divided_by: 2 }} L2100,{{ block.settings.divider_height }} L2400,{{ block.settings.divider_height | divided_by: 2 }} V{{ block.settings.divider_height }} H0 Z"></path>
+    {% elsif block.settings.wave_style == 'gentle' %}
+      <path d="M0,{{ block.settings.divider_height | times: 0.6 }} Q600,{{ block.settings.divider_height | times: 0.3 }} 1200,{{ block.settings.divider_height | times: 0.6 }} T2400,{{ block.settings.divider_height | times: 0.6 }} V{{ block.settings.divider_height }} H0 Z"></path>
+    {% else %}
+      <path d="M0,{{ block.settings.divider_height | divided_by: 2 }} C200,0 400,{{ block.settings.divider_height }} 600,{{ block.settings.divider_height | divided_by: 2 }} S1000,0 1200,{{ block.settings.divider_height | divided_by: 2 }} S1600,{{ block.settings.divider_height }} 1800,{{ block.settings.divider_height | divided_by: 2 }} S2200,0 2400,{{ block.settings.divider_height | divided_by: 2 }} V{{ block.settings.divider_height }} H0 Z"></path>
+    {% endif %}
+  </svg>
+</div>
+
+{% schema %}
+{
+  "name": "Wavy divider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Wave style"
+    },
+    {
+      "type": "select",
+      "id": "wave_style",
+      "label": "Wave pattern",
+      "options": [
+        {
+          "value": "smooth",
+          "label": "Smooth"
+        },
+        {
+          "value": "curved",
+          "label": "Curved"
+        },
+        {
+          "value": "gentle",
+          "label": "Gentle"
+        },
+        {
+          "value": "sharp",
+          "label": "Sharp"
+        }
+      ],
+      "default": "smooth"
+    },
+    {
+      "type": "color",
+      "id": "wave_color",
+      "label": "Wave color",
+      "default": "#17433c"
+    },
+    {
+      "type": "range",
+      "id": "divider_height",
+      "label": "Height",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Speed",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "s",
+      "default": 15,
+      "info": "Lower values = faster animation"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wavy divider"
+    }
+  ]
+}
+{% endschema %}

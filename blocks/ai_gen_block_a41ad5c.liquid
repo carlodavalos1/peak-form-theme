@@ -1,0 +1,639 @@
+{% doc %}
+  @prompt
+    Create a customer reviews section block for a supplement product that helps reduce facial hair growth in women. The block should:
+    
+    - Display 6 reviews initially, then show additional reviews when "Load More" is clicked
+    - Include approximately 50 authentic-sounding customer reviews total, loaded in batches of 6 via a "Load More Reviews" button
+    - Reviews should follow a realistic progression timeline: Week 2 - noticing less hair already, Week 4 - growth slowing down, Week 6 - friends and family noticing they're not plucking as much, Week 10 - significant reduction, Week 16 - amazing results it's working
+    - Reviews should feel genuine and varied: different names, star ratings mostly 4-5 stars, different writing styles, some short and enthusiastic, some longer and detailed
+    - Each review card should show: reviewer name, star rating, date, and review text
+    - Include a "Load More Reviews" button that reveals the next batch with a smooth animation
+    - Match a clean premium supplement brand aesthetic with neutral white background
+    - Fully responsive on mobile, Also, the product is called peakForm, you know? You know? And just, yeah. And also get rid of like the week 2, week 2, week 2, like those green bars, and also make the dates more recent, you know, like, like maybe like, you know, 2025, what is it, like June, you know, not, not even 2024, that's way too like late, you know? Like 2025, you know, going to 2026, yeah, some people 2026, you know? And yeah, make them look more like, you know, authentic, you know? I'm not crazy selling them, but these are kind of good, you know? Yeah.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-reviews-container-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    display: block;
+  }
+
+  .ai-reviews-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-reviews-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px 0;
+    font-weight: 700;
+  }
+
+  .ai-reviews-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0;
+  }
+
+  .ai-reviews-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .ai-review-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .ai-review-card-{{ ai_gen_id }}.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-review-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-review-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .ai-review-name-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.name_color }};
+    margin: 0;
+  }
+
+  .ai-review-date-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.date_color }};
+    white-space: nowrap;
+  }
+
+  .ai-review-stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+
+  .ai-review-star-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-review-star-empty-{{ ai_gen_id }} {
+    fill: {{ block.settings.star_empty_color }};
+  }
+
+  .ai-review-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.6;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-load-more-container-{{ ai_gen_id }} {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .ai-load-more-btn-{{ ai_gen_id }} {
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    border: 2px solid {{ block.settings.button_border_color }};
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-load-more-btn-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+    color: {{ block.settings.button_hover_text_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-load-more-btn-{{ ai_gen_id }}.hidden {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-reviews-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ai-reviews-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+
+    .ai-reviews-subtitle-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subtitle_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<customer-reviews-{{ ai_gen_id }} class="ai-reviews-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-reviews-header-{{ ai_gen_id }}">
+    {% if block.settings.title != blank %}
+      <h2 class="ai-reviews-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+    {% endif %}
+    {% if block.settings.subtitle != blank %}
+      <p class="ai-reviews-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-reviews-grid-{{ ai_gen_id }}" data-reviews-grid>
+    {% assign reviews = '' %}
+    {% assign reviews = reviews | append: 'Sarah M.|5|Jan 8, 2026|I cannot believe how quickly peakForm is working! Only two weeks in and I am already noticing less hair growth on my chin. Usually I have to pluck every single day but now its every other day. So excited to see what happens next!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Jessica T.|5|Dec 18, 2025|Honestly skeptical at first but wow. The peach fuzz on my upper lip is definitely lighter after using peakForm. Not gone but LIGHTER. Thats huge for me!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Amanda R.|4|Nov 22, 2025|A few weeks down and I think its working? The hair on my jawline seems finer. Going to keep going with peakForm and update later.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Emily K.|5|Jan 15, 2026|OMG yes! My tweezers are getting a break. The dark hairs under my chin are growing slower with peakForm. This is life changing!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Rachel P.|5|Dec 28, 2025|I was plucking daily and now I only need to pluck maybe twice a week. The regrowth is SO much slower. Highly recommend peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Lauren B.|4|Feb 1, 2026|Seeing some changes already. Hair growth has slowed down noticeably on my chin and neck area since starting peakForm.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Michelle D.|5|Oct 5, 2025|The difference is incredible. My facial hair is growing SO much slower. I used to shave every morning and now I can go 3-4 days easily thanks to peakForm.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Stephanie L.|5|Nov 8, 2025|Growth has definitely slowed down. The hairs are also coming in finer and lighter. peakForm is the real deal!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Nicole H.|4|Dec 12, 2025|I am seeing real results. Less plucking, slower growth, and the hair texture is changing. Worth every penny.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Brittany S.|5|Jan 25, 2026|The hair on my upper lip and chin is growing noticeably slower. I used to tweeze daily now its maybe twice a week. So happy with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Danielle W.|5|Feb 18, 2026|My facial hair routine has completely changed. Growth is way slower and the hairs are thinner. Finally something that works!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Ashley G.|4|Oct 22, 2025|Definitely working. The dark coarse hairs are growing back much slower and lighter. Sticking with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Megan C.|5|Sep 25, 2025|My sister asked if I got laser hair removal! She noticed I wasnt plucking my chin constantly anymore. peakForm WORKS!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Samantha J.|5|Nov 28, 2025|My mom commented that my skin looks clearer. Little does she know its because Im not constantly irritating it with tweezers! Hair growth has slowed so much with peakForm.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Christina M.|5|Jan 3, 2026|My husband noticed I stopped carrying tweezers in my purse. The facial hair is barely growing now. I am beyond thrilled with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Kayla F.|4|Dec 7, 2025|Friends are definitely noticing. One asked what I changed because my skin looks better. Its because Im not plucking every day anymore thanks to peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Jennifer A.|5|Feb 10, 2026|My coworker asked if I did something different. YES I stopped obsessing over facial hair because peakForm is working! Growth is minimal now.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Heather N.|5|Oct 14, 2025|My best friend noticed I wasnt checking my chin in every mirror anymore. The hair growth has slowed down so much I barely think about it!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Taylor V.|5|Sep 18, 2025|The results are amazing. My facial hair is probably 70% reduced. I tweeze maybe once every week or two now instead of daily. peakForm is incredible!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Morgan E.|5|Nov 21, 2025|Significant reduction in hair growth. The few hairs that do grow are super fine and light. peakForm has changed my life!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Alexis R.|5|Jan 25, 2026|I barely have any facial hair growth. What does grow is so fine you can barely see it. I wish I found peakForm years ago!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Courtney B.|4|Dec 28, 2025|The reduction is real. Maybe 60-70% less hair. The texture is completely different too - much finer and lighter with peakForm.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Lindsey K.|5|Feb 1, 2026|I can confidently say peakForm works. Facial hair growth is minimal and what does grow is barely noticeable. So grateful!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Kelsey P.|5|Oct 5, 2025|The difference is night and day. I used to be so self conscious about my facial hair and now I barely think about it. Life changing!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Amber L.|5|Aug 8, 2025|I am blown away. My facial hair is almost completely gone. Maybe 5% of what it used to be. peakForm is AMAZING!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Melissa H.|5|Sep 12, 2025|Its working better than I ever imagined. Facial hair is basically non existent now. I cannot recommend peakForm enough!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Kristen D.|5|Nov 15, 2025|This is incredible. I went from plucking daily to maybe once a month. The hair that does grow is so fine its invisible. Worth every cent!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Rebecca S.|5|Jan 19, 2026|My facial hair is practically gone. I used to spend so much time and money on hair removal and now I dont need to. peakForm is a miracle product!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Allison W.|5|Dec 22, 2025|The results are beyond my expectations. Facial hair growth is maybe 10% of what it was. My confidence has skyrocketed thanks to peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Katie M.|5|Feb 26, 2026|I am so happy I stuck with it. The facial hair is almost completely gone. peakForm has genuinely changed my life for the better!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Natalie G.|5|Jan 20, 2026|Already seeing a difference. The stubborn chin hairs are growing back slower. Fingers crossed peakForm keeps working!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Olivia T.|4|Nov 10, 2025|Definitely noticing changes. Hair growth has slowed and the texture is different. Excited to see more progress with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Hannah R.|5|Oct 1, 2025|My mom asked what I was doing differently. She noticed I wasnt constantly checking my face in the mirror. peakForm is working!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Victoria C.|5|Sep 20, 2025|The reduction is significant. I would say 65% less hair growth. The hairs are also much finer. So pleased with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Grace F.|5|Aug 10, 2025|Facial hair is basically gone. I cannot believe how well peakForm worked. My only regret is not trying it sooner!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Chloe B.|5|Jan 30, 2026|Im already seeing results. The hair on my upper lip is growing slower. peakForm is exactly what I needed!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Sophia L.|4|Dec 20, 2025|Growth has definitely slowed. The dark hairs are coming in lighter too. Really happy so far with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Isabella N.|5|Nov 12, 2025|My sister commented that I look more relaxed. Its because Im not stressing about facial hair anymore! peakForm is a game changer.' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Ava K.|5|Oct 30, 2025|Facial hair growth is minimal. What does grow is so fine I dont even bother removing it. Love peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Emma P.|5|Sep 20, 2025|I am amazed. Facial hair is almost completely gone. peakForm has boosted my confidence so much. Highly highly recommend!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Mia D.|5|Feb 3, 2026|The chin hairs are definitely growing slower. I am so hopeful peakForm continues to work!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Charlotte S.|5|Dec 24, 2025|Hair growth has slowed significantly. The coarse hairs are coming in finer. peakForm is working better than expected!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Abigail H.|5|Nov 16, 2025|My best friend noticed I stopped carrying tweezers everywhere. The facial hair is barely growing now. So grateful for peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Emily R.|5|Oct 3, 2025|The results are incredible. Facial hair is probably 75% reduced. I feel so much more confident now thanks to peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Harper M.|5|Aug 24, 2025|Facial hair is basically non existent. peakForm exceeded all my expectations. Cannot recommend it enough!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Ella W.|4|Jan 26, 2026|Seeing early signs of success. Hair growth on my jawline has slowed down. Keeping my fingers crossed with peakForm!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Scarlett V.|5|Dec 16, 2025|The difference is clear. Less plucking, slower growth, finer texture. peakForm is exactly what I was hoping for!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Madison J.|5|Nov 8, 2025|My coworkers have noticed I look happier. Its because Im not constantly worried about facial hair! peakForm works!' %}
+    {% assign reviews = reviews | append: '||' %}
+    {% assign reviews = reviews | append: 'Aria G.|5|Oct 27, 2025|Facial hair growth is down to maybe 20% of what it was. The few hairs that grow are barely visible. Love peakForm!' %}
+
+    {% assign review_array = reviews | split: '||' %}
+    {% for review_data in review_array limit: 6 %}
+      {% assign review_parts = review_data | split: '|' %}
+      {% assign name = review_parts[0] %}
+      {% assign rating = review_parts[1] | plus: 0 %}
+      {% assign date = review_parts[2] %}
+      {% assign text = review_parts[3] %}
+
+      <div class="ai-review-card-{{ ai_gen_id }}" data-review-index="{{ forloop.index0 }}">
+        <div class="ai-review-header-{{ ai_gen_id }}">
+          <h3 class="ai-review-name-{{ ai_gen_id }}">{{ name }}</h3>
+          <span class="ai-review-date-{{ ai_gen_id }}">{{ date }}</span>
+        </div>
+        <div class="ai-review-stars-{{ ai_gen_id }}">
+          {% for i in (1..5) %}
+            {% if i <= rating %}
+              <svg class="ai-review-star-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {% else %}
+              <svg class="ai-review-star-{{ ai_gen_id }} ai-review-star-empty-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <p class="ai-review-text-{{ ai_gen_id }}">{{ text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="ai-load-more-container-{{ ai_gen_id }}">
+    <button class="ai-load-more-btn-{{ ai_gen_id }}" data-load-more>
+      {{ block.settings.load_more_text }}
+    </button>
+  </div>
+</customer-reviews-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerReviews{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentIndex = 6;
+        this.batchSize = 6;
+        this.allReviews = [
+          {name: 'Sarah M.', rating: 5, date: 'Jan 8, 2026', text: 'I cannot believe how quickly peakForm is working! Only two weeks in and I am already noticing less hair growth on my chin. Usually I have to pluck every single day but now its every other day. So excited to see what happens next!'},
+          {name: 'Jessica T.', rating: 5, date: 'Dec 18, 2025', text: 'Honestly skeptical at first but wow. The peach fuzz on my upper lip is definitely lighter after using peakForm. Not gone but LIGHTER. Thats huge for me!'},
+          {name: 'Amanda R.', rating: 4, date: 'Nov 22, 2025', text: 'A few weeks down and I think its working? The hair on my jawline seems finer. Going to keep going with peakForm and update later.'},
+          {name: 'Emily K.', rating: 5, date: 'Jan 15, 2026', text: 'OMG yes! My tweezers are getting a break. The dark hairs under my chin are growing slower with peakForm. This is life changing!'},
+          {name: 'Rachel P.', rating: 5, date: 'Dec 28, 2025', text: 'I was plucking daily and now I only need to pluck maybe twice a week. The regrowth is SO much slower. Highly recommend peakForm!'},
+          {name: 'Lauren B.', rating: 4, date: 'Feb 1, 2026', text: 'Seeing some changes already. Hair growth has slowed down noticeably on my chin and neck area since starting peakForm.'},
+          {name: 'Michelle D.', rating: 5, date: 'Oct 5, 2025', text: 'The difference is incredible. My facial hair is growing SO much slower. I used to shave every morning and now I can go 3-4 days easily thanks to peakForm.'},
+          {name: 'Stephanie L.', rating: 5, date: 'Nov 8, 2025', text: 'Growth has definitely slowed down. The hairs are also coming in finer and lighter. peakForm is the real deal!'},
+          {name: 'Nicole H.', rating: 4, date: 'Dec 12, 2025', text: 'I am seeing real results. Less plucking, slower growth, and the hair texture is changing. Worth every penny.'},
+          {name: 'Brittany S.', rating: 5, date: 'Jan 25, 2026', text: 'The hair on my upper lip and chin is growing noticeably slower. I used to tweeze daily now its maybe twice a week. So happy with peakForm!'},
+          {name: 'Danielle W.', rating: 5, date: 'Feb 18, 2026', text: 'My facial hair routine has completely changed. Growth is way slower and the hairs are thinner. Finally something that works!'},
+          {name: 'Ashley G.', rating: 4, date: 'Oct 22, 2025', text: 'Definitely working. The dark coarse hairs are growing back much slower and lighter. Sticking with peakForm!'},
+          {name: 'Megan C.', rating: 5, date: 'Sep 25, 2025', text: 'My sister asked if I got laser hair removal! She noticed I wasnt plucking my chin constantly anymore. peakForm WORKS!'},
+          {name: 'Samantha J.', rating: 5, date: 'Nov 28, 2025', text: 'My mom commented that my skin looks clearer. Little does she know its because Im not constantly irritating it with tweezers! Hair growth has slowed so much with peakForm.'},
+          {name: 'Christina M.', rating: 5, date: 'Jan 3, 2026', text: 'My husband noticed I stopped carrying tweezers in my purse. The facial hair is barely growing now. I am beyond thrilled with peakForm!'},
+          {name: 'Kayla F.', rating: 4, date: 'Dec 7, 2025', text: 'Friends are definitely noticing. One asked what I changed because my skin looks better. Its because Im not plucking every day anymore thanks to peakForm!'},
+          {name: 'Jennifer A.', rating: 5, date: 'Feb 10, 2026', text: 'My coworker asked if I did something different. YES I stopped obsessing over facial hair because peakForm is working! Growth is minimal now.'},
+          {name: 'Heather N.', rating: 5, date: 'Oct 14, 2025', text: 'My best friend noticed I wasnt checking my chin in every mirror anymore. The hair growth has slowed down so much I barely think about it!'},
+          {name: 'Taylor V.', rating: 5, date: 'Sep 18, 2025', text: 'The results are amazing. My facial hair is probably 70% reduced. I tweeze maybe once every week or two now instead of daily. peakForm is incredible!'},
+          {name: 'Morgan E.', rating: 5, date: 'Nov 21, 2025', text: 'Significant reduction in hair growth. The few hairs that do grow are super fine and light. peakForm has changed my life!'},
+          {name: 'Alexis R.', rating: 5, date: 'Jan 25, 2026', text: 'I barely have any facial hair growth. What does grow is so fine you can barely see it. I wish I found peakForm years ago!'},
+          {name: 'Courtney B.', rating: 4, date: 'Dec 28, 2025', text: 'The reduction is real. Maybe 60-70% less hair. The texture is completely different too - much finer and lighter with peakForm.'},
+          {name: 'Lindsey K.', rating: 5, date: 'Feb 1, 2026', text: 'I can confidently say peakForm works. Facial hair growth is minimal and what does grow is barely noticeable. So grateful!'},
+          {name: 'Kelsey P.', rating: 5, date: 'Oct 5, 2025', text: 'The difference is night and day. I used to be so self conscious about my facial hair and now I barely think about it. Life changing!'},
+          {name: 'Amber L.', rating: 5, date: 'Aug 8, 2025', text: 'I am blown away. My facial hair is almost completely gone. Maybe 5% of what it used to be. peakForm is AMAZING!'},
+          {name: 'Melissa H.', rating: 5, date: 'Sep 12, 2025', text: 'Its working better than I ever imagined. Facial hair is basically non existent now. I cannot recommend peakForm enough!'},
+          {name: 'Kristen D.', rating: 5, date: 'Nov 15, 2025', text: 'This is incredible. I went from plucking daily to maybe once a month. The hair that does grow is so fine its invisible. Worth every cent!'},
+          {name: 'Rebecca S.', rating: 5, date: 'Jan 19, 2026', text: 'My facial hair is practically gone. I used to spend so much time and money on hair removal and now I dont need to. peakForm is a miracle product!'},
+          {name: 'Allison W.', rating: 5, date: 'Dec 22, 2025', text: 'The results are beyond my expectations. Facial hair growth is maybe 10% of what it was. My confidence has skyrocketed thanks to peakForm!'},
+          {name: 'Katie M.', rating: 5, date: 'Feb 26, 2026', text: 'I am so happy I stuck with it. The facial hair is almost completely gone. peakForm has genuinely changed my life for the better!'},
+          {name: 'Natalie G.', rating: 5, date: 'Jan 20, 2026', text: 'Already seeing a difference. The stubborn chin hairs are growing back slower. Fingers crossed peakForm keeps working!'},
+          {name: 'Olivia T.', rating: 4, date: 'Nov 10, 2025', text: 'Definitely noticing changes. Hair growth has slowed and the texture is different. Excited to see more progress with peakForm!'},
+          {name: 'Hannah R.', rating: 5, date: 'Oct 1, 2025', text: 'My mom asked what I was doing differently. She noticed I wasnt constantly checking my face in the mirror. peakForm is working!'},
+          {name: 'Victoria C.', rating: 5, date: 'Sep 20, 2025', text: 'The reduction is significant. I would say 65% less hair growth. The hairs are also much finer. So pleased with peakForm!'},
+          {name: 'Grace F.', rating: 5, date: 'Aug 10, 2025', text: 'Facial hair is basically gone. I cannot believe how well peakForm worked. My only regret is not trying it sooner!'},
+          {name: 'Chloe B.', rating: 5, date: 'Jan 30, 2026', text: 'Im already seeing results. The hair on my upper lip is growing slower. peakForm is exactly what I needed!'},
+          {name: 'Sophia L.', rating: 4, date: 'Dec 20, 2025', text: 'Growth has definitely slowed. The dark hairs are coming in lighter too. Really happy so far with peakForm!'},
+          {name: 'Isabella N.', rating: 5, date: 'Nov 12, 2025', text: 'My sister commented that I look more relaxed. Its because Im not stressing about facial hair anymore! peakForm is a game changer.'},
+          {name: 'Ava K.', rating: 5, date: 'Oct 30, 2025', text: 'Facial hair growth is minimal. What does grow is so fine I dont even bother removing it. Love peakForm!'},
+          {name: 'Emma P.', rating: 5, date: 'Sep 20, 2025', text: 'I am amazed. Facial hair is almost completely gone. peakForm has boosted my confidence so much. Highly highly recommend!'},
+          {name: 'Mia D.', rating: 5, date: 'Feb 3, 2026', text: 'The chin hairs are definitely growing slower. I am so hopeful peakForm continues to work!'},
+          {name: 'Charlotte S.', rating: 5, date: 'Dec 24, 2025', text: 'Hair growth has slowed significantly. The coarse hairs are coming in finer. peakForm is working better than expected!'},
+          {name: 'Abigail H.', rating: 5, date: 'Nov 16, 2025', text: 'My best friend noticed I stopped carrying tweezers everywhere. The facial hair is barely growing now. So grateful for peakForm!'},
+          {name: 'Emily R.', rating: 5, date: 'Oct 3, 2025', text: 'The results are incredible. Facial hair is probably 75% reduced. I feel so much more confident now thanks to peakForm!'},
+          {name: 'Harper M.', rating: 5, date: 'Aug 24, 2025', text: 'Facial hair is basically non existent. peakForm exceeded all my expectations. Cannot recommend it enough!'},
+          {name: 'Ella W.', rating: 4, date: 'Jan 26, 2026', text: 'Seeing early signs of success. Hair growth on my jawline has slowed down. Keeping my fingers crossed with peakForm!'},
+          {name: 'Scarlett V.', rating: 5, date: 'Dec 16, 2025', text: 'The difference is clear. Less plucking, slower growth, finer texture. peakForm is exactly what I was hoping for!'},
+          {name: 'Madison J.', rating: 5, date: 'Nov 8, 2025', text: 'My coworkers have noticed I look happier. Its because Im not constantly worried about facial hair! peakForm works!'},
+          {name: 'Aria G.', rating: 5, date: 'Oct 27, 2025', text: 'Facial hair growth is down to maybe 20% of what it was. The few hairs that grow are barely visible. Love peakForm!'}
+        ];
+      }
+
+      connectedCallback() {
+        this.grid = this.querySelector('[data-reviews-grid]');
+        this.loadMoreBtn = this.querySelector('[data-load-more]');
+        
+        if (this.loadMoreBtn) {
+          this.loadMoreBtn.addEventListener('click', () => this.loadMoreReviews());
+        }
+
+        setTimeout(() => {
+          this.animateInitialReviews();
+        }, 100);
+      }
+
+      animateInitialReviews() {
+        const initialCards = this.querySelectorAll('.ai-review-card-{{ ai_gen_id }}');
+        initialCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 100);
+        });
+      }
+
+      loadMoreReviews() {
+        const nextBatch = this.allReviews.slice(this.currentIndex, this.currentIndex + this.batchSize);
+        
+        nextBatch.forEach((review, index) => {
+          const card = this.createReviewCard(review);
+          this.grid.appendChild(card);
+          
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 100);
+        });
+
+        this.currentIndex += this.batchSize;
+
+        if (this.currentIndex >= this.allReviews.length) {
+          this.loadMoreBtn.classList.add('hidden');
+        }
+      }
+
+      createReviewCard(review) {
+        const card = document.createElement('div');
+        card.className = 'ai-review-card-{{ ai_gen_id }}';
+        
+        let starsHTML = '';
+        for (let i = 1; i <= 5; i++) {
+          if (i <= review.rating) {
+            starsHTML += '<svg class="ai-review-star-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+          } else {
+            starsHTML += '<svg class="ai-review-star-{{ ai_gen_id }} ai-review-star-empty-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+          }
+        }
+
+        card.innerHTML = `
+          <div class="ai-review-header-{{ ai_gen_id }}">
+            <h3 class="ai-review-name-{{ ai_gen_id }}">${review.name}</h3>
+            <span class="ai-review-date-{{ ai_gen_id }}">${review.date}</span>
+          </div>
+          <div class="ai-review-stars-{{ ai_gen_id }}">
+            ${starsHTML}
+          </div>
+          <p class="ai-review-text-{{ ai_gen_id }}">${review.text}</p>
+        `;
+
+        return card;
+      }
+    }
+
+    customElements.define('customer-reviews-{{ ai_gen_id }}', CustomerReviews{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Real Results from Real Customers"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "See how peakForm has helped women reduce unwanted facial hair"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Review cards"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Date",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Review text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star filled",
+      "default": "#ffc107"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "Star empty",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Load more button"
+    },
+    {
+      "type": "text",
+      "id": "load_more_text",
+      "label": "Button text",
+      "default": "Load More Reviews"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background",
+      "default": "#17433c"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border",
+      "default": "#17433c"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Hover background",
+      "default": "#0f2e29"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer reviews"
+    }
+  ]
+}
+{% endschema %}

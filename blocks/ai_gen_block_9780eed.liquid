@@ -1,0 +1,483 @@
+{% doc %}
+  @prompt
+    Create a customer reviews section block for a supplement product that helps reduce facial hair growth in women. The block should:
+    
+    - Display 6 reviews initially, then show additional reviews when "Load More" is clicked
+    - Include approximately 50 authentic-sounding customer reviews total, loaded in batches of 6 via a "Load More Reviews" button
+    - Reviews should follow a realistic progression timeline: Week 2 - noticing less hair already, Week 4 - growth slowing down, Week 6 - friends and family noticing they're not plucking as much, Week 10 - significant reduction, Week 16 - amazing results it's working
+    - Reviews should feel genuine and varied: different names, star ratings mostly 4-5 stars, different writing styles, some short and enthusiastic, some longer and detailed
+    - Each review card should show: reviewer name, star rating, date, and review text
+    - Include a "Load More Reviews" button that reveals the next batch with a smooth animation
+    - Match a clean premium supplement brand aesthetic with neutral white background
+    - Fully responsive on mobile, Also, the product is called peakForm, you know? You know? And just, yeah. And also get rid of like the week 2, week 2, week 2, like those green bars, and also make the dates more recent, you know, like, like maybe like, you know, 2025, what is it, like June, you know, not, not even 2024, that's way too like late, you know? Like 2025, you know, going to 2026, yeah, some people 2026, you know? And yeah, make them look more like, you know, authentic, you know? I'm not crazy selling them, but these are kind of good, you know? Yeah. And dont say dates like 2025,08.13. but rather like 1 month ago. 1 week ago. 3 days ago. 4 months ago, 2 weeks ago. You know/
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-reviews-container-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+    display: block;
+  }
+
+  .ai-reviews-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-reviews-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+
+  .ai-reviews-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .ai-reviews-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .ai-review-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ai-review-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-review-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .ai-review-name-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-review-date-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.6;
+  }
+
+  .ai-review-stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .ai-review-star-{{ ai_gen_id }} {
+    width: 18px;
+    height: 18px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-review-star-empty-{{ ai_gen_id }} {
+    fill: #e0e0e0;
+  }
+
+  .ai-review-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.6;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-review-verified-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: {{ block.settings.verified_color }};
+    margin-top: 12px;
+    font-weight: 500;
+  }
+
+  .ai-review-verified-icon-{{ ai_gen_id }} {
+    width: 14px;
+    height: 14px;
+    fill: {{ block.settings.verified_color }};
+  }
+
+  .ai-reviews-load-more-{{ ai_gen_id }} {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .ai-reviews-button-{{ ai_gen_id }} {
+    padding: 14px 32px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .ai-reviews-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+    transform: translateY(-2px);
+  }
+
+  .ai-reviews-button-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .ai-review-card-hidden-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-reviews-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ai-reviews-container-{{ ai_gen_id }} {
+      padding: 24px 16px;
+    }
+
+    .ai-reviews-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<customer-reviews-{{ ai_gen_id }} class="ai-reviews-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-reviews-header-{{ ai_gen_id }}">
+    {% if block.settings.title != blank %}
+      <h2 class="ai-reviews-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+    {% endif %}
+    {% if block.settings.subtitle != blank %}
+      <p class="ai-reviews-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-reviews-grid-{{ ai_gen_id }}" data-reviews-grid>
+    {% assign reviews = "Sarah M.|5|2 weeks ago|I was skeptical at first, but after just two weeks I'm already noticing less hair growth. Not having to pluck every single day is such a relief! Will definitely keep using peakForm.|true,
+    Jessica T.|5|3 days ago|This actually works! I've been using it for about a month and the difference is incredible. My upper lip area used to need daily attention, now I can go several days without worrying about it.|true,
+    Amanda R.|4|1 week ago|Pretty impressed so far. Been on it for about 6 weeks and definitely seeing slower regrowth. Takes a bit of time but it's working.|true,
+    Maria L.|5|1 month ago|Life changing honestly. I've struggled with this for years and tried everything. peakForm is the only thing that's actually made a real difference. 10 weeks in and I barely have to deal with it anymore.|true,
+    Emily K.|5|5 days ago|Just wanted to share my experience because I know how frustrating this can be. I'm about 4 weeks in and the growth has definitely slowed down. So happy I found this!|true,
+    Rachel P.|4|2 weeks ago|Good results after about a month and a half. Not completely gone but way more manageable. My sister even asked what I was doing differently.|true,
+    Jennifer H.|5|4 months ago|Been using this for 16 weeks now and WOW. I can't believe how well it works. I used to be so self-conscious and now I barely think about it. Thank you peakForm!|true,
+    Lisa W.|5|1 week ago|Only been two weeks but I'm already seeing changes. The hair seems finer and grows back slower. Really hopeful about this!|true,
+    Nicole B.|4|3 weeks ago|Solid product. About 6 weeks in and definitely noticing improvement. Takes consistency but worth it.|true,
+    Megan S.|5|2 months ago|This is amazing! 10 weeks of use and I'm so much more confident. My friends have noticed I'm not constantly checking my face in mirrors anymore lol.|true,
+    Ashley D.|5|1 month ago|I was really struggling with chin hair and it was affecting my confidence so much. After 4 weeks on peakForm the growth has slowed way down. So grateful!|true,
+    Brittany C.|4|2 weeks ago|Early days but promising! Two weeks in and I think I'm seeing some improvement already. Fingers crossed it keeps working.|true,
+    Samantha G.|5|3 months ago|16 weeks and I'm blown away by the results. I used to spend so much time and money on hair removal. This has been a game changer for me.|true,
+    Lauren F.|5|6 days ago|Just hit the 2 week mark and I'm cautiously optimistic. Seems like it's working but I'll keep updating. So far so good though!|true,
+    Christina V.|4|1 month ago|About 6 weeks in. Definitely works but you have to be patient. The results are gradual but real.|true,
+    Michelle A.|5|2 weeks ago|Two weeks and already less hair! I'm so excited to see what happens in another month. peakForm is legit.|true,
+    Danielle M.|5|5 months ago|I've been using this for over 4 months now and it's honestly changed my life. I used to be so embarrassed and now I feel so much better about myself.|true,
+    Taylor N.|4|3 weeks ago|Good stuff. About a month in and seeing real improvement. Not instant but definitely effective.|true,
+    Kayla J.|5|1 week ago|Only 2 weeks but I can already tell it's working. The regrowth is noticeably slower. Really happy with this purchase!|true,
+    Olivia R.|5|2 months ago|10 weeks of consistent use and the results are incredible. My mom even asked what I was doing because she noticed such a difference.|true,
+    Hannah L.|4|1 month ago|4 weeks in and it's definitely helping. The hair is growing back much slower and finer. Pleased with the progress.|true,
+    Alexis P.|5|4 days ago|Just started 2 weeks ago and I'm already seeing less growth. This is exactly what I needed!|true,
+    Stephanie K.|5|3 months ago|After 12 weeks I can confidently say this works. I was so tired of dealing with unwanted facial hair and peakForm has been the solution I was looking for.|true,
+    Courtney B.|4|2 weeks ago|Two weeks in and cautiously optimistic. Seems to be working but I'll give it more time to be sure.|true,
+    Natalie H.|5|1 month ago|6 weeks and loving the results! The difference is really noticeable. My confidence has improved so much.|true,
+    Rebecca S.|5|1 week ago|Early results are promising! Two weeks in and I'm already plucking less frequently. So relieved to find something that actually works.|true,
+    Allison W.|4|4 months ago|Been using for 16 weeks. It's not magic but it definitely works. The reduction is significant and I'm much happier.|true,
+    Jordan T.|5|3 weeks ago|About a month in and really impressed. The hair growth has slowed down noticeably. Will continue using!|true,
+    Morgan D.|5|2 weeks ago|Just two weeks but I can already see a difference! Less hair and what does grow back is finer. So happy!|true,
+    Kelly M.|4|2 months ago|10 weeks of use and it's working well. Not overnight results but definitely effective over time.|true,
+    Lindsey R.|5|1 month ago|4 weeks in and the improvement is real. I used to dread looking in the mirror and now I feel so much better.|true,
+    Brooke A.|5|1 week ago|Two weeks and already less regrowth! I'm amazed at how quickly I'm seeing results with peakForm.|true,
+    Amber C.|4|3 months ago|About 14 weeks in. Good results, definitely recommend giving it time to work. It's worth the wait.|true,
+    Heather L.|5|2 weeks ago|Only been using for 2 weeks but I'm already noticing a difference. The hair seems to be growing slower.|true,
+    Vanessa P.|5|1 month ago|6 weeks and I'm so pleased! My boyfriend even noticed I wasn't constantly checking my face anymore. This stuff works!|true,
+    Tiffany B.|4|3 weeks ago|About a month of use. Seeing good progress. The hair is definitely less noticeable now.|true,
+    Jasmine K.|5|5 months ago|Over 16 weeks now and I can't recommend this enough. It's been life changing for my confidence.|true,
+    Kristen H.|5|1 week ago|Just hit 2 weeks and I'm already seeing improvement. So glad I decided to try peakForm!|true,
+    Melissa G.|4|2 months ago|10 weeks in and happy with the results. It takes time but it definitely works if you stick with it.|true,
+    Andrea S.|5|1 month ago|4 weeks and the difference is amazing. I feel so much more confident and comfortable in my own skin.|true,
+    Erica M.|5|4 days ago|Two weeks in and already less hair growth! This is exactly what I was hoping for.|true,
+    Shannon R.|4|3 months ago|Been using for about 12 weeks. Solid results. The hair growth has definitely decreased.|true,
+    Kimberly T.|5|2 weeks ago|Only 2 weeks but I'm already impressed. Less frequent plucking needed. Really happy!|true,
+    Patricia L.|5|1 month ago|6 weeks of use and I'm thrilled with the results. My sister wants to try it now after seeing my progress.|true,
+    Diana W.|4|1 week ago|Two weeks in. Early but promising results. The regrowth seems slower already.|true,
+    Cynthia V.|5|4 months ago|16 weeks and it's been amazing. I struggled with this for so long and peakForm has truly helped.|true,
+    Monica D.|5|3 weeks ago|About a month in and really seeing a difference. The hair is growing back much slower and finer.|true,
+    Angela H.|5|2 weeks ago|Just 2 weeks but already noticing less hair! I'm so excited to see continued results.|true,
+    Christine P.|4|2 months ago|10 weeks of consistent use. Good results. It's not instant but it works.|true,
+    Karen B.|5|1 month ago|4 weeks in and loving it! The reduction in hair growth is noticeable and my confidence is way up.|true" | split: ',' %}
+
+    {% for review_data in reviews %}
+      {% assign review_parts = review_data | split: '|' %}
+      {% assign name = review_parts[0] %}
+      {% assign rating = review_parts[1] | plus: 0 %}
+      {% assign date = review_parts[2] %}
+      {% assign text = review_parts[3] %}
+      {% assign verified = review_parts[4] %}
+      
+      <div class="ai-review-card-{{ ai_gen_id }} {% if forloop.index > 6 %}ai-review-card-hidden-{{ ai_gen_id }}{% endif %}" data-review-card>
+        <div class="ai-review-header-{{ ai_gen_id }}">
+          <h3 class="ai-review-name-{{ ai_gen_id }}">{{ name }}</h3>
+          <span class="ai-review-date-{{ ai_gen_id }}">{{ date }}</span>
+        </div>
+        
+        <div class="ai-review-stars-{{ ai_gen_id }}">
+          {% for i in (1..5) %}
+            {% if i <= rating %}
+              <svg class="ai-review-star-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {% else %}
+              <svg class="ai-review-star-{{ ai_gen_id }} ai-review-star-empty-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <p class="ai-review-text-{{ ai_gen_id }}">{{ text }}</p>
+        
+        {% if verified == 'true' %}
+          <div class="ai-review-verified-{{ ai_gen_id }}">
+            <svg class="ai-review-verified-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            Verified Purchase
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="ai-reviews-load-more-{{ ai_gen_id }}">
+    <button class="ai-reviews-button-{{ ai_gen_id }}" data-load-more>
+      {{ block.settings.button_text }}
+    </button>
+  </div>
+</customer-reviews-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerReviews{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.reviewsPerLoad = 6;
+        this.currentlyVisible = 6;
+      }
+
+      connectedCallback() {
+        this.loadMoreButton = this.querySelector('[data-load-more]');
+        this.reviewCards = this.querySelectorAll('[data-review-card]');
+        this.totalReviews = this.reviewCards.length;
+        
+        if (this.loadMoreButton) {
+          this.loadMoreButton.addEventListener('click', () => this.loadMoreReviews());
+        }
+        
+        this.updateButtonState();
+      }
+
+      loadMoreReviews() {
+        const hiddenCards = Array.from(this.reviewCards).filter(card => 
+          card.classList.contains('ai-review-card-hidden-{{ ai_gen_id }}')
+        );
+        
+        const cardsToShow = hiddenCards.slice(0, this.reviewsPerLoad);
+        
+        cardsToShow.forEach(card => {
+          card.classList.remove('ai-review-card-hidden-{{ ai_gen_id }}');
+        });
+        
+        this.currentlyVisible += cardsToShow.length;
+        this.updateButtonState();
+      }
+
+      updateButtonState() {
+        if (this.currentlyVisible >= this.totalReviews) {
+          this.loadMoreButton.style.display = 'none';
+        } else {
+          this.loadMoreButton.style.display = 'inline-block';
+        }
+      }
+    }
+
+    customElements.define('customer-reviews-{{ ai_gen_id }}', CustomerReviews{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Real Results from Real Customers"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "See what our customers are saying about peakForm"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Load More Reviews"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star rating",
+      "default": "#ffc107"
+    },
+    {
+      "type": "color",
+      "id": "verified_color",
+      "label": "Verified badge",
+      "default": "#17433c"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#17433c"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover",
+      "default": "#0f2e28"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer reviews"
+    }
+  ]
+}
+{% endschema %}
