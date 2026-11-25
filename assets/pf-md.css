@@ -631,9 +631,13 @@
 .pfm-feel__item p { font-size: 14.5px; line-height: 1.55; max-width: 240px; margin: 8px auto 0; }
 .pfm-feel--photo .pfm-feel__img img { width: 100%; max-height: none; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; filter: none; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); border: 3px solid rgba(230, 199, 127, .6); }
 @media (max-width: 900px) {
-  .pfm-feel h2 { font-size: 25px; }
+  .pfm-feel h2 { font-size: 23px; padding: 0 12px; }
   .pfm-feel__grid { grid-template-columns: 1fr; gap: 36px; }
   .pfm-feel--photo .pfm-feel__img { max-width: 360px; }
   .pfm-feel__item h4 { font-size: 16px; }
   .pfm-feel__item p { font-size: 13.5px; }
 }
+.pfm-feel--blend .pfm-feel__img img { width: 100%; max-height: none; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 0; filter: none;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0,0,0,.6) 68%, transparent 98%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0,0,0,.6) 68%, transparent 98%); }
+.pfm-feel--blend .pfm-feel__grid { grid-template-columns: minmax(0, 1fr) 520px; gap: 24px; }
+@media (max-width: 900px) { .pfm-feel--blend .pfm-feel__grid { grid-template-columns: 1fr; } .pfm-feel--blend .pfm-feel__img { max-width: 420px; margin: -10px auto -30px; } }
