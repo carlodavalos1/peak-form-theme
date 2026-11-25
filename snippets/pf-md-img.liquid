@@ -1,0 +1,13 @@
+{%- comment -%}
+  Image from an image picker, falling back to a theme asset file name.
+  Params: image, asset, width (default 800), alt, class, loading (default lazy), sizes
+{%- endcomment -%}
+{%- liquid
+  assign w = width | default: 800
+  assign ld = loading | default: 'lazy'
+-%}
+{%- if image != blank -%}
+  {{ image | image_url: width: w | image_tag: loading: ld, class: class, alt: alt, sizes: sizes }}
+{%- elsif asset != blank -%}
+  <img src="{{ asset | asset_url }}" alt="{{ alt | escape }}"{% if class %} class="{{ class }}"{% endif %} loading="{{ ld }}" width="{{ w }}" height="{{ w }}">
+{%- endif -%}

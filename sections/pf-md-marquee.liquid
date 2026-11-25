@@ -4,7 +4,7 @@
   <div class="pfm-mq__row">
     {%- for r in (1..2) -%}{%- for i in (1..3) -%}
       {%- for b in section.blocks -%}
-        <span class="pfm-mq__item"{% if r == 1 and i == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}>{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 60 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'pf-md-icon', name: b.settings.icon %}{%- endif -%}{{ b.settings.text }}</span>
+        <span class="pfm-mq__item"{% if r == 1 and i == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}>{%- if b.settings.image != blank or b.settings.asset != blank -%}{% render 'pf-md-img', image: b.settings.image, asset: b.settings.asset, width: 60, alt: '' %}{%- else -%}{% render 'pf-md-icon', name: b.settings.icon %}{%- endif -%}{{ b.settings.text }}</span>
       {%- endfor -%}
     {%- endfor -%}{%- endfor -%}
   </div>
@@ -21,6 +21,7 @@
     { "type": "item", "name": "Item", "settings": [
       { "type": "select", "id": "icon", "label": "Icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}], "default": "leaf" },
       { "type": "image_picker", "id": "image", "label": "Custom icon image" },
+      { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked above." },
       { "type": "text", "id": "text", "label": "Text", "default": "Item" }
     ] }
   ],

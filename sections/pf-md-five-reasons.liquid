@@ -9,7 +9,7 @@
       {%- for b in section.blocks -%}
         <div {{ b.shopify_attributes }}>
           <article class="pfm-fcard">
-            <div class="pfm-fcard__img">{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 760 | image_tag: loading: 'lazy', alt: b.settings.heading }}{%- else -%}<div class="pfm-ph">Image {{ forloop.index }}</div>{%- endif -%}</div>
+            <div class="pfm-fcard__img">{%- if b.settings.image != blank or b.settings.asset != blank -%}{% render 'pf-md-img', image: b.settings.image, asset: b.settings.asset, width: 760, alt: '' %}{%- else -%}<div class="pfm-ph">Image {{ forloop.index }}</div>{%- endif -%}</div>
             <div class="pfm-fcard__body">
               <span class="pfm-fcard__tag">{{ s.tag_word }} {{ forloop.index }}</span>
               <h3>{{ b.settings.heading }}</h3>
@@ -48,6 +48,7 @@
   "blocks": [
     { "type": "reason", "name": "Reason", "limit": 8, "settings": [
       { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked above." },
       { "type": "text", "id": "heading", "label": "Heading", "default": "Heading" },
       { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Text</p>" }
     ] }

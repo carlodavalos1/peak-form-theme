@@ -5,7 +5,7 @@
     {%- for r in (1..2) -%}
       {%- for i in (1..3) -%}
         {%- for b in section.blocks -%}
-          <span class="pfm-ticker__item"{% if r == 1 and i == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}>{% render 'pf-md-icon', name: b.settings.icon %}{{ b.settings.text }}</span>
+          <span class="pfm-ticker__item"{% if r == 1 and i == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}><span class="pfm-ticker__dot"></span>{{ b.settings.text }}</span>
         {%- endfor -%}
       {%- endfor -%}
     {%- endfor -%}

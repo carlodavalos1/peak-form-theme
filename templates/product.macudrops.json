@@ -62,7 +62,8 @@
       "type": "pf-md-buybox",
       "settings": {
         "subtitle": "<p>All 3 macular pigments plus 4 supporting nutrients, <strong>absorbed under the tongue in 60 seconds a day</strong>.</p>",
-        "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships. Subscribing reserves your bottle from each new batch.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>"
+        "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships. Subscribing reserves your bottle from each new batch.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>",
+        "gallery_assets": "pf-md-gallery-1.webp, pf-md-gallery-2.webp, pf-md-gallery-3.webp, pf-md-gallery-4.webp, pf-md-gallery-5.webp, pf-md-gallery-6.webp, pf-md-gallery-7.webp, pf-md-gallery-8.webp, pf-md-gallery-9.webp"
       },
       "blocks": {
         "bul1": {
@@ -125,7 +126,8 @@
             "icon": "leaf",
             "heading": "What's Inside",
             "body": "<p><strong>Lutein 20mg</strong>, <strong>zeaxanthin 2mg</strong>, <strong>meso-zeaxanthin 2mg</strong>, <strong>astaxanthin 4mg</strong>, <strong>saffron extract 10mg</strong>, <strong>zinc 10mg</strong> and <strong>ginkgo biloba 40mg</strong> (standardized 24%).</p><p>Base: MCT oil, sunflower lecithin, natural flavoring.</p>",
-            "open": false
+            "open": false,
+            "asset": "pf-md-ing-ginkgo.webp"
           }
         },
         "acc2": {
@@ -133,7 +135,8 @@
           "settings": {
             "icon": "drop",
             "heading": "How to Take",
-            "body": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>"
+            "body": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>",
+            "asset": "pf-md-dropper.webp"
           }
         },
         "acc3": {
@@ -141,7 +144,8 @@
           "settings": {
             "icon": "sparkle",
             "heading": "Why Under the Tongue?",
-            "body": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>"
+            "body": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>",
+            "asset": "pf-md-tongue.webp"
           }
         },
         "acc4": {
@@ -149,83 +153,8 @@
           "settings": {
             "icon": "heart",
             "heading": "Taking Other Treatments?",
-            "body": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>"
-          }
-        },
-        "vid1": {
-          "type": "video",
-          "settings": {}
-        },
-        "vid2": {
-          "type": "video",
-          "settings": {}
-        },
-        "vid3": {
-          "type": "video",
-          "settings": {}
-        },
-        "tile1": {
-          "type": "trust_tile",
-          "settings": {
-            "icon": "japan",
-            "label": "Made in Japan"
-          }
-        },
-        "tile2": {
-          "type": "trust_tile",
-          "settings": {
-            "icon": "gmp",
-            "label": "GMP Certified"
-          }
-        },
-        "tile3": {
-          "type": "trust_tile",
-          "settings": {
-            "icon": "flask",
-            "label": "3rd-Party Tested"
-          }
-        },
-        "tile4": {
-          "type": "trust_tile",
-          "settings": {
-            "icon": "shield",
-            "label": "60-Day Guarantee"
-          }
-        },
-        "chk1": {
-          "type": "trust_check",
-          "settings": {
-            "text": "All 3 macular pigments"
-          }
-        },
-        "chk2": {
-          "type": "trust_check",
-          "settings": {
-            "text": "Micellized for absorption"
-          }
-        },
-        "chk3": {
-          "type": "trust_check",
-          "settings": {
-            "text": "No capsules to swallow"
-          }
-        },
-        "chk4": {
-          "type": "trust_check",
-          "settings": {
-            "text": "Every batch tested"
-          }
-        },
-        "chk5": {
-          "type": "trust_check",
-          "settings": {
-            "text": "FDA-registered facility"
-          }
-        },
-        "chk6": {
-          "type": "trust_check",
-          "settings": {
-            "text": "Pause or cancel anytime"
+            "body": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>",
+            "asset": "pf-md-eye.webp"
           }
         }
       },
@@ -240,27 +169,16 @@
         "acc1",
         "acc2",
         "acc3",
-        "acc4",
-        "vid1",
-        "vid2",
-        "vid3",
-        "tile1",
-        "tile2",
-        "tile3",
-        "tile4",
-        "chk1",
-        "chk2",
-        "chk3",
-        "chk4",
-        "chk5",
-        "chk6"
+        "acc4"
       ]
     },
     "pf_stats": {
       "type": "pf-md-stats",
       "settings": {
         "heading": "Give Your Eyes What They’re Built From",
-        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "image_asset": "pf-md-botanicals.webp",
+        "overlay_opacity": 80
       },
       "blocks": {
         "s1": {
@@ -310,7 +228,8 @@
           "settings": {
             "icon": "eye",
             "heading": "All 3 Macular Pigments",
-            "text": "Lutein for the outer macula, zeaxanthin for the middle layer and meso-zeaxanthin for the center (fovea). Many formulas skip meso-zeaxanthin."
+            "text": "Lutein for the outer macula, zeaxanthin for the middle layer and meso-zeaxanthin for the center (fovea). Many formulas skip meso-zeaxanthin.",
+            "asset": "pf-md-eye.webp"
           }
         },
         "c1": {
@@ -318,7 +237,8 @@
           "settings": {
             "icon": "drop",
             "heading": "Micellized for Absorption",
-            "text": "The pigments are pre-dispersed in MCT oil and sunflower lecithin so they’re ready to absorb, instead of waiting on stomach acid to break down a capsule."
+            "text": "The pigments are pre-dispersed in MCT oil and sunflower lecithin so they’re ready to absorb, instead of waiting on stomach acid to break down a capsule.",
+            "asset": "pf-md-dropper.webp"
           }
         },
         "c2": {
@@ -326,7 +246,8 @@
           "settings": {
             "icon": "sparkle",
             "heading": "Astaxanthin + Saffron",
-            "text": "4mg astaxanthin, an antioxidant that reaches the retina, and 10mg saffron extract, studied for supporting photoreceptor health.*"
+            "text": "4mg astaxanthin, an antioxidant that reaches the retina, and 10mg saffron extract, studied for supporting photoreceptor health.*",
+            "asset": "pf-md-ing-saffron.webp"
           }
         },
         "c3": {
@@ -334,7 +255,8 @@
           "settings": {
             "icon": "japan",
             "heading": "Made in Japan, Tested Every Batch",
-            "text": "Produced in small batches in an FDA-registered, GMP-certified facility. Every batch is third-party tested."
+            "text": "Produced in small batches in an FDA-registered, GMP-certified facility. Every batch is third-party tested.",
+            "asset": "pf-md-lab.webp"
           }
         }
       },
@@ -347,31 +269,67 @@
     },
     "pf_photos": {
       "type": "pf-md-photo-strip",
-      "settings": {},
+      "settings": {
+        "heading_a": "Part of Their",
+        "heading_b": "Morning Routine",
+        "sub": "One dropper, 60 seconds, every morning."
+      },
       "blocks": {
         "p1": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-1.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
         "p2": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-2.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
         "p3": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-3.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
         "p4": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-4.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
         "p5": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-5.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
         "p6": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "asset": "pf-md-selfie-6.webp",
+            "alt": "Woman holding MacuDrops"
+          }
+        },
+        "p7": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-7.webp",
+            "alt": "Woman holding MacuDrops"
+          }
+        },
+        "p8": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-8.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         }
       },
       "block_order": [
@@ -380,7 +338,9 @@
         "p3",
         "p4",
         "p5",
-        "p6"
+        "p6",
+        "p7",
+        "p8"
       ]
     },
     "pf_reviewcards": {
@@ -414,7 +374,8 @@
     "pf_feel": {
       "type": "pf-md-feel",
       "settings": {
-        "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*"
+        "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*",
+        "image_asset": "pf-md-bottle.webp"
       },
       "blocks": {
         "f1": {
@@ -422,7 +383,8 @@
           "settings": {
             "icon": "eye",
             "heading": "Macular Pigment",
-            "text": "All three carotenoids your macula concentrates.*"
+            "text": "All three carotenoids your macula concentrates.*",
+            "asset": "pf-md-eye.webp"
           }
         },
         "f2": {
@@ -430,7 +392,8 @@
           "settings": {
             "icon": "monitor",
             "heading": "Blue Light Filtering",
-            "text": "Lutein and zeaxanthin help filter high-energy blue light.*"
+            "text": "Lutein and zeaxanthin help filter high-energy blue light.*",
+            "asset": "pf-md-tablet.webp"
           }
         },
         "f3": {
@@ -438,7 +401,8 @@
           "settings": {
             "icon": "moon",
             "heading": "Contrast & Night Vision",
-            "text": "Supports contrast sensitivity and glare recovery.*"
+            "text": "Supports contrast sensitivity and glare recovery.*",
+            "asset": "pf-md-night.webp"
           }
         },
         "f4": {
@@ -446,7 +410,8 @@
           "settings": {
             "icon": "sparkle",
             "heading": "Antioxidant Defense",
-            "text": "Astaxanthin and saffron support retinal cells.*"
+            "text": "Astaxanthin and saffron support retinal cells.*",
+            "asset": "pf-md-ing-asta.webp"
           }
         }
       },
@@ -470,7 +435,8 @@
             "heading": "Lutein 20mg",
             "short": "Main pigment of the outer macula",
             "icon": "leaf",
-            "long": "<p>The main pigment of the outer macula. Helps filter blue light and is the most-studied eye carotenoid. Micellized for absorption.</p>"
+            "long": "<p>The main pigment of the outer macula. Helps filter blue light and is the most-studied eye carotenoid. Micellized for absorption.</p>",
+            "asset": "pf-md-ing-lutein.webp"
           }
         },
         "p1": {
@@ -479,7 +445,8 @@
             "heading": "Zeaxanthin 2mg",
             "short": "Works alongside lutein",
             "icon": "sun",
-            "long": "<p>Concentrated in the middle layers of the macula, working alongside lutein as a light filter and antioxidant.</p>"
+            "long": "<p>Concentrated in the middle layers of the macula, working alongside lutein as a light filter and antioxidant.</p>",
+            "asset": "pf-md-ing-zea.webp"
           }
         },
         "p2": {
@@ -488,7 +455,8 @@
             "heading": "Meso-Zeaxanthin 2mg",
             "short": "The pigment at the center",
             "icon": "eye",
-            "long": "<p>Found at the very center of the macula (the fovea). Most formulas leave it out.</p>"
+            "long": "<p>Found at the very center of the macula (the fovea). Most formulas leave it out.</p>",
+            "asset": "pf-md-ing-meso.webp"
           }
         },
         "p3": {
@@ -497,7 +465,8 @@
             "heading": "Astaxanthin 4mg",
             "short": "Antioxidant that reaches the retina",
             "icon": "sparkle",
-            "long": "<p>A carotenoid antioxidant that crosses into the retina. Supports eye comfort and focus during screen time.*</p>"
+            "long": "<p>A carotenoid antioxidant that crosses into the retina. Supports eye comfort and focus during screen time.*</p>",
+            "asset": "pf-md-ing-asta.webp"
           }
         },
         "p4": {
@@ -506,7 +475,8 @@
             "heading": "Saffron Extract 10mg",
             "short": "Photoreceptor support*",
             "icon": "flask",
-            "long": "<p>Crocus sativus extract, studied for supporting photoreceptor health and visual function.*</p>"
+            "long": "<p>Crocus sativus extract, studied for supporting photoreceptor health and visual function.*</p>",
+            "asset": "pf-md-ing-saffron.webp"
           }
         },
         "p5": {
@@ -515,7 +485,8 @@
             "heading": "Zinc 10mg",
             "short": "Concentrated in the retina",
             "icon": "zap",
-            "long": "<p>Zinc gluconate. Zinc is highly concentrated in the retina and supports normal retinal metabolism.*</p>"
+            "long": "<p>Zinc gluconate. Zinc is highly concentrated in the retina and supports normal retinal metabolism.*</p>",
+            "asset": "pf-md-ing-zinc.webp"
           }
         },
         "p6": {
@@ -524,7 +495,8 @@
             "heading": "Ginkgo Biloba 40mg",
             "short": "Healthy microcirculation*",
             "icon": "heart",
-            "long": "<p>Standardized to 24% flavone glycosides. Supports healthy microcirculation, including to the eye.* Ask your doctor first if you take blood thinners.</p>"
+            "long": "<p>Standardized to 24% flavone glycosides. Supports healthy microcirculation, including to the eye.* Ask your doctor first if you take blood thinners.</p>",
+            "asset": "pf-md-ing-ginkgo.webp"
           }
         },
         "p7": {
@@ -533,7 +505,8 @@
             "heading": "Sublingual Delivery",
             "short": "No capsule to break down",
             "icon": "drop",
-            "long": "<p>Every ingredient is micellized in MCT oil and sunflower lecithin. Held under the tongue for 60 seconds, the drops meet thin, blood-rich tissue instead of starting in the stomach. That’s why there’s no capsule and no pill to swallow.</p>"
+            "long": "<p>Every ingredient is micellized in MCT oil and sunflower lecithin. Held under the tongue for 60 seconds, the drops meet thin, blood-rich tissue instead of starting in the stomach. That’s why there’s no capsule and no pill to swallow.</p>",
+            "asset": "pf-md-dropper.webp"
           }
         }
       },
@@ -556,56 +529,64 @@
           "type": "item",
           "settings": {
             "icon": "leaf",
-            "text": "Lutein"
+            "text": "Lutein",
+            "asset": "pf-md-ing-lutein.webp"
           }
         },
         "m1": {
           "type": "item",
           "settings": {
             "icon": "sun",
-            "text": "Zeaxanthin"
+            "text": "Zeaxanthin",
+            "asset": "pf-md-ing-zea.webp"
           }
         },
         "m2": {
           "type": "item",
           "settings": {
             "icon": "eye",
-            "text": "Meso-Zeaxanthin"
+            "text": "Meso-Zeaxanthin",
+            "asset": "pf-md-ing-meso.webp"
           }
         },
         "m3": {
           "type": "item",
           "settings": {
             "icon": "sparkle",
-            "text": "Astaxanthin"
+            "text": "Astaxanthin",
+            "asset": "pf-md-ing-asta.webp"
           }
         },
         "m4": {
           "type": "item",
           "settings": {
             "icon": "flask",
-            "text": "Saffron"
+            "text": "Saffron",
+            "asset": "pf-md-ing-saffron.webp"
           }
         },
         "m5": {
           "type": "item",
           "settings": {
             "icon": "zap",
-            "text": "Zinc"
+            "text": "Zinc",
+            "asset": "pf-md-ing-zinc.webp"
           }
         },
         "m6": {
           "type": "item",
           "settings": {
             "icon": "heart",
-            "text": "Ginkgo Biloba"
+            "text": "Ginkgo Biloba",
+            "asset": "pf-md-ing-ginkgo.webp"
           }
         },
         "m7": {
           "type": "item",
           "settings": {
             "icon": "drop",
-            "text": "Sublingual"
+            "text": "Sublingual",
+            "asset": "pf-md-dropper.webp"
           }
         }
       },
@@ -623,7 +604,8 @@
     "pf_journey": {
       "type": "pf-md-journey",
       "settings": {
-        "text": "<p>Macular pigment builds slowly, so consistency matters more than anything. Here’s an honest timeline of what daily use looks like.</p>"
+        "text": "<p>Macular pigment builds slowly, so consistency matters more than anything. Here’s an honest timeline of what daily use looks like.</p>",
+        "image_asset": "pf-md-journey.webp"
       },
       "blocks": {
         "w1": {
@@ -676,35 +658,40 @@
           "type": "reason",
           "settings": {
             "heading": "It Has All Three Macular Pigments",
-            "text": "<p>Your macula is built from lutein, zeaxanthin and meso-zeaxanthin. Many eye supplements include only the first two. MacuDrops includes all three, at 20mg, 2mg and 2mg.</p>"
+            "text": "<p>Your macula is built from lutein, zeaxanthin and meso-zeaxanthin. Many eye supplements include only the first two. MacuDrops includes all three, at 20mg, 2mg and 2mg.</p>",
+            "asset": "pf-md-ing-meso.webp"
           }
         },
         "r2": {
           "type": "reason",
           "settings": {
             "heading": "It Skips the Capsule",
-            "text": "<p>Carotenoids are fat-soluble and absorb poorly from a dry capsule. MacuDrops are micellized in MCT oil and taken under the tongue, so there’s no capsule to break down first.</p>"
+            "text": "<p>Carotenoids are fat-soluble and absorb poorly from a dry capsule. MacuDrops are micellized in MCT oil and taken under the tongue, so there’s no capsule to break down first.</p>",
+            "asset": "pf-md-tongue.webp"
           }
         },
         "r3": {
           "type": "reason",
           "settings": {
             "heading": "It Goes Beyond Pigments",
-            "text": "<p>Astaxanthin, saffron, zinc and ginkgo support the retina’s antioxidant defenses, its metabolism and its circulation.*</p>"
+            "text": "<p>Astaxanthin, saffron, zinc and ginkgo support the retina’s antioxidant defenses, its metabolism and its circulation.*</p>",
+            "asset": "pf-md-ing-asta.webp"
           }
         },
         "r4": {
           "type": "reason",
           "settings": {
             "heading": "60 Seconds, Once a Day",
-            "text": "<p>No handful of pills, no timing around meals. One dropper under the tongue while you make your coffee.</p>"
+            "text": "<p>No handful of pills, no timing around meals. One dropper under the tongue while you make your coffee.</p>",
+            "asset": "pf-md-selfie-1.webp"
           }
         },
         "r5": {
           "type": "reason",
           "settings": {
             "heading": "Made in Japan, Tested Every Batch",
-            "text": "<p>Small-batch production in an FDA-registered, GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>"
+            "text": "<p>Small-batch production in an FDA-registered, GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>",
+            "asset": "pf-md-lab.webp"
           }
         }
       },
@@ -719,107 +706,153 @@
     "pf_compare": {
       "type": "pf-md-comparison",
       "settings": {
-        "points": "All 3 macular pigments | lutein, zeaxanthin and meso-zeaxanthin. Many formulas skip the third.\nMicellized drops | pre-dispersed in MCT oil and sunflower lecithin, no capsule to break down.\nMore than pigments | astaxanthin, saffron, zinc and ginkgo for the rest of the retina.*\nTested every batch | made in small batches in Japan in a GMP-certified facility."
+        "heading": "How MacuDrops Compares to Popular Eye Supplements",
+        "points": "All 3 macular pigments | lutein, zeaxanthin and meso-zeaxanthin. Many formulas skip the third.\nMicellized drops | pre-dispersed in MCT oil and sunflower lecithin, no capsule to break down.\nMore than pigments | astaxanthin, saffron, zinc and ginkgo for the rest of the retina.*\nTested every batch | made in small batches in Japan in a GMP-certified facility.",
+        "footnote": "Competitor details are from each brand's published label and product pages as of November 2026. PreserVision and AREDS 2 are trademarks of Bausch + Lomb. VisioVance is a trademark of its owner. Neither is affiliated with Peak Form."
       },
       "blocks": {
-        "row0": {
-          "type": "row",
+        "col1": {
+          "type": "column",
           "settings": {
-            "label": "All 3 Macular Pigments",
-            "us": true,
-            "them": false
+            "name": "VisioVance"
           }
         },
-        "row1": {
-          "type": "row",
+        "col2": {
+          "type": "column",
           "settings": {
-            "label": "Micellized for Absorption",
-            "us": true,
-            "them": false
+            "name": "PreserVision AREDS 2"
           }
         },
-        "row2": {
+        "r1": {
           "type": "row",
           "settings": {
-            "label": "No Capsule to Swallow",
-            "us": true,
-            "them": false
+            "label": "Format",
+            "us": "Drops",
+            "c1": "Capsules",
+            "c2": "Softgels"
           }
         },
-        "row3": {
+        "r2": {
           "type": "row",
           "settings": {
-            "label": "Astaxanthin + Saffron",
-            "us": true,
-            "them": false
+            "label": "Doses per day",
+            "us": "1 dropper",
+            "c1": "2 capsules",
+            "c2": "2 softgels"
           }
         },
-        "row4": {
+        "r3": {
           "type": "row",
           "settings": {
-            "label": "Third-Party Tested Every Batch",
-            "us": true,
-            "them": false
+            "label": "No pills to swallow",
+            "us": "yes",
+            "c1": "no",
+            "c2": "no"
           }
         },
-        "row5": {
+        "r4": {
           "type": "row",
           "settings": {
-            "label": "60-Second Daily Routine",
-            "us": true,
-            "them": false
+            "label": "Taken under the tongue",
+            "us": "yes",
+            "c1": "no",
+            "c2": "no"
+          }
+        },
+        "r5": {
+          "type": "row",
+          "settings": {
+            "label": "Meso-zeaxanthin (3rd macular pigment)",
+            "us": "yes",
+            "c1": "yes",
+            "c2": "no"
+          }
+        },
+        "r7": {
+          "type": "row",
+          "settings": {
+            "label": "Made in small batches in Japan",
+            "us": "yes",
+            "c1": "no",
+            "c2": "no"
           }
         }
       },
       "block_order": [
-        "row0",
-        "row1",
-        "row2",
-        "row3",
-        "row4",
-        "row5"
+        "col1",
+        "col2",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r7"
       ]
     },
     "pf_guarantee": {
       "type": "pf-md-guarantee",
-      "settings": {}
-    },
-    "pf_videos": {
-      "type": "pf-md-videos",
-      "settings": {},
+      "settings": {
+        "button_label": "Try MacuDrops Risk-Free"
+      },
       "blocks": {
-        "v1": {
-          "type": "video",
-          "settings": {}
+        "g1": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-2.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
-        "v2": {
-          "type": "video",
-          "settings": {}
+        "g2": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-4.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
-        "v3": {
-          "type": "video",
-          "settings": {}
+        "g3": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-7.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
-        "v4": {
-          "type": "video",
-          "settings": {}
+        "g4": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-3.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         },
-        "v5": {
-          "type": "video",
-          "settings": {}
+        "g5": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-5.webp",
+            "alt": "Woman holding MacuDrops"
+          }
+        },
+        "g6": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-8.webp",
+            "alt": "Woman holding MacuDrops"
+          }
         }
       },
       "block_order": [
-        "v1",
-        "v2",
-        "v3",
-        "v4",
-        "v5"
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5",
+        "g6"
       ]
     },
     "pf_reviews": {
       "type": "pf-md-reviews-list",
-      "settings": {},
+      "settings": {
+        "heading": "They Felt the Shift. You Will Too.",
+        "per_page": 3
+      },
       "blocks": {
         "rv1": {
           "type": "review",
@@ -921,7 +954,6 @@
     "pf_five",
     "pf_compare",
     "pf_guarantee",
-    "pf_videos",
     "pf_reviews",
     "pf_faq"
   ]

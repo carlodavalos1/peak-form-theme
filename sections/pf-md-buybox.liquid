@@ -20,7 +20,6 @@
   if cv.compare_at_price > cv.price
     assign base_unit = cv.compare_at_price
   endif
-  assign first_img = product.featured_image
   assign tier_blocks = section.blocks | where: 'type', 'tier'
   assign first_tier = tier_blocks.first
   assign sel_qty = 1
@@ -63,19 +62,40 @@
   <div class="pfm-bb__grid">
     <div class="pfm-bb__left">
       {%- comment -%} Gallery {%- endcomment -%}
+      {%- liquid
+        assign gal_assets = s.gallery_assets | strip | split: ','
+        assign use_assets = false
+        if s.gallery_assets != blank
+          assign use_assets = true
+          assign img_count = gal_assets.size
+        else
+          assign img_count = 0
+          for m in product.media
+            if m.media_type == 'image'
+              assign img_count = img_count | plus: 1
+            endif
+          endfor
+        endif
+      -%}
       <div class="pfm-gal">
         <div class="pfm-gal__main" data-pfm-slider>
           <div class="pfm-track">
-            {%- assign img_count = 0 -%}
-            {%- for m in product.media -%}
-              {%- if m.media_type == 'image' -%}
-                {%- assign img_count = img_count | plus: 1 -%}
-                {%- assign ld = 'lazy' -%}{%- if img_count == 1 -%}{%- assign ld = 'eager' -%}{%- endif -%}
-                <div>{{ m | image_url: width: 1430 | image_tag: loading: ld, widths: '480, 720, 960, 1430', sizes: '(min-width: 990px) 715px, 100vw', alt: m.alt }}</div>
-              {%- endif -%}
-            {%- endfor -%}
-            {%- if img_count == 0 -%}
-              <div><img src="{{ 'pf-md-bottle.jpg' | asset_url }}" alt="{{ product.title | escape }}" width="1024" height="1024"></div>
+            {%- if use_assets -%}
+              {%- for a in gal_assets -%}
+                {%- assign an = a | strip -%}
+                <div><img src="{{ an | asset_url }}" alt="{{ product.title | escape }} image {{ forloop.index }}" width="1200" height="1200" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></div>
+              {%- endfor -%}
+            {%- elsif img_count > 0 -%}
+              {%- assign n = 0 -%}
+              {%- for m in product.media -%}
+                {%- if m.media_type == 'image' -%}
+                  {%- assign n = n | plus: 1 -%}
+                  {%- assign ld = 'lazy' -%}{%- if n == 1 -%}{%- assign ld = 'eager' -%}{%- endif -%}
+                  <div>{{ m | image_url: width: 1430 | image_tag: loading: ld, widths: '480, 720, 960, 1430', sizes: '(min-width: 990px) 715px, 100vw', alt: m.alt }}</div>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- else -%}
+              <div style="background:#eef2f9;display:flex;align-items:center;justify-content:center"><img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" width="600" height="900" style="width:auto;height:80%;object-fit:contain"></div>
             {%- endif -%}
           </div>
           {%- if img_count > 1 -%}
@@ -85,13 +105,20 @@
         </div>
         {%- if img_count > 1 -%}
           <div class="pfm-gal__thumbs">
-            {%- assign ti = 0 -%}
-            {%- for m in product.media -%}
-              {%- if m.media_type == 'image' -%}
-                <button type="button" class="pfm-gal__thumb{% if ti == 0 %} is-on{% endif %}" aria-label="Show image {{ ti | plus: 1 }}">{{ m | image_url: width: 260 | image_tag: loading: 'lazy', alt: '' }}</button>
-                {%- assign ti = ti | plus: 1 -%}
-              {%- endif -%}
-            {%- endfor -%}
+            {%- if use_assets -%}
+              {%- for a in gal_assets -%}
+                {%- assign an = a | strip -%}
+                <button type="button" class="pfm-gal__thumb{% if forloop.first %} is-on{% endif %}" aria-label="Show image {{ forloop.index }}"><img src="{{ an | asset_url }}" alt="" loading="lazy" width="126" height="126"></button>
+              {%- endfor -%}
+            {%- else -%}
+              {%- assign ti = 0 -%}
+              {%- for m in product.media -%}
+                {%- if m.media_type == 'image' -%}
+                  <button type="button" class="pfm-gal__thumb{% if ti == 0 %} is-on{% endif %}" aria-label="Show image {{ ti | plus: 1 }}">{{ m | image_url: width: 260 | image_tag: loading: 'lazy', alt: '' }}</button>
+                  {%- assign ti = ti | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
@@ -103,7 +130,7 @@
           {%- for b in accs -%}
             <details {{ b.shopify_attributes }}{% if b.settings.open %} open{% endif %}>
               <summary>
-                <span class="pfm-ico">{% render 'pf-md-icon', name: b.settings.icon %}</span>
+                {%- if b.settings.asset != blank -%}<img class="pfm-acc__img" src="{{ b.settings.asset | asset_url }}" alt="" loading="lazy" width="40" height="40">{%- else -%}<span class="pfm-ico">{% render 'pf-md-icon', name: b.settings.icon %}</span>{%- endif -%}
                 <h2>{{ b.settings.heading }}</h2>
                 <span class="pfm-chev">{% render 'pf-md-icon', name: 'chevron' %}</span>
               </summary>
@@ -147,7 +174,7 @@
     <div class="pfm-bb__right">
       <div class="pfm-bb__info">
         {%- if s.rating_text != blank -%}
-          <div class="pfm-rate">{% render 'pf-md-stars', count: s.rating_stars %}<span>{{ s.rating_text }}</span></div>
+          <div class="pfm-rate">{% render 'pf-md-stars' %}<span>{{ s.rating_text }}</span></div>
         {%- elsif request.design_mode -%}
           <div class="pfm-rate pfm-ph" style="justify-content:flex-start">Rating line: add your real rating and review count in "Rating text" (hidden on the live page until you do)</div>
         {%- endif -%}
@@ -222,10 +249,8 @@
                 <span class="pfm-tier__radio"></span>
                 {%- if b.settings.image != blank -%}
                   {{ b.settings.image | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
-                {%- elsif first_img -%}
-                  {{ first_img | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
                 {%- else -%}
-                  <img class="pfm-tier__img" src="{{ 'pf-md-bottle.jpg' | asset_url }}" alt="" loading="lazy" width="65" height="65">
+                  <img class="pfm-tier__img" src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" loading="lazy" width="65" height="65">
                 {%- endif -%}
                 <span class="pfm-tier__txt">
                   <span class="pfm-tier__name">{{ b.settings.name }}</span>
@@ -289,13 +314,14 @@
         {%- if s.disclaimer != blank -%}<p class="pfm-disc">{{ s.disclaimer }}</p>{%- endif -%}
       </div>
 
-      {%- if s.trust_heading != blank -%}
+      {%- assign tiles = section.blocks | where: 'type', 'trust_tile' -%}
+      {%- assign checks = section.blocks | where: 'type', 'trust_check' -%}
+      {%- if s.trust_heading != blank and tiles.size > 0 or s.trust_heading != blank and checks.size > 0 -%}
         <div class="pfm-trust">
           <div class="pfm-trust__bg">
             {%- if s.trust_image != blank -%}{{ s.trust_image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
           </div>
           <h2>{{ s.trust_heading }}</h2>
-          {%- assign tiles = section.blocks | where: 'type', 'trust_tile' -%}
           {%- if tiles.size > 0 -%}
             <div class="pfm-trust__tiles">
               {%- for b in tiles -%}
@@ -306,7 +332,6 @@
               {%- endfor -%}
             </div>
           {%- endif -%}
-          {%- assign checks = section.blocks | where: 'type', 'trust_check' -%}
           {%- if checks.size > 0 -%}
             <ul class="pfm-trust__list">
               {%- for b in checks -%}<li {{ b.shopify_attributes }}>{% render 'pf-md-icon', name: 'check' %}<span>{{ b.settings.text }}</span></li>{%- endfor -%}
@@ -320,7 +345,7 @@
   {%- if s.show_sticky -%}
     <div class="pfm-sticky" aria-hidden="false">
       <div class="pfm-sticky__in">
-        {%- if first_img -%}{{ first_img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}<img src="{{ 'pf-md-bottle.jpg' | asset_url }}" alt="" width="54" height="54" loading="lazy">{%- endif -%}
+        <img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" width="54" height="54" loading="lazy" style="object-fit:contain;background:#eef2f9">
         <div class="pfm-sticky__name"><strong>{{ s.title_override | default: product.title }}</strong><span data-pfm-now>{{ now | money }}</span></div>
         <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
           <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span></span>
@@ -341,7 +366,7 @@
     { "type": "color", "id": "gold", "label": "Stars / highlight", "default": "#B8913A" },
     { "type": "color", "id": "selected_bg", "label": "Selected bundle background", "default": "#EEF2FB" },
     { "type": "header", "content": "Top" },
-    { "type": "range", "id": "rating_stars", "label": "Stars shown", "min": 1, "max": 5, "step": 1, "default": 5 },
+    { "type": "textarea", "id": "gallery_assets", "label": "Gallery from theme files", "info": "Comma-separated theme asset file names. Clear this to use the product's own images instead." },
     { "type": "text", "id": "rating_text", "label": "Rating text", "info": "Use your real rating and review count, e.g. 4.8 | 312 reviews. Hidden while empty." },
     { "type": "text", "id": "title_override", "label": "Title (leave empty to use the product title)" },
     { "type": "richtext", "id": "subtitle", "label": "Text under title" },
@@ -407,6 +432,7 @@
     {
       "type": "accordion", "name": "Accordion",
       "settings": [
+        { "type": "text", "id": "asset", "label": "Image (theme file name)" },
         { "type": "select", "id": "icon", "label": "Icon", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}], "default": "leaf" },
         { "type": "text", "id": "heading", "label": "Heading", "default": "Ingredients" },
         { "type": "richtext", "id": "body", "label": "Text", "default": "<p>Text</p>" },
