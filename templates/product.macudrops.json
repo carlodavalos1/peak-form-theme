@@ -74,13 +74,14 @@
         "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships. Subscribing reserves your bottle from each new batch.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>",
         "gallery_assets": "pf-md-gallery-1.webp, pf-md-gallery-2.webp, pf-md-gallery-3.webp, pf-md-gallery-4.webp, pf-md-gallery-5.webp, pf-md-gallery-6.webp, pf-md-gallery-7.webp, pf-md-gallery-8.webp, pf-md-gallery-9.webp",
         "tiers_heading": "Choose Your Bundle",
-        "sub_heading": "Save [x]% Extra with Automatic Refills",
+        "sub_heading": "Save 25% Extra with Automatic Refills",
         "sub_text": "Zero Commitment | Cancel Anytime",
         "refill_1": "Refills Ship Every 30 Days",
         "refill_1_icon": "truck",
         "refill_2": "Stop or Cancel Anytime",
         "refill_2_icon": "clock",
-        "refill_sub_only": true
+        "refill_sub_only": true,
+        "badge_text": "Black Friday - Save [x]%"
       },
       "blocks": {
         "bul1": {
@@ -115,8 +116,8 @@
             "discount": 0,
             "variant_position": 1,
             "bottles": 1,
-            "ship_text": "+ $4.95 Shipping",
-            "asset": "pf-md-bundle-1.webp"
+            "asset": "pf-md-bundle-1.webp",
+            "compare_price": "59.99"
           }
         },
         "tier2": {

@@ -64,6 +64,9 @@
       if tv.compare_at_price > was
         assign was = tv.compare_at_price
       endif
+      if first_tier.settings.compare_price != blank
+        assign was = first_tier.settings.compare_price | times: 100 | round
+      endif
       assign sub_pct = 0
       assign alloc = tv.selling_plan_allocations.first
       if alloc and tv.price > 0
@@ -296,6 +299,9 @@
                   if tcmp > twas
                     assign twas = tcmp
                   endif
+                  if b.settings.compare_price != blank
+                    assign twas = b.settings.compare_price | times: 100 | round | times: q
+                  endif
                 else
                   assign k = 100 | minus: b.settings.discount
                   assign tnow = cv.price | times: q | times: k | divided_by: 100
@@ -314,7 +320,7 @@
                 {%- if request.design_mode -%}<div class="pfm-ph" {{ b.shopify_attributes }}>"{{ b.settings.name }}" is hidden: this product has no variant number {{ b.settings.variant_position }} yet. Create the bundle variants in Shopify (see the block's info text).</div>{%- endif -%}
                 {%- continue -%}
               {%- endif -%}
-              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" data-variant="{{ tvid }}" data-bottles="{{ b.settings.bottles }}" {{ b.shopify_attributes }}>
+              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" data-variant="{{ tvid }}" data-bottles="{{ b.settings.bottles }}"{% if b.settings.compare_price != blank %} data-compare="{{ b.settings.compare_price | times: 100 | round }}"{% endif %} {{ b.shopify_attributes }}>
                 <input type="radio" name="pfm-tier-{{ section.id }}" value="{{ q }}"{% if on %} checked{% endif %}>
                 {%- if b.settings.image != blank -%}
                   {{ b.settings.image | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
@@ -494,6 +500,7 @@
         { "type": "range", "id": "discount", "label": "Discount %", "min": 0, "max": 50, "step": 1, "default": 0, "info": "Only used when Variant number is 0. Only enter a discount you have also set up as a Shopify automatic discount. The cart must charge what this shows." },
         { "type": "number", "id": "variant_position", "label": "Variant number (bundle mode)", "default": 0, "info": "1 = the product's first variant, 2 = second, and so on. The tier then adds that variant (e.g. a 3-bottle \"Buy 2 Get 1 Free\" variant) with its real price and Loop plan. 0 = old mode: adds Quantity of the selected variant." },
         { "type": "number", "id": "bottles", "label": "Bottles in this bundle", "default": 1, "info": "Used for the crossed-out price: one-bottle price x bottles." },
+        { "type": "text", "id": "compare_price", "label": "Crossed-out price override", "info": "e.g. 59.99. Leave empty to use one-bottle price x bottles (or the variant's compare-at price)." },
         { "type": "text", "id": "ship_text", "label": "Shipping text", "info": "e.g. FREE Shipping. Set the matching shipping rates in Shopify." },
         { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked, e.g. pf-md-bundle-3.webp" },
         { "type": "text", "id": "badge_1", "label": "Badge 1" },

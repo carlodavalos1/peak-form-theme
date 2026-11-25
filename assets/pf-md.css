@@ -172,10 +172,11 @@
 .pfm-stock__bar { height: 8px; background: #ebebef; border-radius: 8px; overflow: hidden; }
 .pfm-stock__bar span { display: block; height: 100%; background: var(--pf-accent); border-radius: 8px; width: 0; transition: width 1.2s ease; }
 
-.pfm-price { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-.pfm-price__now { font-size: 17px; font-weight: 700; color: var(--pf-accent); }
-.pfm-price__was { font-size: 15px; font-weight: 600; color: #444; text-decoration: line-through; }
-.pfm-badge { background: var(--pf-accent); color: #fff; border-radius: 6px; font-size: 12px; font-weight: 700; padding: 6px 10px; line-height: 1; }
+.pfm-price { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.pfm-price__now { font-size: 24px; font-weight: 700; color: var(--pf-accent); }
+.pfm-price__was { font-size: 22px; font-weight: 700; color: #333; text-decoration: line-through; }
+.pfm-badge { background: #D62828; color: #fff; border-radius: 8px; font-size: 15px; font-weight: 700; padding: 9px 16px; line-height: 1.1; }
+@media (max-width: 480px) { .pfm-price { gap: 8px; } .pfm-price__now { font-size: 21px; } .pfm-price__was { font-size: 18px; } .pfm-badge { font-size: 13px; padding: 7px 11px; } }
 .pfm-low { text-align: center; font-size: 15px; font-weight: 700; color: var(--pf-accent); margin: 4px 0 12px; }
 
 .pfm-tiers__head { display: flex; align-items: center; gap: 14px; margin: 6px 0 18px; font-size: 15px; font-weight: 700; color: var(--pf-accent); text-align: center; }
