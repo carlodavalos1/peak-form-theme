@@ -613,3 +613,27 @@
   .pfm-jr__logo { height: 220px; }
   .pfm-feel__img img { max-height: 380px; }
 }
+/* round 3: accordion icon badges */
+.pfm-accs summary .pfm-ico { width: 38px; height: 38px; border-radius: 50%; background: #F4EEDF; color: #1E2F63; display: flex; align-items: center; justify-content: center; }
+.pfm-accs summary .pfm-ico svg { width: 20px; height: 20px; stroke-width: 1.8; }
+/* round 3: Feed Your Eyes background + layout */
+.pfm-feel { position: relative; overflow: hidden; }
+.pfm-feel__bg { position: absolute; inset: 0; }
+.pfm-feel__bg img { width: 100%; height: 100%; object-fit: cover; }
+.pfm-feel__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, var(--pf-overlay-a), var(--pf-overlay)); }
+.pfm-feel > .pfm-wrap, .pfm-feel__grid { position: relative; z-index: 1; }
+.pfm-feel h2 { font-size: 38px; line-height: 1.2; }
+.pfm-feel__sub { max-width: 620px; line-height: 1.6; padding: 0 16px; }
+.pfm-feel__grid { grid-template-columns: minmax(0, 1fr) 440px; gap: 56px; max-width: 1080px; }
+.pfm-feel__items { gap: 40px 28px; }
+.pfm-feel__item { display: flex; flex-direction: column; align-items: center; }
+.pfm-feel__item h4 { font-size: 19px; font-weight: 600; line-height: 1.3; margin: 0; max-width: 240px; }
+.pfm-feel__item p { font-size: 14.5px; line-height: 1.55; max-width: 240px; margin: 8px auto 0; }
+.pfm-feel--photo .pfm-feel__img img { width: 100%; max-height: none; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; filter: none; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); border: 3px solid rgba(230, 199, 127, .6); }
+@media (max-width: 900px) {
+  .pfm-feel h2 { font-size: 25px; }
+  .pfm-feel__grid { grid-template-columns: 1fr; gap: 36px; }
+  .pfm-feel--photo .pfm-feel__img { max-width: 360px; }
+  .pfm-feel__item h4 { font-size: 16px; }
+  .pfm-feel__item p { font-size: 13.5px; }
+}

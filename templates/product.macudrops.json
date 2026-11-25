@@ -126,35 +126,31 @@
             "icon": "leaf",
             "heading": "What's Inside",
             "body": "<p><strong>Lutein 20mg</strong>, <strong>zeaxanthin 2mg</strong>, <strong>meso-zeaxanthin 2mg</strong>, <strong>astaxanthin 4mg</strong>, <strong>saffron extract 10mg</strong>, <strong>zinc 10mg</strong> and <strong>ginkgo biloba 40mg</strong> (standardized 24%).</p><p>Base: MCT oil, sunflower lecithin, natural flavoring.</p>",
-            "open": false,
-            "asset": "pf-md-ing-ginkgo.webp"
+            "open": false
           }
         },
         "acc2": {
           "type": "accordion",
           "settings": {
-            "icon": "drop",
+            "icon": "dropper",
             "heading": "How to Take",
-            "body": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>",
-            "asset": "pf-md-dropper.webp"
+            "body": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>"
           }
         },
         "acc3": {
           "type": "accordion",
           "settings": {
-            "icon": "sparkle",
+            "icon": "mouth",
             "heading": "Why Under the Tongue?",
-            "body": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>",
-            "asset": "pf-md-tongue.webp"
+            "body": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
-            "icon": "heart",
+            "icon": "stethoscope",
             "heading": "Taking Other Treatments?",
-            "body": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>",
-            "asset": "pf-md-eye.webp"
+            "body": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>"
           }
         }
       },
@@ -375,7 +371,10 @@
       "type": "pf-md-feel",
       "settings": {
         "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*",
-        "image_asset": "pf-md-bottle.webp"
+        "image_asset": "pf-md-feel-1.webp",
+        "bg_asset": "pf-md-feel-bg-1.webp",
+        "image_style": "photo",
+        "overlay_opacity": 82
       },
       "blocks": {
         "f1": {
