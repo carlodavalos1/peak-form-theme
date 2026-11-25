@@ -423,9 +423,8 @@
       "type": "pf-md-feel",
       "settings": {
         "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*",
-        "image_asset": "pf-md-feel-woman.webp",
         "bg_asset": "pf-md-feel-bg-1.webp",
-        "image_style": "person",
+        "image_style": "none",
         "overlay_opacity": 80,
         "heading": "Feed Your Eyes. <em>Every Day.</em>"
       },
