@@ -426,7 +426,7 @@
         "image_asset": "pf-md-bottle-dropper.webp",
         "bg_asset": "pf-md-feel-bg-1.webp",
         "image_style": "cutout",
-        "overlay_opacity": 82
+        "overlay_opacity": 80
       },
       "blocks": {
         "f1": {
