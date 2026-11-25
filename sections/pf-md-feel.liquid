@@ -18,9 +18,11 @@
         </div>
       {%- endfor -%}
     </div>
+    {%- unless s.image_style == 'none' -%}
     <div class="pfm-feel__img">
       {%- if s.image != blank or s.image_asset != blank -%}{% render 'pf-md-img', image: s.image, asset: s.image_asset, width: 920, alt: 'MacuDrops' %}{%- else -%}<img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="MacuDrops bottle" loading="lazy" width="1024" height="1024">{%- endif -%}
     </div>
+    {%- endunless -%}
   </div>
 </div>
 {% schema %}
@@ -35,7 +37,7 @@
     { "type": "text", "id": "bg_asset", "label": "Background (theme file name)", "info": "Used when no background is picked above." },
     { "type": "range", "id": "overlay_opacity", "label": "Navy overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
     { "type": "image_picker", "id": "image", "label": "Main image" },
-    { "type": "select", "id": "image_style", "label": "Main image style", "options": [{"value": "photo", "label": "Photo (rounded card)"}, {"value": "person", "label": "Person cutout, sits on bottom edge"}, {"value": "blend", "label": "Blended into background"}, {"value": "cutout", "label": "Transparent bottle"}], "default": "photo" },
+    { "type": "select", "id": "image_style", "label": "Main image style", "options": [{"value": "photo", "label": "Photo (rounded card)"}, {"value": "none", "label": "No image"}, {"value": "person", "label": "Person cutout, sits on bottom edge"}, {"value": "blend", "label": "Blended into background"}, {"value": "cutout", "label": "Transparent bottle"}], "default": "photo" },
     { "type": "text", "id": "image_asset", "label": "Image (theme file name)", "info": "Used when no image is picked above." }
   ],
   "blocks": [

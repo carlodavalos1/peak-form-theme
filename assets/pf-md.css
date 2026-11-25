@@ -709,3 +709,7 @@ html body .pfm-feel h2 em, html body .pfm-stats h2 em { white-space: nowrap; } @
   .pfm-feel--person .pfm-feel__items { padding-bottom: 0; }
 }
 .pfm-feel--person .pfm-feel__img img { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 88%, transparent 100%); }
+/* round 4: Feed Your Eyes without an image: 4 items in a row */
+.pfm-feel--none .pfm-feel__grid { grid-template-columns: 1fr; max-width: 1100px; }
+.pfm-feel--none .pfm-feel__items { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) { .pfm-feel--none .pfm-feel__items { grid-template-columns: 1fr 1fr; } }
