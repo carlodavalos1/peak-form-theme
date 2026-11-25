@@ -1,0 +1,54 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; } #shopify-section-{{ section.id }} .pfm-pro { background: {{ s.bg }}; }</style>
+<div class="pfm pfm-pro">
+  <div class="pfm-wrap">
+    <h2><span class="pfm-acc">{{ s.heading_a }}</span> {{ s.heading_b }}</h2>
+    {%- if s.intro != blank -%}<p class="pfm-pro__intro">{{ s.intro }}</p>{%- endif -%}
+  </div>
+  <div class="pfm-pro__grid">
+    {%- for b in section.blocks -%}
+      <div class="pfm-pcard" role="button" tabindex="0" aria-expanded="false" {{ b.shopify_attributes }}>
+        <span class="pfm-pcard__pm" aria-hidden="true">+</span>
+        <div class="pfm-pcard__front">
+          <div class="pfm-pcard__img">{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'pf-md-icon', name: b.settings.icon %}{%- endif -%}</div>
+          <div><h3>{{ b.settings.heading }}</h3><p class="pfm-pcard__short">{{ b.settings.short }}</p></div>
+        </div>
+        <div class="pfm-pcard__back"><h3>{{ b.settings.heading }}</h3>{{ b.settings.long }}</div>
+      </div>
+    {%- endfor -%}
+  </div>
+  {%- if s.button_label != blank -%}
+    <div class="pfm-pro__cta">
+      <a class="pfm-pill" href="{{ s.button_link | default: '#pfm-top' }}">{{ s.button_label }}</a>
+      {%- if s.note != blank -%}<div class="pfm-guar">{% render 'pf-md-icon', name: 'shield' %}{{ s.note }}</div>{%- endif -%}
+    </div>
+  {%- endif -%}
+  {%- if s.footnote != blank -%}<p class="pfm-foot pfm-c pfm-wrap" style="max-width:820px;margin-left:auto;margin-right:auto">{{ s.footnote }}</p>{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "PF proven flip cards",
+  "settings": [
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#EEF2F9" },
+    { "type": "text", "id": "heading_a", "label": "Heading accent", "default": "Each Ingredient." },
+    { "type": "text", "id": "heading_b", "label": "Heading", "default": "Backed by Research." },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Try MacuDrops" },
+    { "type": "url", "id": "button_link", "label": "Button link (empty = scroll to top)" },
+    { "type": "text", "id": "note", "label": "Line under button", "default": "60-Day Money-Back Guarantee" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Card", "limit": 8, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "select", "id": "icon", "label": "Icon (when no image)", "options": [{"value": "check-circle", "label": "Check Circle"}, {"value": "shield", "label": "Shield"}, {"value": "truck", "label": "Truck"}, {"value": "refresh", "label": "Refresh"}, {"value": "leaf", "label": "Leaf"}, {"value": "eye", "label": "Eye"}, {"value": "drop", "label": "Drop"}, {"value": "flask", "label": "Flask"}, {"value": "globe", "label": "Globe"}, {"value": "lock", "label": "Lock"}, {"value": "award", "label": "Award"}, {"value": "sun", "label": "Sun"}, {"value": "moon", "label": "Moon"}, {"value": "heart", "label": "Heart"}, {"value": "clock", "label": "Clock"}, {"value": "sparkle", "label": "Sparkle"}, {"value": "monitor", "label": "Monitor"}, {"value": "book", "label": "Book"}, {"value": "car", "label": "Car"}, {"value": "zap", "label": "Zap"}, {"value": "japan", "label": "Japan"}, {"value": "gmp", "label": "Gmp"}, {"value": "calendar", "label": "Calendar"}, {"value": "verified", "label": "Verified"}, {"value": "warning", "label": "Warning"}], "default": "leaf" },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Ingredient" },
+      { "type": "text", "id": "short", "label": "Front text", "default": "Short benefit" },
+      { "type": "richtext", "id": "long", "label": "Back text (shown on click)", "default": "<p>Longer description.</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "PF proven flip cards" } ]
+}
+{% endschema %}

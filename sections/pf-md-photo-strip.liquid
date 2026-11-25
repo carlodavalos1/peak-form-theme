@@ -1,0 +1,48 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.stars }}; --pf-speed: {{ s.speed }}s; } #shopify-section-{{ section.id }} .pfm-strip { background: {{ s.bg }}; }</style>
+{%- assign has = false -%}
+{%- for b in section.blocks -%}{%- if b.settings.image != blank -%}{%- assign has = true -%}{%- endif -%}{%- endfor -%}
+{%- if has or request.design_mode -%}
+<div class="pfm pfm-strip">
+  <div class="pfm-wrap">
+    {% render 'pf-md-stars' %}
+    <h2>{{ s.heading_a }} <span class="pfm-acc">{{ s.heading_b }}</span>{% if s.heading_c != blank %} {{ s.heading_c }}{% endif %}</h2>
+    {%- if s.sub != blank -%}<p class="pfm-strip__sub">{{ s.sub }}</p>{%- endif -%}
+  </div>
+  <div class="pfm-strip__row">
+    {%- if section.blocks.size > 0 -%}
+      {%- for r in (1..4) -%}
+        {%- for b in section.blocks -%}
+          <div{% if r == 1 %} {{ b.shopify_attributes }}{% else %} aria-hidden="true"{% endif %}>{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 260 | image_tag: loading: 'lazy', alt: b.settings.alt }}{%- else -%}<div class="pfm-ph" style="height:100%">Real customer photo</div>{%- endif -%}</div>
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..24) -%}<div class="pfm-ph">Real customer photo</div>{%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "PF customer photo strip",
+  "settings": [
+    { "type": "paragraph", "content": "Real customer photos only, with their permission. The section is hidden on the live store until you add photos." },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "stars", "label": "Stars", "default": "#B8913A" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F3F5FA" },
+    { "type": "text", "id": "heading_a", "label": "Heading start", "default": "Real People." },
+    { "type": "text", "id": "heading_b", "label": "Heading accent", "default": "Real Routines." },
+    { "type": "text", "id": "heading_c", "label": "Heading end" },
+    { "type": "text", "id": "sub", "label": "Text", "default": "Photos shared by MacuDrops customers" },
+    { "type": "range", "id": "speed", "label": "Seconds per loop", "min": 10, "max": 120, "step": 5, "default": 60 }
+  ],
+  "blocks": [
+    { "type": "photo", "name": "Photo", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "alt", "label": "Alt text" }
+    ] }
+  ],
+  "presets": [ { "name": "PF customer photo strip" } ]
+}
+{% endschema %}

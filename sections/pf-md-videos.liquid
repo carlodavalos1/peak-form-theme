@@ -1,0 +1,53 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; } #shopify-section-{{ section.id }} .pfm-vid { background: {{ s.bg }}; }</style>
+{%- assign has = false -%}
+{%- for b in section.blocks -%}{%- if b.settings.video != blank -%}{%- assign has = true -%}{%- endif -%}{%- endfor -%}
+{%- if has or request.design_mode -%}
+<div class="pfm pfm-vid" data-pfm-slider>
+  <div class="pfm-wrap">
+    <h2>{{ s.heading }}</h2>
+    {%- if s.sub != blank -%}<p class="pfm-vid__sub">{{ s.sub }}</p>{%- endif -%}
+  </div>
+  <div class="pfm-vid__view" data-pfm-view>
+    <div class="pfm-track pfm-vid__track">
+      {%- for b in section.blocks -%}
+        {%- if b.settings.video != blank -%}
+          <div {{ b.shopify_attributes }}>
+            <div class="pfm-vcard">
+              {{ b.settings.video | video_tag: preload: 'metadata', playsinline: true, image_size: '400x' }}
+              <button type="button" class="pfm-play" aria-label="Play video">{% render 'pf-md-icon', name: 'play' %}</button>
+              {%- if b.settings.caption != blank -%}<div class="pfm-vcard__cap">{{ b.settings.caption }}</div>{%- endif -%}
+            </div>
+          </div>
+        {%- elsif request.design_mode -%}
+          <div {{ b.shopify_attributes }}><div class="pfm-vcard"><div class="pfm-ph">Add a real customer video. Empty slots are hidden on the live store.</div></div></div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="pfm-nav">
+    <button type="button" data-pfm-prev aria-label="Previous">{% render 'pf-md-icon', name: 'left' %}</button>
+    <button type="button" data-pfm-next aria-label="Next">{% render 'pf-md-icon', name: 'right' %}</button>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "PF video reviews",
+  "settings": [
+    { "type": "paragraph", "content": "Real customer videos only, with permission. Hidden on the live store until a video is added." },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Hear It From Our Customers" },
+    { "type": "text", "id": "sub", "label": "Text" }
+  ],
+  "blocks": [
+    { "type": "video", "name": "Video", "settings": [
+      { "type": "video", "id": "video", "label": "Video" },
+      { "type": "text", "id": "caption", "label": "Caption (e.g. first name)" }
+    ] }
+  ],
+  "presets": [ { "name": "PF video reviews" } ]
+}
+{% endschema %}

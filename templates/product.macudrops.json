@@ -1,2098 +1,928 @@
 {
   "sections": {
-    "shop_product_details_JbqzwH": {
-      "type": "shop-product-details",
+    "pf_ticker": {
+      "type": "pf-md-ticker",
+      "settings": {
+        "speed": 40
+      },
       "blocks": {
-        "image_rating_XwBPCf": {
-          "type": "image_rating",
+        "t0": {
+          "type": "item",
           "settings": {
-            "star_color": "#14254a",
-            "empty_star_color": "#e0e0e0",
-            "rating_text": "<p>Rated [X.X]/5 ([real review count])</p>",
-            "rating_value": "",
-            "text_color": "#14254a",
-            "value_color": "#14254a",
-            "rating_text_size": 16,
-            "rating_value_size": 16,
-            "star_size": 21,
-            "avatar_size": 24,
-            "layout_order": "stars_text_avatars",
-            "margin_top": 10,
-            "margin_bottom": 0
-          },
-          "disabled": true
-        },
-        "title_4EWLUd": {
-          "type": "title",
-          "settings": {
-            "use_custom_title": true,
-            "custom_title": "MacuDrops Sublingual Macular Formula",
-            "font_size": 35,
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "title_color": "#14254a",
-            "line_height": 1.2
+            "icon": "eye",
+            "text": "All 3 macular pigments"
           }
         },
-        "custom_text_J8Ktax": {
-          "type": "custom_text",
-          "disabled": false,
+        "t1": {
+          "type": "item",
           "settings": {
-            "text": "<p><strong>30 ml</strong> / <strong>30 servings</strong> / <strong>1 month supply</strong></p>",
-            "show_description": false,
-            "description": "<p>Add additional descriptive text here</p>",
-            "description_font_size": 12,
-            "description_spacing": 4,
-            "description_color": "#666666",
-            "description_opacity": 0.8,
-            "show_accent_text": false,
-            "accent_text": "Accent Text",
-            "accent_text_position": "before",
-            "use_accent_gradient": true,
-            "accent_text_gradient": "linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)",
-            "accent_text_color": "#667eea",
-            "accent_text_font_size": 16,
-            "accent_text_font_weight": "semibold",
-            "accent_text_spacing": 8,
-            "show_icon": false,
-            "custom_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"bi bi-stars\"><path d=\"M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z\"></path></svg>",
-            "icon_color": "#333333",
-            "icon_size": 20,
-            "icon_spacing": 8,
-            "icon_alignment": "center",
-            "text_align": "left",
-            "font_size": 14,
-            "text_color": "#14254a",
-            "margin_top": 0,
-            "margin_bottom": 8,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "use_container": false,
-            "container_bg_type": "color",
-            "container_bg": "#f8f8f8",
-            "container_bg_gradient": "linear-gradient(180deg, rgba(248, 248, 248, 1), rgba(229, 229, 229, 1) 100%)",
-            "container_padding_top": 10,
-            "container_padding_bottom": 10,
-            "container_padding_h": 14,
-            "border_radius": 4,
-            "show_divider": false,
-            "divider_color": "#e0e0e0",
-            "divider_height": 1,
-            "divider_style": "solid",
-            "divider_spacing": 12
+            "icon": "drop",
+            "text": "60-second sublingual drops"
           }
         },
-        "custom_text_6YXX6M": {
-          "type": "custom_text",
+        "t2": {
+          "type": "item",
           "settings": {
-            "text": "<p>All 3 macular pigments plus 4 supporting nutrients, <strong>absorbed under the tongue in 60 seconds a day</strong></p>",
-            "show_description": false,
-            "description": "<p>Add additional descriptive text here</p>",
-            "description_font_size": 12,
-            "description_spacing": 4,
-            "description_color": "#666666",
-            "description_opacity": 0.8,
-            "show_accent_text": false,
-            "accent_text": "Accent Text",
-            "accent_text_position": "before",
-            "use_accent_gradient": true,
-            "accent_text_gradient": "linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)",
-            "accent_text_color": "#667eea",
-            "accent_text_font_size": 16,
-            "accent_text_font_weight": "semibold",
-            "accent_text_spacing": 8,
-            "show_icon": false,
-            "custom_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"bi bi-stars\"><path d=\"M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z\"></path></svg>",
-            "icon_color": "#333333",
-            "icon_size": 20,
-            "icon_spacing": 8,
-            "icon_alignment": "center",
-            "text_align": "left",
-            "font_size": 14,
-            "text_color": "#333333",
-            "margin_top": 0,
-            "margin_bottom": -16,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "use_container": false,
-            "container_bg_type": "color",
-            "container_bg": "#f8f8f8",
-            "container_bg_gradient": "linear-gradient(180deg, rgba(248, 248, 248, 1), rgba(229, 229, 229, 1) 100%)",
-            "container_padding_top": 10,
-            "container_padding_bottom": 10,
-            "container_padding_h": 14,
-            "border_radius": 4,
-            "show_divider": false,
-            "divider_color": "#e0e0e0",
-            "divider_height": 1,
-            "divider_style": "solid",
-            "divider_spacing": 12
+            "icon": "japan",
+            "text": "Made in Japan"
           }
         },
-        "benefits_grid_ctqj9a": {
-          "type": "benefits_grid",
+        "t3": {
+          "type": "item",
           "settings": {
-            "benefit_1_text": "Supports macular pigment density*",
-            "benefit_1_use_image": false,
-            "benefit_1_use_custom_icon": false,
-            "benefit_1_custom_icon": "",
-            "benefit_2_text": "Helps filter harsh blue light*",
-            "benefit_2_use_image": false,
-            "benefit_2_use_custom_icon": false,
-            "benefit_2_custom_icon": "",
-            "benefit_3_text": "Supports contrast & night vision*",
-            "benefit_3_use_image": false,
-            "benefit_3_use_custom_icon": false,
-            "benefit_3_custom_icon": "",
-            "benefit_4_text": "Antioxidant support for retinal cells*",
-            "benefit_4_use_image": false,
-            "benefit_4_use_custom_icon": false,
-            "benefit_4_custom_icon": "",
-            "icon_bg_color": "#14254a",
-            "enable_icon_circle_stroke": false,
-            "icon_circle_stroke_color": "#ffffff",
-            "icon_circle_stroke_width": 2,
-            "icon_stroke_color": "#ffffff",
-            "text_color": "#000000",
-            "font_size": 12,
-            "icon_size": 24,
-            "icon_container_size": 36,
-            "grid_gap": 15,
-            "container_margin_top": 15,
-            "container_margin_bottom": 15
+            "icon": "flask",
+            "text": "Third-party tested every batch"
           }
         },
-        "price_7zTVKn": {
-          "type": "price",
-          "disabled": false,
+        "t4": {
+          "type": "item",
           "settings": {
-            "price_color": "#14254a",
-            "compare_price_color": "#999999",
-            "sale_badge_bg_color": "#ffe6e7",
-            "sale_badge_text_color": "#b8913a",
-            "save_badge_enable_border": false,
-            "save_badge_border_color": "#000000",
-            "save_badge_border_width": 1,
-            "save_badge_border_style": "solid",
-            "price_font_size": 27,
-            "compare_price_font_size": 16,
-            "save_badge_font_size": 12,
-            "price_font_weight": "600",
-            "price_margin_top": 2,
-            "price_margin_bottom": 0,
-            "show_save_icon": true,
-            "save_icon_size_ratio": 0.9,
-            "save_icon_position_y": 0,
-            "save_badge_padding_v": 3,
-            "save_badge_padding_h": 6,
-            "custom_save_text": "",
-            "save_badge_display_type": "percentage",
-            "custom_save_amount": ""
+            "icon": "gmp",
+            "text": "GMP-certified facility"
           }
         },
-        "divider_GMhbbb": {
-          "type": "divider",
-          "disabled": true,
+        "t5": {
+          "type": "item",
           "settings": {
-            "color": "#e0e0e0",
-            "style": "solid",
-            "thickness": 1,
-            "width": "100%",
-            "max_width": "100%",
-            "alignment": "center",
-            "margin_top": 0,
-            "margin_bottom": 10
-          }
-        },
-        "simple_variant_picker_pLVeJq": {
-          "type": "simple_variant_picker",
-          "disabled": true,
-          "settings": {
-            "first_variant_auto_selected": true,
-            "use_dropdown": true,
-            "enable_color_swatches": false,
-            "show_labels": true,
-            "enable_size_preset": true,
-            "show_variant_images": false,
-            "show_images_for_all_variants": false,
-            "image_variant_size": 60,
-            "variant_image_border_width": 1,
-            "variant_image_border_color": "#e5e5e5",
-            "variant_image_border_radius": 4,
-            "variant_image_selected_border_color": "#007acc",
-            "variant_image_selected_border_width": 2,
-            "show_variant_shadows": true,
-            "color_option_label": "Color",
-            "size_option_label": "Size",
-            "custom_option_label_1": "",
-            "custom_option_label_2": "",
-            "custom_option_label_3": "",
-            "label_color": "#000000",
-            "label_size": 14,
-            "option_bg_color": "#ffffff",
-            "option_border_color": "#14254a",
-            "option_text_color": "#14254a",
-            "option_size": 14,
-            "option_border_radius": 4,
-            "hide_option_1": false,
-            "hide_option_2": false,
-            "hide_option_3": false,
-            "quantity_circle_size": 24,
-            "quantity_circle_size_mobile": 20,
-            "quantity_circle_bg_color": "#f5f5f5",
-            "quantity_circle_text_color": "#333333",
-            "selected_bg_color": "#ffffff",
-            "selected_text_color": "#ffffff",
-            "selected_border_color": "#14254a",
-            "selected_variant_color": "#000000",
-            "swatch_size": 30,
-            "swatch_bg_color": "#cccccc",
-            "outline_color": "#e5e5e5",
-            "custom_color_mappings": "red=#FF0000\nblue=#0000FF\ngreen=#00FF00\nyellow=#FFFF00\nblack=#000000\nwhite=#FFFFFF",
-            "show_selected_variant": false,
-            "hide_selected_option_text": false,
-            "text_color": "#000000",
-            "option_padding_vertical": 8,
-            "option_padding_horizontal": 15,
-            "option_font_size": 14,
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "container_margin_left": 0,
-            "container_margin_right": 0
-          }
-        },
-        "kaching_bundles_app_block_C4mUJn": {
-          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
-          "settings": {
-            "product": "{{section.settings.current_product}}",
-            "manual_deal_block_id": ""
-          }
-        },
-        "add_to_cart_7nhY9K": {
-          "type": "add_to_cart",
-          "settings": {
-            "use_theme_colors": false,
-            "use_global_button_styling": false,
-            "show_fast_payment": true,
-            "button_behavior": "add_to_cart",
-            "button_text_override": "TRY RISK-FREE FOR 60 DAYS",
-            "show_price_in_button": false,
-            "button_icon": "none",
-            "custom_icon": "",
-            "icon_size": 20,
-            "button_border_color": "#14254a",
-            "buy_box_button_bg_color": "#14254a",
-            "button_text_color": "#ffffff",
-            "buy_box_button_hover_color": "#22386b",
-            "price_color": "#ffffff",
-            "custom_button_padding_y": 12,
-            "custom_button_font_size": 14,
-            "card_border_radius": 10
-          }
-        },
-        "replica_warning_fcr9fD": {
-          "type": "replica_warning",
-          "settings": {
-            "warning_title": "SMALL-BATCH NOTICE:",
-            "warning_text": "MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships.\nSubscribing reserves your bottle from each new batch.\nPS: Only sold here. We don’t sell on Amazon or eBay.",
-            "background_color": "#14254a",
-            "text_color": "#ffffff",
-            "border_color": "#ffffff",
-            "icon_background_color": "#ffffff",
-            "icon_color": "#14254a",
-            "title_font_size": 20,
-            "text_font_size": 14,
-            "border_width": 1,
-            "border_radius": 4,
-            "padding": 10,
-            "margin_top": 5,
-            "margin_bottom": 5
-          }
-        },
-        "custom_text_j66QHG": {
-          "type": "custom_text",
-          "disabled": false,
-          "settings": {
-            "text": "<p>60-Day Money-Back Guarantee | Pause or cancel anytime</p>",
-            "show_description": false,
-            "description": "<p>Add additional descriptive text here</p>",
-            "description_font_size": 12,
-            "description_spacing": 4,
-            "description_color": "#666666",
-            "description_opacity": 0.8,
-            "show_accent_text": false,
-            "accent_text": "Accent Text",
-            "accent_text_position": "before",
-            "use_accent_gradient": true,
-            "accent_text_gradient": "linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)",
-            "accent_text_color": "#667eea",
-            "accent_text_font_size": 16,
-            "accent_text_font_weight": "semibold",
-            "accent_text_spacing": 8,
-            "show_icon": false,
-            "custom_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"bi bi-stars\"><path d=\"M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z\"></path></svg>",
-            "icon_color": "#333333",
-            "icon_size": 20,
-            "icon_spacing": 8,
-            "icon_alignment": "center",
-            "text_align": "center",
-            "font_size": 13,
-            "text_color": "#14254a",
-            "margin_top": 4,
-            "margin_bottom": 0,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "use_container": false,
-            "container_bg_type": "color",
-            "container_bg": "#f8f8f8",
-            "container_bg_gradient": "linear-gradient(180deg, rgba(248, 248, 248, 1), rgba(229, 229, 229, 1) 100%)",
-            "container_padding_top": 10,
-            "container_padding_bottom": 10,
-            "container_padding_h": 14,
-            "border_radius": 4,
-            "show_divider": false,
-            "divider_color": "#e0e0e0",
-            "divider_height": 1,
-            "divider_style": "solid",
-            "divider_spacing": 12
-          }
-        },
-        "shipping_notice_Ww4Tmk": {
-          "type": "shipping_notice",
-          "disabled": true,
-          "settings": {
-            "notice_text_before": "Order now to receive your order before",
-            "notice_text_after": "",
-            "days_ahead": 6,
-            "show_suffix": true,
-            "custom_shipping_text": "#333333",
-            "custom_date_color": "#333333",
-            "custom_highlight_color_off_theme": "#4caf50",
-            "custom_bg_color_off_theme": "rgba(0,0,0,0)",
-            "highlight_color": "#4caf50",
-            "dot_color": "#4caf50",
-            "bg_color": "#ffffff",
-            "enable_border": true,
-            "border_color": "#14254a",
-            "border_width": 1,
-            "border_style": "solid",
-            "font_size": 12,
-            "container_margin_top": 0,
-            "container_margin_bottom": 15,
-            "enable_animation": true,
-            "suffix_text": ".",
-            "text_alignment": "center"
-          }
-        },
-        "custom_text_WQxf6k": {
-          "type": "custom_text",
-          "disabled": false,
-          "settings": {
-            "text": "<p>Macular pigment builds gradually. We recommend 3 months of daily use.*</p>",
-            "show_description": false,
-            "description": "<p>Add additional descriptive text here</p>",
-            "description_font_size": 12,
-            "description_spacing": 4,
-            "description_color": "#666666",
-            "description_opacity": 0.8,
-            "show_accent_text": false,
-            "accent_text": "Accent Text",
-            "accent_text_position": "before",
-            "use_accent_gradient": true,
-            "accent_text_gradient": "linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)",
-            "accent_text_color": "#667eea",
-            "accent_text_font_size": 16,
-            "accent_text_font_weight": "semibold",
-            "accent_text_spacing": 8,
-            "show_icon": false,
-            "custom_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"bi bi-stars\"><path d=\"M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z\"></path></svg>",
-            "icon_color": "#333333",
-            "icon_size": 20,
-            "icon_spacing": 8,
-            "icon_alignment": "center",
-            "text_align": "center",
-            "font_size": 13,
-            "text_color": "#b7b7b7",
-            "margin_top": -12,
-            "margin_bottom": 12,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "use_container": false,
-            "container_bg_type": "color",
-            "container_bg": "#f8f8f8",
-            "container_bg_gradient": "linear-gradient(180deg, rgba(248, 248, 248, 1), rgba(229, 229, 229, 1) 100%)",
-            "container_padding_top": 10,
-            "container_padding_bottom": 10,
-            "container_padding_h": 14,
-            "border_radius": 4,
-            "show_divider": false,
-            "divider_color": "#e0e0e0",
-            "divider_height": 1,
-            "divider_style": "solid",
-            "divider_spacing": 12
-          }
-        },
-        "payment_icons_mUTLJB": {
-          "type": "payment_icons",
-          "disabled": false,
-          "settings": {
-            "custom_payment_icons": "mastercard, american_express, apple_pay, google_pay, shopify_pay, discover, visa",
-            "alignment": "center",
-            "icon_height": 22,
-            "icon_spacing": 6,
-            "margin_top": -5,
-            "margin_bottom": 0
-          }
-        },
-        "product_faq_R9JzNF": {
-          "type": "product_faq",
-          "settings": {
-            "use_theme_colors": true,
-            "items_limit": 10,
-            "image_size": 40,
-            "image_border_radius": 4,
-            "image_fit": "contain",
-            "text_size": 16,
-            "answer_text_size": 16,
-            "item_padding": 16,
-            "question_padding": 8,
-            "margin_top": 10,
-            "margin_bottom": 10,
-            "border_radius": 4,
-            "border_color": "#f7f4ec",
-            "border_style": "full",
-            "question_color": "#14254a",
-            "question_bg_color": "#14254a",
-            "answer_color": "#000000",
-            "answer_bg_color": "#f7f4ec",
-            "accordion_mode": true,
-            "use_product_description_for_question_1": false,
-            "question_1": "How do I take MacuDrops?",
-            "answer_1": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>",
-            "question_2": "Why under the tongue instead of a capsule?",
-            "answer_2": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>",
-            "question_3": "Can I take it alongside my eye treatments?",
-            "answer_3": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>",
-            "question_4": "What’s in it?",
-            "answer_4": "<p>Lutein 20mg, zeaxanthin 2mg, meso-zeaxanthin 2mg, astaxanthin 4mg, saffron extract 10mg, zinc 10mg and ginkgo biloba 40mg (standardized 24%). Base: MCT oil, sunflower lecithin, natural flavoring.</p>"
+            "icon": "shield",
+            "text": "60-day money-back guarantee"
           }
         }
       },
       "block_order": [
-        "image_rating_XwBPCf",
-        "title_4EWLUd",
-        "custom_text_J8Ktax",
-        "custom_text_6YXX6M",
-        "benefits_grid_ctqj9a",
-        "price_7zTVKn",
-        "divider_GMhbbb",
-        "simple_variant_picker_pLVeJq",
-        "kaching_bundles_app_block_C4mUJn",
-        "add_to_cart_7nhY9K",
-        "replica_warning_fcr9fD",
-        "custom_text_j66QHG",
-        "shipping_notice_Ww4Tmk",
-        "custom_text_WQxf6k",
-        "payment_icons_mUTLJB",
-        "product_faq_R9JzNF"
-      ],
-      "custom_css": [
-        ".button-icon {color: #14254a !important;}",
-        ".imgr-rating-text {margin-left: 8px;}"
-      ],
-      "name": "Product Details",
-      "settings": {
-        "use_theme_colors": false,
-        "section_bg_color": "#ffffff",
-        "blocks_spacing": 4,
-        "text_color": "#000000",
-        "accent_color": "#b8913a",
-        "divider_color": "#eeeeee",
-        "show_product_info": true,
-        "show_product_gallery": true,
-        "show_product_variants": true,
-        "thumbnail_border_color": "#eeeeee",
-        "thumbnail_active_border_color": "#b8913a",
-        "thumbnails_include_section_padding": false,
-        "dots_color": "#cccccc",
-        "enable_full_width_image": false,
-        "enable_mobile_full_width_image": false,
-        "image_aspect_ratio": "1:1",
-        "hide_thumbnails": false,
-        "dot_size": 8,
-        "dot_color": "#cccccc",
-        "dot_active_color": "#000000",
-        "show_desktop_arrows": false,
-        "desktop_arrow_background": "#ffffff",
-        "desktop_arrow_border": "#e0e0e0",
-        "desktop_arrow_icon": "#000000",
-        "desktop_arrow_hover_background": "#f5f5f5",
-        "desktop_arrow_hover_border": "#d0d0d0",
-        "arrow_border_radius": 50,
-        "arrow_opacity": 90,
-        "desktop_arrow_placement": "overlaid",
-        "show_mobile_arrows": false,
-        "mobile_arrow_placement": "overlaid",
-        "mobile_thumbnails_2x2_grid": true,
-        "hide_thumbnails_mobile": false,
-        "thumbnails_left_column_desktop": false,
-        "main_image_portrait_adaptation": false
-      }
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ]
     },
-    "scrolling_features_bar_QmiYpj": {
-      "type": "scrolling-features-bar",
+    "pf_buybox": {
+      "type": "pf-md-buybox",
+      "settings": {
+        "subtitle": "<p>All 3 macular pigments plus 4 supporting nutrients, <strong>absorbed under the tongue in 60 seconds a day</strong>.</p>",
+        "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships. Subscribing reserves your bottle from each new batch.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>"
+      },
       "blocks": {
-        "feature_item_md01": {
-          "type": "feature_item",
+        "bul1": {
+          "type": "bullet",
           "settings": {
-            "text": "All 3 macular pigments",
-            "icon_type": "svg",
-            "icon": ""
+            "text": "All 3 macular pigments: lutein, zeaxanthin and meso-zeaxanthin"
           }
         },
-        "feature_item_md02": {
-          "type": "feature_item",
+        "bul2": {
+          "type": "bullet",
           "settings": {
-            "text": "Sublingual drops",
-            "icon_type": "svg",
-            "icon": ""
+            "text": "Helps filter harsh blue light*"
           }
         },
-        "feature_item_md03": {
-          "type": "feature_item",
+        "bul3": {
+          "type": "bullet",
           "settings": {
-            "text": "Made in Japan",
-            "icon_type": "svg",
-            "icon": ""
+            "text": "Supports contrast and night vision*"
           }
         },
-        "feature_item_md04": {
-          "type": "feature_item",
+        "bul4": {
+          "type": "bullet",
           "settings": {
-            "text": "Third-party tested",
-            "icon_type": "svg",
-            "icon": ""
+            "text": "60 seconds under the tongue. No pills to swallow"
           }
         },
-        "feature_item_md05": {
-          "type": "feature_item",
+        "tier1": {
+          "type": "tier",
           "settings": {
-            "text": "GMP certified",
-            "icon_type": "svg",
-            "icon": ""
+            "name": "Buy 1 Bottle",
+            "sub": "30-day supply",
+            "qty": 1,
+            "discount": 0
           }
         },
-        "feature_item_md06": {
-          "type": "feature_item",
+        "tier2": {
+          "type": "tier",
           "settings": {
-            "text": "60-day guarantee",
-            "icon_type": "svg",
-            "icon": ""
+            "name": "Buy 2 Bottles",
+            "sub": "60-day supply",
+            "qty": 2,
+            "discount": 0,
+            "badge_1": "Popular Choice"
+          }
+        },
+        "tier3": {
+          "type": "tier",
+          "settings": {
+            "name": "Buy 3 Bottles",
+            "sub": "90-day supply, the full 3 months we recommend",
+            "qty": 3,
+            "discount": 0,
+            "badge_1": "Recommended",
+            "selected": true
+          }
+        },
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "icon": "leaf",
+            "heading": "What's Inside",
+            "body": "<p><strong>Lutein 20mg</strong>, <strong>zeaxanthin 2mg</strong>, <strong>meso-zeaxanthin 2mg</strong>, <strong>astaxanthin 4mg</strong>, <strong>saffron extract 10mg</strong>, <strong>zinc 10mg</strong> and <strong>ginkgo biloba 40mg</strong> (standardized 24%).</p><p>Base: MCT oil, sunflower lecithin, natural flavoring.</p>",
+            "open": false
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "icon": "drop",
+            "heading": "How to Take",
+            "body": "<p>Fill the dropper to the line and release it under your tongue. Hold it there for 60 seconds, then swallow. Once a day, ideally with your morning routine. One bottle is 30 servings.</p>"
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "icon": "sparkle",
+            "heading": "Why Under the Tongue?",
+            "body": "<p>The pigments in MacuDrops are micellized in MCT oil and sunflower lecithin, so they’re already dispersed when they reach the thin tissue under your tongue. A capsule has to break down in your stomach first, and fat-soluble carotenoids like lutein are known to absorb poorly that way.</p>"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "icon": "heart",
+            "heading": "Taking Other Treatments?",
+            "body": "<p><strong>MacuDrops is a dietary supplement. It does not replace injections, laser or any treatment your eye doctor prescribes.</strong> Keep every appointment. Show your ophthalmologist the ingredient list, especially if you take blood thinners, because ginkgo biloba can affect bleeding.</p>"
+          }
+        },
+        "vid1": {
+          "type": "video",
+          "settings": {}
+        },
+        "vid2": {
+          "type": "video",
+          "settings": {}
+        },
+        "vid3": {
+          "type": "video",
+          "settings": {}
+        },
+        "tile1": {
+          "type": "trust_tile",
+          "settings": {
+            "icon": "japan",
+            "label": "Made in Japan"
+          }
+        },
+        "tile2": {
+          "type": "trust_tile",
+          "settings": {
+            "icon": "gmp",
+            "label": "GMP Certified"
+          }
+        },
+        "tile3": {
+          "type": "trust_tile",
+          "settings": {
+            "icon": "flask",
+            "label": "3rd-Party Tested"
+          }
+        },
+        "tile4": {
+          "type": "trust_tile",
+          "settings": {
+            "icon": "shield",
+            "label": "60-Day Guarantee"
+          }
+        },
+        "chk1": {
+          "type": "trust_check",
+          "settings": {
+            "text": "All 3 macular pigments"
+          }
+        },
+        "chk2": {
+          "type": "trust_check",
+          "settings": {
+            "text": "Micellized for absorption"
+          }
+        },
+        "chk3": {
+          "type": "trust_check",
+          "settings": {
+            "text": "No capsules to swallow"
+          }
+        },
+        "chk4": {
+          "type": "trust_check",
+          "settings": {
+            "text": "Every batch tested"
+          }
+        },
+        "chk5": {
+          "type": "trust_check",
+          "settings": {
+            "text": "FDA-registered facility"
+          }
+        },
+        "chk6": {
+          "type": "trust_check",
+          "settings": {
+            "text": "Pause or cancel anytime"
           }
         }
       },
       "block_order": [
-        "feature_item_md01",
-        "feature_item_md02",
-        "feature_item_md03",
-        "feature_item_md04",
-        "feature_item_md05",
-        "feature_item_md06"
-      ],
-      "name": "Scrolling Features Bar",
-      "settings": {
-        "use_theme_colors": false,
-        "vertical_padding": 15,
-        "item_gap": 60,
-        "mobile_item_gap": 30,
-        "font_size": 14,
-        "mobile_font_size": 12,
-        "letter_spacing": 0.5,
-        "uppercase_text": true,
-        "icon_size": 20,
-        "mobile_icon_size": 16,
-        "icon_spacing": 10,
-        "icon_type": "svg",
-        "slider_direction": "left",
-        "scrolling_velocity": 15,
-        "pause_on_hover": true,
-        "background_color": "#14254a",
-        "text_color": "#ffffff",
-        "icon_color": "#ffffff",
-        "use_gradient_background": false,
-        "background_gradient": ""
-      }
+        "bul1",
+        "bul2",
+        "bul3",
+        "bul4",
+        "tier1",
+        "tier2",
+        "tier3",
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4",
+        "vid1",
+        "vid2",
+        "vid3",
+        "tile1",
+        "tile2",
+        "tile3",
+        "tile4",
+        "chk1",
+        "chk2",
+        "chk3",
+        "chk4",
+        "chk5",
+        "chk6"
+      ]
     },
-    "customer_reviews_carousel_kLzV4E": {
-      "type": "customer-reviews-carousel",
-      "blocks": {
-        "review_md01": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
-            "reviewer_name": "[First name + last initial]",
-            "reviewer_age": "",
-            "show_verified_badge": false,
-            "show_purchased_product": true,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "review_md02": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
-            "reviewer_name": "[First name + last initial]",
-            "reviewer_age": "",
-            "show_verified_badge": false,
-            "show_purchased_product": true,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "review_md03": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "[Paste a real customer review here. Copy it word for word from Judge.me, email or a survey, with the customer’s permission.]",
-            "reviewer_name": "[First name + last initial]",
-            "reviewer_age": "",
-            "show_verified_badge": false,
-            "show_purchased_product": true,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        }
+    "pf_stats": {
+      "type": "pf-md-stats",
+      "settings": {
+        "heading": "Give Your Eyes What They’re Built From",
+        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       },
-      "block_order": [
-        "review_md01",
-        "review_md02",
-        "review_md03"
-      ],
-      "name": "Customer Reviews",
-      "settings": {
-        "use_theme_colors": true,
-        "section_width": 1200,
-        "section_background": "#f7f4ec",
-        "title_text": "What Customers Are",
-        "accent_text": "Saying",
-        "title_color": "#14254a",
-        "accent_color": "#000000",
-        "override_global_accent": false,
-        "accent_text_margin_left": 0,
-        "use_accent_gradient": false,
-        "accent_text_gradient": "linear-gradient(45deg, rgba(239, 74, 101, 1), rgba(255, 107, 157, 1) 100%)",
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "inherit",
-        "custom_heading_styling": false,
-        "heading_font_size": 56,
-        "heading_font_size_mobile": 48,
-        "heading_line_height": 1.2,
-        "show_description": false,
-        "description_text": "See what our customers are saying about our products",
-        "description_color": "#000000",
-        "prev_button_bg": "#ffffff",
-        "prev_button_color": "#000000",
-        "prev_button_border": "#e0e0e0",
-        "next_button_bg": "#14254a",
-        "next_button_color": "#ffffff",
-        "next_button_border": "#14254a",
-        "button_horizontal_padding": 12,
-        "scroll_amount": 360,
-        "card_width": 390,
-        "card_border_radius": 10,
-        "card_border_color": "#e0e0e0",
-        "card_background": "#ffffff",
-        "card_margin_top": 0,
-        "card_margin_right": 0,
-        "card_margin_bottom": 0,
-        "card_margin_left": 0,
-        "star_filled_color": "#ffc107",
-        "star_empty_color": "#e0e0e0",
-        "carousel_review_star_size": 16,
-        "review_text_color": "#000000",
-        "review_text_size": 14,
-        "review_text_size_mobile": 12,
-        "reviewer_info_color": "#000000",
-        "reviewer_info_bg_color": "#f5f5f5",
-        "reviewer_info_font_size": 12,
-        "verified_badge_text": "Verified Buyer",
-        "verified_badge_color": "#b8913a",
-        "verified_icon_color": "#b8913a",
-        "verified_badge_font_size": 10,
-        "enable_reviewer_info_border": false,
-        "reviewer_info_border_width": 1,
-        "reviewer_info_border_style": "solid",
-        "reviewer_info_border_color": "#e0e0e0",
-        "reviewer_info_border_radius": 8,
-        "product_label": "Item Purchased",
-        "product_label_color": "#000000",
-        "product_title_color": "#000000",
-        "product_price_color": "#14254a",
-        "product_bg_color": "#f9f9f9",
-        "product_title_font_size": 12,
-        "product_price_font_size": 12,
-        "product_compare_price_font_size": 10,
-        "purchase_date_font_size": 10,
-        "product_border_color": "#eeeeee",
-        "product_border_width": 1,
-        "product_border_style": "solid",
-        "summary_star_color": "#ffbf00",
-        "summary_text_color": "#000000",
-        "rating_summary_text": "<p>[Add your real rating and review count here]</p>",
-        "rating_summary_font_size": 13,
-        "rating_summary_bg_color": "#fef6e6",
-        "purchase_date_prefix": "Purchased on",
-        "purchase_date_color": "#000000",
-        "purchase_date_icon_color": "#000000",
-        "rating_summary_gradient": "",
-        "enable_rating_summary_border": false,
-        "rating_summary_border_width": 1,
-        "rating_summary_border_style": "solid",
-        "rating_summary_border_color": "#ffbf00",
-        "rating_summary_border_radius": 50
-      }
-    },
-    "statistics_column_yB6c6V": {
-      "type": "statistics-column",
       "blocks": {
-        "statistic_md01": {
-          "type": "statistic",
+        "s1": {
+          "type": "stat",
           "settings": {
-            "number": "3 of 3",
-            "title": "Macular Pigments",
-            "description": "Lutein, zeaxanthin and meso-zeaxanthin, the three carotenoids that make up the macula’s own pigment."
+            "number": "3",
+            "text": "Macular pigments in every dropper: lutein, zeaxanthin and meso-zeaxanthin"
           }
         },
-        "statistic_md02": {
-          "type": "statistic",
+        "s2": {
+          "type": "stat",
           "settings": {
             "number": "20mg",
-            "title": "Lutein Per Serving",
-            "description": "The amount used in major eye-nutrition research, with 2mg zeaxanthin and 2mg meso-zeaxanthin alongside it."
+            "text": "Lutein per serving, the amount used in major eye-nutrition research"
           }
         },
-        "statistic_md03": {
-          "type": "statistic",
+        "s3": {
+          "type": "stat",
           "settings": {
-            "number": "60 sec",
-            "title": "Once a Day",
-            "description": "One dropper under the tongue. No pills to swallow, no water needed."
+            "number": "60s",
+            "text": "Under the tongue once a day. Nothing to swallow, no water needed"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "7",
+            "text": "Ingredients, each at a studied dose, made in small batches in Japan"
           }
         }
       },
       "block_order": [
-        "statistic_md01",
-        "statistic_md02",
-        "statistic_md03"
-      ],
-      "name": "Statistics Column",
-      "settings": {
-        "use_theme_colors": false,
-        "override_theme_section_background": false,
-        "heading": "MacuDrops",
-        "heading_accent": "By the Numbers",
-        "subtitle": "",
-        "heading_color": "#000000",
-        "heading_size_mobile": 28,
-        "heading_size_desktop": 36,
-        "subtitle_color": "#666666",
-        "subtitle_size_mobile": 14,
-        "subtitle_size_desktop": 16,
-        "override_global_accent": false,
-        "accent_color": "#b8913a",
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_text_margin_left": 0,
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "inherit",
-        "number_color": "#000000",
-        "number_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "number_size_mobile": 36,
-        "number_size_desktop": 48,
-        "title_color": "#000000",
-        "title_size_mobile": 18,
-        "title_size_desktop": 22,
-        "title_line_height": 1.2,
-        "description_color": "#666666",
-        "description_size_mobile": 14,
-        "description_size_desktop": 16,
-        "description_line_height": 1.4,
-        "enable_two_column_layout": false,
-        "center_text_vertically": false,
-        "enable_counter_animation": true,
-        "contain_section": false,
-        "container_padding_top": 40,
-        "container_padding_right": 40,
-        "container_padding_bottom": 40,
-        "container_padding_left": 40,
-        "container_padding_top_mobile": 20,
-        "container_padding_right_mobile": 20,
-        "container_padding_bottom_mobile": 0,
-        "container_padding_left_mobile": 20,
-        "container_border_radius": 12,
-        "container_background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(248, 248, 248, 1) 100%)",
-        "enable_border": false,
-        "border_width": 1,
-        "border_style": "solid",
-        "border_color": "#e5e7eb",
-        "enable_shadow": false,
-        "section_padding_top_desktop": 0,
-        "section_padding_bottom_desktop": 0,
-        "section_padding_left_desktop": 15,
-        "section_padding_right_desktop": 15,
-        "section_padding_top_mobile": 0,
-        "section_padding_bottom_mobile": 0,
-        "section_padding_left_mobile": 15,
-        "section_padding_right_mobile": 15,
-        "image_border_radius": 8,
-        "image_position_desktop": "right",
-        "image_position_mobile": "above",
-        "show_disclaimer": true,
-        "disclaimer_text": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
-        "disclaimer_color": "#666666",
-        "disclaimer_icon_color": "#007acc",
-        "disclaimer_background_color": "#f8f8f8",
-        "disclaimer_size_mobile": 12,
-        "disclaimer_size_desktop": 14,
-        "disclaimer_line_height": 1,
-        "disclaimer_padding_top": 0,
-        "disclaimer_padding_bottom": 0,
-        "disclaimer_padding_left": 0,
-        "disclaimer_padding_right": 16,
-        "disclaimer_border_radius": 8,
-        "disclaimer_border_style": "none",
-        "disclaimer_border_width": 1,
-        "disclaimer_border_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 36,
-        "section_background": "linear-gradient(180deg, rgba(255, 255, 255, 1) 100%, rgba(255, 250, 247, 1) 100%)",
-        "divider_color": "#e0e0e0"
-      }
-    },
-    "product_benefits_LQxdTf": {
-      "type": "product-benefits",
-      "blocks": {
-        "benefit_6QJAh4": {
-          "type": "benefit",
-          "settings": {
-            "title": "All 3 Macular Pigments",
-            "description": "Lutein for the outer macula, zeaxanthin for the middle layer and meso-zeaxanthin for the center (fovea). Many formulas skip meso-zeaxanthin.",
-            "benefit_color": "",
-            "benefit_description_color": "",
-            "use_image": true,
-            "icon_image": "shopify://shop_images/verified_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png",
-            "preset_icon": "check",
-            "use_custom_icon": false,
-            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
-          }
-        },
-        "benefit_JgJ8HJ": {
-          "type": "benefit",
-          "settings": {
-            "title": "Micellized for Absorption",
-            "description": "The pigments are pre-dispersed in MCT oil and sunflower lecithin so they’re ready to absorb, instead of waiting on stomach acid to break down a capsule.",
-            "benefit_color": "",
-            "benefit_description_color": "",
-            "use_image": true,
-            "icon_image": "shopify://shop_images/verified_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png",
-            "preset_icon": "clock",
-            "use_custom_icon": false,
-            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
-          }
-        },
-        "benefit_aYcTKh": {
-          "type": "benefit",
-          "settings": {
-            "title": "Astaxanthin + Saffron",
-            "description": "4mg astaxanthin, an antioxidant that reaches the retina, and 10mg saffron extract, studied for supporting photoreceptor health.*",
-            "benefit_color": "",
-            "benefit_description_color": "",
-            "use_image": true,
-            "icon_image": "shopify://shop_images/verified_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png",
-            "preset_icon": "sparkle",
-            "use_custom_icon": false,
-            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
-          }
-        },
-        "benefit_qMM9zp": {
-          "type": "benefit",
-          "settings": {
-            "title": "Made in Japan, Tested Every Batch",
-            "description": "Produced in small batches in an FDA-registered, GMP-certified facility. Every batch is third-party tested.",
-            "benefit_color": "",
-            "benefit_description_color": "",
-            "use_image": true,
-            "icon_image": "shopify://shop_images/verified_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png",
-            "preset_icon": "heart",
-            "use_custom_icon": false,
-            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_6QJAh4",
-        "benefit_JgJ8HJ",
-        "benefit_aYcTKh",
-        "benefit_qMM9zp"
-      ],
-      "name": "Product Benefits",
-      "settings": {
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_left": 25,
-        "padding_right": 25,
-        "image_position_desktop": "right",
-        "heading_size_mobile": 34,
-        "heading_size_desktop": 35,
-        "subtitle_size_mobile": 13,
-        "subtitle_size_desktop": 13,
-        "benefit_title_size_mobile": 14,
-        "benefit_title_size_desktop": 14,
-        "benefit_description_size_mobile": 12,
-        "benefit_description_size_desktop": 12,
-        "accent_color": "#14254a",
-        "use_theme_colors": true,
-        "override_global_accent": false,
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "inherit",
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_text_margin_left": 0,
-        "list_background": "linear-gradient(180deg, rgba(20, 37, 74, 1), rgba(240, 240, 240, 1) 100%)",
-        "list_border_radius": 20,
-        "border_color": "#e0e0e0",
-        "heading_accent": "Is Different",
-        "heading_regular": "Why This Formula",
-        "subtitle": "Most eye supplements stop at lutein in a capsule. MacuDrops pairs all three macular pigments with four supporting nutrients and delivers them under the tongue.",
-        "show_image": true,
-        "media_type": "image",
-        "image_alt": "Feature product image",
-        "video_autoplay": true,
-        "video_muted": true,
-        "video_loop": true,
-        "video_controls": false,
-        "heading_color": "#000000",
-        "subtitle_color": "#000000",
-        "description_color": "#000000",
-        "section_background": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)"
-      }
-    },
-    "roadmap_p7J4ze": {
-      "type": "roadmap",
-      "blocks": {
-        "roadmap_step_md01": {
-          "type": "roadmap_step",
-          "settings": {
-            "badge_text": "",
-            "title": "Day 1",
-            "description": "<p>Start the routine: one dropper under the tongue for 60 seconds every morning. Nothing to swallow.</p>",
-            "custom_icon": ""
-          }
-        },
-        "roadmap_step_md02": {
-          "type": "roadmap_step",
-          "settings": {
-            "badge_text": "",
-            "title": "Weeks 2–4",
-            "description": "<p>Lutein and zeaxanthin levels in your blood start to rise. Consistency matters more than anything else here.</p>",
-            "custom_icon": ""
-          }
-        },
-        "roadmap_step_md03": {
-          "type": "roadmap_step",
-          "settings": {
-            "badge_text": "",
-            "title": "Months 2–3",
-            "description": "<p>Studies on lutein and zeaxanthin typically measure macular pigment gains over this window. Many people notice more comfortable eyes in bright light and on screens.*</p>",
-            "custom_icon": ""
-          }
-        },
-        "roadmap_step_md04": {
-          "type": "roadmap_step",
-          "settings": {
-            "badge_text": "",
-            "title": "Month 6",
-            "description": "<p>Ask your eye doctor about a macular pigment optical density (MPOD) reading so you can track your own numbers over time.</p>",
-            "custom_icon": ""
-          }
-        }
-      },
-      "block_order": [
-        "roadmap_step_md01",
-        "roadmap_step_md02",
-        "roadmap_step_md03",
-        "roadmap_step_md04"
-      ],
-      "name": "Roadmap",
-      "settings": {
-        "use_theme_colors": false,
-        "contained_section": true,
-        "max_container_width": 1200,
-        "heading": "What to Expect, Week by Week",
-        "subheading": "<p>Macular pigment builds slowly. Here’s an honest timeline.</p>",
-        "heading_size": 26,
-        "heading_size_mobile": 28,
-        "subheading_size": 16,
-        "subheading_size_mobile": 14,
-        "step_title_size": 20,
-        "step_title_size_mobile": 18,
-        "step_description_size": 14,
-        "step_description_size_mobile": 13,
-        "accent_text": "",
-        "override_global_accent": false,
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_color": "#14254a",
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": 700,
-        "image_position": "right",
-        "image_column_width": 40,
-        "text_column_width": 50,
-        "image_border_radius": 8,
-        "timeline_width": 2,
-        "timeline_border_radius": 2,
-        "show_badges": false,
-        "desktop_badge_font_size": 12,
-        "badge_font_size_mobile": 11,
-        "badge_border_radius": 50,
-        "badge_border_width": 1,
-        "badge_border_style": "solid",
-        "badge_border_color": "#4caf50",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "roadmap_item_spacing_desktop": 40,
-        "roadmap_item_spacing_mobile": 30,
-        "enable_spacing": true,
-        "section_spacing_desktop": 72,
-        "section_spacing_mobile": 36,
-        "section_background": "linear-gradient(100deg, rgba(255, 255, 255, 1) 100%, rgba(255, 250, 247, 1) 100%)",
-        "text_color": "#14254a",
-        "heading_color": "#14254a",
-        "subheading_color": "#14254a",
-        "step_title_color": "#14254a",
-        "step_description_color": "#121212",
-        "timeline_color": "#14254a",
-        "circle_color": "#14254a",
-        "circle_icon_color": "#b8913a",
-        "badge_background": "#14254a",
-        "badge_text_color": "#ffffff"
-      }
-    },
-    "product_comparison_yQQHmj": {
-      "type": "product-comparison",
-      "blocks": {
-        "product_column_ncVeR4": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "MacuDrops",
-            "product_subtitle": "Sublingual",
-            "product_image_size": 120,
-            "product_image_size_tablet": 60,
-            "product_image_size_mobile": 70,
-            "subtitle_custom_icon": "",
-            "show_subtitle_icon": true,
-            "use_subtitle_background": true,
-            "subtitle_border_color": "#ffffff",
-            "highlight_column": true,
-            "highlight_color": "#14254a",
-            "use_highlight_gradient": true,
-            "highlight_gradient_start_color": "#14254a",
-            "highlight_gradient_end_color": "#22386b",
-            "highlight_gradient_angle": 95,
-            "subtitle_glass_color": "#14254a",
-            "subtitle_icon_color": "#000000"
-          }
-        },
-        "product_column_wXYaNH": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "Typical Capsule",
-            "product_subtitle": "Oral",
-            "product_image_size": 80,
-            "product_image_size_tablet": 70,
-            "product_image_size_mobile": 80,
-            "subtitle_custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M22 15h-3V3h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h3v12H7a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h5.09l-.58 3.33a1 1 0 0 0 1 1.17h1a1 1 0 0 0 .95-.8l1.03-5.7H22a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z\" transform=\"rotate(180, 12, 12)\"></path></svg>",
-            "show_subtitle_icon": false,
-            "use_subtitle_background": true,
-            "subtitle_border_color": "#000000",
-            "highlight_column": false,
-            "highlight_color": "#ffffff",
-            "use_highlight_gradient": false,
-            "highlight_gradient_start_color": "#ffffff",
-            "highlight_gradient_end_color": "#ffffff",
-            "highlight_gradient_angle": 45,
-            "subtitle_glass_color": "#ffffff",
-            "subtitle_icon_color": "#ffffff"
-          }
-        },
-        "feature_row_md01": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "All 3 Macular Pigments",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        },
-        "feature_row_md02": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Micellized for Absorption",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        },
-        "feature_row_md03": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "No Capsule to Break Down",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        },
-        "feature_row_md04": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Astaxanthin + Saffron Included",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        },
-        "feature_row_md05": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Third-Party Tested Every Batch",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        },
-        "feature_row_md06": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "60-Second Daily Routine",
-            "show_icon": true,
-            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z\"></path></svg>",
-            "value_type": "checkmark",
-            "value_1": "yes",
-            "text_value_1": "",
-            "value_2": "no",
-            "text_value_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_column_ncVeR4",
-        "product_column_wXYaNH",
-        "feature_row_md01",
-        "feature_row_md02",
-        "feature_row_md03",
-        "feature_row_md04",
-        "feature_row_md05",
-        "feature_row_md06"
-      ],
-      "name": "Product Comparison",
-      "settings": {
-        "use_theme_colors": true,
-        "show_heading": true,
-        "title_part_1": "MacuDrops vs",
-        "title_part_2": "Capsule Eye Supplements",
-        "title_part_1_color": "#14254a",
-        "title_part_2_color": "#14254a",
-        "subheading": "<p>Same goal, different delivery. Here’s how they compare.</p>",
-        "desktop_description": "",
-        "show_description_on_mobile": false,
-        "heading_size": 46,
-        "subheading_size": 16,
-        "heading_line_height": 1.2,
-        "subheading_color": "#14254a",
-        "desktop_description_size_mobile": 14,
-        "desktop_description_size_desktop": 16,
-        "override_global_accent": false,
-        "accent_text_margin_left": 3,
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "inherit",
-        "table_column_width": 47,
-        "center_text_column_desktop": true,
-        "table_width": 1200,
-        "text_column_padding_mobile": 20,
-        "text_column_padding_desktop": 40,
-        "product_title_size": 21,
-        "subtitle_size": 12,
-        "feature_name_size": 16,
-        "text_value_size": 14,
-        "product_title_size_mobile": 16,
-        "subtitle_size_mobile": 10,
-        "feature_name_size_mobile": 12,
-        "text_value_size_mobile": 11,
-        "use_gradient_background": false,
-        "background_color": "#ffffff",
-        "gradient_direction": 90,
-        "gradient_color_1": "#ffffff",
-        "gradient_color_2": "#f5f5f5",
-        "text_color": "#14254a",
-        "subtitle_color": "#14254a",
-        "highlighted_text_color": "#ffffff",
-        "highlighted_subtitle_color": "#ffffff",
-        "highlighted_check_color": "#ffffff",
-        "highlighted_x_color": "#ffffff",
-        "border_color": "#eeeeee",
-        "icon_color": "#14254a",
-        "check_color": "#14254a",
-        "x_color": "#14254a",
-        "highlight_border_radius": 12,
-        "use_highlight_border": false,
-        "highlight_border_color": "#71e293",
-        "highlight_border_width": 1,
-        "unhighlighted_text_color": "#000000",
-        "unhighlighted_subtitle_color": "#000000",
-        "unhighlighted_icon_color": "rgba(0,0,0,0)",
-        "unhighlighted_check_color": "rgba(0,0,0,0)",
-        "unhighlighted_x_color": "rgba(0,0,0,0)"
-      }
-    },
-    "image_with_text_txrBn7": {
-      "type": "image-with-text",
-      "blocks": {
-        "subtitle_9BbH4c": {
-          "type": "subtitle",
-          "settings": {
-            "subtitle_text": "Your macula, the small center of the retina you read and recognize faces with, is built from three pigments your body can’t make. They have to come from food or supplements. MacuDrops delivers all three, plus four nutrients that support the rest of the eye.",
-            "subtitle_size": 1.5,
-            "subtitle_line_height": 1.4,
-            "use_theme_colors": false,
-            "subtitle_color": "#333333",
-            "margin_top": 10,
-            "margin_bottom": 0,
-            "use_background": false,
-            "background_color": "#f5f5f5",
-            "padding_vertical": 5,
-            "padding_horizontal": 10,
-            "border_radius": 4,
-            "border_width": 0,
-            "border_style": "solid",
-            "border_color": "#dddddd"
-          }
-        },
-        "paragraph_4gmEqa": {
-          "type": "paragraph",
-          "settings": {
-            "paragraph_text": "",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "paragraph_color": "#333333"
-          }
-        },
-        "dropdown_WTximG": {
-          "type": "dropdown",
-          "settings": {
-            "dropdown_title": "",
-            "accordion_mode": true,
-            "icon_size": 32,
-            "icon_border_radius": 4,
-            "item_1_title": "Lutein (20mg)",
-            "item_1_svg": "",
-            "item_1_content": "<p>The main pigment of the outer macula. Helps filter blue light and is the most-studied eye carotenoid. Micellized for absorption.</p>",
-            "item_2_title": "Zeaxanthin (2mg)",
-            "item_2_svg": "",
-            "item_2_content": "<p>Concentrated in the middle layers of the macula, working alongside lutein as a light filter and antioxidant.</p>",
-            "item_3_title": "Meso-Zeaxanthin (2mg)",
-            "item_3_svg": "",
-            "item_3_content": "<p>Found at the very center of the macula (the fovea). Most formulas leave it out.</p>",
-            "item_4_title": "Astaxanthin (4mg)",
-            "item_4_svg": "",
-            "item_4_content": "<p>A carotenoid antioxidant that crosses into the retina. Supports eye comfort and focus during screen time.*</p>",
-            "item_5_title": "Saffron Extract (10mg)",
-            "item_5_svg": "",
-            "item_5_content": "<p>Crocus sativus extract, studied for supporting photoreceptor health and visual function.*</p>",
-            "item_6_title": "Zinc (10mg)",
-            "item_6_svg": "",
-            "item_6_content": "<p>Zinc gluconate. Zinc is highly concentrated in the retina and supports normal retinal metabolism.*</p>",
-            "title_spacing": 16,
-            "header_padding_mobile": 16,
-            "header_padding_desktop": 20,
-            "content_outer_padding_mobile": 16,
-            "content_padding_mobile": 20,
-            "content_outer_padding_desktop": 16,
-            "content_padding_desktop": 20,
-            "title_size_desktop": 28,
-            "text_size_desktop": 18,
-            "content_text_size_desktop": 16,
-            "toggle_icon_size_desktop": 24,
-            "title_size_mobile": 20,
-            "text_size_mobile": 16,
-            "content_text_size_mobile": 14,
-            "toggle_icon_size_mobile": 20,
-            "item_spacing": 8,
-            "title_color": "#333333",
-            "dropdown_bg_color": "#ffffff",
-            "dropdown_text_color": "#333333",
-            "content_bg_color": "#f9f9f9",
-            "content_text_color": "#666666",
-            "border_color": "#dddddd",
-            "border_width": 1,
-            "border_radius": 8,
-            "margin_top": 0,
-            "margin_bottom": 20
-          }
-        },
-        "dropdown_iJ9Nid": {
-          "type": "dropdown",
-          "settings": {
-            "dropdown_title": "",
-            "accordion_mode": true,
-            "icon_size": 32,
-            "icon_border_radius": 4,
-            "item_1_title": "Ginkgo Biloba (40mg)",
-            "item_1_svg": "",
-            "item_1_content": "<p>Standardized to 24% flavone glycosides. Supports healthy microcirculation, including to the eye.* Ask your doctor first if you take blood thinners.</p>",
-            "item_2_title": "Sublingual Delivery",
-            "item_2_svg": "",
-            "item_2_content": "<p>Every ingredient is micellized in MCT oil and sunflower lecithin. Held under the tongue for 60 seconds, the drops meet thin, blood-rich tissue instead of starting in the stomach. That’s why there’s no capsule and no pill to swallow.</p>",
-            "item_3_title": "",
-            "item_3_svg": "",
-            "item_3_content": "",
-            "item_4_title": "",
-            "item_4_svg": "",
-            "item_4_content": "",
-            "item_5_title": "",
-            "item_5_svg": "",
-            "item_5_content": "",
-            "item_6_title": "",
-            "item_6_svg": "",
-            "item_6_content": "",
-            "title_spacing": 16,
-            "header_padding_mobile": 16,
-            "header_padding_desktop": 20,
-            "content_outer_padding_mobile": 16,
-            "content_padding_mobile": 20,
-            "content_outer_padding_desktop": 16,
-            "content_padding_desktop": 20,
-            "title_size_desktop": 28,
-            "text_size_desktop": 18,
-            "content_text_size_desktop": 16,
-            "toggle_icon_size_desktop": 24,
-            "title_size_mobile": 20,
-            "text_size_mobile": 16,
-            "content_text_size_mobile": 14,
-            "toggle_icon_size_mobile": 20,
-            "item_spacing": 8,
-            "title_color": "#333333",
-            "dropdown_bg_color": "#ffffff",
-            "dropdown_text_color": "#333333",
-            "content_bg_color": "#f9f9f9",
-            "content_text_color": "#666666",
-            "border_color": "#dddddd",
-            "border_width": 1,
-            "border_radius": 8,
-            "margin_top": -20,
-            "margin_bottom": 20
-          }
-        },
-        "divider_acPmda": {
-          "type": "divider",
-          "settings": {
-            "divider_width": 50,
-            "divider_thickness": 2,
-            "divider_color": "#000000",
-            "divider_border_radius": 0,
-            "divider_opacity": 100,
-            "divider_alignment": "center",
-            "use_border": false,
-            "border_style": "solid",
-            "border_color": "#000000",
-            "margin_top": 20,
-            "margin_bottom": 20
-          }
-        },
-        "button_r4P4kX": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Learn More",
-            "button_redirect_type": "url",
-            "button_link": "",
-            "custom_url": "",
-            "scroll_to_products": false,
-            "button_bg_color": "#b8913a",
-            "button_text_color": "#ffffff",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "button_text_size": 18,
-            "button_border_radius": 4,
-            "full_width_mobile": false,
-            "disable_global_button_styling": false
-          }
-        }
-      },
-      "block_order": [
-        "subtitle_9BbH4c",
-        "paragraph_4gmEqa",
-        "dropdown_WTximG",
-        "dropdown_iJ9Nid",
-        "divider_acPmda",
-        "button_r4P4kX"
-      ],
-      "name": "Image with Text",
-      "settings": {
-        "use_theme_colors": true,
-        "inverse_theme_colors": false,
-        "image_position": "left",
-        "image_position_mobile": "top",
-        "text_align": "left",
-        "center_align_with_media": false,
-        "column_width": 50,
-        "margin_top_mobile": 40,
-        "margin_bottom_mobile": 40,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
-        "container_padding_mobile": 20,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "container_padding_desktop": 40,
-        "content_spacing": 30,
-        "desktop_content_spacing": 40,
-        "section_border_radius": 0,
-        "section_max_width": 1200,
-        "contain_section": false,
-        "container_max_width": 1200,
-        "container_bg_color": "#ffffff",
-        "enable_container_gradient": false,
-        "container_gradient_background": "linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 248, 248, 1) 100%)",
-        "container_padding_vertical": 30,
-        "container_padding_horizontal": 40,
-        "container_padding_vertical_mobile": 30,
-        "container_padding_horizontal_mobile": 20,
-        "enable_border": false,
-        "border_width": 1,
-        "border_style": "solid",
-        "border_color": "#e5e7eb",
-        "border_radius": 8,
-        "enable_shadow": false,
-        "heading": "7 Ingredients.",
-        "heading_accent": "Each at a Studied Dose.",
-        "enable_image_fade_mask": false,
-        "video_autoplay": true,
-        "video_loop": true,
-        "video_muted": true,
-        "video_controls": false,
-        "heading_font_size_mobile": 2.4,
-        "heading_font_size_desktop": 3,
-        "text_font_size_mobile": 1.1,
-        "text_font_size_desktop": 1.2,
-        "content_elements_spacing": 5,
-        "desktop_content_elements_spacing": 5,
-        "heading_bottom_margin": 0,
-        "desktop_heading_bottom_margin": 0,
-        "text_bottom_margin": 0,
-        "desktop_text_bottom_margin": 0,
-        "text_padding_vertical": 0,
-        "text_padding_left": 0,
-        "text_padding_right": 0,
-        "mobile_text_padding_vertical": 0,
-        "mobile_text_padding_horizontal": 0,
-        "button_padding_vertical": 12,
-        "button_padding_horizontal": 24,
-        "button_border_radius": 4,
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "heading_color": "#333333",
-        "accent_color": "#b8913a",
-        "text_color": "#555555",
-        "button_bg_color": "#b8913a",
-        "button_text_color": "#ffffff",
-        "image_max_width": 800,
-        "image_max_height": 0,
-        "image_border_radius": 8,
-        "image_padding": 0,
-        "mobile_image_full_width": false,
-        "heading_size_desktop": 48,
-        "heading_letter_spacing": "body",
-        "subtitle_size_mobile": 18,
-        "override_global_accent": false,
-        "accent_font_family": "inherit",
-        "accent_font_style": "inherit",
-        "accent_font_weight": "inherit",
-        "use_accent_gradient": false,
-        "accent_text_gradient": "linear-gradient(45deg, rgba(239, 74, 101, 1), rgba(255, 107, 157, 1) 100%)",
-        "accent_text_margin_left": 0
-      }
-    },
-    "testimonials_L4PVcy": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_md01": {
-          "type": "testimonial",
-          "settings": {
-            "show_stars": true,
-            "title": "[Review headline, in the customer’s words]",
-            "content": "<p>[Paste a real review here, word for word, with the customer’s permission.]</p>",
-            "author_name": "[First name + last initial]",
-            "rating": 5,
-            "verified": false,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "testimonial_md02": {
-          "type": "testimonial",
-          "settings": {
-            "show_stars": true,
-            "title": "[Review headline, in the customer’s words]",
-            "content": "<p>[Paste a real review here, word for word, with the customer’s permission.]</p>",
-            "author_name": "[First name + last initial]",
-            "rating": 5,
-            "verified": false,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "testimonial_md03": {
-          "type": "testimonial",
-          "settings": {
-            "show_stars": true,
-            "title": "[Review headline, in the customer’s words]",
-            "content": "<p>[Paste a real review here, word for word, with the customer’s permission.]</p>",
-            "author_name": "[First name + last initial]",
-            "rating": 5,
-            "verified": false,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "testimonial_md04": {
-          "type": "testimonial",
-          "settings": {
-            "show_stars": true,
-            "title": "[Review headline, in the customer’s words]",
-            "content": "<p>[Paste a real review here, word for word, with the customer’s permission.]</p>",
-            "author_name": "[First name + last initial]",
-            "rating": 5,
-            "verified": false,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        },
-        "testimonial_md05": {
-          "type": "testimonial",
-          "settings": {
-            "show_stars": true,
-            "title": "[Review headline, in the customer’s words]",
-            "content": "<p>[Paste a real review here, word for word, with the customer’s permission.]</p>",
-            "author_name": "[First name + last initial]",
-            "rating": 5,
-            "verified": false,
-            "show_purchase_date": false,
-            "purchase_date": ""
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_md01",
-        "testimonial_md02",
-        "testimonial_md03",
-        "testimonial_md04",
-        "testimonial_md05"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "use_theme_colors": true,
-        "section_background": "linear-gradient(180deg, rgba(20, 37, 74, 1), rgba(247, 244, 236, 1) 98%)",
-        "heading_color": "#181b1d",
-        "subtitle_color": "#888888",
-        "text_color": "#181b1d",
-        "padding_top": 20,
-        "padding_bottom": 60,
-        "heading": "What MacuDrops",
-        "heading_size": 30,
-        "heading_size_mobile": 30,
-        "heading_accent": "Customers Say",
-        "subtitle": "[Real reviews go here. Connect Judge.me or paste reviews in word for word.]",
-        "subtitle_size": 18,
-        "override_global_accent": true,
-        "accent_color": "#b8913a",
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "300",
-        "accent_text_margin_left": 0,
-        "use_trustpilot_stars": true,
-        "trustpilot_star_color": "#b8913a",
-        "trustpilot_star_empty_color": "#dcdce6",
-        "testimonial_title_size": 18,
-        "testimonial_title_size_mobile": 16,
-        "testimonial_content_size": 14,
-        "testimonial_content_size_mobile": 14,
-        "author_name_size": 13,
-        "author_avatar_text_size": 17,
-        "verified_badge_size": 13,
-        "verified_badge_size_mobile": 13,
-        "verified_icon_size": 14,
-        "purchase_date_size": 12,
-        "purchase_date_size_mobile": 12,
-        "card_rating_size": 16,
-        "show_rating": true,
-        "enable_mask_fade": true,
-        "rating_summary_text": "<p>Excellent <strong>4.8/5 based</strong> on 2,500+ verified reviews</p>",
-        "rating_value": 5,
-        "rating_max": 5,
-        "summary_star_color": "#71acc2",
-        "summary_star_empty_color": "#707070",
-        "rating_summary_text_color": "#fdffff",
-        "star_color": "#181b1d",
-        "star_empty_color": "#181b1d",
-        "rating_summary_bg_color": "#f8f8f8",
-        "rating_summary_background": "linear-gradient(45deg, rgba(24, 27, 29, 1), rgba(24, 27, 29, 1) 96%)",
-        "enable_rating_summary_border": true,
-        "rating_summary_border_width": 1,
-        "rating_summary_border_style": "solid",
-        "rating_summary_border_color": "#181b1d",
-        "rating_summary_border_radius": 4,
-        "card_background": "#fdffff",
-        "card_text_color": "#181b1d",
-        "testimonial_title_color": "#ffffff",
-        "card_border_radius": 4,
-        "card_gap": 20,
-        "card_width_mobile": 85,
-        "card_width_desktop": 320,
-        "enable_card_border": true,
-        "card_border_width": 1,
-        "card_border_style": "solid",
-        "card_border_color": "#181b1d",
-        "avatar_color": "#71acc2",
-        "avatar_text_color": "#000000",
-        "verified_color": "#181b1d",
-        "verified_text": "Verified customer",
-        "author_info_bg_color": "#f8f8f8",
-        "enable_author_info_border": true,
-        "author_info_border_width": 1,
-        "author_info_border_style": "solid",
-        "author_info_border_color": "#ececec",
-        "author_info_border_radius": 4,
-        "purchase_date_prefix": "Purchased on",
-        "purchase_date_color": "#181b1d",
-        "purchase_date_icon_color": "#181b1d",
-        "show_navigation": true,
-        "show_dots": true,
-        "nav_button_bg": "#181b1d",
-        "nav_button_color": "#fdffff",
-        "nav_button_border": "#e5e5e5",
-        "nav_button_radius": 25,
-        "dot_color": "#181b1d",
-        "anchor_id": ""
-      }
-    },
-    "satisfaction_guarantee_J4ypTy": {
-      "type": "satisfaction-guarantee",
-      "settings": {
-        "use_theme_colors": false,
-        "show_photos": true,
-        "allow_overflow": false,
-        "icon_style": "original",
-        "custom_svg_code": "",
-        "icon_color": "#14254a",
-        "accent_text": "60-Day",
-        "heading_text": "Money-Back Guarantee",
-        "description_text": "Take MacuDrops every day for up to 60 days. If you’re not satisfied for any reason, contact us for a full refund. No questions asked.",
-        "product_name": "MacuDrops",
-        "heading_text_color": "#14254a",
-        "description_color": "#000000",
-        "benefit_text_color": "#211a28",
-        "heading_size_desktop": 26,
-        "heading_size_mobile": 36,
-        "heading_line_height": 1.3,
-        "description_size_desktop": 14,
-        "description_size_mobile": 14,
-        "benefit_size_desktop": 14,
-        "benefit_size_mobile": 14,
-        "description_line_height": 1.5,
-        "accent_color": "",
-        "accent_text_margin_left": 4,
-        "use_global_accent_typography": false,
-        "use_accent_gradient": true,
-        "accent_text_gradient": "linear-gradient(91deg, rgba(20, 37, 74, 1), rgba(34, 56, 107, 1) 50%, rgba(52, 80, 140, 1) 100%)",
-        "accent_font_family": "inherit",
-        "accent_font_style": "normal",
-        "accent_font_weight": "300",
-        "button_text": "TRY RISK-FREE TODAY",
-        "button_action_type": "scroll",
-        "custom_url": "",
-        "use_global_button_style": false,
-        "button_color": "#14254a",
-        "button_text_color": "#ffffff",
-        "benefit_1": "100% Satisfaction",
-        "benefit_2": "Fast Shipping",
-        "benefit_3": "Easy Returns",
-        "image_1": "shopify://shop_images/Untitled_design_16.png",
-        "image_2": "shopify://shop_images/7.png",
-        "image_4": "shopify://shop_images/10.png",
-        "image_5": "shopify://shop_images/9.png",
-        "polaroid_size_desktop": 180,
-        "polaroid_size_mobile": 100,
-        "image_extension": 80,
-        "image_vertical_offset": 0,
-        "content_padding_mobile": 5,
-        "content_padding_desktop": 70,
-        "content_width_with_photos": 50,
-        "content_max_width_with_photos": 600,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
-        "padding_top_no_photos": 15,
-        "section_padding_vertical": 35,
-        "section_padding_horizontal": 5,
-        "section_padding_vertical_mobile": 5,
-        "section_padding_horizontal_mobile": 5,
-        "section_background": "linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 97%)",
-        "contain_section": false,
-        "container_padding": 0,
-        "container_background": "linear-gradient(90deg, rgba(242, 247, 249, 1), rgba(255, 255, 255, 1) 47%, rgba(253, 255, 255, 1) 100%)",
-        "enable_border": true,
-        "border_width": 1,
-        "border_style": "solid",
-        "border_color": "#b4e1ed",
-        "border_radius": 8,
-        "enable_shadow": false
-      }
-    },
-    "store_faq_Lpd3PW": {
-      "type": "store-faq",
-      "blocks": {
-        "faq_item_md01": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long until I notice anything?",
-            "answer": "<p>Macular pigment builds gradually. Research on lutein and zeaxanthin usually measures changes over 3 to 6 months of daily use, so we recommend giving MacuDrops at least 3 months.*</p>"
-          }
-        },
-        "faq_item_md02": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Does MacuDrops replace my eye injections or laser treatment?",
-            "answer": "<p><strong>No.</strong> MacuDrops is a dietary supplement, not a treatment for any eye disease. If you have diabetic retinopathy, macular degeneration or any other eye condition, keep every appointment and follow your eye doctor’s treatment plan.</p>"
-          }
-        },
-        "faq_item_md03": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is it safe with my medications?",
-            "answer": "<p>Show the ingredient list to your doctor before starting, especially if you take blood thinners (warfarin, aspirin, clopidogrel), because ginkgo biloba can affect bleeding. Ask your doctor if you are pregnant or nursing.</p>"
-          }
-        },
-        "faq_item_md04": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Why drops instead of capsules?",
-            "answer": "<p>Lutein and the other carotenoids are fat-soluble. In MacuDrops they’re micellized in MCT oil and sunflower lecithin and taken under the tongue, so there’s no capsule to dissolve first.</p>"
-          }
-        },
-        "faq_item_md05": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I take it?",
-            "answer": "<p>One dropper under the tongue, hold for 60 seconds, then swallow. Once a day. Each bottle has 30 servings.</p>"
-          }
-        },
-        "faq_item_md06": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Where is it made?",
-            "answer": "<p>In small batches in Japan, in an FDA-registered, GMP-certified facility. Every batch is third-party tested.</p>"
-          }
-        },
-        "faq_item_md07": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What if it isn’t for me?",
-            "answer": "<p>You’re covered by our 60-day money-back guarantee. Contact our team for a full refund.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_md01",
-        "faq_item_md02",
-        "faq_item_md03",
-        "faq_item_md04",
-        "faq_item_md05",
-        "faq_item_md06",
-        "faq_item_md07"
-      ],
-      "settings": {
-        "use_theme_colors": true,
-        "heading": "Frequently Asked Questions",
-        "subtitle": "<p>Everything you need to know about MacuDrops.</p>",
-        "heading_color": "#14254a",
-        "section_padding": 60,
-        "container_padding_mobile": 15,
-        "container_padding_desktop": 15,
-        "section_bg_color": "#ffffff",
-        "border_radius": 4,
-        "border_color": "#e6e9f0",
-        "border_style": "full",
-        "question_color": "#14254a",
-        "question_bg_color": "#ffffff",
-        "answer_color": "#14254a",
-        "answer_bg_color": "#ffffff",
-        "accordion_mode": true,
-        "image_border_radius": 8,
-        "center_when_no_image": true,
-        "center_max_width": 1000,
-        "two_column_desktop": true,
-        "column_gap": 10,
-        "faq_item_spacing": 0,
-        "individual_item_borders": false,
-        "question_padding_top": 20,
-        "question_padding_bottom": 15,
-        "question_padding_left": 17,
-        "question_padding_right": 14,
-        "answer_padding_top": 15,
-        "answer_padding_bottom": 15,
-        "answer_padding_left": 20,
-        "answer_padding_right": 20,
-        "heading_font_size": 36,
-        "heading_font_size_mobile": 38,
-        "subtitle_font_size": 16,
-        "subtitle_font_size_mobile": 14,
-        "question_font_size": 16,
-        "question_font_size_mobile": 14,
-        "answer_font_size": 14,
-        "answer_font_size_mobile": 13
-      }
-    },
-    "17605250755284df40": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "176052576987c50b11": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "four_benefits_md": {
-      "type": "4-benefits",
-      "settings": {
-        "heading_regular": "Feed Your Eyes.",
-        "heading_accent": "Every Day.",
-        "subtitle": "From the pigments your macula is built from to a 60-second routine, here’s what makes MacuDrops different.",
-        "use_theme_colors": false,
-        "section_background": "linear-gradient(180deg, #14254a, #22386b)",
-        "heading_color": "#ffffff",
-        "subtitle_color": "#e6e9f0",
-        "icon_color": "#14254a",
-        "icon_background": "linear-gradient(135deg, #d6b468, #b8913a)",
-        "icon_border_color": "#ffffff",
-        "benefit_title_color": "#ffffff",
-        "benefit_description_color": "#e6e9f0",
-        "override_global_accent": true,
-        "accent_color": "#d6b468",
-        "show_image": true
-      },
-      "blocks": {
-        "benefit_md01": {
-          "type": "benefit",
-          "settings": {
-            "title": "Macular Pigment Support",
-            "description": "All three carotenoids your macula concentrates.*",
-            "preset_icon": "shield"
-          }
-        },
-        "benefit_md02": {
-          "type": "benefit",
-          "settings": {
-            "title": "Under-the-Tongue Delivery",
-            "description": "Micellized drops, no capsule to break down.",
-            "preset_icon": "lightning"
-          }
-        },
-        "benefit_md03": {
-          "type": "benefit",
-          "settings": {
-            "title": "Blue Light Filtering",
-            "description": "Lutein and zeaxanthin help filter high-energy blue light.*",
-            "preset_icon": "check"
-          }
-        },
-        "benefit_md04": {
-          "type": "benefit",
-          "settings": {
-            "title": "Antioxidant Protection",
-            "description": "Astaxanthin and saffron support retinal cells.*",
-            "preset_icon": "refresh"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_md01",
-        "benefit_md02",
-        "benefit_md03",
-        "benefit_md04"
+        "s1",
+        "s2",
+        "s3",
+        "s4"
       ]
     },
-    "listicle_md": {
-      "type": "listicle",
+    "pf_reasons": {
+      "type": "pf-md-reasons",
       "settings": {
-        "use_theme_colors": false,
-        "section_background_color": "#f7f4ec",
-        "item_title_color": "#14254a",
-        "item_content_color": "#1f2530",
-        "divider_color": "#e6e1d3",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "sub": "Most eye supplements stop at lutein in a capsule. MacuDrops pairs all three macular pigments with four supporting nutrients and delivers them under the tongue."
       },
       "blocks": {
-        "header_md01": {
-          "type": "header",
+        "c0": {
+          "type": "card",
           "settings": {
-            "title": "5 Reasons MacuDrops Is Different From Every Eye Supplement You’ve Tried",
-            "title_color": "#14254a",
-            "title_alignment": "center",
-            "show_author_info": false,
-            "title_size": 40,
-            "mobile_title_size": 30
+            "icon": "eye",
+            "heading": "All 3 Macular Pigments",
+            "text": "Lutein for the outer macula, zeaxanthin for the middle layer and meso-zeaxanthin for the center (fovea). Many formulas skip meso-zeaxanthin."
           }
         },
-        "listicle_item_md01": {
-          "type": "listicle_item",
+        "c1": {
+          "type": "card",
           "settings": {
-            "title": "Reason 1: It Has All Three Macular Pigments",
-            "content": "<p>Your macula is built from lutein, zeaxanthin and meso-zeaxanthin. Many eye supplements include only the first two. MacuDrops includes all three, at 20mg, 2mg and 2mg.</p>",
-            "enable_container": true,
-            "item_border_color": "#e6e1d3",
-            "highlight_background_color": "#efe6cf",
-            "highlight_text_color": "#14254a"
+            "icon": "drop",
+            "heading": "Micellized for Absorption",
+            "text": "The pigments are pre-dispersed in MCT oil and sunflower lecithin so they’re ready to absorb, instead of waiting on stomach acid to break down a capsule."
           }
         },
-        "listicle_item_md02": {
-          "type": "listicle_item",
+        "c2": {
+          "type": "card",
           "settings": {
-            "title": "Reason 2: It Skips the Capsule",
-            "content": "<p>Carotenoids are fat-soluble and absorb poorly from a dry capsule. MacuDrops are micellized in MCT oil and taken under the tongue, so there’s no capsule to break down first.</p>",
-            "enable_container": true,
-            "item_border_color": "#e6e1d3",
-            "highlight_background_color": "#efe6cf",
-            "highlight_text_color": "#14254a"
+            "icon": "sparkle",
+            "heading": "Astaxanthin + Saffron",
+            "text": "4mg astaxanthin, an antioxidant that reaches the retina, and 10mg saffron extract, studied for supporting photoreceptor health.*"
           }
         },
-        "listicle_item_md03": {
-          "type": "listicle_item",
+        "c3": {
+          "type": "card",
           "settings": {
-            "title": "Reason 3: It Goes Beyond Pigments",
-            "content": "<p>Astaxanthin, saffron, zinc and ginkgo support the retina’s antioxidant defenses, its metabolism and its circulation.*</p>",
-            "enable_container": true,
-            "item_border_color": "#e6e1d3",
-            "highlight_background_color": "#efe6cf",
-            "highlight_text_color": "#14254a"
-          }
-        },
-        "listicle_item_md04": {
-          "type": "listicle_item",
-          "settings": {
-            "title": "Reason 4: 60 Seconds, Once a Day",
-            "content": "<p>No handful of pills, no timing around meals. One dropper under the tongue while you make your coffee.</p>",
-            "enable_container": true,
-            "item_border_color": "#e6e1d3",
-            "highlight_background_color": "#efe6cf",
-            "highlight_text_color": "#14254a"
-          }
-        },
-        "listicle_item_md05": {
-          "type": "listicle_item",
-          "settings": {
-            "title": "Reason 5: Made in Japan, Tested Every Batch",
-            "content": "<p>Small-batch production in an FDA-registered, GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>",
-            "enable_container": true,
-            "item_border_color": "#e6e1d3",
-            "highlight_background_color": "#efe6cf",
-            "highlight_text_color": "#14254a"
+            "icon": "japan",
+            "heading": "Made in Japan, Tested Every Batch",
+            "text": "Produced in small batches in an FDA-registered, GMP-certified facility. Every batch is third-party tested."
           }
         }
       },
       "block_order": [
-        "header_md01",
-        "listicle_item_md01",
-        "listicle_item_md02",
-        "listicle_item_md03",
-        "listicle_item_md04",
-        "listicle_item_md05"
+        "c0",
+        "c1",
+        "c2",
+        "c3"
       ]
     },
-    "video_testimonials_md": {
-      "type": "video-testimonials",
-      "disabled": true,
-      "settings": {
-        "heading_regular": "Real People.",
-        "heading_accent": "Real Words.",
-        "subtitle": "Add real customer videos here.",
-        "use_theme_colors": false,
-        "background_color": "#f7f4ec",
-        "heading_color": "#14254a",
-        "next_button_bg": "#14254a",
-        "next_button_border": "#14254a",
-        "override_global_accent": true,
-        "accent_color": "#b8913a",
-        "verified_badge_color": "#b8913a",
-        "verified_icon_color": "#b8913a",
-        "review_author_background_color": "#14254a",
-        "review_author_border_color": "#14254a"
+    "pf_photos": {
+      "type": "pf-md-photo-strip",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p5": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p6": {
+          "type": "photo",
+          "settings": {}
+        }
       },
-      "blocks": {},
-      "block_order": []
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ]
+    },
+    "pf_reviewcards": {
+      "type": "pf-md-review-cards",
+      "settings": {},
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {}
+        },
+        "r2": {
+          "type": "review",
+          "settings": {}
+        },
+        "r3": {
+          "type": "review",
+          "settings": {}
+        },
+        "r4": {
+          "type": "review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
+    },
+    "pf_feel": {
+      "type": "pf-md-feel",
+      "settings": {
+        "sub": "From the pigments your macula is built from to a 60-second routine, here’s what MacuDrops is designed to support.*"
+      },
+      "blocks": {
+        "f1": {
+          "type": "item",
+          "settings": {
+            "icon": "eye",
+            "heading": "Macular Pigment",
+            "text": "All three carotenoids your macula concentrates.*"
+          }
+        },
+        "f2": {
+          "type": "item",
+          "settings": {
+            "icon": "monitor",
+            "heading": "Blue Light Filtering",
+            "text": "Lutein and zeaxanthin help filter high-energy blue light.*"
+          }
+        },
+        "f3": {
+          "type": "item",
+          "settings": {
+            "icon": "moon",
+            "heading": "Contrast & Night Vision",
+            "text": "Supports contrast sensitivity and glare recovery.*"
+          }
+        },
+        "f4": {
+          "type": "item",
+          "settings": {
+            "icon": "sparkle",
+            "heading": "Antioxidant Defense",
+            "text": "Astaxanthin and saffron support retinal cells.*"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
+    },
+    "pf_proven": {
+      "type": "pf-md-proven",
+      "settings": {
+        "intro": "Your macula is built from three pigments your body can’t make. MacuDrops delivers all three, plus four nutrients that support the rest of the retina. Tap any card to read more.",
+        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
+      "blocks": {
+        "p0": {
+          "type": "card",
+          "settings": {
+            "heading": "Lutein 20mg",
+            "short": "Main pigment of the outer macula",
+            "icon": "leaf",
+            "long": "<p>The main pigment of the outer macula. Helps filter blue light and is the most-studied eye carotenoid. Micellized for absorption.</p>"
+          }
+        },
+        "p1": {
+          "type": "card",
+          "settings": {
+            "heading": "Zeaxanthin 2mg",
+            "short": "Works alongside lutein",
+            "icon": "sun",
+            "long": "<p>Concentrated in the middle layers of the macula, working alongside lutein as a light filter and antioxidant.</p>"
+          }
+        },
+        "p2": {
+          "type": "card",
+          "settings": {
+            "heading": "Meso-Zeaxanthin 2mg",
+            "short": "The pigment at the center",
+            "icon": "eye",
+            "long": "<p>Found at the very center of the macula (the fovea). Most formulas leave it out.</p>"
+          }
+        },
+        "p3": {
+          "type": "card",
+          "settings": {
+            "heading": "Astaxanthin 4mg",
+            "short": "Antioxidant that reaches the retina",
+            "icon": "sparkle",
+            "long": "<p>A carotenoid antioxidant that crosses into the retina. Supports eye comfort and focus during screen time.*</p>"
+          }
+        },
+        "p4": {
+          "type": "card",
+          "settings": {
+            "heading": "Saffron Extract 10mg",
+            "short": "Photoreceptor support*",
+            "icon": "flask",
+            "long": "<p>Crocus sativus extract, studied for supporting photoreceptor health and visual function.*</p>"
+          }
+        },
+        "p5": {
+          "type": "card",
+          "settings": {
+            "heading": "Zinc 10mg",
+            "short": "Concentrated in the retina",
+            "icon": "zap",
+            "long": "<p>Zinc gluconate. Zinc is highly concentrated in the retina and supports normal retinal metabolism.*</p>"
+          }
+        },
+        "p6": {
+          "type": "card",
+          "settings": {
+            "heading": "Ginkgo Biloba 40mg",
+            "short": "Healthy microcirculation*",
+            "icon": "heart",
+            "long": "<p>Standardized to 24% flavone glycosides. Supports healthy microcirculation, including to the eye.* Ask your doctor first if you take blood thinners.</p>"
+          }
+        },
+        "p7": {
+          "type": "card",
+          "settings": {
+            "heading": "Sublingual Delivery",
+            "short": "No capsule to break down",
+            "icon": "drop",
+            "long": "<p>Every ingredient is micellized in MCT oil and sunflower lecithin. Held under the tongue for 60 seconds, the drops meet thin, blood-rich tissue instead of starting in the stomach. That’s why there’s no capsule and no pill to swallow.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7"
+      ]
+    },
+    "pf_marquee": {
+      "type": "pf-md-marquee",
+      "settings": {},
+      "blocks": {
+        "m0": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "text": "Lutein"
+          }
+        },
+        "m1": {
+          "type": "item",
+          "settings": {
+            "icon": "sun",
+            "text": "Zeaxanthin"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "icon": "eye",
+            "text": "Meso-Zeaxanthin"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "icon": "sparkle",
+            "text": "Astaxanthin"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "icon": "flask",
+            "text": "Saffron"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "icon": "zap",
+            "text": "Zinc"
+          }
+        },
+        "m6": {
+          "type": "item",
+          "settings": {
+            "icon": "heart",
+            "text": "Ginkgo Biloba"
+          }
+        },
+        "m7": {
+          "type": "item",
+          "settings": {
+            "icon": "drop",
+            "text": "Sublingual"
+          }
+        }
+      },
+      "block_order": [
+        "m0",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7"
+      ]
+    },
+    "pf_journey": {
+      "type": "pf-md-journey",
+      "settings": {
+        "text": "<p>Macular pigment builds slowly, so consistency matters more than anything. Here’s an honest timeline of what daily use looks like.</p>"
+      },
+      "blocks": {
+        "w1": {
+          "type": "step",
+          "settings": {
+            "label": "Day 1",
+            "heading": "Start the routine",
+            "points": "One dropper under the tongue for 60 seconds every morning\nNothing to swallow, no water needed\nTakes less time than your coffee"
+          }
+        },
+        "w2": {
+          "type": "step",
+          "settings": {
+            "label": "Weeks 1–4",
+            "heading": "Levels start to rise",
+            "points": "Lutein and zeaxanthin levels in your blood start to rise*\nConsistency matters more than anything here\nKeep every eye appointment and treatment"
+          }
+        },
+        "w3": {
+          "type": "step",
+          "settings": {
+            "label": "Months 2–3",
+            "heading": "Pigment builds",
+            "points": "Studies on lutein and zeaxanthin typically measure macular pigment gains over this window*\nMany people notice more comfortable eyes in bright light and on screens*"
+          }
+        },
+        "w4": {
+          "type": "step",
+          "settings": {
+            "label": "Month 3+",
+            "heading": "Track your numbers",
+            "points": "Ask your eye doctor about a macular pigment optical density (MPOD) reading\nKeep going daily to maintain your levels*"
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ]
+    },
+    "pf_five": {
+      "type": "pf-md-five-reasons",
+      "settings": {
+        "heading": "5 Reasons MacuDrops Is Different From Every Eye Supplement You’ve Tried"
+      },
+      "blocks": {
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "heading": "It Has All Three Macular Pigments",
+            "text": "<p>Your macula is built from lutein, zeaxanthin and meso-zeaxanthin. Many eye supplements include only the first two. MacuDrops includes all three, at 20mg, 2mg and 2mg.</p>"
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "heading": "It Skips the Capsule",
+            "text": "<p>Carotenoids are fat-soluble and absorb poorly from a dry capsule. MacuDrops are micellized in MCT oil and taken under the tongue, so there’s no capsule to break down first.</p>"
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "heading": "It Goes Beyond Pigments",
+            "text": "<p>Astaxanthin, saffron, zinc and ginkgo support the retina’s antioxidant defenses, its metabolism and its circulation.*</p>"
+          }
+        },
+        "r4": {
+          "type": "reason",
+          "settings": {
+            "heading": "60 Seconds, Once a Day",
+            "text": "<p>No handful of pills, no timing around meals. One dropper under the tongue while you make your coffee.</p>"
+          }
+        },
+        "r5": {
+          "type": "reason",
+          "settings": {
+            "heading": "Made in Japan, Tested Every Batch",
+            "text": "<p>Small-batch production in an FDA-registered, GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ]
+    },
+    "pf_compare": {
+      "type": "pf-md-comparison",
+      "settings": {
+        "points": "All 3 macular pigments | lutein, zeaxanthin and meso-zeaxanthin. Many formulas skip the third.\nMicellized drops | pre-dispersed in MCT oil and sunflower lecithin, no capsule to break down.\nMore than pigments | astaxanthin, saffron, zinc and ginkgo for the rest of the retina.*\nTested every batch | made in small batches in Japan in a GMP-certified facility."
+      },
+      "blocks": {
+        "row0": {
+          "type": "row",
+          "settings": {
+            "label": "All 3 Macular Pigments",
+            "us": true,
+            "them": false
+          }
+        },
+        "row1": {
+          "type": "row",
+          "settings": {
+            "label": "Micellized for Absorption",
+            "us": true,
+            "them": false
+          }
+        },
+        "row2": {
+          "type": "row",
+          "settings": {
+            "label": "No Capsule to Swallow",
+            "us": true,
+            "them": false
+          }
+        },
+        "row3": {
+          "type": "row",
+          "settings": {
+            "label": "Astaxanthin + Saffron",
+            "us": true,
+            "them": false
+          }
+        },
+        "row4": {
+          "type": "row",
+          "settings": {
+            "label": "Third-Party Tested Every Batch",
+            "us": true,
+            "them": false
+          }
+        },
+        "row5": {
+          "type": "row",
+          "settings": {
+            "label": "60-Second Daily Routine",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "row0",
+        "row1",
+        "row2",
+        "row3",
+        "row4",
+        "row5"
+      ]
+    },
+    "pf_guarantee": {
+      "type": "pf-md-guarantee",
+      "settings": {}
+    },
+    "pf_videos": {
+      "type": "pf-md-videos",
+      "settings": {},
+      "blocks": {
+        "v1": {
+          "type": "video",
+          "settings": {}
+        },
+        "v2": {
+          "type": "video",
+          "settings": {}
+        },
+        "v3": {
+          "type": "video",
+          "settings": {}
+        },
+        "v4": {
+          "type": "video",
+          "settings": {}
+        },
+        "v5": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5"
+      ]
+    },
+    "pf_reviews": {
+      "type": "pf-md-reviews-list",
+      "settings": {},
+      "blocks": {
+        "rv1": {
+          "type": "review",
+          "settings": {}
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {}
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "rv1",
+        "rv2",
+        "rv3"
+      ]
+    },
+    "pf_faq": {
+      "type": "pf-md-faq",
+      "settings": {
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
+      "blocks": {
+        "q0": {
+          "type": "q",
+          "settings": {
+            "q": "How long until I notice anything?",
+            "a": "<p>Macular pigment builds gradually. Research on lutein and zeaxanthin usually measures changes over 3 to 6 months of daily use, so we recommend giving MacuDrops at least 3 months.*</p>"
+          }
+        },
+        "q1": {
+          "type": "q",
+          "settings": {
+            "q": "Does MacuDrops replace my eye injections or laser treatment?",
+            "a": "<p><strong>No.</strong> MacuDrops is a dietary supplement, not a treatment for any eye disease. If you have diabetic retinopathy, macular degeneration or any other eye condition, keep every appointment and follow your eye doctor’s treatment plan.</p>"
+          }
+        },
+        "q2": {
+          "type": "q",
+          "settings": {
+            "q": "Is it safe with my medications?",
+            "a": "<p>Show the ingredient list to your doctor before starting, especially if you take blood thinners (warfarin, aspirin, clopidogrel), because ginkgo biloba can affect bleeding. Ask your doctor if you are pregnant or nursing.</p>"
+          }
+        },
+        "q3": {
+          "type": "q",
+          "settings": {
+            "q": "Why drops instead of capsules?",
+            "a": "<p>Lutein and the other carotenoids are fat-soluble. In MacuDrops they’re micellized in MCT oil and sunflower lecithin and taken under the tongue, so there’s no capsule to dissolve first.</p>"
+          }
+        },
+        "q4": {
+          "type": "q",
+          "settings": {
+            "q": "How do I take it?",
+            "a": "<p>One dropper under the tongue, hold for 60 seconds, then swallow. Once a day. Each bottle has 30 servings.</p>"
+          }
+        },
+        "q5": {
+          "type": "q",
+          "settings": {
+            "q": "Where is it made?",
+            "a": "<p>In small batches in Japan, in an FDA-registered, GMP-certified facility. Every batch is third-party tested.</p>"
+          }
+        },
+        "q6": {
+          "type": "q",
+          "settings": {
+            "q": "What if it isn’t for me?",
+            "a": "<p>You’re covered by our 60-day money-back guarantee. Contact our team for a full refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
     }
   },
   "order": [
-    "shop_product_details_JbqzwH",
-    "statistics_column_yB6c6V",
-    "product_benefits_LQxdTf",
-    "customer_reviews_carousel_kLzV4E",
-    "four_benefits_md",
-    "image_with_text_txrBn7",
-    "scrolling_features_bar_QmiYpj",
-    "roadmap_p7J4ze",
-    "listicle_md",
-    "product_comparison_yQQHmj",
-    "satisfaction_guarantee_J4ypTy",
-    "video_testimonials_md",
-    "testimonials_L4PVcy",
-    "store_faq_Lpd3PW",
-    "17605250755284df40",
-    "176052576987c50b11"
+    "pf_ticker",
+    "pf_buybox",
+    "pf_stats",
+    "pf_reasons",
+    "pf_photos",
+    "pf_reviewcards",
+    "pf_feel",
+    "pf_proven",
+    "pf_marquee",
+    "pf_journey",
+    "pf_five",
+    "pf_compare",
+    "pf_guarantee",
+    "pf_videos",
+    "pf_reviews",
+    "pf_faq"
   ]
 }

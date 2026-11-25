@@ -1,0 +1,36 @@
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+<style>#shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.eyebrow_color }}; } #shopify-section-{{ section.id }} .pfm-gu { background: {{ s.bg }}; }</style>
+<div class="pfm pfm-gu">
+  <div class="pfm-gu__grid">
+    <div>
+      <div class="pfm-gu__badge">{%- if s.badge != blank -%}{{ s.badge | image_url: width: 320 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'pf-md-icon', name: 'guarantee', days: s.days %}{%- endif -%}</div>
+      <div class="pfm-gu__eb">{{ s.eyebrow }}</div>
+      <h2>{{ s.heading }}</h2>
+      <div class="pfm-gu__txt">{{ s.text }}</div>
+      {%- if s.button_label != blank -%}<a class="pfm-pill pfm-pill--white" href="{{ s.button_link | default: '#pfm-top' }}">{{ s.button_label }}</a>{%- endif -%}
+    </div>
+    <div class="pfm-gu__img">
+      {%- if s.image != blank -%}{{ s.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: s.image.alt }}{%- else -%}<img src="{{ 'pf-md-bottle.jpg' | asset_url }}" alt="MacuDrops" loading="lazy" width="1024" height="1024">{%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PF guarantee",
+  "settings": [
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1E2F63" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#B8913A" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#EEF2F9" },
+    { "type": "image_picker", "id": "badge", "label": "Badge image (optional)" },
+    { "type": "number", "id": "days", "label": "Days on built-in badge", "default": 60 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Promise" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try It for 60 Days, Risk-Free" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Take MacuDrops every day for up to 60 days. If you're not happy for any reason, contact us for a full refund.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Try MacuDrops Risk-Free" },
+    { "type": "url", "id": "button_link", "label": "Button link (empty = scroll to top)" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "presets": [ { "name": "PF guarantee" } ]
+}
+{% endschema %}
