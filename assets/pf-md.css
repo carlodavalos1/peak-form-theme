@@ -641,3 +641,4 @@
   -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0,0,0,.6) 68%, transparent 98%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0,0,0,.6) 68%, transparent 98%); }
 .pfm-feel--blend .pfm-feel__grid { grid-template-columns: minmax(0, 1fr) 520px; gap: 24px; }
 @media (max-width: 900px) { .pfm-feel--blend .pfm-feel__grid { grid-template-columns: 1fr; } .pfm-feel--blend .pfm-feel__img { max-width: 420px; margin: -10px auto -30px; } }
+.pfm-feel--cutout .pfm-feel__img img { max-height: 520px; }
