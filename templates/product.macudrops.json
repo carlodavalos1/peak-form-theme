@@ -251,7 +251,7 @@
           "settings": {
             "icon": "japan",
             "heading": "Made in Japan, Tested Every Batch",
-            "text": "Produced in small batches in an FDA-registered, GMP-certified facility. Every batch is third-party tested.",
+            "text": "Produced in small batches in a GMP-certified facility. Every batch is third-party tested.",
             "asset": "pf-md-lab.webp"
           }
         }
@@ -326,17 +326,57 @@
             "asset": "pf-md-selfie-8.webp",
             "alt": "Woman holding MacuDrops"
           }
+        },
+        "p9": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-9.webp",
+            "alt": "Man holding MacuDrops in his garden"
+          }
+        },
+        "p10": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-10.webp",
+            "alt": "Man holding MacuDrops at breakfast"
+          }
+        },
+        "p11": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-11.webp",
+            "alt": "Man holding MacuDrops in a mirror selfie"
+          }
+        },
+        "p12": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-12.webp",
+            "alt": "Man holding MacuDrops on a lakeside walk"
+          }
+        },
+        "p13": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-md-selfie-13.webp",
+            "alt": "Man holding MacuDrops in his living room"
+          }
         }
       },
       "block_order": [
         "p1",
+        "p9",
         "p2",
         "p3",
+        "p10",
         "p4",
         "p5",
+        "p11",
         "p6",
         "p7",
-        "p8"
+        "p12",
+        "p8",
+        "p13"
       ]
     },
     "pf_reviewcards": {
@@ -701,7 +741,7 @@
           "type": "reason",
           "settings": {
             "heading": "Made in Japan, Tested Every Batch",
-            "text": "<p>Small-batch production in an FDA-registered, GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>",
+            "text": "<p>Small-batch production in a GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>",
             "asset": "pf-md-lab.webp"
           }
         }
@@ -803,7 +843,8 @@
     "pf_guarantee": {
       "type": "pf-md-guarantee",
       "settings": {
-        "button_label": "Try MacuDrops Risk-Free"
+        "button_label": "Try MacuDrops Risk-Free",
+        "heading": "Try It for 60 Days, Risk‑Free"
       },
       "blocks": {
         "g1": {
@@ -823,8 +864,8 @@
         "g3": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-7.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-md-selfie-9.webp",
+            "alt": "Man holding MacuDrops in his garden"
           }
         },
         "g4": {
@@ -844,8 +885,8 @@
         "g6": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-8.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-md-selfie-12.webp",
+            "alt": "Man holding MacuDrops on a lakeside walk"
           }
         }
       },
@@ -929,7 +970,7 @@
           "type": "q",
           "settings": {
             "q": "Where is it made?",
-            "a": "<p>In small batches in Japan, in an FDA-registered, GMP-certified facility. Every batch is third-party tested.</p>"
+            "a": "<p>In small batches in Japan, in a GMP-certified facility. Every batch is third-party tested.</p>"
           }
         },
         "q6": {
