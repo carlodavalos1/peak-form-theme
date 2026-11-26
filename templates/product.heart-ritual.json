@@ -494,6 +494,7 @@
             "text": "<p>Nobody tells you how frustrating it is when things you’ve done your entire life start becoming difficult. Mowing the lawn, washing the truck, carrying groceries in for the wife. I’m only 59 and I’ve got a lot of living left to do. That’s what got me interested in taking better care of my heart.</p>",
             "tags": "Everyday Strength, Heart Health",
             "name": "Robert T.",
+            "avatar": "shopify://shop_images/images_14.jpg",
             "verified": false
           }
         },
@@ -505,6 +506,7 @@
             "text": "<p>Even in the middle of summer I’d be wearing socks around the house. My husband couldn’t understand how my feet could be that cold when it was 80 degrees outside. I’d get into bed and tuck them underneath his legs to warm them up. It’s one of those little things that sounds silly until you deal with it every single day.</p>",
             "tags": "Cold Hands & Feet, Circulation",
             "name": "Susan K.",
+            "avatar": "shopify://shop_images/images_12.jpg",
             "verified": false
           }
         },
@@ -516,6 +518,7 @@
             "text": "<p>Lost my dad to a heart attack when he was 64. His brother had heart problems too. I’m 57 now and recently became a grandfather for the first time. Never really cared much about supplements or health stuff before, but having that little boy fall asleep on my chest changed my perspective on a lot of things.</p>",
             "tags": "Family History, Heart Health",
             "name": "Michael R.",
+            "avatar": "shopify://shop_images/medium-shot-smiley-man-outdoors_23-2149439804.avif",
             "verified": false
           }
         },
@@ -527,6 +530,7 @@
             "text": "<p>I’d have all these plans for what I wanted to get done around the house, and by three in the afternoon I was completely wiped out. Laundry half finished, dinner not started. I honestly thought this was just what menopause and getting older were supposed to feel like. It’s frustrating when you want to do things but don’t have the energy.</p>",
             "tags": "Afternoon Energy, Life After 50",
             "name": "Karen W.",
+            "avatar": "shopify://shop_images/images_16.jpg",
             "verified": false
           }
         },
@@ -538,6 +542,7 @@
             "text": "<p>My wife loves going to flea markets on the weekends. We used to walk around for hours looking at stuff we didn’t need. Lately I’ve been the guy sitting on a bench holding her bags while she finishes shopping. She never complains about it, but I miss walking around with her.</p>",
             "tags": "Keeping Up, Stamina",
             "name": "Gary B.",
+            "avatar": "shopify://shop_images/images_15.jpg",
             "verified": false
           }
         },
@@ -549,6 +554,7 @@
             "text": "<p>Every time I felt something unusual in my chest, my mind would immediately go to the worst possible scenario. My mother had heart disease, so it’s always been a sensitive subject for me. I’ve been working with my doctor and trying to develop healthier habits instead of spending my evenings reading scary things on the internet.</p>",
             "tags": "Peace of Mind, Family History",
             "name": "Deborah S.",
+            "avatar": "shopify://shop_images/images_17.jpg",
             "verified": false
           }
         },
@@ -560,6 +566,7 @@
             "text": "<p>My wife has about 15 different bottles of vitamins in the kitchen. I’ve never been into any of that. But after turning 60 and having a few conversations with my doctor, I figured I should probably start paying more attention to what I’m doing for my heart. I prefer keeping things simple.</p>",
             "tags": "Simple Routine, Heart Health",
             "name": "Mark L.",
+            "avatar": "shopify://shop_images/9db1bfa68df1e559668ddcf07a94e194.jpg",
             "verified": false
           }
         },
@@ -571,6 +578,7 @@
             "text": "<p>Standing in the kitchen making Sunday dinner used to be something I looked forward to. Then my legs started feeling so heavy by the end of the day that I’d ask my daughter to finish cooking. I’ve always been independent, so having to ask for help with something I’ve done for 40 years was a difficult adjustment.</p>",
             "tags": "Heavy Legs, Circulation",
             "name": "Nancy F.",
+            "avatar": "shopify://shop_images/images_13.jpg",
             "verified": false
           }
         }
@@ -1105,7 +1113,7 @@
             "rating": 0,
             "headline": "Doing It For Them",
             "text": "<p>I’ve got two daughters and four grandchildren. Every time we get together for dinner, I’m reminded of how lucky I am. I used to brush off anything health-related because I felt fine. Now I understand why my wife has been pushing me to take better care of myself all these years.</p>",
-            "name": "",
+            "name": "Elena T.",
             "verified": false,
             "tags": "Family, Heart Health"
           }
