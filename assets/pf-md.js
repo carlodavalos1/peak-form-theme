@@ -203,7 +203,8 @@
       var vid = on.getAttribute('data-variant');
       return { qty: parseInt(on.getAttribute('data-qty'), 10) || 1, off: parseFloat(on.getAttribute('data-off')) || 0, el: on, v: vid ? vById(vid) : null };
     }
-    function subOn() { return sub && sub.classList.contains('is-on') && sub.style.display !== 'none'; }
+    var always = sub && sub.hasAttribute('data-pfm-always');
+    function subOn() { return sub && sub.classList.contains('is-on') && (always || sub.style.display !== 'none'); }
 
     // Prices for one tier: one-time, subscription (Loop plan on that variant) and the honest compare price.
     function priceOf(el, useSub) {
@@ -241,11 +242,14 @@
       if (sub) {
         // Subscribe box: real % the Loop plan saves on the selected bundle; hidden if that variant has no plan.
         var hasPlan = cur.sub != null && cur.sub < cur.one;
-        if (data.bundle) sub.style.display = hasPlan ? '' : 'none';
+        if (data.bundle && !always) sub.style.display = hasPlan ? '' : 'none';
         var h = sub.querySelector('[data-pfm-subh]');
         if (h && hasPlan) h.textContent = h.getAttribute('data-pfm-subh').replace('[x]', Math.round((1 - cur.sub / cur.one) * 100));
       }
       qa('[data-pfm-subonly]', bb).forEach(function (e) { e.style.display = subOn() ? '' : 'none'; });
+      // Refill line follows the picked bundle (tier "Refill line" setting), like Bear Labs.
+      var rf = bb.querySelector('[data-pfm-refill]');
+      if (rf) rf.textContent = (t.el && t.el.getAttribute('data-refill')) || rf.getAttribute('data-default') || '';
       bb.querySelectorAll('[data-pfm-now]').forEach(function (e) { e.textContent = money(now, data.fmt); });
       bb.querySelectorAll('[data-pfm-was]').forEach(function (e) { e.textContent = was > now ? money(was, data.fmt) : ''; });
       var b = bb.querySelector('[data-pfm-badge]');
@@ -265,7 +269,7 @@
         render();
       });
     });
-    if (sub) sub.addEventListener('click', function (e) { e.preventDefault(); sub.classList.toggle('is-on'); render(); });
+    if (sub && !always) sub.addEventListener('click', function (e) { e.preventDefault(); sub.classList.toggle('is-on'); render(); });
     if (sel) sel.addEventListener('change', function () {
       variant = data.variants.filter(function (v) { return String(v.id) === sel.value; })[0] || variant;
       if (variant.image_index != null) { var s = bb.querySelector('.pfm-gal [data-pfm-slider]'); if (s && s.__pfmGo) s.__pfmGo(variant.image_index); }
