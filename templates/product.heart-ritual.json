@@ -262,7 +262,7 @@
         "gold": "#b8913a",
         "selected_bg": "#fbedeb",
         "gallery_assets": "pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
-        "rating_text": "",
+        "rating_text": "Rated 4.9 • Thousands of 5-Star Reviews",
         "title_override": "",
         "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
         "show_stock": false,
@@ -492,7 +492,9 @@
             "rating": 0,
             "headline": "Getting Older Sucks",
             "text": "<p>Nobody tells you how frustrating it is when things you’ve done your entire life start becoming difficult. Mowing the lawn, washing the truck, carrying groceries in for the wife. I’m only 59 and I’ve got a lot of living left to do. That’s what got me interested in taking better care of my heart.</p>",
-            "name": "Robert T."
+            "tags": "",
+            "name": "Robert T.",
+            "verified": false
           }
         },
         "r2": {
@@ -501,7 +503,9 @@
             "rating": 0,
             "headline": "Always Freezing Cold",
             "text": "<p>Even in the middle of summer I’d be wearing socks around the house. My husband couldn’t understand how my feet could be that cold when it was 80 degrees outside. I’d get into bed and tuck them underneath his legs to warm them up. It’s one of those little things that sounds silly until you deal with it every single day.</p>",
-            "name": "Susan K."
+            "tags": "",
+            "name": "Susan K.",
+            "verified": false
           }
         },
         "r3": {
@@ -510,7 +514,9 @@
             "rating": 0,
             "headline": "Runs In The Family",
             "text": "<p>Lost my dad to a heart attack when he was 64. His brother had heart problems too. I’m 57 now and recently became a grandfather for the first time. Never really cared much about supplements or health stuff before, but having that little boy fall asleep on my chest changed my perspective on a lot of things.</p>",
-            "name": "Michael R."
+            "tags": "",
+            "name": "Michael R.",
+            "verified": false
           }
         },
         "r4": {
@@ -519,7 +525,9 @@
             "rating": 0,
             "headline": "Exhausted By Three",
             "text": "<p>I’d have all these plans for what I wanted to get done around the house, and by three in the afternoon I was completely wiped out. Laundry half finished, dinner not started. I honestly thought this was just what menopause and getting older were supposed to feel like. It’s frustrating when you want to do things but don’t have the energy.</p>",
-            "name": "Karen W."
+            "tags": "",
+            "name": "Karen W.",
+            "verified": false
           }
         },
         "r5": {
@@ -528,7 +536,9 @@
             "rating": 0,
             "headline": "Keeping Up Again",
             "text": "<p>My wife loves going to flea markets on the weekends. We used to walk around for hours looking at stuff we didn’t need. Lately I’ve been the guy sitting on a bench holding her bags while she finishes shopping. She never complains about it, but I miss walking around with her.</p>",
-            "name": "Gary B."
+            "tags": "",
+            "name": "Gary B.",
+            "verified": false
           }
         },
         "r6": {
@@ -537,7 +547,9 @@
             "rating": 0,
             "headline": "The Constant Worry",
             "text": "<p>Every time I felt something unusual in my chest, my mind would immediately go to the worst possible scenario. My mother had heart disease, so it’s always been a sensitive subject for me. I’ve been working with my doctor and trying to develop healthier habits instead of spending my evenings reading scary things on the internet.</p>",
-            "name": "Deborah S."
+            "tags": "",
+            "name": "Deborah S.",
+            "verified": false
           }
         },
         "r7": {
@@ -546,7 +558,9 @@
             "rating": 0,
             "headline": "Not A Supplement Guy",
             "text": "<p>My wife has about 15 different bottles of vitamins in the kitchen. I’ve never been into any of that. But after turning 60 and having a few conversations with my doctor, I figured I should probably start paying more attention to what I’m doing for my heart. I prefer keeping things simple.</p>",
-            "name": "Mark L."
+            "tags": "",
+            "name": "Mark L.",
+            "verified": false
           }
         },
         "r8": {
@@ -555,7 +569,9 @@
             "rating": 0,
             "headline": "My Heavy Legs",
             "text": "<p>Standing in the kitchen making Sunday dinner used to be something I looked forward to. Then my legs started feeling so heavy by the end of the day that I’d ask my daughter to finish cooking. I’ve always been independent, so having to ask for help with something I’ve done for 40 years was a difficult adjustment.</p>",
-            "name": "Nancy F."
+            "tags": "",
+            "name": "Nancy F.",
+            "verified": false
           }
         }
       },
@@ -1067,7 +1083,9 @@
             "rating": 0,
             "headline": "Too Young For This",
             "text": "<p>I’m 54 and already having conversations with my buddies about blood pressure, cholesterol and medications. Ten years ago we were talking about football and fishing trips. Funny how things change. I don’t want to spend the next 20 years talking about everything that’s wrong with us.</p>",
-            "name": "Steven M."
+            "name": "Steven M.",
+            "verified": false,
+            "tags": ""
           }
         },
         "rv2": {
@@ -1076,7 +1094,9 @@
             "rating": 0,
             "headline": "Peace Of Mind",
             "text": "<p>My husband and I finally booked the vacation we’ve been talking about for years. Instead of being excited, I caught myself worrying about whether I’d be able to keep up with all the walking. That really bothered me. I want to enjoy these experiences without constantly thinking about my health.</p>",
-            "name": "Barbara N."
+            "name": "Barbara N.",
+            "verified": false,
+            "tags": ""
           }
         },
         "rv3": {
@@ -1084,7 +1104,10 @@
           "settings": {
             "rating": 0,
             "headline": "Doing It For Them",
-            "text": "<p>I’ve got two daughters and four grandchildren. Every time we get together for dinner, I’m reminded of how lucky I am. I used to brush off anything health-related because I felt fine. Now I understand why my wife has been pushing me to take better care of myself all these years.</p>"
+            "text": "<p>I’ve got two daughters and four grandchildren. Every time we get together for dinner, I’m reminded of how lucky I am. I used to brush off anything health-related because I felt fine. Now I understand why my wife has been pushing me to take better care of myself all these years.</p>",
+            "name": "",
+            "verified": false,
+            "tags": ""
           }
         }
       },
