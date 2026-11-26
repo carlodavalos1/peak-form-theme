@@ -122,8 +122,7 @@
             "variant_position": 1,
             "bottles": 1,
             "asset": "pf-hr-bundle-1.webp",
-            "refill_text": "Refills Ship Every 4 Weeks",
-            "ship_text": "+ $4.95 Shipping"
+            "refill_text": "Refills Ship Every 4 Weeks"
           }
         },
         "tier2": {
