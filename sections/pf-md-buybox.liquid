@@ -86,6 +86,11 @@
 -%}
 <style>
   #shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.accent }}; --pf-gold: {{ s.gold }}; --pf-select: {{ s.selected_bg }}; }
+  {%- comment -%} Cart drawer takes this product's colors while the shopper is on its page. {%- endcomment -%}
+  {%- assign acc2 = s.accent | color_lighten: 12 -%}
+  body #CartDrawer { --cart-drawer-accent-color: {{ s.accent }}; --cart-drawer-secondary-text: {{ s.accent }}; --cart-drawer-checkout-button-background: {{ s.accent }}; --cart-drawer-item-saving-color: {{ s.accent }}; --cart-drawer-active-icon-color: {{ s.accent }}; --cart-drawer-shipping-protection-text-color: {{ s.accent }}; --cart-drawer-shipping-protection-background: {{ s.selected_bg }}; }
+  body .cart-drawer .discount-banner { background: linear-gradient(90deg, {{ s.accent }}, {{ acc2 }}) !important; }
+  body .cart-drawer .social-proof-bar { background-color: {{ s.accent }} !important; }
   #shopify-section-{{ section.id }} .pfm-trust { --pf-trust-a: {{ s.trust_overlay_a }}; --pf-trust-b: {{ s.trust_overlay_b | color_modify: 'alpha', 0.6 }}; }
 </style>
 <span id="pfm-top"></span>

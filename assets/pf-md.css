@@ -182,7 +182,7 @@
 .pfm-tiers__head { display: flex; align-items: center; gap: 14px; margin: 6px 0 18px; font-size: 15px; font-weight: 700; color: var(--pf-accent); text-align: center; }
 .pfm-tiers__head::before, .pfm-tiers__head::after { content: ''; flex: 1; height: 1px; background: color-mix(in srgb, var(--pf-accent) 35%, transparent); }
 .pfm-tiers { display: grid; gap: 16px; margin-bottom: 16px; }
-.pfm-tier { position: relative; display: flex; align-items: center; gap: 14px; min-height: 92px; padding: 12px 18px 12px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(30, 47, 99, .25); background: #fff; cursor: pointer; transition: box-shadow .2s, background .2s; }
+.pfm-tier { position: relative; display: flex; align-items: center; gap: 14px; min-height: 92px; padding: 12px 18px 12px 12px; border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(30, 47, 99, .25); background: #fff; cursor: pointer; transition: box-shadow .2s, background .2s; }
 .pfm-tier input { position: absolute; opacity: 0; pointer-events: none; }
 .pfm-tier.is-on { background: var(--pf-select); box-shadow: inset 0 0 0 2px var(--pf-accent); }
 .pfm-tier__img { width: 68px; height: 68px; flex: none; object-fit: contain; }
@@ -198,7 +198,7 @@
 .pfm-tier__now { display: block; font-size: 19px; font-weight: 700; color: var(--pf-accent); }
 .pfm-tier__was { display: block; font-size: 14px; color: #888; text-decoration: line-through; margin-top: 2px; }
 .pfm-tier__tags { position: absolute; top: -12px; right: 14px; display: flex; gap: 6px; }
-.pfm-tier__tags span { background: var(--pf-accent); color: #fff; border-radius: 20px; font-size: 12px; font-weight: 700; padding: 4px 12px; line-height: 1.2; }
+.pfm-tier__tags span { background: var(--pf-accent); color: #fff; border-radius: 2px; font-size: 12px; font-weight: 700; padding: 4px 12px; text-transform: uppercase; letter-spacing: .5px; line-height: 1.2; }
 .pfm-tier__tags span.is-gold { background: var(--pf-gold); }
 @media (max-width: 480px) { .pfm-tier__name { font-size: 16px; } .pfm-tier__now { font-size: 17px; } .pfm-tier__img { width: 58px; height: 58px; } }
 
