@@ -23,7 +23,7 @@
         {%- elsif b.settings.text != blank -%}
           {%- assign shown = shown | plus: 1 -%}
           <article class="pfm-ritem" {{ b.shopify_attributes }}{% if shown > s.per_page %} hidden{% endif %}>
-            <div class="pfm-ritem__top"><b>{{ b.settings.rating }}.0</b>{% render 'pf-md-stars', count: b.settings.rating %}</div>
+            {%- if b.settings.rating > 0 -%}<div class="pfm-ritem__top"><b>{{ b.settings.rating }}.0</b>{% render 'pf-md-stars', count: b.settings.rating %}</div>{%- endif -%}
             {%- if b.settings.headline != blank -%}<h3>{{ b.settings.headline }}</h3>{%- endif -%}
             <div class="pfm-ritem__txt">{{ b.settings.text }}</div>
             {%- if b.settings.name != blank or b.settings.verified -%}
@@ -61,7 +61,7 @@
   "blocks": [
     { "type": "@app" },
     { "type": "review", "name": "Review", "settings": [
-      { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "range", "id": "rating", "label": "Rating (0 = no stars)", "min": 0, "max": 5, "step": 1, "default": 5, "info": "Only show stars the customer actually gave." },
       { "type": "text", "id": "headline", "label": "Headline (customer's words)" },
       { "type": "richtext", "id": "text", "label": "Review text" },
       { "type": "text", "id": "name", "label": "Name (optional)" },

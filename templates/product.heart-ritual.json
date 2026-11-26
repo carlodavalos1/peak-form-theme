@@ -11,10 +11,6 @@
   "sections": {
     "pf_ticker": {
       "type": "pf-md-ticker",
-      "settings": {
-        "speed": 40,
-        "bg": "#7A1C1E"
-      },
       "blocks": {
         "t1": {
           "type": "item",
@@ -58,36 +54,15 @@
         "t3",
         "t4",
         "t5"
-      ]
+      ],
+      "settings": {
+        "bg": "#7a1c1e",
+        "color": "#ffffff",
+        "speed": 40
+      }
     },
     "pf_buybox": {
       "type": "pf-md-buybox",
-      "settings": {
-        "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
-        "gallery_assets": "pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
-        "tiers_heading": "LIMITED TIME OFFER",
-        "sub_heading": "Save 25% Extra with Automatic Refills",
-        "sub_text": "Zero Commitment | Cancel Anytime",
-        "refill_1": "Refills Ship Every 4 Weeks",
-        "refill_1_icon": "truck",
-        "refill_2": "Auto-Refill Subscription. Cancel Anytime",
-        "refill_2_icon": "clock",
-        "refill_sub_only": true,
-        "badge_text": "Black Friday - Save [x]%",
-        "subscription_default": true,
-        "show_stock": false,
-        "notice_title": "-",
-        "accent": "#7A1C1E",
-        "gold": "#B8913A",
-        "selected_bg": "#FBEDEB",
-        "trust_overlay_a": "#5A1214",
-        "trust_overlay_b": "#8E2426",
-        "guarantee_title": "60-Day Money-Back Guarantee",
-        "guarantee_text": "Take Heart Ritual daily for up to 60 days. If you’re not happy, contact us for a full refund.",
-        "trust_heading": "Why Trust Heart Ritual?",
-        "disclaimer": "-",
-        "sub_mode": "always"
-      },
       "blocks": {
         "bul1": {
           "type": "bullet",
@@ -117,46 +92,60 @@
           "type": "tier",
           "settings": {
             "name": "Buy 1 Pouch",
+            "sub": "",
             "qty": 1,
             "discount": 0,
             "variant_position": 1,
             "bottles": 1,
+            "compare_price": "",
+            "ship_text": "",
+            "refill_text": "Refills Ship Every 4 Weeks",
             "asset": "pf-hr-bundle-1.webp",
-            "refill_text": "Refills Ship Every 4 Weeks"
+            "badge_1": "",
+            "badge_2": "",
+            "selected": false
           }
         },
         "tier2": {
           "type": "tier",
           "settings": {
             "name": "Buy 2 Get 1 FREE",
+            "sub": "",
             "qty": 1,
             "discount": 0,
             "variant_position": 2,
             "bottles": 3,
+            "compare_price": "",
             "ship_text": "FREE Shipping",
+            "refill_text": "Refills Ship Every 3 Months",
             "asset": "pf-hr-bundle-3.webp",
             "badge_1": "Most Popular",
-            "selected": true,
-            "refill_text": "Refills Ship Every 3 Months"
+            "badge_2": "",
+            "selected": true
           }
         },
         "tier3": {
           "type": "tier",
           "settings": {
             "name": "Buy 3 Get 2 FREE",
+            "sub": "",
             "qty": 1,
             "discount": 0,
             "variant_position": 3,
             "bottles": 5,
+            "compare_price": "",
             "ship_text": "FREE Shipping",
+            "refill_text": "Refills Ship Every 5 Months",
             "asset": "pf-hr-bundle-5.webp",
             "badge_1": "Best Value",
-            "refill_text": "Refills Ship Every 5 Months"
+            "badge_2": "",
+            "selected": false
           }
         },
         "acc1": {
           "type": "accordion",
           "settings": {
+            "asset": "",
             "icon": "leaf",
             "heading": "What’s Inside",
             "body": "<p><strong>Beetroot</strong>, <strong>aged odorless garlic</strong>, <strong>nattokinase</strong>, <strong>CoQ10</strong> and <strong>vitamin K2</strong> in every serving.</p><p>The exact amount of each ingredient is printed on the Supplement Facts panel on the pouch.</p>",
@@ -166,17 +155,85 @@
         "acc2": {
           "type": "accordion",
           "settings": {
+            "asset": "",
             "icon": "heart",
             "heading": "How to Take",
-            "body": "<p>Take 2 capsules a day with water, ideally with breakfast. One pouch is 60 capsules, a 30-day supply. Reseal the zip to keep them fresh.</p>"
+            "body": "<p>Take 2 capsules a day with water, ideally with breakfast. One pouch is 60 capsules, a 30-day supply. Reseal the zip to keep them fresh.</p>",
+            "open": false
           }
         },
         "acc3": {
           "type": "accordion",
           "settings": {
+            "asset": "",
             "icon": "zap",
             "heading": "How It Works",
-            "body": "<p>After 40, your vessels make less nitric oxide, the signal that helps them relax. CoQ10 levels drop too. Beetroot supplies dietary nitrates your body turns into nitric oxide, garlic and nattokinase support healthy blood flow, CoQ10 fuels heart cells, and vitamin K2 helps direct calcium to your bones.*</p>"
+            "body": "<p>After 40, your vessels make less nitric oxide, the signal that helps them relax. CoQ10 levels drop too. Beetroot supplies dietary nitrates your body turns into nitric oxide, garlic and nattokinase support healthy blood flow, CoQ10 fuels heart cells, and vitamin K2 helps direct calcium to your bones.*</p>",
+            "open": false
+          }
+        },
+        "story1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Getting Older Sucks",
+            "text": "Nobody tells you how frustrating it is when things you’ve done your entire life start becoming difficult. Mowing the lawn, washing the truck, carrying groceries in for the wife. I’m only 59 and I’ve got a lot of living left to do. That’s what got me interested in taking better care of my heart.",
+            "name": "Robert T."
+          }
+        },
+        "story2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Always Freezing Cold",
+            "text": "Even in the middle of summer I’d be wearing socks around the house. My husband couldn’t understand how my feet could be that cold when it was 80 degrees outside. I’d get into bed and tuck them underneath his legs to warm them up. It’s one of those little things that sounds silly until you deal with it every single day.",
+            "name": "Susan K."
+          }
+        },
+        "story3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Runs In The Family",
+            "text": "Lost my dad to a heart attack when he was 64. His brother had heart problems too. I’m 57 now and recently became a grandfather for the first time. Never really cared much about supplements or health stuff before, but having that little boy fall asleep on my chest changed my perspective on a lot of things.",
+            "name": "Michael R."
+          }
+        },
+        "story4": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Exhausted By Three",
+            "text": "I’d have all these plans for what I wanted to get done around the house, and by three in the afternoon I was completely wiped out. Laundry half finished, dinner not started. I honestly thought this was just what menopause and getting older were supposed to feel like. It’s frustrating when you want to do things but don’t have the energy.",
+            "name": "Karen W."
+          }
+        },
+        "story5": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Keeping Up Again",
+            "text": "My wife loves going to flea markets on the weekends. We used to walk around for hours looking at stuff we didn’t need. Lately I’ve been the guy sitting on a bench holding her bags while she finishes shopping. She never complains about it, but I miss walking around with her.",
+            "name": "Gary B."
+          }
+        },
+        "story6": {
+          "type": "testimonial",
+          "settings": {
+            "title": "The Constant Worry",
+            "text": "Every time I felt something unusual in my chest, my mind would immediately go to the worst possible scenario. My mother had heart disease, so it’s always been a sensitive subject for me. I’ve been working with my doctor and trying to develop healthier habits instead of spending my evenings reading scary things on the internet.",
+            "name": "Deborah S."
+          }
+        },
+        "story7": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Not A Supplement Guy",
+            "text": "My wife has about 15 different bottles of vitamins in the kitchen. I’ve never been into any of that. But after turning 60 and having a few conversations with my doctor, I figured I should probably start paying more attention to what I’m doing for my heart. I prefer keeping things simple.",
+            "name": "Mark L."
+          }
+        },
+        "story8": {
+          "type": "testimonial",
+          "settings": {
+            "title": "My Heavy Legs",
+            "text": "Standing in the kitchen making Sunday dinner used to be something I looked forward to. Then my legs started feeling so heavy by the end of the day that I’d ask my daughter to finish cooking. I’ve always been independent, so having to ask for help with something I’ve done for 40 years was a difficult adjustment.",
+            "name": "Nancy F."
           }
         }
       },
@@ -190,20 +247,59 @@
         "tier3",
         "acc1",
         "acc2",
-        "acc3"
-      ]
+        "acc3",
+        "story1",
+        "story2",
+        "story3",
+        "story4",
+        "story5",
+        "story6",
+        "story7",
+        "story8"
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "gold": "#b8913a",
+        "selected_bg": "#fbedeb",
+        "gallery_assets": "pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
+        "rating_text": "",
+        "title_override": "",
+        "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
+        "show_stock": false,
+        "batch_size": 500,
+        "stock_label": "Current batch",
+        "low_stock_threshold": 50,
+        "low_stock_text": "Low Stock - Only [n] Left",
+        "tiers_heading": "LIMITED TIME OFFER",
+        "badge_text": "Black Friday - Save [x]%",
+        "save_word": "You save",
+        "sub_mode": "always",
+        "subscription_default": true,
+        "sub_heading": "Save 25% Extra with Automatic Refills",
+        "sub_text": "Zero Commitment | Cancel Anytime",
+        "atc_label": "Add to cart",
+        "soldout_label": "Sold out",
+        "atc_subline": "60-Day Money-Back Guarantee",
+        "refill_1": "Refills Ship Every 4 Weeks",
+        "refill_1_icon": "truck",
+        "refill_2": "Auto-Refill Subscription. Cancel Anytime",
+        "refill_2_icon": "clock",
+        "refill_sub_only": true,
+        "guarantee_days": 60,
+        "guarantee_title": "60-Day Money-Back Guarantee",
+        "guarantee_text": "Take Heart Ritual daily for up to 60 days. If you’re not happy, contact us for a full refund.",
+        "notice_title": "-",
+        "notice_text": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships.</p>",
+        "disclaimer": "-",
+        "trust_heading": "Why Trust Heart Ritual?",
+        "trust_overlay_a": "#5a1214",
+        "trust_overlay_b": "#8e2426",
+        "videos_heading": "What our customers are saying:",
+        "show_sticky": true
+      }
     },
     "pf_stats": {
       "type": "pf-md-stats",
-      "settings": {
-        "heading": "Give Your Heart <em>What It Runs On</em>",
-        "image_asset": "pf-hr-botanicals.webp",
-        "overlay_opacity": 80,
-        "overlay": "#5A1214",
-        "button_text_color": "#7A1C1E",
-        "button_label": "Try Heart Ritual Risk-Free",
-        "note": "60-Day Money-Back Guarantee"
-      },
       "blocks": {
         "s1": {
           "type": "stat",
@@ -239,50 +335,56 @@
         "s2",
         "s3",
         "s4"
-      ]
+      ],
+      "settings": {
+        "image_asset": "pf-hr-botanicals.webp",
+        "overlay": "#5a1214",
+        "overlay_opacity": 80,
+        "heading": "Give Your Heart <em>What It Runs On</em>",
+        "button_label": "Try Heart Ritual Risk-Free",
+        "button_link": "",
+        "button_text_color": "#7a1c1e",
+        "note": "60-Day Money-Back Guarantee",
+        "footnote": ""
+      }
     },
     "pf_reasons": {
       "type": "pf-md-reasons",
-      "settings": {
-        "sub": "Most heart supplements give you one ingredient. Heart Ritual covers the signal, the flow, the vessel walls and the energy, all in two capsules.*",
-        "accent": "#7A1C1E",
-        "heading": "Why This Formula Works"
-      },
       "blocks": {
         "c1": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-beet.webp",
             "icon": "heart",
             "heading": "Supports Nitric Oxide",
-            "text": "Beetroot is rich in dietary nitrates, which your body converts into nitric oxide, the signal that helps blood vessels relax.*",
-            "asset": "pf-hr-ing-beet.webp"
+            "text": "Beetroot is rich in dietary nitrates, which your body converts into nitric oxide, the signal that helps blood vessels relax.*"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-natto.webp",
             "icon": "drop",
             "heading": "Supports Healthy Blood Flow",
-            "text": "Aged odorless garlic and nattokinase, the enzyme from Japanese natto, support healthy circulation and arterial flexibility.*",
-            "asset": "pf-hr-ing-natto.webp"
+            "text": "Aged odorless garlic and nattokinase, the enzyme from Japanese natto, support healthy circulation and arterial flexibility.*"
           }
         },
         "c3": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-coq10.webp",
             "icon": "zap",
             "heading": "Fuels Your Heart",
-            "text": "CoQ10 helps your cells make energy, and your heart is one of the most energy-hungry muscles you have.*",
-            "asset": "pf-hr-ing-coq10.webp"
+            "text": "CoQ10 helps your cells make energy, and your heart is one of the most energy-hungry muscles you have.*"
           }
         },
         "c4": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-lab.webp",
             "icon": "flask",
             "heading": "Third-Party Tested",
-            "text": "Every batch is checked by an independent lab for purity and potency before it ships.",
-            "asset": "pf-hr-lab.webp"
+            "text": "Every batch is checked by an independent lab for purity and potency before it ships."
           }
         }
       },
@@ -291,18 +393,16 @@
         "c2",
         "c3",
         "c4"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "bg": "#ffffff",
+        "heading": "Why This Formula Works",
+        "sub": "Most heart supplements give you one ingredient. Heart Ritual covers the signal, the flow, the vessel walls and the energy, all in two capsules.*"
+      }
     },
     "pf_photos": {
       "type": "pf-md-photo-strip",
-      "settings": {
-        "heading_a": "Part of Their",
-        "heading_b": "Daily Ritual",
-        "sub": "Two capsules, every morning.",
-        "accent": "#7A1C1E",
-        "stars": "#B8913A",
-        "bg": "#FBF4F2"
-      },
       "blocks": {
         "p1": {
           "type": "photo",
@@ -370,16 +470,21 @@
         "p6",
         "p7",
         "p8"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "stars": "#b8913a",
+        "bg": "#fbf4f2",
+        "show_stars": false,
+        "heading_a": "Part of Their",
+        "heading_b": "Daily Ritual",
+        "heading_c": "",
+        "sub": "Two capsules, every morning.",
+        "speed": 50
+      }
     },
     "pf_reviewcards": {
       "type": "pf-md-review-cards",
-      "settings": {
-        "autoplay": 6,
-        "accent": "#7A1C1E",
-        "stars": "#B8913A",
-        "bg": "#FBF4F2"
-      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -463,54 +568,53 @@
         "r6",
         "r7",
         "r8"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "stars": "#b8913a",
+        "bg": "#fbf4f2",
+        "heading": "",
+        "verified_text": "Verified customer",
+        "autoplay": 6
+      }
     },
     "pf_feel": {
       "type": "pf-md-feel",
-      "settings": {
-        "sub": "From the signal that relaxes your vessels to the energy your heart runs on, here’s what Heart Ritual is designed to support.*",
-        "bg_asset": "pf-hr-feel-bg.webp",
-        "image_style": "none",
-        "overlay_opacity": 80,
-        "heading": "Support Your Heart. <em>Every Day.</em>",
-        "grad_a": "#8E2426",
-        "grad_b": "#4A0F11"
-      },
       "blocks": {
         "f1": {
           "type": "item",
           "settings": {
             "icon": "heart",
+            "asset": "pf-hr-warm-hands.webp",
             "heading": "Healthy Circulation",
-            "text": "Supports healthy blood flow to your hands and feet.*",
-            "asset": "pf-hr-warm-hands.webp"
+            "text": "Supports healthy blood flow to your hands and feet.*"
           }
         },
         "f2": {
           "type": "item",
           "settings": {
             "icon": "zap",
+            "asset": "pf-hr-ing-coq10.webp",
             "heading": "Cellular Energy",
-            "text": "CoQ10 supports energy production in heart cells.*",
-            "asset": "pf-hr-ing-coq10.webp"
+            "text": "CoQ10 supports energy production in heart cells.*"
           }
         },
         "f3": {
           "type": "item",
           "settings": {
             "icon": "drop",
+            "asset": "pf-hr-ing-garlic.webp",
             "heading": "Flexible Arteries",
-            "text": "Garlic and vitamin K2 support healthy, flexible arteries.*",
-            "asset": "pf-hr-ing-garlic.webp"
+            "text": "Garlic and vitamin K2 support healthy, flexible arteries.*"
           }
         },
         "f4": {
           "type": "item",
           "settings": {
             "icon": "sun",
+            "asset": "pf-hr-stairs.webp",
             "heading": "Stamina",
-            "text": "Supports the stamina you need for walks and stairs.*",
-            "asset": "pf-hr-stairs.webp"
+            "text": "Supports the stamina you need for walks and stairs.*"
           }
         }
       },
@@ -519,78 +623,79 @@
         "f2",
         "f3",
         "f4"
-      ]
+      ],
+      "settings": {
+        "grad_a": "#8e2426",
+        "grad_b": "#4a0f11",
+        "heading": "Support Your Heart. <em>Every Day.</em>",
+        "sub": "From the signal that relaxes your vessels to the energy your heart runs on, here’s what Heart Ritual is designed to support.*",
+        "bg_asset": "pf-hr-feel-bg.webp",
+        "overlay_opacity": 80,
+        "image_style": "none",
+        "image_asset": ""
+      }
     },
     "pf_proven": {
       "type": "pf-md-proven",
-      "settings": {
-        "intro": "Each ingredient in Heart Ritual supports a different part of your cardiovascular system. Together they cover the signal, the flow, the vessel walls and the energy.*",
-        "heading_a": "Five Ingredients.",
-        "heading_b": "One Job Each.",
-        "accent": "#7A1C1E",
-        "bg": "#F8ECEA",
-        "button_label": "Try Heart Ritual",
-        "note": "60-Day Money-Back Guarantee"
-      },
       "blocks": {
         "pv1": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-beet.webp",
+            "icon": "leaf",
             "heading": "Beetroot",
             "short": "The nitric oxide signal*",
-            "icon": "leaf",
-            "long": "<p>Rich in dietary nitrates, which your body converts into nitric oxide. Nitric oxide helps blood vessels relax and supports healthy blood flow.*</p>",
-            "asset": "pf-hr-ing-beet.webp"
+            "long": "<p>Rich in dietary nitrates, which your body converts into nitric oxide. Nitric oxide helps blood vessels relax and supports healthy blood flow.*</p>"
           }
         },
         "pv2": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-garlic.webp",
+            "icon": "heart",
             "heading": "Aged Odorless Garlic",
             "short": "Arterial flexibility*",
-            "icon": "heart",
-            "long": "<p>Aged garlic extract supports healthy, flexible arteries and healthy circulation. Aging removes the harsh odor, so there’s no garlic breath.*</p>",
-            "asset": "pf-hr-ing-garlic.webp"
+            "long": "<p>Aged garlic extract supports healthy, flexible arteries and healthy circulation. Aging removes the harsh odor, so there’s no garlic breath.*</p>"
           }
         },
         "pv3": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-natto.webp",
+            "icon": "drop",
             "heading": "Nattokinase",
             "short": "Healthy blood flow*",
-            "icon": "drop",
-            "long": "<p>An enzyme from natto, a traditional Japanese fermented soybean food. Supports healthy blood flow and circulation.*</p>",
-            "asset": "pf-hr-ing-natto.webp"
+            "long": "<p>An enzyme from natto, a traditional Japanese fermented soybean food. Supports healthy blood flow and circulation.*</p>"
           }
         },
         "pv4": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-coq10.webp",
+            "icon": "zap",
             "heading": "CoQ10",
             "short": "Energy for heart cells*",
-            "icon": "zap",
-            "long": "<p>Coenzyme Q10 helps your cells produce energy. Your body makes less of it with age, and the heart is one of the organs that uses the most.*</p>",
-            "asset": "pf-hr-ing-coq10.webp"
+            "long": "<p>Coenzyme Q10 helps your cells produce energy. Your body makes less of it with age, and the heart is one of the organs that uses the most.*</p>"
           }
         },
         "pv5": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-ing-k2.webp",
+            "icon": "sparkle",
             "heading": "Vitamin K2",
             "short": "Puts calcium where it belongs*",
-            "icon": "sparkle",
-            "long": "<p>Vitamin K2 activates proteins that help direct calcium to your bones and away from your arteries.*</p>",
-            "asset": "pf-hr-ing-k2.webp"
+            "long": "<p>Vitamin K2 activates proteins that help direct calcium to your bones and away from your arteries.*</p>"
           }
         },
         "pv6": {
           "type": "card",
           "settings": {
+            "asset": "pf-hr-gallery-6.webp",
+            "icon": "flask",
             "heading": "Two Capsules a Day",
             "short": "Easy to swallow",
-            "icon": "flask",
-            "long": "<p>All five ingredients in two easy-to-swallow capsules. No garlic smell, no powders to mix.</p>",
-            "asset": "pf-hr-gallery-6.webp"
+            "long": "<p>All five ingredients in two easy-to-swallow capsules. No garlic smell, no powders to mix.</p>"
           }
         }
       },
@@ -601,52 +706,60 @@
         "pv4",
         "pv5",
         "pv6"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "bg": "#f8ecea",
+        "heading_a": "Five Ingredients.",
+        "heading_b": "One Job Each.",
+        "intro": "Each ingredient in Heart Ritual supports a different part of your cardiovascular system. Together they cover the signal, the flow, the vessel walls and the energy.*",
+        "button_label": "Try Heart Ritual",
+        "button_link": "",
+        "note": "60-Day Money-Back Guarantee",
+        "footnote": ""
+      }
     },
     "pf_marquee": {
       "type": "pf-md-marquee",
-      "settings": {
-        "color": "#7A1C1E"
-      },
       "blocks": {
         "m1": {
           "type": "item",
           "settings": {
             "icon": "leaf",
-            "text": "Beetroot",
-            "asset": "pf-hr-ing-beet.webp"
+            "asset": "pf-hr-ing-beet.webp",
+            "text": "Beetroot"
           }
         },
         "m2": {
           "type": "item",
           "settings": {
             "icon": "heart",
-            "text": "Aged Odorless Garlic",
-            "asset": "pf-hr-ing-garlic.webp"
+            "asset": "pf-hr-ing-garlic.webp",
+            "text": "Aged Odorless Garlic"
           }
         },
         "m3": {
           "type": "item",
           "settings": {
             "icon": "drop",
-            "text": "Nattokinase",
-            "asset": "pf-hr-ing-natto.webp"
+            "asset": "pf-hr-ing-natto.webp",
+            "text": "Nattokinase"
           }
         },
         "m4": {
           "type": "item",
           "settings": {
             "icon": "zap",
-            "text": "CoQ10",
-            "asset": "pf-hr-ing-coq10.webp"
+            "asset": "pf-hr-ing-coq10.webp",
+            "text": "CoQ10"
           }
         },
         "m5": {
           "type": "item",
           "settings": {
             "icon": "sparkle",
-            "text": "Vitamin K2",
-            "asset": "pf-hr-ing-k2.webp"
+            "asset": "pf-hr-ing-k2.webp",
+            "text": "Vitamin K2"
           }
         }
       },
@@ -656,19 +769,15 @@
         "m3",
         "m4",
         "m5"
-      ]
+      ],
+      "settings": {
+        "bg": "#ffffff",
+        "color": "#7a1c1e",
+        "speed": 40
+      }
     },
     "pf_journey": {
       "type": "pf-md-journey",
-      "settings": {
-        "text": "<p>Your body responds gradually, so consistency matters more than anything. Here’s an honest look at what daily use looks like.</p>",
-        "image_asset": "pf-hr-journey.webp",
-        "eyebrow": "Your Heart Health",
-        "heading": "Journey With Heart Ritual",
-        "accent": "#7A1C1E",
-        "button_label": "Start Your Ritual",
-        "note": "60-Day Money-Back Guarantee"
-      },
       "blocks": {
         "j1": {
           "type": "step",
@@ -708,56 +817,60 @@
         "j2",
         "j3",
         "j4"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "bg": "#ffffff",
+        "image_asset": "pf-hr-journey.webp",
+        "eyebrow": "Your Heart Health",
+        "heading": "Journey With Heart Ritual",
+        "text": "<p>Your body responds gradually, so consistency matters more than anything. Here’s an honest look at what daily use looks like.</p>",
+        "button_label": "Start Your Ritual",
+        "button_link": "",
+        "note": "60-Day Money-Back Guarantee"
+      }
     },
     "pf_five": {
       "type": "pf-md-five-reasons",
-      "settings": {
-        "heading": "5 Reasons Heart Ritual Is Different From Every Heart Supplement You’ve Tried",
-        "accent": "#7A1C1E",
-        "bg": "#F8ECEA",
-        "button_label": "Try Heart Ritual",
-        "note": "60-Day Money-Back Guarantee"
-      },
       "blocks": {
         "r1": {
           "type": "reason",
           "settings": {
+            "asset": "pf-hr-gallery-8.webp",
             "heading": "Five Ingredients, Not One",
-            "text": "<p>Most heart supplements give you a single ingredient. Heart Ritual combines beetroot, aged garlic, nattokinase, CoQ10 and vitamin K2, so it supports the signal, the flow, the vessel walls and the energy.*</p>",
-            "asset": "pf-hr-gallery-8.webp"
+            "text": "<p>Most heart supplements give you a single ingredient. Heart Ritual combines beetroot, aged garlic, nattokinase, CoQ10 and vitamin K2, so it supports the signal, the flow, the vessel walls and the energy.*</p>"
           }
         },
         "r2": {
           "type": "reason",
           "settings": {
+            "asset": "pf-hr-ing-garlic.webp",
             "heading": "No Garlic Smell",
-            "text": "<p>We use aged odorless garlic, so you get the garlic without the garlic breath.</p>",
-            "asset": "pf-hr-ing-garlic.webp"
+            "text": "<p>We use aged odorless garlic, so you get the garlic without the garlic breath.</p>"
           }
         },
         "r3": {
           "type": "reason",
           "settings": {
+            "asset": "pf-hr-ing-beet.webp",
             "heading": "Supports Nitric Oxide",
-            "text": "<p>Beetroot supplies the dietary nitrates your body turns into nitric oxide, the signal that helps blood vessels relax.*</p>",
-            "asset": "pf-hr-ing-beet.webp"
+            "text": "<p>Beetroot supplies the dietary nitrates your body turns into nitric oxide, the signal that helps blood vessels relax.*</p>"
           }
         },
         "r4": {
           "type": "reason",
           "settings": {
+            "asset": "pf-hr-selfie-4.webp",
             "heading": "Two Capsules, Once a Day",
-            "text": "<p>No powders, no handful of pills. Two capsules with breakfast and you’re done.</p>",
-            "asset": "pf-hr-selfie-4.webp"
+            "text": "<p>No powders, no handful of pills. Two capsules with breakfast and you’re done.</p>"
           }
         },
         "r5": {
           "type": "reason",
           "settings": {
+            "asset": "pf-hr-lab.webp",
             "heading": "Third-Party Tested",
-            "text": "<p>Every batch is checked by an independent lab for purity and potency before it ships.</p>",
-            "asset": "pf-hr-lab.webp"
+            "text": "<p>Every batch is checked by an independent lab for purity and potency before it ships.</p>"
           }
         }
       },
@@ -767,20 +880,20 @@
         "r3",
         "r4",
         "r5"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "bg": "#f8ecea",
+        "pill": "5 Reasons Why",
+        "heading": "5 Reasons Heart Ritual Is Different From Every Heart Supplement You’ve Tried",
+        "tag_word": "Reason",
+        "button_label": "Try Heart Ritual",
+        "button_link": "",
+        "note": "60-Day Money-Back Guarantee"
+      }
     },
     "pf_compare": {
       "type": "pf-md-comparison",
-      "settings": {
-        "heading": "How Heart Ritual <em>Compares</em>",
-        "points": "5 ingredients in one | beetroot, aged garlic, nattokinase, CoQ10 and vitamin K2.\nOdorless garlic | aged garlic extract, no garlic breath.\nTwo capsules a day | no powders to mix, no handful of pills.\nTested every batch | third-party tested for purity and potency.",
-        "footnote": "\"Beetroot powder\" and \"Garlic pill\" describe common single-ingredient supplements, not specific brands.",
-        "bg": "#7A1C1E",
-        "us_name": "Heart Ritual",
-        "us_asset": "pf-hr-bundle-1.webp",
-        "button_label": "Try Heart Ritual",
-        "note": "60-Day Money-Back Guarantee"
-      },
       "blocks": {
         "x1": {
           "type": "column",
@@ -802,7 +915,8 @@
             "label": "Supports nitric oxide*",
             "us": "yes",
             "c1": "yes",
-            "c2": "no"
+            "c2": "no",
+            "c3": "no"
           }
         },
         "x4": {
@@ -811,7 +925,8 @@
             "label": "Supports healthy blood flow*",
             "us": "yes",
             "c1": "yes",
-            "c2": "yes"
+            "c2": "yes",
+            "c3": "no"
           }
         },
         "x5": {
@@ -820,7 +935,8 @@
             "label": "Nattokinase",
             "us": "yes",
             "c1": "no",
-            "c2": "no"
+            "c2": "no",
+            "c3": "no"
           }
         },
         "x6": {
@@ -829,7 +945,8 @@
             "label": "CoQ10 for heart energy*",
             "us": "yes",
             "c1": "no",
-            "c2": "no"
+            "c2": "no",
+            "c3": "no"
           }
         },
         "x7": {
@@ -838,7 +955,8 @@
             "label": "Vitamin K2",
             "us": "yes",
             "c1": "no",
-            "c2": "no"
+            "c2": "no",
+            "c3": "no"
           }
         },
         "x8": {
@@ -847,7 +965,8 @@
             "label": "No garlic smell",
             "us": "yes",
             "c1": "yes",
-            "c2": "no"
+            "c2": "no",
+            "c3": "no"
           }
         }
       },
@@ -860,18 +979,21 @@
         "x6",
         "x7",
         "x8"
-      ]
+      ],
+      "settings": {
+        "bg": "#7a1c1e",
+        "us_name": "Heart Ritual",
+        "us_asset": "pf-hr-bundle-1.webp",
+        "heading": "How Heart Ritual <em>Compares</em>",
+        "points": "5 ingredients in one | beetroot, aged garlic, nattokinase, CoQ10 and vitamin K2.\nOdorless garlic | aged garlic extract, no garlic breath.\nTwo capsules a day | no powders to mix, no handful of pills.\nTested every batch | third-party tested for purity and potency.",
+        "button_label": "Try Heart Ritual",
+        "button_link": "",
+        "note": "60-Day Money-Back Guarantee",
+        "footnote": "\"Beetroot powder\" and \"Garlic pill\" describe common single-ingredient supplements, not specific brands."
+      }
     },
     "pf_guarantee": {
       "type": "pf-md-guarantee",
-      "settings": {
-        "button_label": "Try Heart Ritual Risk-Free",
-        "heading": "Try It for 60 Days, Risk‑Free",
-        "accent": "#7A1C1E",
-        "eyebrow_color": "#B8913A",
-        "bg": "#F8ECEA",
-        "text": "<p>Take Heart Ritual every day for up to 60 days. If you’re not happy for any reason, contact us for a full refund.</p>"
-      },
       "blocks": {
         "g1": {
           "type": "photo",
@@ -923,39 +1045,68 @@
         "g4",
         "g5",
         "g6"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "eyebrow_color": "#b8913a",
+        "bg": "#f8ecea",
+        "days": 60,
+        "eyebrow": "Our Promise",
+        "heading": "Try It for 60 Days, Risk‑Free",
+        "text": "<p>Take Heart Ritual every day for up to 60 days. If you’re not happy for any reason, contact us for a full refund.</p>",
+        "button_label": "Try Heart Ritual Risk-Free",
+        "button_link": ""
+      }
     },
     "pf_reviews": {
       "type": "pf-md-reviews-list",
-      "settings": {
-        "heading": "Their Hearts. Their Words.",
-        "per_page": 3,
-        "accent": "#7A1C1E",
-        "stars": "#B8913A"
-      },
       "blocks": {
         "rv1": {
           "type": "review",
-          "settings": {}
+          "settings": {
+            "rating": 0,
+            "headline": "Too Young For This",
+            "text": "<p>I’m 54 and already having conversations with my buddies about blood pressure, cholesterol and medications. Ten years ago we were talking about football and fishing trips. Funny how things change. I don’t want to spend the next 20 years talking about everything that’s wrong with us.</p>",
+            "name": "Steven M."
+          }
         },
         "rv2": {
           "type": "review",
-          "settings": {}
+          "settings": {
+            "rating": 0,
+            "headline": "Peace Of Mind",
+            "text": "<p>My husband and I finally booked the vacation we’ve been talking about for years. Instead of being excited, I caught myself worrying about whether I’d be able to keep up with all the walking. That really bothered me. I want to enjoy these experiences without constantly thinking about my health.</p>",
+            "name": "Barbara N."
+          }
         },
         "rv3": {
           "type": "review",
-          "settings": {}
+          "settings": {
+            "rating": 0,
+            "headline": "Doing It For Them",
+            "text": "<p>I’ve got two daughters and four grandchildren. Every time we get together for dinner, I’m reminded of how lucky I am. I used to brush off anything health-related because I felt fine. Now I understand why my wife has been pushing me to take better care of myself all these years.</p>"
+          }
         }
       },
       "block_order": [
         "rv1",
         "rv2",
         "rv3"
-      ]
+      ],
+      "settings": {
+        "accent": "#7a1c1e",
+        "stars": "#b8913a",
+        "bg": "#ffffff",
+        "summary_left": "Rated 4.9 / 5",
+        "summary_right": "Trusted by 10,000+",
+        "heading": "Their Hearts. Their Words.",
+        "verified_text": "Verified customer",
+        "per_page": 3,
+        "more_label": "Show more reviews"
+      }
     },
     "pf_faq": {
       "type": "pf-md-faq",
-      "settings": {},
       "blocks": {
         "q1": {
           "type": "q",
@@ -1047,7 +1198,14 @@
         "q9",
         "q10",
         "q11"
-      ]
+      ],
+      "settings": {
+        "bg": "#ffffff",
+        "item_bg": "#f7f7f7",
+        "heading": "Frequently Asked Questions",
+        "open_first": false,
+        "disclaimer": ""
+      }
     }
   },
   "order": [
