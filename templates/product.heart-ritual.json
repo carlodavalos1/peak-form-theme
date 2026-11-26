@@ -64,7 +64,7 @@
       "type": "pf-md-buybox",
       "settings": {
         "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
-        "gallery_assets": "pf-hr-gallery-1.webp, pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
+        "gallery_assets": "pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
         "tiers_heading": "LIMITED TIME OFFER",
         "sub_heading": "Save 25% Extra with Automatic Refills",
         "sub_text": "Zero Commitment | Cancel Anytime",
@@ -122,8 +122,7 @@
             "variant_position": 1,
             "bottles": 1,
             "asset": "pf-hr-bundle-1.webp",
-            "refill_text": "Refills Ship Every 4 Weeks",
-            "ship_text": "+ $4.95 Shipping"
+            "refill_text": "Refills Ship Every 4 Weeks"
           }
         },
         "tier2": {
