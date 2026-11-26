@@ -1,0 +1,57 @@
+{%- comment -%} Peak Form: simple two-column comparison (us vs a generic bottle), checks vs crosses. {%- endcomment -%}
+{% render 'pf-md-assets' %}
+{%- assign s = section.settings -%}
+{%- assign rows = section.blocks | where: 'type', 'row' -%}
+<style>
+  #shopify-section-{{ section.id }} .pfm-cs { --pf-accent: {{ s.accent }}; --cs-a: {{ s.grad_top }}; --cs-b: {{ s.grad_bottom }}; background: {{ s.bg }}; }
+</style>
+<div class="pfm pfm-cs">
+  <div class="pfm-cs__in">
+    {%- if s.heading != blank -%}<h2 class="pfm-cs__h">{{ s.heading }}</h2>{%- endif -%}
+    <div class="pfm-cs__tbl">
+      <div class="pfm-cs__col pfm-cs__col--us">
+        <div class="pfm-cs__top">{% render 'pf-md-img', image: s.us_image, asset: s.us_asset, width: 360, alt: s.us_name, class: 'pfm-cs__img' %}</div>
+      </div>
+      <div class="pfm-cs__col pfm-cs__col--them">
+        <div class="pfm-cs__top">{% render 'pf-md-img', image: s.them_image, asset: s.them_asset, width: 360, alt: s.them_name, class: 'pfm-cs__img' %}</div>
+      </div>
+      <div class="pfm-cs__rows">
+        <div class="pfm-cs__head" aria-hidden="true"></div>
+        {%- for r in rows -%}
+          <div class="pfm-cs__row" {{ r.shopify_attributes }}>
+            <span class="pfm-cs__mark pfm-cs__mark--yes" aria-label="{{ s.us_name | escape }}: yes"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 12.3l3.2 3.2L17 8.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="pfm-cs__lbl">{{ r.settings.text }}</span>
+            <span class="pfm-cs__mark pfm-cs__mark--no" aria-label="{{ s.them_name | escape }}: {% if r.settings.them %}yes{% else %}no{% endif %}">{%- if r.settings.them -%}<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 12.3l3.2 3.2L17 8.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- else -%}<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 8.2l7.6 7.6M15.8 8.2l-7.6 7.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>{%- endif -%}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if s.footnote != blank -%}<p class="pfm-cs__note">{{ s.footnote }}</p>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PF comparison (simple)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Complete heart support vs other approaches" },
+    { "type": "color", "id": "accent", "label": "Accent (crosses)", "default": "#7A1C1E" },
+    { "type": "color", "id": "grad_top", "label": "Our column top", "default": "#8E2426" },
+    { "type": "color", "id": "grad_bottom", "label": "Our column bottom", "default": "#3A0C0E" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "text", "id": "us_name", "label": "Our product name", "default": "Heart Ritual" },
+    { "type": "image_picker", "id": "us_image", "label": "Our product image" },
+    { "type": "text", "id": "us_asset", "label": "Our product image (theme file name)" },
+    { "type": "text", "id": "them_name", "label": "Other column name", "default": "Typical supplement" },
+    { "type": "image_picker", "id": "them_image", "label": "Other column image" },
+    { "type": "text", "id": "them_asset", "label": "Other column image (theme file name)" },
+    { "type": "text", "id": "footnote", "label": "Footnote" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "text", "label": "Feature", "default": "Supports healthy blood flow*" },
+      { "type": "checkbox", "id": "them", "label": "Other column has it too", "default": false }
+    ] }
+  ],
+  "presets": [ { "name": "PF comparison (simple)" } ]
+}
+{% endschema %}

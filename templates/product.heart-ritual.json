@@ -387,17 +387,49 @@
             "asset": "pf-hr-selfie-8.webp",
             "alt": "Customer holding Heart Ritual"
           }
+        },
+        "p9": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-hr-selfie-9.webp",
+            "alt": "Customer holding Heart Ritual"
+          }
+        },
+        "p10": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-hr-selfie-10.webp",
+            "alt": "Customer holding Heart Ritual"
+          }
+        },
+        "p11": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-hr-selfie-11.webp",
+            "alt": "Customer holding Heart Ritual"
+          }
+        },
+        "p12": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-hr-selfie-12.webp",
+            "alt": "Customer holding Heart Ritual"
+          }
         }
       },
       "block_order": [
         "p1",
         "p2",
+        "p9",
         "p3",
         "p4",
+        "p10",
         "p5",
         "p6",
+        "p11",
         "p7",
-        "p8"
+        "p8",
+        "p12"
       ],
       "settings": {
         "accent": "#7a1c1e",
@@ -844,105 +876,65 @@
         "note": "60-Day Money-Back Guarantee"
       }
     },
-    "pf_compare": {
-      "type": "pf-md-comparison",
+    "pf_compare_simple": {
+      "type": "pf-md-compare-simple",
+      "settings": {
+        "heading": "Complete heart support vs other approaches",
+        "accent": "#7A1C1E",
+        "grad_top": "#8E2426",
+        "grad_bottom": "#3A0C0E",
+        "us_name": "Heart Ritual",
+        "us_asset": "pf-hr-cmp-pouch.webp",
+        "them_name": "Typical single-ingredient supplement",
+        "them_asset": "pf-cmp-generic-bottle.webp",
+        "footnote": "Compared with a typical single-ingredient heart supplement."
+      },
       "blocks": {
-        "x1": {
-          "type": "column",
-          "settings": {
-            "name": "Beetroot powder",
-            "asset": "pf-hr-ing-beet.webp"
-          }
-        },
-        "x2": {
-          "type": "column",
-          "settings": {
-            "name": "Garlic pill",
-            "asset": "pf-hr-ing-garlic.webp"
-          }
-        },
-        "x3": {
+        "cs1": {
           "type": "row",
           "settings": {
-            "label": "Supports nitric oxide*",
-            "us": "yes",
-            "c1": "yes",
-            "c2": "no",
-            "c3": "no"
+            "text": "Supports nitric oxide production*"
           }
         },
-        "x4": {
+        "cs2": {
           "type": "row",
           "settings": {
-            "label": "Supports healthy blood flow*",
-            "us": "yes",
-            "c1": "yes",
-            "c2": "yes",
-            "c3": "no"
+            "text": "Supports healthy blood flow*"
           }
         },
-        "x5": {
+        "cs3": {
           "type": "row",
           "settings": {
-            "label": "Nattokinase",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no",
-            "c3": "no"
+            "text": "Supports healthy arteries*"
           }
         },
-        "x6": {
+        "cs4": {
           "type": "row",
           "settings": {
-            "label": "CoQ10 for heart energy*",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no",
-            "c3": "no"
+            "text": "Fuels heart cells with CoQ10*"
           }
         },
-        "x7": {
+        "cs5": {
           "type": "row",
           "settings": {
-            "label": "Vitamin K2",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no",
-            "c3": "no"
+            "text": "5 heart ingredients in one formula"
           }
         },
-        "x8": {
+        "cs6": {
           "type": "row",
           "settings": {
-            "label": "No garlic smell",
-            "us": "yes",
-            "c1": "yes",
-            "c2": "no",
-            "c3": "no"
+            "text": "Odorless aged garlic"
           }
         }
       },
       "block_order": [
-        "x1",
-        "x2",
-        "x3",
-        "x4",
-        "x5",
-        "x6",
-        "x7",
-        "x8"
-      ],
-      "settings": {
-        "bg": "#7a1c1e",
-        "us_name": "Heart Ritual",
-        "us_asset": "pf-hr-bundle-1.webp",
-        "heading": "How Heart Ritual <em>Compares</em>",
-        "points": "5 ingredients in one | beetroot, aged garlic, nattokinase, CoQ10 and vitamin K2.\nOdorless garlic | aged garlic extract, no garlic breath.\nTwo capsules a day | no powders to mix, no handful of pills.\nTested every batch | third-party tested for purity and potency.",
-        "button_label": "Try Heart Ritual",
-        "button_link": "",
-        "note": "60-Day Money-Back Guarantee",
-        "footnote": "\"Beetroot powder\" and \"Garlic pill\" describe common single-ingredient supplements, not specific brands."
-      }
+        "cs1",
+        "cs2",
+        "cs3",
+        "cs4",
+        "cs5",
+        "cs6"
+      ]
     },
     "pf_guarantee": {
       "type": "pf-md-guarantee",
@@ -1179,7 +1171,7 @@
     "pf_marquee",
     "pf_journey",
     "pf_five",
-    "pf_compare",
+    "pf_compare_simple",
     "pf_guarantee",
     "pf_reviews",
     "pf_faq"
