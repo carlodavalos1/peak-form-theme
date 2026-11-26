@@ -4,7 +4,7 @@
 <div class="pfm pfm-jr">
   <div class="pfm-jr__grid">
     <div class="pfm-jr__left">
-      <div class="pfm-jr__logo">{%- if s.image != blank or s.image_asset != blank -%}{% render 'pf-md-img', image: s.image, asset: s.image_asset, width: 1200, alt: 'Woman holding MacuDrops' %}{%- else -%}<img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="MacuDrops" loading="lazy" width="1024" height="1024" style="width:auto;height:100%;object-fit:contain">{%- endif -%}</div>
+      <div class="pfm-jr__logo">{%- if s.image != blank or s.image_asset != blank -%}{% render 'pf-md-img', image: s.image, asset: s.image_asset, width: 1200, alt: product.title %}{%- else -%}<img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="1024" height="1024" style="width:auto;height:100%;object-fit:contain">{%- endif -%}</div>
       <div class="pfm-jr__eyebrow">{{ s.eyebrow }}</div>
       <h2>{{ s.heading }}</h2>
       {%- if s.text != blank -%}<div class="pfm-jr__txt">{{ s.text }}</div>{%- endif -%}

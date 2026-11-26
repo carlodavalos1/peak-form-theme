@@ -20,7 +20,7 @@
     </div>
     {%- unless s.image_style == 'none' -%}
     <div class="pfm-feel__img">
-      {%- if s.image != blank or s.image_asset != blank -%}{% render 'pf-md-img', image: s.image, asset: s.image_asset, width: 920, alt: 'MacuDrops' %}{%- else -%}<img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="MacuDrops bottle" loading="lazy" width="1024" height="1024">{%- endif -%}
+      {%- if s.image != blank or s.image_asset != blank -%}{% render 'pf-md-img', image: s.image, asset: s.image_asset, width: 920, alt: product.title %}{%- else -%}<img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="1024" height="1024">{%- endif -%}
     </div>
     {%- endunless -%}
   </div>
