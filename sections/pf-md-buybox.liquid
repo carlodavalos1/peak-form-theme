@@ -138,7 +138,7 @@
                 {%- endif -%}
               {%- endfor -%}
             {%- else -%}
-              <div style="background:#eef2f9;display:flex;align-items:center;justify-content:center"><img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" width="600" height="900" style="width:auto;height:80%;object-fit:contain"></div>
+              <div style="background:var(--pf-select);display:flex;align-items:center;justify-content:center"><img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="{{ product.title | escape }}" width="600" height="900" style="width:auto;height:80%;object-fit:contain"></div>
             {%- endif -%}
           </div>
           {%- if img_count > 1 -%}
@@ -420,7 +420,8 @@
   {%- if s.show_sticky -%}
     <div class="pfm-sticky" aria-hidden="false">
       <div class="pfm-sticky__in">
-        <img src="{{ 'pf-md-bottle.webp' | asset_url }}" alt="" width="54" height="54" loading="lazy" style="object-fit:contain;background:#eef2f9">
+        {%- assign sticky_img = 'pf-md-bottle.webp' -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' and b.settings.asset != blank -%}{%- assign sticky_img = b.settings.asset -%}{%- break -%}{%- endif -%}{%- endfor -%}
+        <img src="{{ sticky_img | asset_url }}" alt="" width="54" height="54" loading="lazy" style="object-fit:contain;background:var(--pf-select)">
         <div class="pfm-sticky__name"><strong>{{ s.title_override | default: product.title }}</strong><span data-pfm-now>{{ now | money }}</span></div>
         <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
           <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span></span>

@@ -4,6 +4,7 @@
 {%- assign rows = section.blocks | where: 'type', 'row' -%}
 {%- assign ncols = cols.size | plus: 2 -%}
 <style>
+  #shopify-section-{{ section.id }} .pfm { --pf-accent: {{ s.bg }}; }
   #shopify-section-{{ section.id }} .pfm-cmp { background: {{ s.bg }}; }
   #shopify-section-{{ section.id }} .pfm-cmp__copy .pfm-pill { color: {{ s.bg }}; }
   #shopify-section-{{ section.id }} .pfm-ctab { grid-template-columns: 1.35fr repeat({{ ncols | minus: 1 }}, 1fr); }
