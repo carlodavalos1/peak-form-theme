@@ -178,6 +178,70 @@
             "heading": "How It Works",
             "body": "<p>After 40, your vessels make less nitric oxide, the signal that helps them relax. CoQ10 levels drop too. Beetroot supplies dietary nitrates your body turns into nitric oxide, garlic and nattokinase support healthy blood flow, CoQ10 fuels heart cells, and vitamin K2 helps direct calcium to your bones.*</p>"
           }
+        },
+        "story1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Getting Older Sucks",
+            "text": "Nobody tells you how frustrating it is when things you’ve done your entire life start becoming difficult. Mowing the lawn, washing the truck, carrying groceries in for the wife. I’m only 59 and I’ve got a lot of living left to do. That’s what got me interested in taking better care of my heart.",
+            "name": "Robert T."
+          }
+        },
+        "story2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Always Freezing Cold",
+            "text": "Even in the middle of summer I’d be wearing socks around the house. My husband couldn’t understand how my feet could be that cold when it was 80 degrees outside. I’d get into bed and tuck them underneath his legs to warm them up. It’s one of those little things that sounds silly until you deal with it every single day.",
+            "name": "Susan K."
+          }
+        },
+        "story3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Runs In The Family",
+            "text": "Lost my dad to a heart attack when he was 64. His brother had heart problems too. I’m 57 now and recently became a grandfather for the first time. Never really cared much about supplements or health stuff before, but having that little boy fall asleep on my chest changed my perspective on a lot of things.",
+            "name": "Michael R."
+          }
+        },
+        "story4": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Exhausted By Three",
+            "text": "I’d have all these plans for what I wanted to get done around the house, and by three in the afternoon I was completely wiped out. Laundry half finished, dinner not started. I honestly thought this was just what menopause and getting older were supposed to feel like. It’s frustrating when you want to do things but don’t have the energy.",
+            "name": "Karen W."
+          }
+        },
+        "story5": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Keeping Up Again",
+            "text": "My wife loves going to flea markets on the weekends. We used to walk around for hours looking at stuff we didn’t need. Lately I’ve been the guy sitting on a bench holding her bags while she finishes shopping. She never complains about it, but I miss walking around with her.",
+            "name": "Gary B."
+          }
+        },
+        "story6": {
+          "type": "testimonial",
+          "settings": {
+            "title": "The Constant Worry",
+            "text": "Every time I felt something unusual in my chest, my mind would immediately go to the worst possible scenario. My mother had heart disease, so it’s always been a sensitive subject for me. I’ve been working with my doctor and trying to develop healthier habits instead of spending my evenings reading scary things on the internet.",
+            "name": "Deborah S."
+          }
+        },
+        "story7": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Not A Supplement Guy",
+            "text": "My wife has about 15 different bottles of vitamins in the kitchen. I’ve never been into any of that. But after turning 60 and having a few conversations with my doctor, I figured I should probably start paying more attention to what I’m doing for my heart. I prefer keeping things simple.",
+            "name": "Mark L."
+          }
+        },
+        "story8": {
+          "type": "testimonial",
+          "settings": {
+            "title": "My Heavy Legs",
+            "text": "Standing in the kitchen making Sunday dinner used to be something I looked forward to. Then my legs started feeling so heavy by the end of the day that I’d ask my daughter to finish cooking. I’ve always been independent, so having to ask for help with something I’ve done for 40 years was a difficult adjustment.",
+            "name": "Nancy F."
+          }
         }
       },
       "block_order": [
@@ -190,7 +254,15 @@
         "tier3",
         "acc1",
         "acc2",
-        "acc3"
+        "acc3",
+        "story1",
+        "story2",
+        "story3",
+        "story4",
+        "story5",
+        "story6",
+        "story7",
+        "story8"
       ]
     },
     "pf_stats": {

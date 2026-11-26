@@ -350,6 +350,14 @@
     qa('.pfm-gal', root).forEach(initGallery);
     qa('[data-pfm-slider]', root).forEach(initSlider);
     qa('.pfm-bb', root).forEach(initBuyBox);
+    qa('[data-pfm-tms]', root).forEach(function (t) {
+      if (t.__pfmt) return; t.__pfmt = true;
+      var row = t.querySelector('[data-pfm-tms-row]');
+      function step(d) { var c = row.querySelector('.pfm-tm'); var w = c ? c.getBoundingClientRect().width + 12 : row.clientWidth; row.scrollBy({ left: d * w, behavior: 'smooth' }); }
+      var p = t.querySelector('[data-pfm-tms-prev]'), n = t.querySelector('[data-pfm-tms-next]');
+      if (p) p.addEventListener('click', function () { step(-1); });
+      if (n) n.addEventListener('click', function () { step(1); });
+    });
     initVideos(root); initFlips(root); initMore(root); watch(root);
   }
 
