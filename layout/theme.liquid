@@ -24,6 +24,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.pf_stealth -%}
+      {%- if template.name == 'product' or template.name == 'collection' or template.name == 'list-collections' or template.name == 'search' -%}
+        <meta name="robots" content="noindex, nofollow">
+      {%- endif -%}
+      {%- if template.name == 'collection' or template.name == 'list-collections' or template.name == 'search' -%}
+        {%- unless request.design_mode -%}<script>location.replace('{{ routes.root_url }}');</script>{%- endunless -%}
+      {%- endif -%}
+    {%- endif -%}
 
 
 

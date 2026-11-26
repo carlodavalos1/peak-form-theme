@@ -1,12 +1,13 @@
 [
-    {
+  {
     "name": "theme_info",
     "theme_name": "Elixir",
     "theme_version": "1.4",
     "theme_author": "Elixir",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
-  },{
+  },
+  {
     "name": "t:settings_schema.license.name",
     "settings": [
       {
@@ -17,7 +18,6 @@
       }
     ]
   },
-
   {
     "name": "t:settings_schema.logo.name",
     "settings": [
@@ -2176,6 +2176,21 @@
         "label": "Pages without header & footer",
         "info": "Enter page handles (one per line) where you want to hide the header and footer. Example: advertorial-page",
         "placeholder": "advertorial-page\nlanding-page\nspecial-offer"
+      }
+    ]
+  },
+  {
+    "name": "Launch privacy",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Keeps your products out of Google and hides the collection and search pages while you launch. People can still open a product from a direct link, like your ads."
+      },
+      {
+        "type": "checkbox",
+        "id": "pf_stealth",
+        "label": "Hide products from search engines and browsing",
+        "default": true
       }
     ]
   }

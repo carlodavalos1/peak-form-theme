@@ -379,14 +379,14 @@
           </div>
         {%- endif -%}
 
-        {%- if s.notice_title != blank -%}
+        {%- if s.notice_title != blank and s.notice_title != '-' -%}
           <div class="pfm-warn">
             <h3>{% render 'pf-md-icon', name: 'warning' %}{{ s.notice_title }}</h3>
             {{ s.notice_text }}
           </div>
         {%- endif -%}
 
-        {%- if s.disclaimer != blank -%}<p class="pfm-disc">{{ s.disclaimer }}</p>{%- endif -%}
+        {%- if s.disclaimer != blank and s.disclaimer != '-' -%}<p class="pfm-disc">{{ s.disclaimer }}</p>{%- endif -%}
       </div>
 
       {%- assign tiles = section.blocks | where: 'type', 'trust_tile' -%}
@@ -476,9 +476,9 @@
     { "type": "text", "id": "guarantee_title", "label": "Title", "default": "60-Day Money-Back Guarantee" },
     { "type": "textarea", "id": "guarantee_text", "label": "Text", "default": "Take MacuDrops daily for up to 60 days. If you're not happy, contact us for a full refund." },
     { "type": "header", "content": "Notice card" },
-    { "type": "text", "id": "notice_title", "label": "Title", "default": "SMALL-BATCH NOTICE:" },
+    { "type": "text", "id": "notice_title", "label": "Title", "default": "SMALL-BATCH NOTICE:", "info": "Type - to hide the notice." },
     { "type": "richtext", "id": "notice_text", "label": "Text", "default": "<p>MacuDrops is made in small batches in Japan, and every batch is third-party tested before it ships.</p>" },
-    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "info": "Type - to hide it (the footer still shows the FDA disclaimer).", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
     { "type": "header", "content": "Why trust card" },
     { "type": "text", "id": "trust_heading", "label": "Heading", "default": "Why Trust MacuDrops?" },
     { "type": "image_picker", "id": "trust_image", "label": "Background image" },

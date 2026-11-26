@@ -3,45 +3,32 @@
     "pf_ticker": {
       "type": "pf-md-ticker",
       "settings": {
-        "speed": 40
+        "speed": 40,
+        "bg": "#111111"
       },
       "blocks": {
-        "t0": {
-          "type": "item",
-          "settings": {
-            "icon": "eye",
-            "text": "All 3 macular pigments"
-          }
-        },
         "t1": {
           "type": "item",
           "settings": {
-            "icon": "drop",
-            "text": "60-second sublingual drops"
+            "icon": "leaf",
+            "text": "Supplements made for life after 40"
           }
         },
         "t2": {
           "type": "item",
           "settings": {
-            "icon": "japan",
-            "text": "Made in Japan"
+            "icon": "flask",
+            "text": "Third-party tested"
           }
         },
         "t3": {
           "type": "item",
           "settings": {
-            "icon": "flask",
-            "text": "Third-party tested every batch"
+            "icon": "heart",
+            "text": "Simple daily rituals"
           }
         },
         "t4": {
-          "type": "item",
-          "settings": {
-            "icon": "gmp",
-            "text": "GMP-certified facility"
-          }
-        },
-        "t5": {
           "type": "item",
           "settings": {
             "icon": "shield",
@@ -50,212 +37,244 @@
         }
       },
       "block_order": [
-        "t0",
         "t1",
         "t2",
         "t3",
-        "t4",
-        "t5"
+        "t4"
       ]
     },
     "pf_hero": {
       "type": "pf-md-hero",
       "settings": {
-        "button_link": "shopify://products/peak-form-macudrops"
+        "bg_a": "#0A0A0A",
+        "bg_b": "#2E2E2E",
+        "gold": "#C9A14A",
+        "eyebrow": "Peak Form Supplements",
+        "title": "Black\nFriday",
+        "pill": "Up To 60% Off",
+        "text": "<p>Simple, third-party tested supplements for the second half of life. Join the list to get our Black Friday offers first.</p>",
+        "button_label": "Join Our Email List",
+        "button_link": "/#pff-news",
+        "small_text": "60-Day Money-Back Guarantee",
+        "ghost": "BLACK\nFRIDAY",
+        "asset": "pf-home-stilllife.webp"
       }
     },
-    "pf_reviewcards": {
-      "type": "pf-md-review-cards",
+    "pf_reasons": {
+      "type": "pf-md-reasons",
       "settings": {
-        "autoplay": 6
+        "accent": "#111111",
+        "heading": "Why Peak Form",
+        "sub": "We make a small number of focused formulas for adults who want to keep doing what they love, for longer."
       },
       "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {}
+        "c1": {
+          "type": "card",
+          "settings": {
+            "heading": "Made for Life After 40",
+            "text": "Every formula is built around what changes in your body after 40.",
+            "asset": "pf-home-couple.webp"
+          }
         },
-        "r2": {
-          "type": "review",
-          "settings": {}
+        "c2": {
+          "type": "card",
+          "settings": {
+            "heading": "Third-Party Tested",
+            "text": "Every batch is checked by an independent lab for purity and potency.",
+            "asset": "pf-home-stilllife.webp"
+          }
         },
-        "r3": {
-          "type": "review",
-          "settings": {}
+        "c3": {
+          "type": "card",
+          "settings": {
+            "heading": "Simple Daily Rituals",
+            "text": "A few seconds a day that fit into the morning you already have.",
+            "asset": "pf-home-breakfast.webp"
+          }
         },
-        "r4": {
-          "type": "review",
-          "settings": {}
-        },
-        "r5": {
-          "type": "review",
-          "settings": {}
-        },
-        "r6": {
-          "type": "review",
-          "settings": {}
+        "c4": {
+          "type": "card",
+          "settings": {
+            "heading": "60-Day Guarantee",
+            "text": "Try any formula for 60 days. Not happy? Get a full refund.",
+            "asset": "pf-home-hike.webp"
+          }
         }
       },
       "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5",
-        "r6"
+        "c1",
+        "c2",
+        "c3",
+        "c4"
       ]
     },
-    "pf_five": {
-      "type": "pf-md-five-reasons",
+    "pf_photos": {
+      "type": "pf-md-photo-strip",
       "settings": {
-        "heading": "5 Reasons MacuDrops Is Different From Every Eye Supplement You’ve Tried",
-        "button_link": "shopify://products/peak-form-macudrops"
+        "heading_a": "Live Your",
+        "heading_b": "Best Years",
+        "sub": "Stronger days, more energy, more of the moments that matter.",
+        "accent": "#111111",
+        "bg": "#F5F4F1",
+        "show_stars": false
       },
       "blocks": {
-        "r1": {
-          "type": "reason",
+        "p1": {
+          "type": "photo",
           "settings": {
-            "heading": "It Has All Three Macular Pigments",
-            "text": "<p>Your macula is built from lutein, zeaxanthin and meso-zeaxanthin. Many eye supplements include only the first two. MacuDrops includes all three, at 20mg, 2mg and 2mg.</p>",
-            "asset": "pf-md-ing-meso.webp"
+            "asset": "pf-home-couple.webp",
+            "alt": "Couple walking a coastal trail at sunrise"
           }
         },
-        "r2": {
-          "type": "reason",
+        "p2": {
+          "type": "photo",
           "settings": {
-            "heading": "It Skips the Capsule",
-            "text": "<p>Carotenoids are fat-soluble and absorb poorly from a dry capsule. MacuDrops are micellized in MCT oil and taken under the tongue, so there’s no capsule to break down first.</p>",
-            "asset": "pf-md-tongue.webp"
+            "asset": "pf-home-yoga.webp",
+            "alt": "Woman stretching at home"
           }
         },
-        "r3": {
-          "type": "reason",
+        "p3": {
+          "type": "photo",
           "settings": {
-            "heading": "It Goes Beyond Pigments",
-            "text": "<p>Astaxanthin, saffron, zinc and ginkgo support the retina’s antioxidant defenses, its metabolism and its circulation.*</p>",
-            "asset": "pf-md-ing-asta.webp"
+            "asset": "pf-home-cycling.webp",
+            "alt": "Man cycling on a country road"
           }
         },
-        "r4": {
-          "type": "reason",
+        "p4": {
+          "type": "photo",
           "settings": {
-            "heading": "60 Seconds, Once a Day",
-            "text": "<p>No handful of pills, no timing around meals. One dropper under the tongue while you make your coffee.</p>",
-            "asset": "pf-md-selfie-1.webp"
+            "asset": "pf-home-grandma.webp",
+            "alt": "Grandmother playing with her grandchild"
           }
         },
-        "r5": {
-          "type": "reason",
+        "p5": {
+          "type": "photo",
           "settings": {
-            "heading": "Made in Japan, Tested Every Batch",
-            "text": "<p>Small-batch production in a GMP-certified facility, with third-party testing on every batch. And a 60-day money-back guarantee.</p>",
-            "asset": "pf-md-lab.webp"
+            "asset": "pf-home-breakfast.webp",
+            "alt": "Couple making a healthy breakfast"
+          }
+        },
+        "p6": {
+          "type": "photo",
+          "settings": {
+            "asset": "pf-home-hike.webp",
+            "alt": "Friends hiking a forest trail"
           }
         }
       },
       "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5"
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
       ]
     },
-    "pf_journey": {
-      "type": "pf-md-journey",
+    "pf_feel": {
+      "type": "pf-md-feel",
       "settings": {
-        "text": "<p>Macular pigment builds slowly, so consistency matters more than anything. Here’s an honest timeline of what daily use looks like.</p>",
-        "image_asset": "pf-md-journey.webp",
-        "button_link": "shopify://products/peak-form-macudrops"
+        "heading": "Support Your Body. <em>Every Day.</em>",
+        "sub": "Focused formulas for the things that matter most as you get older.*",
+        "bg_asset": "pf-home-stilllife.webp",
+        "grad_a": "#2A2A2A",
+        "grad_b": "#0A0A0A",
+        "image_style": "none",
+        "overlay_opacity": 85
       },
       "blocks": {
-        "w1": {
-          "type": "step",
+        "f1": {
+          "type": "item",
           "settings": {
-            "label": "Day 1",
-            "heading": "Start the routine",
-            "points": "One dropper under the tongue for 60 seconds every morning\nNothing to swallow, no water needed\nTakes less time than your coffee"
+            "icon": "heart",
+            "heading": "Heart & Circulation",
+            "text": "Support for healthy blood flow and heart health.*"
           }
         },
-        "w2": {
-          "type": "step",
+        "f2": {
+          "type": "item",
           "settings": {
-            "label": "Weeks 1–4",
-            "heading": "Levels start to rise",
-            "points": "Lutein and zeaxanthin levels in your blood start to rise*\nConsistency matters more than anything here\nKeep every eye appointment and treatment"
+            "icon": "eye",
+            "heading": "Eyes & Vision",
+            "text": "Nutrients your eyes rely on as you age.*"
           }
         },
-        "w3": {
-          "type": "step",
+        "f3": {
+          "type": "item",
           "settings": {
-            "label": "Months 2–3",
-            "heading": "Pigment builds",
-            "points": "Studies on lutein and zeaxanthin typically measure macular pigment gains over this window*\nMany people notice more comfortable eyes in bright light and on screens*"
+            "icon": "zap",
+            "heading": "Daily Energy",
+            "text": "Support for steady energy through the day.*"
           }
         },
-        "w4": {
-          "type": "step",
+        "f4": {
+          "type": "item",
           "settings": {
-            "label": "Month 3+",
-            "heading": "Track your numbers",
-            "points": "Ask your eye doctor about a macular pigment optical density (MPOD) reading\nKeep going daily to maintain your levels*"
+            "icon": "leaf",
+            "heading": "Clean Formulas",
+            "text": "Focused ingredients, third-party tested."
           }
         }
       },
       "block_order": [
-        "w1",
-        "w2",
-        "w3",
-        "w4"
+        "f1",
+        "f2",
+        "f3",
+        "f4"
       ]
     },
     "pf_guarantee": {
       "type": "pf-md-guarantee",
       "settings": {
-        "button_label": "Try MacuDrops Risk-Free",
-        "heading": "Try It for 60 Days, Risk‑Free",
-        "button_link": "shopify://products/peak-form-macudrops"
+        "heading": "Try Any Formula for 60 Days, Risk‑Free",
+        "text": "<p>Every Peak Form supplement comes with our 60-day money-back guarantee. If you’re not happy for any reason, contact us for a full refund.</p>",
+        "button_label": "Join Our Email List",
+        "button_link": "/#pff-news",
+        "accent": "#111111",
+        "eyebrow_color": "#C9A14A",
+        "bg": "#F5F4F1"
       },
       "blocks": {
         "g1": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-2.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-home-yoga.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         },
         "g2": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-4.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-home-cycling.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         },
         "g3": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-9.webp",
-            "alt": "Man holding MacuDrops in his garden"
+            "asset": "pf-home-grandma.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         },
         "g4": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-3.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-home-breakfast.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         },
         "g5": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-5.webp",
-            "alt": "Woman holding MacuDrops"
+            "asset": "pf-home-hike.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         },
         "g6": {
           "type": "photo",
           "settings": {
-            "asset": "pf-md-selfie-12.webp",
-            "alt": "Man holding MacuDrops on a lakeside walk"
+            "asset": "pf-home-couple.webp",
+            "alt": "Peak Form customer enjoying an active life"
           }
         }
       },
@@ -268,151 +287,54 @@
         "g6"
       ]
     },
-    "pf_compare": {
-      "type": "pf-md-comparison",
-      "settings": {
-        "heading": "How MacuDrops <em>Compares</em> to Popular Eye Supplements",
-        "points": "All 3 macular pigments | lutein, zeaxanthin and meso-zeaxanthin. Many formulas skip the third.\nMicellized drops | pre-dispersed in MCT oil and sunflower lecithin, no capsule to break down.\nMore than pigments | astaxanthin, saffron, zinc and ginkgo for the rest of the retina.*\nTested every batch | made in small batches in Japan in a GMP-certified facility.",
-        "footnote": "PreserVision details are from Bausch + Lomb's published label as of November 2026. PreserVision and AREDS 2 are trademarks of Bausch + Lomb, not affiliated with Peak Form. \"Typical lutein softgel\" describes a common single-softgel lutein + zeaxanthin supplement, not a specific brand.",
-        "button_link": "shopify://products/peak-form-macudrops"
-      },
-      "blocks": {
-        "col1": {
-          "type": "column",
-          "settings": {
-            "name": "PreserVision AREDS 2"
-          }
-        },
-        "col2": {
-          "type": "column",
-          "settings": {
-            "name": "Typical lutein softgel"
-          }
-        },
-        "r1": {
-          "type": "row",
-          "settings": {
-            "label": "Format",
-            "us": "Drops",
-            "c1": "Softgels",
-            "c2": "Softgels"
-          }
-        },
-        "r2": {
-          "type": "row",
-          "settings": {
-            "label": "Doses per day",
-            "us": "1 dropper",
-            "c1": "2 softgels",
-            "c2": "1 softgel"
-          }
-        },
-        "r3": {
-          "type": "row",
-          "settings": {
-            "label": "No pills to swallow",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no"
-          }
-        },
-        "r4": {
-          "type": "row",
-          "settings": {
-            "label": "Taken under the tongue",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no"
-          }
-        },
-        "r5": {
-          "type": "row",
-          "settings": {
-            "label": "Meso-zeaxanthin (3rd macular pigment)",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no"
-          }
-        },
-        "r7": {
-          "type": "row",
-          "settings": {
-            "label": "Made in small batches in Japan",
-            "us": "yes",
-            "c1": "no",
-            "c2": "no"
-          }
-        }
-      },
-      "block_order": [
-        "col1",
-        "col2",
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5",
-        "r7"
-      ]
-    },
     "pf_faq": {
       "type": "pf-md-faq",
-      "settings": {
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
-      },
+      "settings": {},
       "blocks": {
-        "q0": {
-          "type": "q",
-          "settings": {
-            "q": "How long until I notice anything?",
-            "a": "<p>Macular pigment builds gradually. Research on lutein and zeaxanthin usually measures changes over 3 to 6 months of daily use, so we recommend giving MacuDrops at least 3 months.*</p>"
-          }
-        },
         "q1": {
           "type": "q",
           "settings": {
-            "q": "Does MacuDrops replace my eye injections or laser treatment?",
-            "a": "<p><strong>No.</strong> MacuDrops is a dietary supplement, not a treatment for any eye disease. If you have diabetic retinopathy, macular degeneration or any other eye condition, keep every appointment and follow your eye doctor’s treatment plan.</p>"
+            "q": "What is Peak Form?",
+            "a": "<p>Peak Form makes simple, third-party tested supplements for adults who want to stay active in the second half of life.</p>"
           }
         },
         "q2": {
           "type": "q",
           "settings": {
-            "q": "Is it safe with my medications?",
-            "a": "<p>Show the ingredient list to your doctor before starting, especially if you take blood thinners (warfarin, aspirin, clopidogrel), because ginkgo biloba can affect bleeding. Ask your doctor if you are pregnant or nursing.</p>"
+            "q": "Are your supplements third-party tested?",
+            "a": "<p>Yes. Every batch is checked by an independent lab for purity and potency before it ships.</p>"
           }
         },
         "q3": {
           "type": "q",
           "settings": {
-            "q": "Why drops instead of capsules?",
-            "a": "<p>Lutein and the other carotenoids are fat-soluble. In MacuDrops they’re micellized in MCT oil and sunflower lecithin and taken under the tongue, so there’s no capsule to dissolve first.</p>"
+            "q": "How does the money-back guarantee work?",
+            "a": "<p>Take any Peak Form supplement for up to 60 days. If you’re not happy, contact us and we’ll refund you in full.</p>"
           }
         },
         "q4": {
           "type": "q",
           "settings": {
-            "q": "How do I take it?",
-            "a": "<p>One dropper under the tongue, hold for 60 seconds, then swallow. Once a day. Each bottle has 30 servings.</p>"
+            "q": "Can I cancel my subscription?",
+            "a": "<p>Yes, anytime. Log in to your account to skip, pause or cancel your refills.</p>"
           }
         },
         "q5": {
           "type": "q",
           "settings": {
-            "q": "Where is it made?",
-            "a": "<p>In small batches in Japan, in a GMP-certified facility. Every batch is third-party tested.</p>"
+            "q": "Should I talk to my doctor first?",
+            "a": "<p>If you take medication, have a medical condition, or are pregnant or nursing, talk to your doctor before starting any supplement.</p>"
           }
         },
         "q6": {
           "type": "q",
           "settings": {
-            "q": "What if it isn’t for me?",
-            "a": "<p>You’re covered by our 60-day money-back guarantee. Contact our team for a full refund.</p>"
+            "q": "How do I contact you?",
+            "a": "<p>Visit our <a href=\"/pages/contact\">contact page</a> and our team will get back to you.</p>"
           }
         }
       },
       "block_order": [
-        "q0",
         "q1",
         "q2",
         "q3",
@@ -425,11 +347,10 @@
   "order": [
     "pf_ticker",
     "pf_hero",
-    "pf_reviewcards",
-    "pf_five",
-    "pf_journey",
+    "pf_reasons",
+    "pf_photos",
+    "pf_feel",
     "pf_guarantee",
-    "pf_compare",
     "pf_faq"
   ]
 }

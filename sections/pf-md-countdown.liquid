@@ -1,9 +1,29 @@
 {%- comment -%} Peak Form sale bar with a real countdown to a fixed end time. Hides itself when the time has passed. {%- endcomment -%}
 {%- assign s = section.settings -%}
+{%- liquid
+  assign cd_bg = s.bg
+  assign cd_fg = s.color
+  assign cd_line = s.top_line
+  assign cd_sub = s.sub
+  for blk in section.blocks
+    assign pg = blk.settings.page | strip | downcase
+    if pg != blank
+      if pg == template.suffix or pg == template.name or pg == product.handle
+        assign cd_bg = blk.settings.bg
+        assign cd_fg = blk.settings.color
+        assign cd_line = blk.settings.top_line
+        if blk.settings.sub != blank
+          assign cd_sub = blk.settings.sub
+        endif
+        break
+      endif
+    endif
+  endfor
+-%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  .pfm-cd-{{ section.id }} { background: {{ s.bg }}; color: {{ s.color }}; border-top: 6px solid {{ s.top_line }}; }
+  .pfm-cd-{{ section.id }} { background: {{ cd_bg }}; color: {{ cd_fg }}; border-top: 6px solid {{ cd_line }}; }
   .pfm-cd { display: block; text-decoration: none; }
   .pfm-cd[hidden] { display: none; }
   .pfm-cd__in { max-width: 1300px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 44px; }
@@ -29,7 +49,7 @@
   <div class="pfm-cd__in">
     <div class="pfm-cd__txt">
       <p class="pfm-cd__h">{{ s.heading }}</p>
-      {%- if s.sub != blank -%}<div class="pfm-cd__s">{{ s.sub }}</div>{%- endif -%}
+      {%- if cd_sub != blank -%}<div class="pfm-cd__s">{{ cd_sub }}</div>{%- endif -%}
     </div>
     <div class="pfm-cd__t" aria-label="Time left">
       <div class="pfm-cd__u"><b data-u="d">00</b><span>{{ s.l_days }}</span></div>
@@ -74,6 +94,19 @@
     { "type": "text", "id": "l_hrs", "label": "Hours label", "default": "Hrs" },
     { "type": "text", "id": "l_mins", "label": "Minutes label", "default": "Mins" },
     { "type": "text", "id": "l_secs", "label": "Seconds label", "default": "Secs" }
+  ],
+  "blocks": [
+    {
+      "type": "page_colors",
+      "name": "Colors for one page",
+      "settings": [
+        { "type": "text", "id": "page", "label": "Page", "info": "A product template name (for example heart-ritual or macudrops), a product handle, or index for the home page." },
+        { "type": "color", "id": "bg", "label": "Background", "default": "#111111" },
+        { "type": "color", "id": "color", "label": "Text", "default": "#FFFFFF" },
+        { "type": "color", "id": "top_line", "label": "Top line", "default": "#000000" },
+        { "type": "text", "id": "sub", "label": "Text on this page", "info": "Optional. Leave empty to use the main text." }
+      ]
+    }
   ],
   "presets": [ { "name": "PF sale countdown bar" } ]
 }

@@ -64,7 +64,6 @@
       "type": "pf-md-buybox",
       "settings": {
         "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
-        "notice_text": "<p>Heart Ritual is a daily supplement, not a medicine. If you take blood thinners or blood pressure medication, show the ingredient list to your doctor first.</p><p>PS: Only sold here. We don’t sell on Amazon or eBay.</p>",
         "gallery_assets": "pf-hr-gallery-1.webp, pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
         "tiers_heading": "Choose Your Bundle",
         "sub_heading": "Save 25% Extra with Automatic Refills",
@@ -77,7 +76,7 @@
         "badge_text": "Black Friday - Save [x]%",
         "subscription_default": true,
         "show_stock": false,
-        "notice_title": "BEFORE YOU ORDER:",
+        "notice_title": "-",
         "accent": "#7A1C1E",
         "gold": "#B8913A",
         "selected_bg": "#FBEDEB",
@@ -86,7 +85,7 @@
         "guarantee_title": "60-Day Money-Back Guarantee",
         "guarantee_text": "Take Heart Ritual daily for up to 60 days. If you’re not happy, contact us for a full refund.",
         "trust_heading": "Why Trust Heart Ritual?",
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+        "disclaimer": "-"
       },
       "blocks": {
         "bul1": {
@@ -175,14 +174,6 @@
             "heading": "How It Works",
             "body": "<p>After 40, your vessels make less nitric oxide, the signal that helps them relax. CoQ10 levels drop too. Beetroot supplies dietary nitrates your body turns into nitric oxide, garlic and nattokinase support healthy blood flow, CoQ10 fuels heart cells, and vitamin K2 helps direct calcium to your bones.*</p>"
           }
-        },
-        "acc4": {
-          "type": "accordion",
-          "settings": {
-            "icon": "stethoscope",
-            "heading": "Taking Medication?",
-            "body": "<p><strong>Heart Ritual is a dietary supplement. It does not replace any medication your doctor prescribes.</strong> Nattokinase, garlic and vitamin K2 can interact with blood thinners such as warfarin, so talk to your doctor before starting if you take one, or if you have surgery coming up.</p>"
-          }
         }
       },
       "block_order": [
@@ -195,15 +186,13 @@
         "tier3",
         "acc1",
         "acc2",
-        "acc3",
-        "acc4"
+        "acc3"
       ]
     },
     "pf_stats": {
       "type": "pf-md-stats",
       "settings": {
         "heading": "Give Your Heart <em>What It Runs On</em>",
-        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "image_asset": "pf-hr-botanicals.webp",
         "overlay_opacity": 80,
         "overlay": "#5A1214",
@@ -482,7 +471,6 @@
       "type": "pf-md-proven",
       "settings": {
         "intro": "Each ingredient in Heart Ritual supports a different part of your cardiovascular system. Together they cover the signal, the flow, the vessel walls and the energy.*",
-        "footnote": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "heading_a": "Five Ingredients.",
         "heading_b": "One Job Each.",
         "accent": "#7A1C1E",
@@ -913,53 +901,79 @@
     },
     "pf_faq": {
       "type": "pf-md-faq",
-      "settings": {
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
-      },
+      "settings": {},
       "blocks": {
         "q1": {
           "type": "q",
           "settings": {
-            "q": "How do I take Heart Ritual?",
-            "a": "<p>Two capsules a day with water, ideally with breakfast. One pouch holds 60 capsules, a 30-day supply.</p>"
+            "q": "Can I buy Heart Ritual in stores?",
+            "a": "<p>No. Heart Ritual is only sold on our website. We don’t sell on Amazon, eBay or in stores, so you always get it fresh and straight from us.</p>"
           }
         },
         "q2": {
           "type": "q",
           "settings": {
-            "q": "When will I notice anything?",
-            "a": "<p>Everyone is different. Ingredients like CoQ10 build up over weeks, so give it at least 60 days of daily use. That’s why our guarantee is 60 days.*</p>"
+            "q": "What ingredients are in Heart Ritual?",
+            "a": "<p>Five: beetroot, aged odorless garlic, nattokinase, CoQ10 and vitamin K2. The exact amount of each is on the Supplement Facts panel on the pouch.</p>"
           }
         },
         "q3": {
           "type": "q",
           "settings": {
-            "q": "Is it safe with my medications?",
-            "a": "<p>Talk to your doctor first if you take blood thinners (such as warfarin), aspirin, or blood pressure medication, or if you have surgery coming up. Nattokinase, garlic and vitamin K2 can affect how these work. Heart Ritual does not replace any medication.</p>"
+            "q": "Is Heart Ritual safe to take with my current medications?",
+            "a": "<p>Heart Ritual is a dietary supplement and doesn’t replace any medication. Nattokinase, garlic and vitamin K2 can interact with blood thinners such as warfarin or aspirin, and with blood pressure medication. If you take any medication or have surgery coming up, talk to your doctor before you start.</p>"
           }
         },
         "q4": {
           "type": "q",
           "settings": {
-            "q": "Will it give me garlic breath?",
-            "a": "<p>No. We use aged odorless garlic extract, so there’s no garlic smell or aftertaste.</p>"
+            "q": "How should I store Heart Ritual?",
+            "a": "<p>Keep the pouch sealed in a cool, dry place away from direct sunlight, and press the zip closed after each use.</p>"
           }
         },
         "q5": {
           "type": "q",
           "settings": {
-            "q": "What’s in it?",
-            "a": "<p>Beetroot, aged odorless garlic, nattokinase, CoQ10 and vitamin K2. The exact amounts are on the Supplement Facts panel on the pouch.</p>"
+            "q": "Will Heart Ritual help with my cardiovascular wellness and energy levels?",
+            "a": "<p>Heart Ritual is designed to support healthy circulation, heart health and cellular energy. Beetroot supports nitric oxide, garlic and nattokinase support healthy blood flow, CoQ10 fuels heart cells and vitamin K2 helps direct calcium to your bones.*</p>"
           }
         },
         "q6": {
           "type": "q",
           "settings": {
-            "q": "Who shouldn’t take it?",
-            "a": "<p>It isn’t for children, or for anyone pregnant or nursing. Nattokinase comes from soybeans, so skip it if you have a soy allergy.</p>"
+            "q": "How long until I notice a difference?",
+            "a": "<p>Everyone is different. Ingredients like CoQ10 build up over weeks, so give it at least 60 days of daily use. That’s why our guarantee is 60 days.*</p>"
           }
         },
         "q7": {
+          "type": "q",
+          "settings": {
+            "q": "How often should I take the supplement?",
+            "a": "<p>Every day. Take 2 capsules with water, ideally with breakfast.</p>"
+          }
+        },
+        "q8": {
+          "type": "q",
+          "settings": {
+            "q": "How many servings are in each pouch?",
+            "a": "<p>Each pouch holds 60 capsules, which is 30 servings or a one-month supply.</p>"
+          }
+        },
+        "q9": {
+          "type": "q",
+          "settings": {
+            "q": "What is Peak Form?",
+            "a": "<p>Peak Form makes simple, third-party tested supplements for adults who want to stay active in the second half of life.</p>"
+          }
+        },
+        "q10": {
+          "type": "q",
+          "settings": {
+            "q": "Are there any age or health restrictions?",
+            "a": "<p>Heart Ritual is intended for healthy adults 18 and over. It is not for anyone who is pregnant or nursing. Nattokinase comes from soybeans, so skip it if you have a soy allergy. If you have a medical condition or take medication, talk to your doctor before use.</p>"
+          }
+        },
+        "q11": {
           "type": "q",
           "settings": {
             "q": "What if it isn’t for me?",
@@ -974,7 +988,11 @@
         "q4",
         "q5",
         "q6",
-        "q7"
+        "q7",
+        "q8",
+        "q9",
+        "q10",
+        "q11"
       ]
     }
   },
