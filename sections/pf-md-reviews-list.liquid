@@ -26,13 +26,13 @@
             {%- if b.settings.rating > 0 -%}<div class="pfm-ritem__top"><b>{{ b.settings.rating }}.0</b>{% render 'pf-md-stars', count: b.settings.rating %}</div>{%- endif -%}
             {%- if b.settings.headline != blank -%}<h3>{{ b.settings.headline }}</h3>{%- endif -%}
             <div class="pfm-ritem__txt">{{ b.settings.text }}</div>
+            {%- if b.settings.tags != blank -%}<div class="pfm-ritem__tags">{%- assign tags = b.settings.tags | split: ',' -%}{%- for t in tags -%}<span class="pfm-tag">{{ t | strip }}</span>{%- endfor -%}</div>{%- endif -%}
             {%- if b.settings.name != blank or b.settings.verified -%}
               <div class="pfm-ritem__by">
                 {%- if b.settings.name != blank -%}<span>{{ b.settings.name }}</span>{%- endif -%}
-                {%- if b.settings.verified -%}<span class="pfm-rcard__ver">{% render 'pf-md-icon', name: 'verified' %}{{ s.verified_text }}</span>{%- endif -%}
+                {%- if b.settings.verified -%}{%- if b.settings.name != blank -%}<span class="pfm-dot">&bull;</span>{%- endif -%}<span class="pfm-vtxt">{{ s.verified_text }}</span>{%- endif -%}
               </div>
             {%- endif -%}
-            {%- if b.settings.tags != blank -%}<div class="pfm-ritem__tags">{%- assign tags = b.settings.tags | split: ',' -%}{%- for t in tags -%}<span class="pfm-tag">{{ t | strip }}</span>{%- endfor -%}</div>{%- endif -%}
           </article>
         {%- elsif request.design_mode -%}
           <div class="pfm-ritem pfm-ph" {{ b.shopify_attributes }}>Review: paste a real customer review here, word for word. Empty reviews are hidden on the live store.</div>

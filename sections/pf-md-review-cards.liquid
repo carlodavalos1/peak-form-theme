@@ -20,7 +20,7 @@
               {%- endif -%}
               <div class="pfm-rcard__foot">
                 <span class="pfm-rcard__av">{%- if b.settings.avatar != blank -%}{{ b.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{{ b.settings.name | slice: 0 }}{%- endif -%}</span>
-                <div><div class="pfm-rcard__who">{{ b.settings.name }}</div>{%- if b.settings.verified -%}<div class="pfm-rcard__ver">{% render 'pf-md-icon', name: 'verified' %}{{ s.verified_text }}</div>{%- endif -%}</div>
+                <div class="pfm-rcard__who"><span>{{ b.settings.name }}</span>{%- if b.settings.verified -%}<span class="pfm-dot">&bull;</span><span class="pfm-vtxt">{{ s.verified_text }}</span>{%- endif -%}</div>
               </div>
             </article>
           </div>
