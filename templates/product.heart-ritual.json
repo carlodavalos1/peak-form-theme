@@ -65,12 +65,12 @@
       "settings": {
         "subtitle": "<p>Five ingredients for your heart and circulation, <strong>in just two capsules a day</strong>.*</p>",
         "gallery_assets": "pf-hr-gallery-1.webp, pf-hr-gallery-2.webp, pf-hr-gallery-3.webp, pf-hr-gallery-4.webp, pf-hr-gallery-5.webp, pf-hr-gallery-6.webp, pf-hr-gallery-7.webp, pf-hr-gallery-8.webp",
-        "tiers_heading": "Choose Your Bundle",
+        "tiers_heading": "LIMITED TIME OFFER",
         "sub_heading": "Save 25% Extra with Automatic Refills",
         "sub_text": "Zero Commitment | Cancel Anytime",
         "refill_1": "Refills Ship Every 30 Days",
         "refill_1_icon": "truck",
-        "refill_2": "Stop or Cancel Anytime",
+        "refill_2": "Auto-Refill Subscription. Cancel Anytime",
         "refill_2_icon": "clock",
         "refill_sub_only": true,
         "badge_text": "Black Friday - Save [x]%",
@@ -85,7 +85,8 @@
         "guarantee_title": "60-Day Money-Back Guarantee",
         "guarantee_text": "Take Heart Ritual daily for up to 60 days. If you’re not happy, contact us for a full refund.",
         "trust_heading": "Why Trust Heart Ritual?",
-        "disclaimer": "-"
+        "disclaimer": "-",
+        "sub_mode": "always"
       },
       "blocks": {
         "bul1": {
@@ -115,12 +116,14 @@
         "tier1": {
           "type": "tier",
           "settings": {
-            "name": "Buy 1 Bottle",
+            "name": "Buy 1 Pouch",
             "qty": 1,
             "discount": 0,
             "variant_position": 1,
             "bottles": 1,
-            "asset": "pf-hr-bundle-1.webp"
+            "asset": "pf-hr-bundle-1.webp",
+            "refill_text": "Refills Ship Every 30 Days",
+            "ship_text": "+ $4.95 Shipping"
           }
         },
         "tier2": {
@@ -134,7 +137,8 @@
             "ship_text": "FREE Shipping",
             "asset": "pf-hr-bundle-3.webp",
             "badge_1": "Most Popular",
-            "selected": true
+            "selected": true,
+            "refill_text": "Refills Ship Every 3 Months"
           }
         },
         "tier3": {
@@ -147,7 +151,8 @@
             "bottles": 5,
             "ship_text": "FREE Shipping",
             "asset": "pf-hr-bundle-5.webp",
-            "badge_1": "Best Value"
+            "badge_1": "Best Value",
+            "refill_text": "Refills Ship Every 5 Months"
           }
         },
         "acc1": {

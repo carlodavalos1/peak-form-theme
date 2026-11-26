@@ -33,6 +33,12 @@
     assign sel_qty = first_tier.settings.qty
     assign sel_off = first_tier.settings.discount
   endif
+  assign sub_mode = s.sub_mode | default: 'optional'
+  assign sub_start = s.subscription_default
+  if sub_mode == 'always'
+    assign sub_start = true
+  endif
+  assign first_refill = first_tier.settings.refill_text
   assign keep = 100 | minus: sel_off
   assign now = cv.price | times: sel_qty | times: keep | divided_by: 100
   assign was = base_unit | times: sel_qty
@@ -72,7 +78,7 @@
       if alloc and tv.price > 0
         assign sub_pct = tv.price | minus: alloc.price | times: 100 | divided_by: tv.price
       endif
-      if s.subscription_default and alloc
+      if sub_start and alloc
         assign now = alloc.price
       endif
     endif
@@ -320,7 +326,7 @@
                 {%- if request.design_mode -%}<div class="pfm-ph" {{ b.shopify_attributes }}>"{{ b.settings.name }}" is hidden: this product has no variant number {{ b.settings.variant_position }} yet. Create the bundle variants in Shopify (see the block's info text).</div>{%- endif -%}
                 {%- continue -%}
               {%- endif -%}
-              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" data-variant="{{ tvid }}" data-bottles="{{ b.settings.bottles }}"{% if b.settings.compare_price != blank %} data-compare="{{ b.settings.compare_price | times: 100 | round }}"{% endif %} {{ b.shopify_attributes }}>
+              <label class="pfm-tier{% if on %} is-on{% endif %}" data-qty="{{ q }}" data-off="{{ b.settings.discount }}" data-variant="{{ tvid }}" data-bottles="{{ b.settings.bottles }}"{% if b.settings.refill_text != blank %} data-refill="{{ b.settings.refill_text | escape }}"{% endif %}{% if b.settings.compare_price != blank %} data-compare="{{ b.settings.compare_price | times: 100 | round }}"{% endif %} {{ b.shopify_attributes }}>
                 <input type="radio" name="pfm-tier-{{ section.id }}" value="{{ q }}"{% if on %} checked{% endif %}>
                 {%- if b.settings.image != blank -%}
                   {{ b.settings.image | image_url: width: 160 | image_tag: class: 'pfm-tier__img', loading: 'lazy', alt: '' }}
@@ -331,7 +337,7 @@
                   <span class="pfm-tier__name">{{ b.settings.name }}</span>
                   {%- if b.settings.sub != blank -%}<span class="pfm-tier__sub">{{ b.settings.sub }}</span>{%- endif -%}
                   <span class="pfm-tier__save"{% if tpct == 0 %} style="display:none"{% endif %}>{{ s.save_word }} <span data-pfm-save>{{ tpct }}%</span></span>
-                  {%- if b.settings.ship_text != blank -%}<span class="pfm-tier__ship{% if b.settings.ship_text contains 'FREE' or b.settings.ship_text contains 'Free' %} is-free{% endif %}">{{ b.settings.ship_text }}</span>{%- endif -%}
+                  {%- if b.settings.ship_text != blank -%}<span class="pfm-tier__ship{% if b.settings.ship_text contains 'FREE' or b.settings.ship_text contains 'Free' %} is-free{% endif %}{% if b.settings.ship_text contains '+' %} is-paid{% endif %}">{{ b.settings.ship_text }}</span>{%- endif -%}
                 </span>
                 <span class="pfm-tier__px">
                   <span class="pfm-tier__now">{{ tnow | money }}</span>
@@ -352,22 +358,24 @@
           {%- if b.type == '@app' -%}<div {{ b.shopify_attributes }} style="margin-bottom:16px">{% render b %}</div>{%- endif -%}
         {%- endfor -%}
 
-        {%- if plan and s.show_subscription -%}
-          <label class="pfm-sub{% if s.subscription_default %} is-on{% endif %}"{% if sub_pct == 0 and bundle_mode %} style="display:none"{% endif %}>
-            <input type="checkbox"{% if s.subscription_default %} checked{% endif %}>
+        {%- if plan and sub_mode == 'always' -%}
+          <div class="pfm-sub is-on" data-pfm-always hidden aria-hidden="true"></div>
+        {%- elsif plan and sub_mode != 'off' -%}
+          <label class="pfm-sub{% if sub_start %} is-on{% endif %}"{% if sub_pct == 0 and bundle_mode %} style="display:none"{% endif %}>
+            <input type="checkbox"{% if sub_start %} checked{% endif %}>
             <span class="pfm-sub__box">{% render 'pf-md-icon', name: 'check' %}</span>
             <span><strong data-pfm-subh="{{ s.sub_heading | escape }}">{{ s.sub_heading | replace: '[x]', sub_pct }}</strong><small>{{ s.sub_text }}</small></span>
           </label>
         {%- endif -%}
 
         <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
-          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span> <s data-pfm-was>{% if was > now %}{{ was | money }}{% endif %}</s></span>
+          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> &bull; <span data-pfm-now>{{ now | money }}</span> <s data-pfm-was>{% if was > now %}{{ was | money }}{% endif %}</s></span>
           {%- if s.atc_subline != blank -%}<span class="pfm-atc__subl">{{ s.atc_subline }}</span>{%- endif -%}
         </button>
 
         {%- if s.refill_1 != blank or s.refill_2 != blank -%}
-          <div class="pfm-refill"{% if s.refill_sub_only %} data-pfm-subonly{% unless s.subscription_default and plan %} style="display:none"{% endunless %}{% endif %}>
-            {%- if s.refill_1 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_1_icon %}{{ s.refill_1 }}</span>{%- endif -%}
+          <div class="pfm-refill"{% if s.refill_sub_only %} data-pfm-subonly{% unless sub_start and plan %} style="display:none"{% endunless %}{% endif %}>
+            {%- if s.refill_1 != blank or first_refill != blank -%}<span>{% render 'pf-md-icon', name: s.refill_1_icon %}<span data-pfm-refill data-default="{{ s.refill_1 | escape }}">{{ first_refill | default: s.refill_1 }}</span></span>{%- endif -%}
             {%- if s.refill_2 != blank -%}<span>{% render 'pf-md-icon', name: s.refill_2_icon %}{{ s.refill_2 }}</span>{%- endif -%}
           </div>
         {%- endif -%}
@@ -424,7 +432,7 @@
         <img src="{{ sticky_img | asset_url }}" alt="" width="54" height="54" loading="lazy" style="object-fit:contain;background:var(--pf-select)">
         <div class="pfm-sticky__name"><strong>{{ s.title_override | default: product.title }}</strong><span data-pfm-now>{{ now | money }}</span></div>
         <button type="button" class="pfm-atc" data-pfm-atc data-label="{{ s.atc_label | escape }}" data-soldout="{{ s.soldout_label | escape }}"{% unless cv.available %} disabled{% endunless %}>
-          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> | <span data-pfm-now>{{ now | money }}</span></span>
+          <span class="pfm-atc__main"><span class="pfm-atc__label">{% if cv.available %}{{ s.atc_label }}{% else %}{{ s.soldout_label }}{% endif %}</span> &bull; <span data-pfm-now>{{ now | money }}</span></span>
         </button>
       </div>
     </div>
@@ -457,8 +465,8 @@
     { "type": "text", "id": "badge_text", "label": "Savings badge", "default": "SAVE [x]%", "info": "[x] = real % off vs compare-at price. Hidden when there is no saving." },
     { "type": "text", "id": "save_word", "label": "Bundle 'you save' text", "default": "You save" },
     { "type": "header", "content": "Subscription" },
-    { "type": "checkbox", "id": "show_subscription", "label": "Show subscribe box (needs a selling plan on the product)", "default": true },
-    { "type": "checkbox", "id": "subscription_default", "label": "Checked by default", "default": false },
+    { "type": "select", "id": "sub_mode", "label": "Subscription", "default": "optional", "options": [ { "value": "off", "label": "Off (one-time only)" }, { "value": "optional", "label": "Optional (shopper ticks a box)" }, { "value": "always", "label": "Always on (every order is a subscription, no box)" } ], "info": "Needs a Loop selling plan on each bundle variant. 'Always on' hides the box and always adds the plan, so keep the refill and cancel lines visible." },
+    { "type": "checkbox", "id": "subscription_default", "label": "Box checked by default", "default": false },
     { "type": "text", "id": "sub_heading", "label": "Heading", "default": "Subscribe & Save [x]%", "info": "[x] = the real % the subscription saves on the selected bundle (from your Loop plan)" },
     { "type": "text", "id": "sub_text", "label": "Text", "default": "Delivered every 30 days. Skip, pause or cancel anytime." },
     { "type": "header", "content": "Add to cart" },
@@ -502,7 +510,8 @@
         { "type": "number", "id": "variant_position", "label": "Variant number (bundle mode)", "default": 0, "info": "1 = the product's first variant, 2 = second, and so on. The tier then adds that variant (e.g. a 3-bottle \"Buy 2 Get 1 Free\" variant) with its real price and Loop plan. 0 = old mode: adds Quantity of the selected variant." },
         { "type": "number", "id": "bottles", "label": "Bottles in this bundle", "default": 1, "info": "Used for the crossed-out price: one-bottle price x bottles." },
         { "type": "text", "id": "compare_price", "label": "Crossed-out price override", "info": "e.g. 59.99. Leave empty to use one-bottle price x bottles (or the variant's compare-at price)." },
-        { "type": "text", "id": "ship_text", "label": "Shipping text", "info": "e.g. FREE Shipping. Set the matching shipping rates in Shopify." },
+        { "type": "text", "id": "ship_text", "label": "Shipping text", "info": "e.g. FREE Shipping or + $4.95 Shipping. Set the matching shipping rates in Shopify." },
+        { "type": "text", "id": "refill_text", "label": "Refill line for this bundle", "info": "e.g. Refills Ship Every 3 Months. Replaces refill line 1 when this bundle is picked. Match the Loop plan interval on this variant." },
         { "type": "text", "id": "asset", "label": "Image (theme file name)", "info": "Used when no image is picked, e.g. pf-md-bundle-3.webp" },
         { "type": "text", "id": "badge_1", "label": "Badge 1" },
         { "type": "text", "id": "badge_2", "label": "Badge 2 (gold)" },
